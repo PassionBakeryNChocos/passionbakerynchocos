@@ -636,8 +636,11 @@ document.getElementById('different-address').addEventListener('change', function
 // Function to handle checkout button click
 document.getElementById('checkout-button').addEventListener('click', function() {
     const { totalAmount } = getCartDetails(); // Get the total amount from the cart
-    const gpayLink = `gpay://send?phone=919869153017&amount=${totalAmount}&note=Payment for Order`;
-    window.open(gpayLink, '_blank'); // Open GPay link
+    const note = encodeURIComponent(`Payment for Order`); // URL encode the note
+    const gpayLink = `gpay://send?phone=919869153017&amount=${totalAmount}&note=${note}`;
+    
+    // Open GPay link
+    window.open(gpayLink, '_blank');
 });
 
 
