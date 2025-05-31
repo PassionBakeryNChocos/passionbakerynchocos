@@ -275,8 +275,16 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
                 <td id="total-amount">₹0.00</td> <!-- Changed to ₹ for consistency -->
                 <td></td>
             </tr>
+            <!-- Add this button below the table in the Cart Section -->
+            <tr>
+                 <td colspan="4">
+                 <button id="checkout-button" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Checkout</button>
+                 </td>
+            </tr>
+
         </tfoot>
     </table>
+
 </div>
 </div>
     <img src="border bottom.png"
@@ -624,6 +632,14 @@ document.getElementById('different-name').addEventListener('change', function() 
 document.getElementById('different-address').addEventListener('change', function() {
     toggleAddressInput(this);
 });
+
+// Function to handle checkout button click
+document.getElementById('checkout-button').addEventListener('click', function() {
+    const { totalAmount } = getCartDetails(); // Get the total amount from the cart
+    const gpayLink = `gpay://send?phone=919869153017&amount=${totalAmount}&note=Payment for Order`;
+    window.open(gpayLink, '_blank'); // Open GPay link
+});
+
 
 </script>
 </body>
