@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PassionBakeryNChocos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+
+   
+     <style>
+    /* Global Styles */
+    body {
+        background-color: #bad012;
+        font-family: cursive;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1,
+    h2 {
+        color: #bad012;
+        font-weight: bold;
+        font-size: xxx-large;
+        text-align: center;
+        margin-bottom: 15px;
+        font-family: Great Vibes;
+        text-decoration: wavy;
+    }
+
+ /* Navigation Bar Styles */
+.topnav {
+overflow: hidden;
+background-color: #bad012;
+}
+
+.topnav a {
+float: left;
+display: block;
+color: #11124a;
+text-align: center;
+padding: 14px 16px;
+font-weight: bold;
+text-decoration: none;
+font-size: 20px;
+border: 3px solid #11124a;
+margin-left: 10px;
+margin-top: 10px;
+}
+
+.topnav a:hover {
+background-color: #54422b;
+color: floralwhite;
+}
+
+.topnav a.active {
+background-color: #008000;
+color: #ffd700;
+}
+
+.topnav .icon {
+display: none;
+}
+
+.topnav .cart-icon {
+color: #11124a; /* Match the color theme */
+font-size: 20px;
+padding: 14px 16px;
+text-decoration: none;
+border: 3px solid #11124a;
+margin-left: 10px;
+margin-top: 10px;
+}
+
+.topnav .cart-icon:hover {
+background-color: #0000ff;
+color: floralwhite;
+}
+
+@media screen and (max-width: 600px) {
+.topnav a:not(:first-child) {display: none;}
+.topnav a.icon {
+float: right;
+display: block;
+}
+}
+
+@media screen and (max-width: 600px) {
+.topnav.responsive {position: relative;}
+.topnav.responsive .icon {
+position: absolute;
+right: 0;
+top: 0;
+}
+.topnav.responsive a {
+float: none;
+display: block;
+text-align: left;
+}
+}
+
+
+    /* Cart Section Styles */
+    .cart-section {
+        margin: 20px;
+        padding: 20px;
+        background-color: #8c4b29;
+        border-radius: 8px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #1ef2fd;
+    }
+
+    .total-row {
+        font-weight: bold;
+        background-color: #ffd700;
+    }
+
+ /* Payment Methods Section Styles */
+.payment-methods {
+    max-width: 800px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;padding: 20px;
+background-color: #8c4b29;
+border-radius: 8px;
+text-align: center;
+}
+
+.payment-methods h3 {
+color: #ffd700;
+margin-bottom: 15px;
+}
+
+.payment-methods img {
+width: 80px;
+margin: 0 10px;
+transition: transform 0.3s ease; /* Add transition for smooth scaling */
+}
+
+.payment-methods img:hover {
+transform: scale(1.2); /* Scale the image to 120% on hover */
+}
+
+.payment-form {
+    max-width: 800px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #8c4b29;
+    border-radius: 10px;
+  }
+
+
+       /* Container Styles */
+       .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #cf94bd;
+            color: #11124a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
+        
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+           
+        }
+
+      
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav" id="myTopnav">
+        <a href="Chocolates.html">Home</a>
+        <a href="Products_chocolates.html" class="active">Products</a>
+        <a href="Chocolates.html">About Me</a>
+        <a href="Chocolates.html">Contact Us</a>
+        <a href="special_order_chocolates.html">Special Order</a>
+        <a href="Cart_chocolates.html" class="cart-icon">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">(0)</span>
+        </a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <img src="border top.png" style="height: 70%; width: 70%; margin-top: 20px; padding-left: 15%" />
+
+ <!-- Cart Section -->
+<div class="cart-section">
+    <h2>Your Cart</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Product Name</th>
+                <th>Weight</th> <!-- New Weight Column -->
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cart-table-body">
+            <!-- Cart items will be populated here -->
+        </tbody>
+        <tfoot>
+            <tr class="total-row">
+                <td colspan="3">Total Amount</td>
+                <td id="total-amount">₹0.00</td> <!-- Changed to ₹ for consistency -->
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+    <img src="border bottom.png"
+        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+
+        <img src="border top.png"
+        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+ <!-- Payment Methods Section -->
+<div class="payment-methods">
+    <h3>Payment Methods</h3>
+    <a href="gpay://send?phone=919869153017&amount=0&note=Payment%20for%20Order" id="gpay-link" target="_blank">
+        <img src="gpay.png" alt="GPay" />
+    </a>
+    <a href="paytm://pay?pa=919869153017&pn=YourName&mc=YOUR_MERCHANT_CODE&tn=Payment%20for%20Order&am=0&cu=INR" id="paytm-link" target="_blank">
+        <img src="paytm.png" alt="Paytm" />
+    </a>
+    <img src="upi.png" alt="UPI" id="upi-link" style="cursor: pointer;" />
+    <img src="qr code.jpg" alt="QR Code" id="qr-code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: 150px; transform: none;" /></div>
+
+    <img src="border bottom.png"
+    style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+
+    <img src="border top.png"
+    style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+<!-- Payment Form Container -->
+<div class="payment-form">
+    <h2>Payment Confirmation Form:</h2>
+    <p style="font-weight: bold; color: floralwhite;">
+      After Going through the payment kindly fill the form below for payment
+      confirmation, while your order is on the way!!
+    </p>
+    <h1>Order Form</h1>
+    <div class="container">
+        <form action="/submit-order" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">1. Name of the person placing this order:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">2. Address of the person placing this order:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">3. Phone Number of the person ordering:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="different-phone">4. Different Phone Number for delivery (No or Yes):</label>
+                <select id="different-phone" name="different-phone" required onchange="togglePhoneInput(this)">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+                <input type="tel" id="delivery-phone" name="delivery-phone" style="display:none;" placeholder="Enter delivery phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="different-name">5. Different Name for delivery (No or Yes):</label>
+                <select id="different-name" name="different-name" required onchange="toggleNameInput(this)">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+                <input type="text" id="delivery-name" name="delivery-name" style="display:none;" placeholder="Enter delivery name" required </div>
+
+            <div class="form-group">
+                <label for="different-address">6. Different Address for delivery (No or Yes):</label>
+                <select id="different-address" name="different-address" required onchange="toggleAddressInput(this)">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+                <input type="text" id="delivery-address" name="delivery-address" style="display:none;" placeholder="Enter delivery address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery-date">7. Date to be delivered:</label>
+                <input type="date" id="delivery-date" name="delivery-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery-time">8. Time of delivery:</label>
+                <input type="time" id="delivery-time" name="delivery-time" required>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery-mode">9. Mode of delivery:</label>
+                <select id="delivery-mode" name="delivery-mode" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="home-delivery">Home Delivery</option>
+                    <option value="pick-up">Pick Up</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="special-request">10. Any Other Request for the Special Order:</label>
+                <textarea id="special-request" name="special-request" ></textarea>
+            </div>
+    
+
+            <button type="submit" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Submit Order</button>
+        </form>
+    </div>
+    </div>
+
+
+    <script>
+<!-- Script for Navigation Toggle -->
+function myFunction() {
+var x = document.getElementById("myTopnav");
+if (x.className === "topnav") {
+x.className += " responsive";
+} else {
+x.className = "topnav";
+}
+}
+
+// Check if cart data exists, if not, set default data
+if (!localStorage.getItem("cartData")) {
+    localStorage.setItem("cartData", JSON.stringify({
+        "Chocolate Cake": { price: "6.00", quantity: 1, weight: 0.5 },
+        "Chocolate Mousse": { price: "5.50", quantity: 1, weight: 0.5 }
+    }));
+}
+
+// Function to load cart data from local storage
+const loadCartData = () => {
+    return JSON.parse(localStorage.getItem("cartData")) || {};
+};
+
+// Function to update the cart table
+const updateCartTable = () => {
+    const cartData = loadCartData();
+    const cartTableBody = document.getElementById("cart-table-body");
+    cartTableBody.innerHTML = ""; // Clear existing rows
+    let totalAmount = 0;
+    let totalCount = 0; // Initialize total count
+    let srNo = 1;
+
+    for (const productName in cartData) {
+        const product = cartData[productName];
+        if (product.quantity > 0) { // Only include products with quantity > 0
+            const row = document.createElement("tr");
+            const productTotalPrice = (parseFloat(product.price) * product.quantity).toFixed(2); // Calculate total price for the product
+
+            row.innerHTML = `
+                <td>${srNo++}</td>
+                <td>${productName}</td>
+                <td>${product.weight} kg</td> <!-- Display weight -->
+                <td>₹${productTotalPrice}</td> <!-- Display price in rupees -->
+                <td>
+                    <button onclick="removeFromCart('${productName}')">Remove</button>
+                    <button onclick="increaseQuantity('${productName}')">+</button>
+                    <button onclick="decreaseQuantity('${productName}')">-</button>
+                </td>
+            `;
+            cartTableBody.appendChild(row);
+            totalAmount += parseFloat(productTotalPrice); // Ensure price is parsed as float
+            totalCount += product.quantity; // Update total count
+        }
+    }
+
+    document.getElementById("total-amount").textContent = `₹${totalAmount.toFixed(2)}`; // Display total amount in rupees
+    document.getElementById("cart-count").textContent = `(${totalCount})`; // Update cart count
+};
+
+// Function to remove an item from the cart
+const removeFromCart = (productName) => {
+    const cartData = loadCartData();
+    delete cartData[productName];
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+    updateCartTable();
+};
+
+// Function to increase the quantity of a product in the cart
+const increaseQuantity = (productName) => {
+    const cartData = loadCartData();
+    if (cartData[productName]) {
+        cartData[productName].quantity++;
+    }
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+    updateCartTable();
+};
+
+// Function to decrease the quantity of a product in the cart
+const decreaseQuantity = (productName) => {
+    const cartData = loadCartData();
+    if (cartData[productName] && cartData[productName].quantity > 0) {
+        cartData[productName].quantity--;
+        if (cartData[productName].quantity === 0) {
+            delete cartData[productName];
+        }
+        localStorage.setItem("cartData", JSON.stringify(cartData));
+        updateCartTable();
+    }
+};
+
+// Function to get cart details for payment
+const getCartDetails = () => {
+    const cartData = loadCartData();
+    let totalAmount = 0;
+    let productNames = [];
+
+    for (const productName in cartData) {
+        const product = cartData[productName];
+        const productTotalPrice = parseFloat(product.price) * product.quantity;
+        totalAmount += productTotalPrice;
+        productNames.push(`${productName} (x${product.quantity})`);
+    }
+
+    return {
+        totalAmount: totalAmount.toFixed(2),
+        productNames: productNames.join(', ')
+    };
+};
+
+// Event listeners for payment links
+document.getElementById('gpay-link').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default link behavior
+    const { totalAmount, productNames } = getCartDetails();
+    const gpayLink = `gpay://send?phone=919869153017&amount=${totalAmount}&note=Payment for: ${productNames}`;
+    window.open(gpayLink, '_blank'); // Open GPay link
+});
+
+document.getElementById('paytm-link').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default link behavior
+    const { totalAmount, productNames } = getCartDetails();
+    const paytmLink = `paytm://pay?pa=919869153017&pn=YourName&mc=YOUR_MERCHANT_CODE&tn=Payment for: ${productNames}&am=${totalAmount}&cu=INR`;
+    window.open(paytmLink, '_blank'); // Open Paytm link
+});
+
+// Initial call to populate the cart table and update the cart count
+updateCartTable();
+
+// Add this code inside your existing <script> tag for qr code image
+
+    document.getElementById('upi-link').addEventListener('click', function() {
+    const qrCodeImage = document.getElementById('qr-code');
+    qrCodeImage.style.display = qrCodeImage.style.display === 'none' ? 'block' : 'none'; // Toggle QR code visibility
+});
+
+function togglePhoneInput(select) {
+            const deliveryPhoneInput = document.getElementById('delivery-phone');
+            deliveryPhoneInput.style.display = select.value === 'yes' ? 'block' : 'none';
+            if (select.value === 'no') {
+                deliveryPhoneInput.value = ''; // Clear the input if 'No' is selected
+            }
+        }
+
+        function toggleNameInput(select) {
+            const deliveryNameInput = document.getElementById('delivery-name');
+            deliveryNameInput.style.display = select.value === 'yes' ? 'block' : 'none';
+            if (select.value === 'no') {
+                deliveryNameInput.value = ''; // Clear the input if 'No' is selected
+            }
+        }
+
+        function toggleAddressInput(select) {
+            const deliveryAddressInput = document.getElementById('delivery-address');
+            deliveryAddressInput.style.display = select.value === 'yes' ? 'block' : 'none';
+            if (select.value === 'no') {
+                deliveryAddressInput.value = ''; // Clear the input if 'No' is selected
+            }
+        }
+
+        function sendWhatsAppMessage(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const deliveryPhone = document.getElementById('delivery-phone').style.display === 'block' ? document.getElementById('delivery-phone').value : '';
+            const deliveryName = document.getElementById('delivery-name').style.display === 'block' ? document.getElementById('delivery-name').value : '';
+            const deliveryAddress = document.getElementById('delivery-address').style.display === 'block' ? document.getElementById('delivery-address').value : '';
+            const deliveryDate = document.getElementById('delivery-date').value;
+            const deliveryTime = document.getElementById('delivery-time').value;
+            const deliveryMode = document.getElementById('delivery-mode').value;
+            const specialRequest = document.getElementById('special-request').value;
+
+            const message = `*Order Details:*\n` +
+                            `Name: ${name}\n` +
+                            `Address: ${address}\n` +
+                            `Phone: ${phone}\n` +
+                            (deliveryPhone ? `Delivery Phone: ${deliveryPhone}\n` : '') +
+                            (deliveryName ? `Delivery Name: ${deliveryName}\n` : '') +
+                            (deliveryAddress ? `Delivery Address: ${deliveryAddress}\n` : '') +
+                            `Delivery Date: ${deliveryDate}\n` +
+                            `Delivery Time: ${deliveryTime}\n` +
+                            `Mode of Delivery: ${deliveryMode}\n` +
+                            `Special Request: ${specialRequest}`;
+
+            const whatsappNumber = '919869153017'; // Replace with your WhatsApp number
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank'); // Open WhatsApp with the message
+        }
+
+</script>
+</body>
+
+</html>
