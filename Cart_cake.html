@@ -317,7 +317,7 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
     </p>
     <h1>Order Form</h1>
     <div class="container">
-        <form id="order-form">
+        <form id="order-form" onsubmit="return false;">
             <div class="form-group">
                 <label for="name">1. Name of the person placing this order:</label>
                 <input type="text" id="name" name="name" required>
@@ -397,19 +397,13 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
                 <textarea id="special-request" name="special-request"></textarea>
             </div>
     
-            <button type="submit">Submit Order via WhatsApp</button>
+            <button type="button" onclick="handleFormSubmission()">Submit Order via WhatsApp</button>
         </form>
 
-        <!-- Debug information (remove in production) -->
-        <div class="debug-info" id="debug-info" style="display:none;">
-            <strong>Debug Info:</strong>
-            <div id="debug-content"></div>
-        </div>
     </div>
 </div>
 
-
-    <script>
+<script>
 <!-- Script for Navigation Toggle -->
 function myFunction() {
 var x = document.getElementById("myTopnav");
@@ -418,14 +412,6 @@ x.className += " responsive";
 } else {
 x.className = "topnav";
 }
-}
-
-// Check if cart data exists, if not, set default data
-if (!localStorage.getItem("cartData")) {
-    localStorage.setItem("cartData", JSON.stringify({
-        "Chocolate Cake": { price: "6.00", quantity: 1, weight: 0.5 },
-        "Chocolate Mousse": { price: "5.50", quantity: 1, weight: 0.5 }
-    }));
 }
 
 // Function to load cart data from local storage
@@ -523,124 +509,123 @@ const getCartDetails = () => {
 updateCartTable();
 
 
-// Function to toggle the visibility of the delivery phone input based on the selection
-function togglePhoneInput(select) {
-    const deliveryPhoneInput = document.getElementById('delivery-phone');
-    const isRequired = select.value === 'yes';
-    deliveryPhoneInput.style.display = isRequired ? 'block' : 'none';
-    deliveryPhoneInput.required = isRequired;
+// Function to toggle visibility of delivery inputs based on Yes/No selects
+function setupToggleFields() {
+    const toggleMappings = [
+        { selectId: 'different-phone', inputId: 'delivery-phone' },
+        { selectId: 'different-name', inputId: 'delivery-name' },
+        { selectId: 'different-address', inputId: 'delivery-address' },
+    ];
+
+    toggleMappings.forEach(({ selectId, inputId }) => {
+        const selectElem = document.getElementById(selectId);
+        const inputElem = document.getElementById(inputId);
+
+        // Initial toggle on page load
+        toggleInputVisibility(selectElem, inputElem);
+
+        // Add event listener for changes
+        selectElem.addEventListener('change', () => {
+            toggleInputVisibility(selectElem, inputElem);
+        });
+    });
 }
 
-// Function to toggle the visibility of the delivery name input based on the selection
-function toggleNameInput(select) {
-    const deliveryNameInput = document.getElementById('delivery-name');
-    const isRequired = select.value === 'yes';
-    deliveryNameInput.style.display = isRequired ? 'block' : 'none';
-    deliveryNameInput.required = isRequired;
-}
-
-// Function to toggle the visibility of the delivery address input based on the selection
-function toggleAddressInput(select) {
-    const deliveryAddressInput = document.getElementById('delivery-address');
-    const isRequired = select.value === 'yes';
-    deliveryAddressInput.style.display = isRequired ? 'block' : 'none';
-    deliveryAddressInput.required = isRequired;
-}
-
-// Function to toggle the visibility of conditional inputs
-function toggleConditionalInput(selectId, inputId) {
-    const select = document.getElementById(selectId);
-    const input = document.getElementById(inputId);
-    
-    if (select.value === 'yes') {
-        input.style.display = 'block';
-        input.required = true;
+function toggleInputVisibility(selectElem, inputElem) {
+    if (selectElem.value === 'yes') {
+        inputElem.style.display = 'block';
+        inputElem.setAttribute('required', 'required');
     } else {
-        input.style.display = 'none';
-        input.required = false;
-        input.value = '';
+        inputElem.style.display = 'none';
+        inputElem.removeAttribute('required');
+        inputElem.value = ''; // Clear input when hidden
     }
 }
 
-// Function to get cart details (mock data for testing)
-function getCartDetails() {
-    // Since we don't have access to localStorage in this test, using mock data
-    return {
-        totalAmount: '500.00',
-        productNames: 'Chocolate Cake (x1), Vanilla Cake (x1)'
-    };
-}
-
-// Enhanced WhatsApp message function with better mobile compatibility
-function sendWhatsAppMessage(event) {
-    event.preventDefault();
-    
+function handleFormSubmission() {
     try {
-        showDebug('Form submission started');
-        
-        // Get form element
         const form = document.getElementById('order-form');
-        
-        // Collect form data with validation
+
+        // Get and trim basic customer info
         const name = form.name.value.trim();
         const address = form.address.value.trim();
         const phone = form.phone.value.trim();
-        
-        if (!name || !address || !phone) {
-            alert('Please fill in all required fields');
-            return;
-        }
-        
-        showDebug('Basic validation passed');
-        
-        // Handle conditional fields
-        const differentPhoneSelect = form['different-phone'].value;
-        const differentNameSelect = form['different-name'].value;
-        const differentAddressSelect = form['different-address'].value;
-        
-        let deliveryPhone = phone;
-        let deliveryName = name;
-        let deliveryAddress = address;
-        
-        if (differentPhoneSelect === 'yes') {
-            deliveryPhone = form['delivery-phone'].value.trim();
-            if (!deliveryPhone) {
-                alert('Please enter delivery phone number');
-                return;
-            }
-        }
-        
-        if (differentNameSelect === 'yes') {
-            deliveryName = form['delivery-name'].value.trim();
-            if (!deliveryName) {
-                alert('Please enter delivery name');
-                return;
-            }
-        }
-        
-        if (differentAddressSelect === 'yes') {
-            deliveryAddress = form['delivery-address'].value.trim();
-            if (!deliveryAddress) {
-                alert('Please enter delivery address');
-                return;
-            }
-        }
-        
-        const deliveryDate = form['delivery-date'].value;
-        const deliveryTime = form['delivery-time'].value;
+
+        // Get the "different" selections
+        const differentPhone = form['different-phone'].value;
+        const differentName = form['different-name'].value;
+        const differentAddress = form['different-address'].value;
+
+        // Conditionally get delivery info if "yes" selected, else fallback to customer info
+        const deliveryPhone = (differentPhone === 'yes') 
+            ? form['delivery-phone'].value.trim() 
+            : phone;
+
+        const deliveryName = (differentName === 'yes') 
+            ? form['delivery-name'].value.trim() 
+            : name;
+
+        const deliveryAddress = (differentAddress === 'yes') 
+            ? form['delivery-address'].value.trim() 
+            : address;
+
+        // Get remaining fields
+        const deliveryDate = form['delivery-date'].value.trim();
+        const deliveryTime = form['delivery-time'].value.trim();
+        const deliveryMode = form['delivery-mode'].value.trim();
         const cakeName = form['cake-name'].value.trim();
         const occasion = form['occasion'].value.trim();
-        const deliveryMode = form['delivery-mode'].value;
         const specialRequest = form['special-request'].value.trim();
-        
-        showDebug('All form data collected');
-        
-        // Get cart details
-        const cartDetails = getCartDetails();
-        
-        // Create the message
-        const message = `*🎂 CAKE ORDER DETAILS 🎂*
 
+        // Basic validation for required fields
+        if (!name || !address || !phone) {
+            alert('Please fill in all required customer fields (Name, Address, Phone).');
+            return;
+        }
+
+        if (differentPhone === 'yes' && !deliveryPhone) {
+            alert('Please fill in the delivery phone number.');
+            return;
+        }
+
+        if (differentName === 'yes' && !deliveryName) {
+            alert('Please fill in the delivery name.');
+            return;
+        }
+
+        if (differentAddress === 'yes' && !deliveryAddress) {
+            alert('Please fill in the delivery address.');
+            return;
+        }
+
+        if (!deliveryDate || !deliveryTime) {
+            alert('Please select delivery date and time.');
+            return;
+        }
+
+        if (!deliveryMode) {
+            alert('Please select a delivery mode.');
+            return;
+        }
+
+        // Phone number format validation (Indian mobile format, 10 digits)
+        const phoneRegex = /^[6-9]\d{9}$/;
+
+        if (!phoneRegex.test(phone)) {
+            alert('Please enter a valid 10-digit Indian mobile number for Customer Phone.');
+            return;
+        }
+
+        if (!phoneRegex.test(deliveryPhone)) {
+            alert('Please enter a valid 10-digit Indian mobile number for Delivery Phone.');
+            return;
+        }
+
+        // Fetch cart details (assuming this function exists)
+        const cartDetails = getCartDetails();
+
+        // Compose WhatsApp message
+        const message = `*🎂 CAKE ORDER DETAILS 🎂*\n
 *📋 Customer Information:*
 👤 Name: ${name}
 📍 Address: ${address}
@@ -657,100 +642,38 @@ function sendWhatsAppMessage(event) {
 *🛒 Order Details:*
 🎂 Products: ${cartDetails.productNames}
 💰 Total Amount: ₹${cartDetails.totalAmount}
-🏷️ Name on Cake: ${cakeName}
-🎉 Occasion: ${occasion}
+🏷️ Name on Cake: ${cakeName || 'N/A'}
+🎉 Occasion: ${occasion || 'N/A'}
 
 *💬 Special Request:*
 ${specialRequest || 'None'}
 
 *Thank you for your order! 😊*`;
 
-        showDebug('Message created successfully');
-        
-        // Encode the message for URL (with better encoding)
-        const encodedMessage = encodeURIComponent(message);
-        
-        // WhatsApp number (replace with your actual number)
+        // WhatsApp number in international format without '+'
         const whatsappNumber = '919869153017';
-        
-        // Create WhatsApp links for different scenarios
-        const whatsappWebLink = `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-        const whatsappAppLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-        const whatsappDirectLink = `whatsapp://send?phone=${whatsappNumber}&text=${encodedMessage}`;
-        
-        showDebug('WhatsApp links created');
-        
-        // Function to detect if device is mobile
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        showDebug(`Device type: ${isMobile ? 'Mobile' : 'Desktop'}`);
-        
-        // Try different approaches based on device
-        if (isMobile) {
-            // Mobile device - try app first, then web
-            showDebug('Attempting mobile WhatsApp app');
-            
-            // Try to open WhatsApp app directly
-            window.location.href = whatsappDirectLink;
-            
-            // Fallback to web version after a short delay
-            setTimeout(() => {
-                showDebug('Fallback to web WhatsApp');
-                window.open(whatsappAppLink, '_blank');
-            }, 1000);
-            
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+
+        console.log('WhatsApp URL:', whatsappURL);
+
+        const newWindow = window.open(whatsappURL, '_blank');
+
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            alert('Pop-up blocked! Please allow pop-ups for this website to send your order via WhatsApp.');
         } else {
-            // Desktop - use web version
-            showDebug('Opening web WhatsApp');
-            window.open(whatsappWebLink, '_blank');
+            alert('Opening WhatsApp chat... If it does not open automatically, please contact us directly at ' + whatsappNumber);
         }
-        
-        // Show success message
-        setTimeout(() => {
-            alert('Order submitted! If WhatsApp didn\'t open automatically, please contact us directly at ' + whatsappNumber);
-        }, 2000);
-        
+
     } catch (error) {
-        showDebug('Error occurred: ' + error.message);
-        console.error('WhatsApp submission error:', error);
-        alert('There was an error submitting your order. Please try again or contact us directly.');
+        console.error('Error during WhatsApp submission:', error);
+        alert('An unexpected error occurred. Please try again or contact us directly at 919869153017');
     }
 }
 
-// Event listeners
-document.addEventListener('DOMContentLoaded', function() {
-    showDebug('Page loaded successfully');
-    
-    // Add form submit listener
-    const form = document.getElementById('order-form');
-    form.addEventListener('submit', sendWhatsAppMessage);
-    
-    // Add change listeners for conditional fields
-    document.getElementById('different-phone').addEventListener('change', function() {
-        toggleConditionalInput('different-phone', 'delivery-phone');
-    });
-    
-    document.getElementById('different-name').addEventListener('change', function() {
-        toggleConditionalInput('different-name', 'delivery-name');
-    });
-    
-    document.getElementById('different-address').addEventListener('change', function() {
-        toggleConditionalInput('different-address', 'delivery-address');
-    });
-    
-    showDebug('Event listeners attached');
-});
+// Initialize toggles on page load
+window.addEventListener('DOMContentLoaded', setupToggleFields);
 
-// // Add event listeners for the select elements
-// document.getElementById('different-phone').addEventListener('change', function() {
-//     togglePhoneInput(this);
-// });
-// document.getElementById('different-name').addEventListener('change', function() {
-//     toggleNameInput(this);
-// });
-// document.getElementById('different-address').addEventListener('change', function() {
-//     toggleAddressInput(this);
-// });
 
 function scrollToPaymentMethods() {
     const paymentMethodsSection = document.querySelector('.payment-methods');
