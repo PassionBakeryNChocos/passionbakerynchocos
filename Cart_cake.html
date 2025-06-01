@@ -275,15 +275,11 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
                 <td id="total-amount">₹0.00</td> <!-- Changed to ₹ for consistency -->
                 <td></td>
             </tr>
-            <!-- Add this button below the table in the Cart Section -->
-            <tr>
-                 <td colspan="4">
-                 <button id="checkout-button" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Checkout</button>
-                 </td>
-            </tr>
-
         </tfoot>
     </table>
+    <div style="text-align: center; margin-top: 20px;">
+    <button onclick="scrollToPaymentMethods()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Checkout</button>
+    </div>
 
 </div>
 </div>
@@ -297,27 +293,26 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
  <!-- Payment Methods Section -->
 <div class="payment-methods">
     <h3>Payment Methods</h3>
-    <a href="gpay://send?phone=919869153017&amount=0&note=Payment%20for%20Order" id="gpay-link" target="_blank">
-        <img src="gpay.png" alt="GPay" />
-    </a>
-    <a href="paytm://pay?pa=919869153017&pn=YourName&mc=YOUR_MERCHANT_CODE&tn=Payment%20for%20Order&am=0&cu=INR" id="paytm-link" target="_blank">
-        <img src="paytm.png" alt="Paytm" />
-    </a>
-    <img src="upi.png" alt="UPI" id="upi-link" style="cursor: pointer;" />
-    <img src="qr code.jpg" alt="QR Code" id="qr-code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: 150px; transform: none;" /></div>
+    <p style="color: floralwhite; margin-bottom: 15px;">
+    For your safety, we have not embedded the payment method in this website. You can pay by the below given methods.
+    </p>
+    <p style="color:white; font-weight: bold; font-style: italic;"> Kindly note that paying 50% of the total amount is necessary for the order confirmation.</p>
+    <button id="gpay-button" onclick="toggleUPI()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with UPI Id:</button>
+    <p id="upi-id" style="color: floralwhite; display: none;">Our UPI ID: manjupathak135@okicici</p>
 
-    <img src="border bottom.png"
-    style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+    <button id="paytm-button" onclick="toggleQRCode()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with Qr Code Image: </button>
+    <img id="qr-code" src="qr code.jpg" alt="QR Code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: auto; margin-right: auto;" />
 
+</div>
 
-    <img src="border top.png"
-    style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+<img src="border bottom.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+<img src="border top.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
 
 <!-- Payment Form Container -->
 <div class="payment-form">
     <h2>Payment Confirmation Form:</h2>
     <p style="font-weight: bold; color: floralwhite;">
-      After Going through the payment kindly fill the form below for payment
+      After Going through the payment using any of the above methods kindly fill the form below for payment
       confirmation, while your order is on the way!!
     </p>
     <h1>Order Form</h1>
@@ -408,7 +403,7 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
     </div>
 
 
-<script>
+    <script>
 <!-- Script for Navigation Toggle -->
 function myFunction() {
 var x = document.getElementById("myTopnav");
@@ -518,152 +513,42 @@ const getCartDetails = () => {
     };
 };
 
-// Fallback function to show manual payment options
-function showFallbackPaymentOptions(totalAmount, productNames) {
-    const paymentInfo = `Payment Details:
-Amount: ₹${totalAmount}
-Items: ${productNames}
-
-Please pay using any UPI app:
-UPI ID: manjupathak135@okicici
-(Replace with your actual UPI ID)
-
-Or scan the QR code below.`;
-    
-    alert(paymentInfo);
-    
-    // Show the QR code
-    const qrCodeImage = document.getElementById('qr-code');
-    if (qrCodeImage) {
-        qrCodeImage.style.display = 'block';
-        // Scroll to QR code
-        qrCodeImage.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-// Enhanced function to attempt payment app opening
-function attemptPayment(totalAmount, productNames) {
-    // IMPORTANT: Replace this with your actual UPI ID
-    const upiId = 'manjupathak135@okicici'; // Change this to your real UPI ID like 'yourname@paytm' or 'yourname@gpay'
-    const merchantName = 'PassionBakeryNChocos';
-    const note = encodeURIComponent(`Payment for: ${productNames}`);
-    
-    // Multiple payment link formats for better compatibility
-    const upiLink = `upi://pay?pa=${upiId}&pn=${merchantName}&am=${totalAmount}&tn=${note}&cu=INR`;
-    const gpayLink = `tez://upi/pay?pa=${upiId}&pn=${merchantName}&am=${totalAmount}&tn=${note}&cu=INR`;
-    const phonepeLink = `phonepe://pay?pa=${upiId}&pn=${merchantName}&am=${totalAmount}&tn=${note}&cu=INR`;
-    
-    // Try to open payment app
-    let appOpened = false;
-    
-    // Method 1: Try standard UPI link
-    try {
-        window.location.href = upiLink;
-        appOpened = true;
-    } catch (error) {
-        console.log('UPI link failed:', error);
-    }
-    
-    // If UPI doesn't work, try GPay
-    if (!appOpened) {
-        setTimeout(() => {
-            try {
-                window.location.href = gpayLink;
-                appOpened = true;
-            } catch (error) {
-                console.log('GPay link failed:', error);
-            }
-        }, 1000);
-    }
-    
-    // If GPay doesn't work, try PhonePe
-    if (!appOpened) {
-        setTimeout(() => {
-            try {
-                window.location.href = phonepeLink;
-                appOpened = true;
-            } catch (error) {
-                console.log('PhonePe link failed:', error);
-            }
-        }, 2000);
-    }
-    
-    // Show fallback options after 3 seconds if no app opened
-    setTimeout(() => {
-        if (!document.hidden) {
-            showFallbackPaymentOptions(totalAmount, productNames);
-        }
-    }, 3000);
-}
-
-// Event listeners for payment links - UPDATED WITH PROPER UPI FORMAT
-document.getElementById('gpay-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
-    const { totalAmount, productNames } = getCartDetails();
-    
-    // Use proper UPI format instead of GPay-specific format
-    const upiId = '919869153017@paytm'; // REPLACE WITH YOUR ACTUAL UPI ID
-    const note = encodeURIComponent(`Payment for: ${productNames}`);
-    const upiLink = `upi://pay?pa=${upiId}&pn=PassionBakeryNChocos&am=${totalAmount}&tn=${note}&cu=INR`;
-    
-    try {
-        window.location.href = upiLink;
-    } catch (error) {
-        // Fallback to showing QR code
-        showFallbackPaymentOptions(totalAmount, productNames);
-    }
-});
-
-document.getElementById('paytm-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
-    const { totalAmount, productNames } = getCartDetails();
-    
-    // Use proper UPI format
-    const upiId = '919869153017@paytm'; // REPLACE WITH YOUR ACTUAL UPI ID
-    const note = encodeURIComponent(`Payment for: ${productNames}`);
-    const paytmLink = `paytm://pay?pa=${upiId}&pn=PassionBakeryNChocos&am=${totalAmount}&tn=${note}&cu=INR`;
-    
-    try {
-        window.location.href = paytmLink;
-    } catch (error) {
-        // Fallback to showing QR code
-        showFallbackPaymentOptions(totalAmount, productNames);
-    }
-});
-
 // Initial call to populate the cart table and update the cart count
 updateCartTable();
 
-// Add this code inside your existing <script> tag for qr code image
-document.getElementById('upi-link').addEventListener('click', function() {
-    const qrCodeImage = document.getElementById('qr-code');
-    qrCodeImage.style.display = qrCodeImage.style.display === 'none' ? 'block' : 'none'; // Toggle QR code visibility
-});
 
 // Function to toggle the visibility of the delivery phone input based on the selection
 function togglePhoneInput(select) {
     const deliveryPhoneInput = document.getElementById('delivery-phone');
-    deliveryPhoneInput.style.display = select.value === 'yes' ? 'block' : 'none';
+    const isRequired = select.value === 'yes';
+    deliveryPhoneInput.style.display = isRequired ? 'block' : 'none';
+    deliveryPhoneInput.required = isRequired;
 }
 
 // Function to toggle the visibility of the delivery name input based on the selection
 function toggleNameInput(select) {
     const deliveryNameInput = document.getElementById('delivery-name');
-    deliveryNameInput.style.display = select.value === 'yes' ? 'block' : 'none';
+    const isRequired = select.value === 'yes';
+    deliveryNameInput.style.display = isRequired ? 'block' : 'none';
+    deliveryNameInput.required = isRequired;
 }
 
 // Function to toggle the visibility of the delivery address input based on the selection
 function toggleAddressInput(select) {
     const deliveryAddressInput = document.getElementById('delivery-address');
-    deliveryAddressInput.style.display = select.value === 'yes' ? 'block' : 'none';
+    const isRequired = select.value === 'yes';
+    deliveryAddressInput.style.display = isRequired ? 'block' : 'none';
+    deliveryAddressInput.required = isRequired;
 }
 
-// Function to handle form submission
+// FIXED: Function to handle form submission and send WhatsApp message
 function sendWhatsAppMessage(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    // Collect form data
+    // Get form element
     const form = document.getElementById('order-form');
+    
+    // Collect form data
     const name = form.name.value;
     const address = form.address.value;
     const phone = form.phone.value;
@@ -694,25 +579,34 @@ function sendWhatsAppMessage(event) {
     const deliveryMode = form['delivery-mode'].value;
     const specialRequest = form['special-request'].value;
 
+    // Get cart details
+    const cartDetails = getCartDetails();
+
     // Create the message
-    const message = `*Order Details*\n` +
+    const message = `*Order Details*\n\n` +
+                    `*Customer Information:*\n` +
                     `Name: ${name}\n` +
                     `Address: ${address}\n` +
-                    `Phone: ${differentPhone}\n` +
+                    `Phone: ${phone}\n\n` +
+                    `*Delivery Information:*\n` +
                     `Delivery Name: ${differentName}\n` +
                     `Delivery Address: ${differentAddress}\n` +
+                    `Delivery Phone: ${differentPhone}\n` +
                     `Delivery Date: ${deliveryDate}\n` +
                     `Delivery Time: ${deliveryTime}\n` +
+                    `Delivery Mode: ${deliveryMode}\n\n` +
+                    `*Order Details:*\n` +
+                    `Products: ${cartDetails.productNames}\n` +
+                    `Total Amount: ₹${cartDetails.totalAmount}\n` +
                     `Name on Cake: ${cakeName}\n` +
-                    `Occasion: ${occasion}\n` +
-                    `Delivery Mode: ${deliveryMode}\n` +
-                    `Special Request: ${specialRequest}`;
+                    `Occasion: ${occasion}\n\n` +
+                    `*Special Request:*\n${specialRequest || 'None'}`;
 
     // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
 
     // Replace with your WhatsApp number (including country code, but without +)
-    const whatsappNumber = '919869153017'; // e.g., '919869153017'
+    const whatsappNumber = '919869153017';
     const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
 
     // Open WhatsApp
@@ -730,13 +624,22 @@ document.getElementById('different-address').addEventListener('change', function
     toggleAddressInput(this);
 });
 
-// UPDATED CHECKOUT BUTTON - This is the main fix for your payment issue
-document.getElementById('checkout-button').addEventListener('click', function() {
-    const { totalAmount, productNames } = getCartDetails(); // Get the total amount and products from the cart
-    
-    // Use the enhanced payment attempt function
-    attemptPayment(totalAmount, productNames);
-});
+function scrollToPaymentMethods() {
+    const paymentMethodsSection = document.querySelector('.payment-methods');
+    paymentMethodsSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleUPI() {
+    const upiId = document.getElementById('upi-id');
+    upiId.style.display = upiId.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleQRCode() {
+    const qrCodeImage = document.getElementById('qr-code');
+    qrCodeImage.style.display = qrCodeImage.style.display === 'none' ? 'block' : 'none';
+}
+
+
 
 </script>
 </body>
