@@ -133,14 +133,15 @@ font-size: 18px;
 
 .container {
     max-width: 600px;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    margin-left: 55px;
-    margin-right: 20px;
+   align-items: center;
+   padding: 20px;
+   margin-top: 40px;
+   margin-bottom: 40px;
+   margin-left: auto;
+   margin-right: auto;
 
     background: #0000ff;
     color: floralwhite;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -223,6 +224,86 @@ textarea {
         padding: 8px 12px;
     }
 }
+
+/* Modern Footer Styles */
+.footer-modern {
+    background-color: #0000ff;
+    color: floralwhite;
+    padding: 40px 20px 20px 20px;
+    font-family: cursive;
+    border-top: 4px solid #FFD700;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px 12px 0 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1 1 300px;
+}
+
+.footer-column h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 26px;
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.footer-column a {
+    color: floralwhite;
+    text-decoration: underline;
+}
+
+.footer-column a:hover {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.footer-map iframe {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom-modern {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid floralwhite;
+    font-size: 15px;
+    color: #FFD700;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        max-width: 100%;
+    }
+
+    .footer-map iframe {
+        height: 250px;
+    }
+}
+
+
 
 
 </style>
@@ -314,6 +395,34 @@ textarea {
 
 <img src="border bottom.png"
 style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+<!-- Modern Footer Section -->
+<footer class="footer-modern">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>La Ruby Studios</h3>
+      <p><strong>Store:</strong> Passion Bakery N Chocos</p>
+      <p><strong>Phone:</strong> +91 98691 53017</p>
+      <p><strong>Email:</strong> <a href="mailto:contact@larubystudios.com">contact@larubystudios.com</a></p>
+      
+    </div>
+
+    <div class="footer-column">
+      <h3>Find Us Here</h3>
+      <div class="footer-map">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30171.758511948356!2d72.89754131946106!3d19.043070507877562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5de0e2b673b%3A0xf7d6a0991954d34d!2sPassionbakery%20n%20chocos!5e0!3m2!1sen!2sin!4v1748762211868!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-modern">
+    <p>&copy; 2025 <strong>La Ruby Studios</strong>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
 
 
 <script>
