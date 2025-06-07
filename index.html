@@ -4,19 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PassionBakeryNChocos</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet"/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
 
 <style>
@@ -37,7 +29,6 @@ padding-left: 0%;
 text-align: center;
 margin-bottom: 15px;
 font-family: Great Vibes;
-text-decoration: wavy;
 text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 animation: titleGlow 3s ease-in-out infinite alternate;
 }
@@ -314,13 +305,16 @@ max-width: 100%;
 margin: 0 auto;
 overflow: hidden;
 padding: 20px 0;
+width: 100%; /* Ensure full width */
 }
+
 
 /* Slider */
 .slider {
 display: flex;
 transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 width: 100%;
+align-items: center; /* Center align items vertically */
 }
 
 /* Slide */
@@ -329,15 +323,24 @@ flex: 0 0 100%;
 text-align: center;
 font-weight: bold;
 padding: 0 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .slide img {
-max-width: min(80%, 400px);
+max-width: min(70%, 400px);
+max-height: 300px; /* Add max height constraint */
+width: auto;
+height: auto;
 margin: 0 auto;
 display: block;
 transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 border-radius: 15px;
 box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+object-fit: contain; /* Maintain aspect ratio */
 }
 
 .slide p {
@@ -391,6 +394,31 @@ box-shadow: 0 8px 25px rgba(254,163,170,0.4);
 }
 
 @media screen and (max-width: 768px) {
+.slider-container {
+padding: 15px 0;
+}
+
+.slide {
+padding: 0 15px;
+}
+
+.slide img {
+max-width: 80%;
+max-height: 250px;
+}
+}
+
+@media screen and (max-width: 480px) {
+.slide {
+padding: 0 10px;
+}
+
+.slide img {
+max-width: 85%;
+max-height: 200px;
+}
+}
+
 .slider-button {
 width: 40px;
 height: 40px;
@@ -404,7 +432,7 @@ left: 5px;
 .slider-button.next {
 right: 5px;
 }
-}
+
 
 /* Dots Container */
 .slider-dots {
@@ -753,7 +781,7 @@ left: 0;
 right: 0;
 bottom: 0;
 background: radial-gradient(circle at 20% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(30,242,253,0.1) 0%, transparent 50%);
+radial-gradient(circle at 80% 20%, rgba(30,242,253,0.1) 0%, transparent 50%);
 pointer-events: none;
 }
 
@@ -872,28 +900,6 @@ border-radius: 15px;
 .footer-modern {
 border-radius: 15px 15px 0 0;
 }
-}
-
-/* Scroll animations */
-@keyframes fadeInOnScroll {
-from {
-opacity: 0;
-transform: translateY(30px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-/* Loading animation */
-@keyframes pulse {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.7; }
-}
-
-.loading {
-animation: pulse 2s infinite;
 }
 
 </style>
@@ -1060,32 +1066,31 @@ This journey is just the beginning, and I’m excited for what’s next.
 
 <!-- Modern Footer Section -->
 <footer class="footer-modern">
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>La Ruby Studios</h3>
-      <p><strong>Store:</strong> Passion Bakery N Chocos</p>
-      <p><strong>Phone:</strong> +91 98691 53017</p>
-      <p><strong>Email:</strong> <a href="mailto:contact@larubystudios.com">contact@larubystudios.com</a></p>
-      
-    </div>
+<div class="footer-container">
+<div class="footer-column">
+<h3>La Ruby Studios</h3>
+<p><strong>Store:</strong> Passion Bakery N Chocos</p>
+<p><strong>Phone:</strong> +91 98691 53017</p>
+<p><strong>Email:</strong> <a href="mailto:contact@larubystudios.com">contact@larubystudios.com</a></p>
 
-    <div class="footer-column">
-      <h3>Find Us Here</h3>
-      <div class="footer-map">
+</div>
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30171.758511948356!2d72.89754131946106!3d19.043070507877562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5de0e2b673b%3A0xf7d6a0991954d34d!2sPassionbakery%20n%20chocos!5e0!3m2!1sen!2sin!4v1748762211868!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom-modern">
-    <p>&copy; 2025 <strong>La Ruby Studios</strong>. All Rights Reserved.</p>
-  </div>
+<div class="footer-column">
+<h3>Find Us Here</h3>
+<div class="footer-map">
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30171.758511948356!2d72.89754131946106!3d19.043070507877562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5de0e2b673b%3A0xf7d6a0991954d34d!2sPassionbakery%20n%20chocos!5e0!3m2!1sen!2sin!4v1748762211868!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
+</div>
+</div>
+<div class="footer-bottom-modern">
+<p>&copy; 2025 <strong>La Ruby Studios</strong>. All Rights Reserved.</p>
+</div>
 </footer>
 
 <script>
-<!-- Script for Navigation Toggle -->
 function myFunction() {
 var x = document.getElementById("myTopnav");
 if (x.className === "topnav") {
@@ -1146,42 +1151,25 @@ updateSliderPosition();
 
 // Add scroll animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeInOnScroll 1s ease-out forwards';
-        }
-    });
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.animation = 'fadeInOnScroll 1s ease-out forwards';
+}
+});
 }, observerOptions);
 
 document.querySelectorAll('section, .about-container, .contact-container').forEach(el => {
-    observer.observe(el);
+observer.observe(el);
 });
 
 // Add loading animation
 window.addEventListener('load', () => {
-    document.body.classList.remove('loading');
-});
-
-// Enhanced mobile menu
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
-// Add smooth hover effects for images
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('mouseenter', function() {
-        this.style.transition = 'transform 0.3s ease';
-    });
+document.body.classList.remove('loading');
 });
 </script>
 </body>
