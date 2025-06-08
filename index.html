@@ -7,25 +7,46 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
+/* CSS Variables */
+:root {
+--primary-gradient: linear-gradient(90deg,rgba(30,242,253,0.95) 0%,rgba(74,144,226,0.95) 100%);
+--section-gradient: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
+--button-gradient: linear-gradient(45deg, #11124a, #1a1d5a);
+--hover-gradient: linear-gradient(45deg, #FEA3AA, #ff7b82);
+--gold: #FFD700;
+--primary-text: #11124a;
+--white: #FFFFFF;
+--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+--border-radius: 20px;
+--box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 /* Global Styles */
-body {
-background: #1ef2fd;
+* {
 margin: 0;
 padding: 0;
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+background: #1ef2fd;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+line-height: 1.6;
 overflow-x: hidden;
 }
 
+/* Typography */
 h1, h2 {
-color: #FFD700;
+color: var(--gold);
 font-weight: bold;
 font-size: clamp(1.8rem, 5vw, 3.5rem);
-padding-top: 0%;
-padding-left: 0%;
 text-align: center;
 margin-bottom: 15px;
 font-family: Great Vibes;
@@ -33,37 +54,95 @@ text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
+p {
+font-weight: bolder;
+font-size: clamp(1rem, 2.5vw, 1.25rem);
+line-height: 1.6;
+font-family: Delius;
+}
+
+/* Animations */
 @keyframes titleGlow {
 from { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.3); }
 to { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 30px rgba(255,215,0,0.6); }
 }
 
-/* Navigation Bar Styles */
+@keyframes bounceIn {
+0% { opacity: 0; transform: scale(0.3) translateY(-50px); }
+50% { opacity: 1; transform: scale(1.1); }
+100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sectionSlideIn {
+from { opacity: 0; transform: translateY(50px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+0% { transform: translateX(-100%); }
+100% { transform: translateX(100%); }
+}
+
+@keyframes imageFloat {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+}
+
+@keyframes bannerFloat {
+0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+50% { transform: translate(10%, 10%) rotate(180deg); }
+}
+
+@keyframes containerFloat {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-5px); }
+}
+
+@keyframes titleSlideIn {
+from { opacity: 0; transform: translateX(-30px); }
+to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes textFadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes footerSlideUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* Navigation */
 .topnav {
 overflow: hidden;
-background: linear-gradient(90deg, rgba(30,242,253,0.95) 0%, rgba(74,144,226,0.95) 100%);
+background: var(--primary-gradient);
 font-family: Delius;
-backdrop-filter: blur(10px);
-box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+backdrop-filter: blur(20px);
+border-bottom: 2px solid rgba(255,215,0,0.3);
 position: sticky;
 top: 0;
 z-index: 1000;
-border-bottom: 2px solid rgba(255,215,0,0.3);
 }
 
-.topnav a {
+.topnav a, .topnav .cart-icon {
 float: left;
 display: block;
-color: #11124a;
+color: var(--primary-text);
 text-align: center;
-padding: 14px 16px;
+padding: 16px 24px;
 font-weight: bold;
 text-decoration: none;
 font-size: clamp(0.9rem, 2.5vw, 1.25rem);
-border: 2px solid #11124a;
+border-radius: 12px;
 margin: 8px 6px;
-border-radius: 25px;
-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: var(--transition);
 position: relative;
 overflow: hidden;
 }
@@ -76,25 +155,28 @@ left: -100%;
 width: 100%;
 height: 100%;
 background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-transition: left 0.5s;
+transition: var(--transition);
 }
 
 .topnav a:hover:before {
 left: 100%;
 }
 
-.topnav a:hover {
+.topnav a:hover, .topnav .cart-icon:hover {
 background: linear-gradient(45deg, #0000ff, #4169e1);
-color: floralwhite;
+color: white;
 transform: translateY(-2px);
-box-shadow: 0 6px 20px rgba(0,0,255,0.3);
-border-color: floralwhite;
+box-shadow: 0 8px 25px rgba(99,102,241,0.3);
+}
+
+.topnav .cart-icon:hover {
+transform: translateY(-2px) rotate(5deg);
 }
 
 .topnav a.active {
 background: linear-gradient(45deg, #3e476f, #5a6491);
-color: #FFD700;
-box-shadow: 0 4px 15px rgba(62,71,111,0.4);
+color: white;
+box-shadow: 0 4px 15px rgba(99,102,241,0.3);
 transform: scale(1.05);
 }
 
@@ -102,72 +184,10 @@ transform: scale(1.05);
 display: none;
 }
 
-.topnav .cart-icon {
-color: #11124a;
-font-size: clamp(1rem, 2.5vw, 1.25rem);
-padding: 14px 16px;
-text-decoration: none;
-border: 2px solid #11124a;
-margin: 8px 6px;
-border-radius: 25px;
-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-position: relative;
-}
-
-.topnav .cart-icon:hover {
-background: linear-gradient(45deg, #0000ff, #4169e1);
-color: floralwhite;
-transform: translateY(-2px) rotate(5deg);
-box-shadow: 0 6px 20px rgba(0,0,255,0.3);
-}
-
-@media screen and (max-width: 768px) {
-.topnav {
-padding: 0 10px;
-}
-
-.topnav a:not(:first-child) {
-display: none;
-}
-
-.topnav a.icon {
-float: right;
-display: block;
-margin: 8px 10px;
-}
-
-.topnav a {
-margin: 5px 3px;
-padding: 12px 14px;
-font-size: 0.9rem;
-}
-}
-
-@media screen and (max-width: 768px) {
-.topnav.responsive {
-position: relative;
-}
-
-.topnav.responsive .icon {
-position: absolute;
-right: 10px;
-top: 0px;
-color: #FFD700;
-background: linear-gradient(45deg, #3e476f, #5a6491);;
-}
-
-.topnav.responsive a {
-float: none;
-display: block;
-text-align: left;
-margin: 5px 10px;
-}
-}
-
-/* Banner Section Styles */
+/* Banner */
 #banner {
 background: #1ef2fd;
-color: #11124a;
+color: var(--primary-text);
 text-align: center;
 padding: 20px 10px;
 text-shadow: 2px 2px 5px pink;
@@ -187,20 +207,9 @@ animation: bannerFloat 8s ease-in-out infinite;
 pointer-events: none;
 }
 
-@keyframes bannerFloat {
-0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
-50% { transform: translate(10%, 10%) rotate(180deg); }
-}
-
 #banner h1 {
 margin-bottom: 10px;
 animation: bounceIn 1s ease-out;
-}
-
-@keyframes bounceIn {
-0% { opacity: 0; transform: scale(0.3) translateY(-50px); }
-50% { opacity: 1; transform: scale(1.1); }
-100% { opacity: 1; transform: scale(1); }
 }
 
 #banner p {
@@ -209,12 +218,7 @@ font-family: Delius;
 animation: fadeInUp 1s ease-out 0.5s both;
 }
 
-@keyframes fadeInUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* Image responsiveness */
+/* Images */
 img {
 max-width: 100%;
 height: auto;
@@ -228,12 +232,7 @@ display: block;
 animation: imageFloat 6s ease-in-out infinite;
 }
 
-@keyframes imageFloat {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-10px); }
-}
-
-/* Section Styles */
+/* Sections */
 section {
 padding: clamp(20px, 5vw, 40px);
 text-align: center;
@@ -241,20 +240,26 @@ margin-top: 30px;
 position: relative;
 }
 
-section#featured-products {
-background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
+section#featured-products, section#about-me, section#contact-me {
+background: var(--section-gradient);
 margin: 20px clamp(10px, 3vw, 20px);
-color: #FFFFFF;
-border-radius: 20px;
+color: var(--white);
+border-radius: var(--border-radius);
 box-shadow: 0 10px 30px rgba(98,102,244,0.3);
 overflow: hidden;
 position: relative;
+}
+
+section#featured-products {
 animation: sectionSlideIn 1s ease-out;
 }
 
-@keyframes sectionSlideIn {
-from { opacity: 0; transform: translateY(50px); }
-to { opacity: 1; transform: translateY(0); }
+section#about-me {
+animation: sectionSlideIn 1s ease-out 0.2s both;
+}
+
+section#contact-me {
+animation: sectionSlideIn 1s ease-out 0.4s both;
 }
 
 section#featured-products:before {
@@ -269,35 +274,7 @@ animation: shimmer 3s infinite;
 pointer-events: none;
 }
 
-@keyframes shimmer {
-0% { transform: translateX(-100%); }
-100% { transform: translateX(100%); }
-}
-
-section#about-me {
-background:  linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
-margin: 20px clamp(10px, 3vw, 20px);
-color: #FFFFFF;
-border-radius: 20px;
-box-shadow: 0 10px 30px rgba(117,169,209,0.3);
-animation: sectionSlideIn 1s ease-out 0.2s both;
-}
-
-section#contact-me {
-background:linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
-margin: 20px clamp(10px, 3vw, 20px);
-color: #FFFFFF;
-border-radius: 20px;
-box-shadow: 0 10px 30px rgba(117,169,209,0.3);
-animation: sectionSlideIn 1s ease-out 0.4s both;
-}
-
-/* Smooth Scroll */
-html {
-scroll-behavior: smooth;
-}
-
-/* Slider Container */
+/* Slider */
 .slider-container {
 display: flex;
 align-items: center;
@@ -307,19 +284,16 @@ max-width: 100%;
 margin: 0 auto;
 overflow: hidden;
 padding: 20px 0;
-width: 100%; /* Ensure full width */
+width: 100%;
 }
 
-
-/* Slider */
 .slider {
 display: flex;
 transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 width: 100%;
-align-items: center; /* Center align items vertically */
+align-items: center;
 }
 
-/* Slide */
 .slide {
 flex: 0 0 100%;
 text-align: center;
@@ -329,12 +303,12 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-box-sizing: border-box; /* Include padding in width calculation */
+box-sizing: border-box;
 }
 
 .slide img {
 max-width: min(70%, 400px);
-max-height: 300px; /* Add max height constraint */
+max-height: 300px;
 width: auto;
 height: auto;
 margin: 0 auto;
@@ -342,15 +316,7 @@ display: block;
 transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 border-radius: 15px;
 box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-object-fit: contain; /* Maintain aspect ratio */
-}
-
-.slide p {
-margin-top: 15px;
-font-size: clamp(1rem, 3vw, 1.25rem);
-font-family: Delius;
-color: #FFFFFF;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+object-fit: contain;
 }
 
 .slide img:hover {
@@ -358,9 +324,17 @@ transform: scale(1.08) rotate(2deg);
 box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
-/* Buttons */
+.slide p {
+margin-top: 15px;
+font-size: clamp(1rem, 3vw, 1.25rem);
+font-family: Delius;
+color: var(--white);
+text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Slider Controls */
 .slider-button {
-background: linear-gradient(45deg, #0f1048, #1a1a5c);
+background: var(--button-gradient);
 color: #fff;
 border: none;
 padding: 12px 16px;
@@ -370,7 +344,7 @@ position: absolute;
 top: 50%;
 transform: translateY(-50%);
 z-index: 10;
-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: var(--transition);
 box-shadow: 0 4px 15px rgba(15,16,72,0.3);
 width: 50px;
 height: 50px;
@@ -388,55 +362,13 @@ right: 10px;
 }
 
 .slider-button:hover {
-background: linear-gradient(45deg, #FEA3AA, #ff7b82);
-color: #11124a;
+background: var(--hover-gradient);
+color: var(--primary-text);
 font-weight: bold;
 transform: translateY(-50%) scale(1.1);
 box-shadow: 0 8px 25px rgba(254,163,170,0.4);
 }
 
-@media screen and (max-width: 768px) {
-.slider-container {
-padding: 15px 0;
-}
-
-.slide {
-padding: 0 15px;
-}
-
-.slide img {
-max-width: 80%;
-max-height: 250px;
-}
-}
-
-@media screen and (max-width: 480px) {
-.slide {
-padding: 0 10px;
-}
-
-.slide img {
-max-width: 85%;
-max-height: 200px;
-}
-}
-
-.slider-button {
-width: 40px;
-height: 40px;
-padding: 8px;
-}
-
-.slider-button.prev {
-left: 5px;
-}
-
-.slider-button.next {
-right: 5px;
-}
-
-
-/* Dots Container */
 .slider-dots {
 text-align: center;
 margin-top: 20px;
@@ -450,14 +382,14 @@ margin: 0 6px;
 background-color: rgba(255,255,255,0.5);
 border-radius: 50%;
 cursor: pointer;
-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: var(--transition);
 border: 2px solid transparent;
 }
 
 .slider-dots .dot.active {
-background-color: #FFFFFF;
+background-color: var(--white);
 transform: scale(1.3);
-border-color: #FFD700;
+border-color: var(--gold);
 box-shadow: 0 0 10px rgba(255,215,0,0.5);
 }
 
@@ -466,14 +398,7 @@ background-color: rgba(255,255,255,0.8);
 transform: scale(1.1);
 }
 
-p {
-font-weight: bolder; 
-font-size: clamp(1rem, 2.5vw, 1.25rem);
-line-height: 1.6;
-font-family: Delius;
-}
-
-/* Shop Now Buttons */
+/* Shop Buttons */
 .shop-button {
 display: inline-block;
 height: auto;
@@ -482,7 +407,7 @@ width: auto;
 min-width: 100px;
 padding: 10px 15px;
 margin: 15px 10px;
-background: linear-gradient(45deg, #11124a, #1a1d5a);
+background: var(--button-gradient);
 font-family: Delius;
 color: #f2f2f2;
 font-size: clamp(2rem, 2vw, 1rem);
@@ -513,47 +438,44 @@ left: 100%;
 }
 
 .shop-button:hover {
-background: linear-gradient(45deg, #FFD700, #ffd700);
-color: #11124a;
+background: linear-gradient(45deg, var(--gold), #ffd700);
+color: var(--primary-text);
 transform: translateY(-3px) scale(1.05);
 box-shadow: 0 10px 30px rgba(255,215,0,0.4);
-border-color: #11124a;
+border-color: var(--primary-text);
 }
 
-@media screen and (max-width: 768px) {
-.shop-button {
-width: 90%;
-max-width: 300px;
-margin: 10px 5%;
-padding: 15px 10px;
-}
-}
-
-/* About Me Section */
-#about-me {
+/* About & Contact Sections */
+#about-me, #contact-me {
 background: linear-gradient(135deg, #75a9d1 0%, #5a8bb8 50%, #4a7ba8 100%);
 padding: clamp(30px, 8vw, 50px) clamp(10px, 3vw, 20px);
 }
 
-.about-container {
+#contact-me {
+color: #fff;
+}
+
+.about-container, .contact-container {
 display: flex;
 flex-wrap: wrap;
 max-width: 1200px;
 margin: 0 auto;
 background: rgba(255,255,255,0.95);
-border-radius: 20px;
+border-radius: var(--border-radius);
 box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 overflow: hidden;
 backdrop-filter: blur(10px);
+}
+
+.about-container {
 animation: containerFloat 8s ease-in-out infinite;
 }
 
-@keyframes containerFloat {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-5px); }
+.contact-container {
+justify-content: center;
+background: rgba(240,245,248,0.95);
 }
 
-/* Left Half */
 .about-left {
 flex: 1;
 min-width: 300px;
@@ -570,14 +492,13 @@ height: auto;
 border-radius: 15px;
 object-fit: cover;
 transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+box-shadow: var(--box-shadow);
 }
 
 .about-left img:hover {
 transform: scale(1.05) rotate(2deg);
 }
 
-/* Right Half */
 .about-right {
 flex: 1;
 min-width: 300px;
@@ -596,52 +517,11 @@ color: #0f1048;
 animation: titleSlideIn 1s ease-out;
 }
 
-@keyframes titleSlideIn {
-from { opacity: 0; transform: translateX(-30px); }
-to { opacity: 1; transform: translateX(0); }
-}
-
 .about-right p {
 font-size: clamp(0.9rem, 2.5vw, 1rem);
 color: #333;
 line-height: 1.6;
 animation: textFadeIn 1s ease-out 0.3s both;
-}
-
-@keyframes textFadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-@media screen and (max-width: 768px) {
-.about-container {
-flex-direction: column;
-margin: 0 10px;
-}
-
-.about-left, .about-right {
-min-width: auto;
-}
-}
-
-/* Contact Me Section */
-#contact-me {
-background: linear-gradient(135deg, #75a9d1 0%, #5a8bb8 50%, #4a7ba8 100%);
-padding: clamp(30px, 8vw, 50px) clamp(10px, 3vw, 20px);
-color: #fff;
-}
-
-.contact-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-max-width: 1200px;
-margin: 0 auto;
-background: rgba(240,245,248,0.95);
-border-radius: 20px;
-box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-overflow: hidden;
-backdrop-filter: blur(10px);
 }
 
 /* Contact Form */
@@ -665,21 +545,19 @@ color: #333;
 font-weight: 600;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .contact-form textarea {
 width: 100%;
 padding: 12px 15px;
 margin-bottom: 20px;
 border: 2px solid #ddd;
 border-radius: 12px;
 font-size: clamp(0.9rem, 2.5vw, 1rem);
-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+transition: var(--transition);
 background: rgba(255,255,255,0.9);
 box-sizing: border-box;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
 outline: none;
 border-color: #4a90e2;
 background: rgba(255,255,255,1);
@@ -688,7 +566,7 @@ transform: translateY(-2px);
 }
 
 .contact-form button {
-background: linear-gradient(45deg, #0f1048, #1a1d5a);
+background: var(--button-gradient);
 color: #fff;
 border: none;
 padding: 15px 30px;
@@ -701,7 +579,7 @@ box-shadow: 0 6px 20px rgba(15,16,72,0.3);
 }
 
 .contact-form button:hover {
-background: linear-gradient(45deg, #FEA3AA, #ff7b82);
+background: var(--hover-gradient);
 transform: translateY(-3px) scale(1.05);
 box-shadow: 0 10px 30px rgba(254,163,170,0.4);
 }
@@ -745,32 +623,15 @@ transform: translateY(-5px) scale(1.2) rotate(5deg);
 box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
-@media screen and (max-width: 768px) {
-.contact-container {
-flex-direction: column;
-margin: 0 10px;
-}
-
-.contact-form, .social-links {
-min-width: auto;
-}
-
-.social-links .social-icon {
-margin: 0 8px 12px 8px;
-width: 45px;
-height: 45px;
-}
-}
-
-/* Modern Footer Styles */
+/* Footer */
 .footer-modern {
 background: linear-gradient(135deg, #0000ff 0%, #1e3a8a 50%, #1e40af 100%);
 color: floralwhite;
 padding: clamp(30px, 6vw, 40px) clamp(15px, 4vw, 20px) clamp(15px, 3vw, 20px);
 font-family: cursive;
-border-top: 4px solid #FFD700;
+border-top: 4px solid var(--gold);
 box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
-border-radius: 20px 20px 0 0;
+border-radius: var(--border-radius) var(--border-radius) 0 0;
 position: relative;
 overflow: hidden;
 }
@@ -803,15 +664,10 @@ flex: 1 1 300px;
 animation: footerSlideUp 1s ease-out;
 }
 
-@keyframes footerSlideUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
 .footer-column h3 {
 font-family: 'Great Vibes', cursive;
 font-size: clamp(1.5rem, 4vw, 2rem);
-color: #FFD700;
+color: var(--gold);
 margin-bottom: 15px;
 text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 animation: titleGlow 3s ease-in-out infinite alternate;
@@ -830,7 +686,7 @@ transition: all 0.3s ease;
 }
 
 .footer-column a:hover {
-color: #FFD700;
+color: var(--gold);
 text-decoration: none;
 text-shadow: 0 0 5px rgba(255,215,0,0.5);
 }
@@ -854,13 +710,101 @@ margin-top: clamp(20px, 5vw, 30px);
 padding-top: 15px;
 border-top: 1px solid rgba(255,255,255,0.3);
 font-size: clamp(0.9rem, 2.5vw, 1rem);
-color: #FFD700;
+color: var(--gold);
 position: relative;
 z-index: 1;
 }
 
-/* Responsive Footer */
-@media (max-width: 768px) {
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+.topnav {
+padding: 0 10px;
+}
+
+.topnav a:not(:first-child) {
+display: none;
+}
+
+.topnav a.icon {
+float: right;
+display: block;
+margin: 8px 10px;
+}
+
+.topnav a {
+margin: 5px 3px;
+padding: 12px 14px;
+font-size: 0.9rem;
+}
+
+.topnav.responsive {
+position: relative;
+}
+
+.topnav.responsive .icon {
+position: absolute;
+right: 10px;
+top: 0px;
+color: var(--gold);
+background: linear-gradient(45deg, #3e476f, #5a6491);
+}
+
+.topnav.responsive a {
+float: none;
+display: block;
+text-align: left;
+margin: 5px 10px;
+}
+
+.slider-container {
+padding: 15px 0;
+}
+
+.slide {
+padding: 0 15px;
+}
+
+.slide img {
+max-width: 80%;
+max-height: 250px;
+}
+
+.slider-button {
+width: 40px;
+height: 40px;
+padding: 8px;
+}
+
+.slider-button.prev {
+left: 5px;
+}
+
+.slider-button.next {
+right: 5px;
+}
+
+.shop-button {
+width: 90%;
+max-width: 300px;
+margin: 10px 5%;
+padding: 15px 10px;
+}
+
+.about-container, .contact-container {
+flex-direction: column;
+margin: 0 10px;
+}
+
+.about-left, .about-right, .contact-form, .social-links {
+min-width: auto;
+}
+
+.social-links .social-icon {
+margin: 0 8px 12px 8px;
+width: 45px;
+height: 45px;
+}
+
 .footer-container {
 flex-direction: column;
 align-items: center;
@@ -877,7 +821,6 @@ height: 250px;
 }
 }
 
-/* Additional Mobile Optimizations */
 @media screen and (max-width: 480px) {
 body {
 font-size: 14px;
@@ -895,6 +838,11 @@ margin-bottom: 10px;
 padding: 0 10px;
 }
 
+.slide img {
+max-width: 85%;
+max-height: 200px;
+}
+
 .about-container, .contact-container {
 border-radius: 15px;
 }
@@ -903,7 +851,6 @@ border-radius: 15px;
 border-radius: 15px 15px 0 0;
 }
 }
-
 </style>
 </head>
 <body>
@@ -1093,86 +1040,257 @@ referrerpolicy="no-referrer-when-downgrade">
 </footer>
 
 <script>
+// =============================================================================
+// PASSIONBAKERY N CHOCOS - OPTIMIZED JAVASCRIPT CODE
+// =============================================================================
+
+// =============================================================================
+// 1. MOBILE NAVIGATION TOGGLE FUNCTIONALITY
+// =============================================================================
+/**
+ * Toggles the responsive navigation menu on mobile devices
+ * Switches between collapsed and expanded navigation states
+ */
 function myFunction() {
-var x = document.getElementById("myTopnav");
-if (x.className === "topnav") {
-x.className += " responsive";
-} else {
-x.className = "topnav";
-}
+    const nav = document.getElementById("myTopnav");
+    nav.className = nav.className === "topnav" ? "topnav responsive" : "topnav";
 }
 
-// Slide Gallery Script
+// =============================================================================
+// 2. DOM CONTENT LOADED - MAIN INITIALIZATION
+// =============================================================================
 document.addEventListener("DOMContentLoaded", () => {
-const slider = document.querySelector(".slider");
-const slides = document.querySelectorAll(".slide");
-const prevButton = document.querySelector(".slider-button.prev");
-const nextButton = document.querySelector(".slider-button.next");
-const dotsContainer = document.querySelector(".slider-dots");
-
-let currentIndex = 0;
-
-// Create dots dynamically based on the number of slides
-slides.forEach((_, index) => {
-const dot = document.createElement("span");
-dot.classList.add("dot");
-if (index === currentIndex) dot.classList.add("active");
-dotsContainer.appendChild(dot);
+    // Initialize all components when DOM is fully loaded
+    initializeSlider();
+    initializeScrollAnimations();
 });
 
-const dots = document.querySelectorAll(".dot");
-
-function updateSliderPosition() {
-slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-updateDots();
+// =============================================================================
+// 3. PRODUCT SLIDER/CAROUSEL FUNCTIONALITY
+// =============================================================================
+/**
+ * Initializes the featured products slider with navigation and dot indicators
+ * Handles slide transitions, button clicks, and dot navigation
+ */
+function initializeSlider() {
+    // Cache DOM elements for better performance
+    const slider = document.querySelector(".slider");
+    const slides = document.querySelectorAll(".slide");
+    const prevButton = document.querySelector(".slider-button.prev");
+    const nextButton = document.querySelector(".slider-button.next");
+    const dotsContainer = document.querySelector(".slider-dots");
+    
+    // Early return if slider elements don't exist
+    if (!slider || !slides.length || !dotsContainer) return;
+    
+    let currentIndex = 0;
+    
+    // Create navigation dots dynamically
+    createSliderDots();
+    
+    // Set up event listeners
+    setupSliderEvents();
+    
+    /**
+     * Creates dot indicators for slider navigation
+     */
+    function createSliderDots() {
+        const fragment = document.createDocumentFragment();
+        
+        slides.forEach((_, index) => {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (index === currentIndex) dot.classList.add("active");
+            fragment.appendChild(dot);
+        });
+        
+        dotsContainer.appendChild(fragment);
+    }
+    
+    /**
+     * Sets up all slider event listeners
+     */
+    function setupSliderEvents() {
+        const dots = document.querySelectorAll(".dot");
+        
+        // Previous button navigation
+        prevButton?.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSliderPosition();
+        });
+        
+        // Next button navigation
+        nextButton?.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSliderPosition();
+        });
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                currentIndex = index;
+                updateSliderPosition();
+            });
+        });
+    }
+    
+    /**
+     * Updates slider position and active dot indicator
+     */
+    function updateSliderPosition() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateActiveDot();
+    }
+    
+    /**
+     * Updates the active state of dot indicators
+     */
+    function updateActiveDot() {
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+        });
+    }
 }
 
-function updateDots() {
-dots.forEach((dot, index) => {
-dot.classList.toggle("active", index === currentIndex);
-});
+// =============================================================================
+// 4. SCROLL ANIMATIONS AND INTERSECTION OBSERVER
+// =============================================================================
+/**
+ * Initializes scroll-based animations using Intersection Observer API
+ * Animates sections when they come into view
+ */
+function initializeScrollAnimations() {
+    // Observer configuration
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    
+    // Observe all animatable elements
+    const animatableElements = document.querySelectorAll('section, .about-container, .contact-container');
+    animatableElements.forEach(el => observer.observe(el));
+    
+    /**
+     * Handles intersection events for scroll animations
+     * @param {IntersectionObserverEntry[]} entries - Array of intersection entries
+     */
+    function handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInOnScroll 1s ease-out forwards';
+                // Optionally unobserve after animation to improve performance
+                // observer.unobserve(entry.target);
+            }
+        });
+    }
 }
 
-prevButton.addEventListener("click", () => {
-currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-updateSliderPosition();
-});
-
-nextButton.addEventListener("click", () => {
-currentIndex = (currentIndex + 1) % slides.length;
-updateSliderPosition();
-});
-
-dots.forEach((dot, index) => {
-dot.addEventListener("click", () => {
-currentIndex = index;
-updateSliderPosition();
-});
-});
-});
-
-// Add scroll animations
-const observerOptions = {
-threshold: 0.1,
-rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.style.animation = 'fadeInOnScroll 1s ease-out forwards';
-}
-});
-}, observerOptions);
-
-document.querySelectorAll('section, .about-container, .contact-container').forEach(el => {
-observer.observe(el);
-});
-
-// Add loading animation
+// =============================================================================
+// 5. PAGE LOADING OPTIMIZATION
+// =============================================================================
+/**
+ * Handles page load completion events
+ * Removes loading states and initializes final animations
+ */
 window.addEventListener('load', () => {
-document.body.classList.remove('loading');
+    // Remove loading class if it exists
+    document.body.classList.remove('loading');
+    
+    // Optional: Add any post-load optimizations here
+    optimizeAfterLoad();
 });
+
+/**
+ * Performs optimizations after page has fully loaded
+ */
+function optimizeAfterLoad() {
+    // Remove unused event listeners
+    // Optimize images that are not in viewport
+    // Initialize any lazy loading if needed
+    
+    // Example: Remove preload attributes from images after load
+    const preloadImages = document.querySelectorAll('img[data-preload]');
+    preloadImages.forEach(img => {
+        img.removeAttribute('data-preload');
+    });
+}
+
+// =============================================================================
+// 6. UTILITY FUNCTIONS
+// =============================================================================
+/**
+ * Debounce function to limit function execution frequency
+ * @param {Function} func - Function to debounce
+ * @param {number} wait - Wait time in milliseconds
+ * @returns {Function} Debounced function
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+/**
+ * Throttle function to limit function execution rate
+ * @param {Function} func - Function to throttle
+ * @param {number} limit - Time limit in milliseconds
+ * @returns {Function} Throttled function
+ */
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// =============================================================================
+// 7. ERROR HANDLING AND FALLBACKS
+// =============================================================================
+/**
+ * Global error handler for graceful error handling
+ */
+window.addEventListener('error', (event) => {
+    console.warn('PassionBakery: Non-critical error caught:', event.error);
+    // Implement fallback behavior if needed
+});
+
+/**
+ * Handle unhandled promise rejections
+ */
+window.addEventListener('unhandledrejection', (event) => {
+    console.warn('PassionBakery: Unhandled promise rejection:', event.reason);
+    event.preventDefault(); // Prevent the default behavior
+});
+
+// =============================================================================
+// 8. PERFORMANCE MONITORING (OPTIONAL)
+// =============================================================================
+/**
+ * Basic performance monitoring
+ */
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = performance.timing;
+            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`PassionBakery: Page loaded in ${loadTime}ms`);
+        }, 0);
+    });
+}
 </script>
 </body>
 </html>
