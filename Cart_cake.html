@@ -2,605 +2,774 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PassionBakeryNChocos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PassionBakeryNChocos</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
 
-   
-     <style>
-    /* Global Styles */
-    body {
-        background-color: #1ef2fd;
-        font-family: cursive;
-        margin: 0;
-        padding: 0;
-    }
+<style>
+/* CSS Variables */
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #f59e0b;
+  --accent-color: #10b981;
+  --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    h1,
-    h2 {
-        color: #ffd700;
-        font-weight: bold;
-        font-size: xxx-large;
-        text-align: center;
-        margin-bottom: 15px;
-        font-family: Great Vibes;
-        text-decoration: wavy;
-    }
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
- /* Navigation Bar Styles */
+body {
+  background: #1ef2fd;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Typography */
+h1, h2 {
+  color: #FFD700;
+  font-weight: bold;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: Great Vibes;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.3); }
+  to { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 30px rgba(255,215,0,0.6); }
+}
+
+/* Navigation Bar */
 .topnav {
-overflow: hidden;
-background-color: #1ef2fd;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(30,242,253,0.95) 0%, rgba(74,144,226,0.95) 100%);
+  font-family: Delius;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(255,215,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.topnav a {
-float: left;
-display: block;
-color: #11124a;
-text-align: center;
-padding: 14px 16px;
-font-weight: bold;
-text-decoration: none;
-font-size: 20px;
-border: 3px solid #11124a;
-margin-left: 10px;
-margin-top: 10px;
+.topnav a, .topnav .cart-icon {
+  float: left;
+  display: block;
+  color: #11124a;
+  text-align: center;
+  padding: 16px 24px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  border-radius: 12px;
+  margin: 8px 6px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.topnav a:hover {
-background-color: #0000ff;
-color: floralwhite;
+.topnav a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: var(--transition);
 }
+
+.topnav a:hover:before { left: 100%; }
+
+.topnav a:hover, .topnav .cart-icon:hover {
+  background: linear-gradient(45deg, #0000ff, #4169e1);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99,102,241,0.3);
+}
+
+.topnav .cart-icon:hover { transform: translateY(-2px) rotate(5deg); }
 
 .topnav a.active {
-    background-color: 	#3e476f;
-    color:#FFD700 ;
+  background: linear-gradient(45deg, #3e476f, #5a6491);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99,102,241,0.3);
+  transform: scale(1.05);
 }
 
-.topnav .icon {
-display: none;
+.topnav .icon { display: none; }
+
+/* Border Images */
+.border-image {
+  width: min(70%, 600px);
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  animation: imageFloat 6s ease-in-out infinite;
 }
 
-.topnav .cart-icon {
-color: #11124a; /* Match the color theme */
-font-size: 20px;
-padding: 14px 16px;
-text-decoration: none;
-border: 3px solid #11124a;
-margin-left: 10px;
-margin-top: 10px;
+@keyframes imageFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-.topnav .cart-icon:hover {
-background-color: #0000ff;
-color: floralwhite;
+/* Cart Section */
+.cart-section {
+  margin: 20px;
+  padding: 30px;
+  background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
+  border-radius: 16px;
+  font-family: Delius;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
 }
 
-@media screen and (max-width: 600px) {
-.topnav a:not(:first-child) {display: none;}
-.topnav a.icon {
-float: right;
-display: block;
-}
-}
-
-@media screen and (max-width: 600px) {
-.topnav.responsive {position: relative;}
-.topnav.responsive .icon {
-position: absolute;
-right: 0;
-top: 0;
-}
-.topnav.responsive a {
-float: none;
-display: block;
-text-align: left;
-}
+.cart-section h2 {
+  color: #FFD700;
+  font-family: Great Vibes;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 }
 
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.95) 100%);
+}
 
-    /* Cart Section Styles */
-    .cart-section {
-        margin: 20px;
-        padding: 20px;
-        background-color: #6266f4;
-        border-radius: 8px;
-    }
+th, td {
+  border: none;
+  padding: 15px 12px;
+  text-align: center;
+  position: relative;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
+th {
+  background: linear-gradient(135deg, #1ef2fd 0%, #4a90e2 100%);
+  color: #11124a;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+  border-bottom: 3px solid #FFD700;
+}
 
-    th,
-    td {
-        border: 1px solid #ccc;
-        padding: 10px;
-        text-align: center;
-    }
+td {
+  background: rgba(255, 255, 255, 0.9);
+  color: #11124a;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  transition: all 0.3s ease;
+}
 
-    th {
-        background-color: #1ef2fd;
-    }
+tr:nth-child(even) td { background: rgba(240, 248, 255, 0.9); }
 
-    .total-row {
-        font-weight: bold;
-        background-color: #ffd700;
-    }
+tr:hover td {
+  background: rgba(255, 215, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
 
- /* Payment Methods Section Styles */
+.total-row td {
+  background: linear-gradient(135deg, #FFD700 0%, #ffa500 100%) !important;
+  color: #11124a !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+  border-top: 3px solid #6266f4 !important;
+}
+
+.total-row:hover td { transform: none !important; }
+
+/* Button Styles */
+button {
+  background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin: 0 3px;
+}
+
+button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+button:hover:before { left: 100%; }
+
+button:hover {
+  background: linear-gradient(135deg, #4cae4c 0%, #5cb85c 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(92, 184, 92, 0.4);
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 10px rgba(92, 184, 92, 0.3);
+}
+
+/* Specific Button Styles */
+button[onclick*="removeFromCart"] {
+  background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+  box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
+}
+
+button[onclick*="removeFromCart"]:hover {
+  background: linear-gradient(135deg, #c9302c 0%, #d9534f 100%);
+  box-shadow: 0 8px 25px rgba(217, 83, 79, 0.4);
+}
+
+button[onclick*="increaseQuantity"], button[onclick*="decreaseQuantity"] {
+  background: linear-gradient(135deg, #337ab7 0%, #286090 100%);
+  box-shadow: 0 4px 15px rgba(51, 122, 183, 0.3);
+  padding: 8px 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+button[onclick*="increaseQuantity"]:hover, button[onclick*="decreaseQuantity"]:hover {
+  background: linear-gradient(135deg, #286090 0%, #337ab7 100%);
+  box-shadow: 0 8px 25px rgba(51, 122, 183, 0.4);
+}
+
+button[onclick*="scrollToPaymentMethods"] {
+  background: linear-gradient(135deg, #FFD700 0%, #ffa500 100%);
+  color: #11124a;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+button[onclick*="scrollToPaymentMethods"]:hover {
+  background: linear-gradient(135deg, #ffa500 0%, #FFD700 100%);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+}
+
+/* Payment Methods Section */
 .payment-methods {
-margin-top: 20px;
-padding: 20px;
-background-color: #6266f4;
-border-radius: 8px;
-text-align: center;
-}
-
-.payment-methods h3 {
-color: #ffd700;
-margin-bottom: 15px;
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
+  border-radius: 8px;
+  text-align: center;
+  font-family: Delius;
 }
 
 .payment-methods img {
-width: 80px;
-margin: 0 10px;
-transition: transform 0.3s ease; /* Add transition for smooth scaling */
+  width: 80px;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
 }
 
-.payment-methods img:hover {
-transform: scale(1.2); /* Scale the image to 120% on hover */
+.payment-methods img:hover { transform: scale(1.2); }
+
+#gpay-button, #paytm-button {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
 }
 
+#upi-id {
+  color: floralwhite;
+  display: none;
+}
+
+#qr-code {
+  display: none;
+  margin-top: 20px;
+  width: 400px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Payment Form */
 .payment-form {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #6266f4;;
-    border-radius: 10px;
-  }
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
+  border-radius: 10px;
+}
 
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #ff77ff;
+  color: #11124a;
+  padding: 20px;
+  font-family: Delius;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-       /* Container Styles */
-       .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #ff77ff;
-            color: #11124a;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.form-group {
+  margin-bottom: 15px;
+}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+input[type="text"], input[type="tel"], input[type="number"], input[type="date"], input[type="time"], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-        input[type="text"],
-        input[type="tel"],
-        input[type="number"],
-        input[type="date"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+input[type="file"] { margin-top: 5px; }
 
-        input[type="file"] {
-            margin-top: 5px;
-        }
-
-        
-
-        button:hover {
-            background-color: #4cae4c;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-
-           
-        }
-
-        /* Modern Footer Styles */
+/* Footer */
 .footer-modern {
-    background-color: #0000ff;
-    color: floralwhite;
-    padding: 40px 20px 20px 20px;
-    font-family: cursive;
-    border-top: 4px solid #FFD700;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 12px 12px 0 0;
+  background: linear-gradient(135deg, #0000ff 0%, #1e3a8a 50%, #1e40af 100%);
+  color: floralwhite;
+  padding: clamp(30px, 6vw, 40px) clamp(15px, 4vw, 20px) clamp(15px, 3vw, 20px);
+  font-family: cursive;
+  border-top: 4px solid #FFD700;
+  box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-modern:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(30,242,253,0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: clamp(20px, 5vw, 30px);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-column {
-    flex: 1 1 300px;
+  flex: 1 1 300px;
+  animation: footerSlideUp 1s ease-out;
+}
+
+@keyframes footerSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .footer-column h3 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 26px;
-    color: #FFD700;
-    margin-bottom: 15px;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #FFD700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
 .footer-column p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 8px 0;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  margin: 8px 0;
 }
 
 .footer-column a {
-    color: floralwhite;
-    text-decoration: underline;
+  color: floralwhite;
+  text-decoration: underline;
+  transition: all 0.3s ease;
 }
 
 .footer-column a:hover {
-    color: #FFD700;
-    text-decoration: none;
+  color: #FFD700;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(255,215,0,0.5);
 }
 
 .footer-map iframe {
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(255,255,255,0.1);
+  width: 100%;
+  height: 200px;
+  transition: transform 0.3s ease;
+}
+
+.footer-map iframe:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.2);
 }
 
 .footer-bottom-modern {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid floralwhite;
-    font-size: 15px;
+  text-align: center;
+  margin-top: clamp(20px, 5vw, 30px);
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #FFD700;
+  position: relative;
+  z-index: 1;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .topnav {
+    padding: 0 10px;
+  }
+
+  .topnav a:not(:first-child) { display: none; }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin: 8px 10px;
+  }
+
+  .topnav a {
+    margin: 5px 3px;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .topnav.responsive { position: relative; }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 10px;
+    top: 0px;
     color: #FFD700;
+    background: linear-gradient(45deg, #3e476f, #5a6491);
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    margin: 5px 10px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-column {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .footer-map iframe { height: 250px; }
 }
 
-/* Responsive Footer */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-column {
-        max-width: 100%;
-    }
-
-    .footer-map iframe {
-        height: 250px;
-    }
+@media (max-width: 600px) {
+  .container { padding: 15px; }
 }
-      
-
-    </style>
+</style>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <div class="topnav" id="myTopnav">
-        <a href="index.html">Home</a>
-        <a href="Products_cakes.html" class="active">Products</a>
-        <a href="index.html">About Me</a>
-        <a href="index.html">Contact Us</a>
-        <a href="special_order_cake.html">Special Order</a>
-        <a href="Cart_cake.html" class="cart-icon">
-            <i class="fa fa-shopping-cart"></i>
-            <span class="cart-count" id="cart-count">(0)</span>
-        </a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+<!-- Navigation Bar -->
+<div class="topnav" id="myTopnav">
+<a href="index.html">Home</a>
+<a href="Products_cakes.html" class="active">Products</a>
+<a href="index.html">About Me</a>
+<a href="index.html">Contact Us</a>
+<a href="special_order_cake.html">Special Order</a>
+<a href="Cart_cake.html" class="cart-icon">
+<i class="fa fa-shopping-cart"></i>
+<span class="cart-count" id="cart-count">(0)</span>
+</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+<i class="fa fa-bars"></i>
+</a>
+</div>
 
-    <img src="border top.png" style="height: 70%; width: 70%; margin-top: 20px; padding-left: 15%" />
+<img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
- <!-- Cart Section -->
+
+<!-- Cart Section -->
+<!-- Cart Section -->
 <div class="cart-section">
-    <h2>Your Cart</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Sr No</th>
-                <th>Product Name</th>
-                <th>Weight</th> <!-- New Weight Column -->
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="cart-table-body">
-            <!-- Cart items will be populated here -->
-        </tbody>
-        <tfoot>
-            <tr class="total-row">
-                <td colspan="3">Total Amount</td>
-                <td id="total-amount">₹0.00</td> <!-- Changed to ₹ for consistency -->
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-    <div style="text-align: center; margin-top: 20px;">
-    <button onclick="scrollToPaymentMethods()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Checkout</button>
-    </div>
-
+<h2>Your Cart</h2>
+<table>
+<thead>
+<tr>
+    <th>Sr No</th>
+    <th>Product Name</th>
+    <th>Weight</th>
+    <th>Price</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody id="cart-table-body">
+<!-- Cart items will be populated here -->
+</tbody>
+<tfoot>
+<tr class="total-row">
+    <td colspan="3">Total Amount</td>
+    <td id="total-amount">₹0.00</td>
+    <td></td>
+</tr>
+</tfoot>
+</table>
+<div style="text-align: center; margin-top: 20px;">
+<button onclick="scrollToPaymentMethods()">Checkout</button>
 </div>
 </div>
-    <img src="border bottom.png"
-        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+</div>
+
+<img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
 
-        <img src="border top.png"
-        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
- <!-- Payment Methods Section -->
+<!-- Payment Methods Section -->
 <div class="payment-methods">
-    <h3>Payment Methods</h3>
-    <p style="color: floralwhite; margin-bottom: 15px;">
-    For your safety, we have not embedded the payment method in this website. You can pay by the below given methods.
-    </p>
-    <p style="color:white; font-weight: bold; font-style: italic;"> Kindly note that paying 50% of the total amount is necessary for the order confirmation.</p>
-    <button id="gpay-button" onclick="toggleUPI()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with UPI Id:</button>
-    <p id="upi-id" style="color: floralwhite; display: none;">Our UPI ID: manjupathak135@okicici</p>
+<h2>Payment Methods</h2>
+<p style="color: floralwhite; margin-bottom: 15px;">
+For your safety, we have not embedded the payment method in this website. You can pay by the below given methods.
+</p>
+<p style="color:white; font-weight: bold; font-style: italic;"> Kindly note that paying 50% of the total amount is necessary for the order confirmation.</p>
+<button id="gpay-button" onclick="toggleUPI()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with UPI Id:</button>
+<p id="upi-id" style="color: floralwhite; display: none;">Our UPI ID: manjupathak135@okicici</p>
 
-    <button id="paytm-button" onclick="toggleQRCode()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with Qr Code Image: </button>
-    <img id="qr-code" src="qr code.jpg" alt="QR Code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: auto; margin-right: auto;" />
+<button id="paytm-button" onclick="toggleQRCode()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with Qr Code Image: </button>
+<img id="qr-code" src="qr code.jpg" alt="QR Code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: auto; margin-right: auto;" />
 
 </div>
 
-<img src="border bottom.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-<img src="border top.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+<img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
+
 
 <!-- Payment Form Container -->
 <div class="payment-form">
-    <h2>Payment Confirmation Form:</h2>
-    <p style="font-weight: bold; color: floralwhite;">
-      After going through the payment using any of the above methods, kindly fill the form below for payment
-      confirmation, while your order is on the way!!
-    </p>
-    <h1>Order Form</h1>
-    <div class="container">
-        <form id="order-form" onsubmit="return false;">
-            <div class="form-group">
-                <label for="name">1. Name of the person placing this order:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+<h2>Payment Confirmation Form:</h2>
+<p style="font-weight: bold; color: floralwhite; font-family: Delius;">
+After going through the payment using any of the above methods, kindly fill the form below for payment
+confirmation, while your order is on the way!!
+</p>
+<h1>Order Form</h1>
+<div class="container">
+<form id="order-form" onsubmit="return false;">
+<div class="form-group">
+    <label for="name">1. Name of the person placing this order:</label>
+    <input type="text" id="name" name="name" required>
+</div>
 
-            <div class="form-group">
-                <label for="address">2. Address of the person placing this order:</label>
-                <input type="text" id="address" name="address" required>
-            </div>
+<div class="form-group">
+    <label for="address">2. Address of the person placing this order:</label>
+    <input type="text" id="address" name="address" required>
+</div>
 
-            <div class="form-group">
-                <label for="phone">3. Phone Number of the person ordering:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
+<div class="form-group">
+    <label for="phone">3. Phone Number of the person ordering:</label>
+    <input type="tel" id="phone" name="phone" required>
+</div>
 
-            <div class="form-group">
-                <label for="different-phone">4. Different Phone Number for delivery (No or Yes):</label>
-                <select id="different-phone" name="different-phone" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <input type="tel" id="delivery-phone" name="delivery-phone" style="display:none;" placeholder="Enter delivery phone number">
-            </div>
+<div class="form-group">
+    <label for="different-phone">4. Different Phone Number for delivery (No or Yes):</label>
+    <select id="different-phone" name="different-phone" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+    <input type="tel" id="delivery-phone" name="delivery-phone" style="display:none;" placeholder="Enter delivery phone number">
+</div>
 
-            <div class="form-group">
-                <label for="different-name">5. Different Name for delivery (No or Yes):</label>
-                <select id="different-name" name="different-name" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <input type="text" id="delivery-name" name="delivery-name" style="display:none;" placeholder="Enter delivery name">
-            </div>
+<div class="form-group">
+    <label for="different-name">5. Different Name for delivery (No or Yes):</label>
+    <select id="different-name" name="different-name" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+    <input type="text" id="delivery-name" name="delivery-name" style="display:none;" placeholder="Enter delivery name">
+</div>
 
-            <div class="form-group">
-                <label for="different-address">6. Different Address for delivery (No or Yes):</label>
-                <select id="different-address" name="different-address" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <input type="text" id="delivery-address" name="delivery-address" style="display:none;" placeholder="Enter delivery address">
-            </div>
+<div class="form-group">
+    <label for="different-address">6. Different Address for delivery (No or Yes):</label>
+    <select id="different-address" name="different-address" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+    <input type="text" id="delivery-address" name="delivery-address" style="display:none;" placeholder="Enter delivery address">
+</div>
 
-            <div class="form-group">
-                <label for="delivery-date">7. Date to be delivered:</label>
-                <input type="date" id="delivery-date" name="delivery-date" required>
-            </div>
+<div class="form-group">
+    <label for="delivery-date">7. Date to be delivered:</label>
+    <input type="date" id="delivery-date" name="delivery-date" required>
+</div>
 
-            <div class="form-group">
-                <label for="delivery-time">8. Time of delivery:</label>
-                <input type="time" id="delivery-time" name="delivery-time" required>
-            </div>
+<div class="form-group">
+    <label for="delivery-time">8. Time of delivery:</label>
+    <input type="time" id="delivery-time" name="delivery-time" required>
+</div>
 
-            <div class="form-group">
-                <label for="cake-name">9. Name on cake:</label>
-                <input type="text" id="cake-name" name="cake-name" required>
-            </div>
+<div class="form-group">
+    <label for="cake-name">9. Name on cake:</label>
+    <input type="text" id="cake-name" name="cake-name" required>
+</div>
 
-            <div class="form-group">
-                <label for="occasion">10. Occasion:</label>
-                <input type="text" id="occasion" name="occasion" required>
-            </div>
+<div class="form-group">
+    <label for="occasion">10. Occasion:</label>
+    <input type="text" id="occasion" name="occasion" required>
+</div>
 
-            <div class="form-group">
-                <label for="delivery-mode">11. Mode of delivery:</label>
-                <select id="delivery-mode" name="delivery-mode" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="home-delivery">Home Delivery</option>
-                    <option value="pick-up">Pick Up</option>
-                </select>
-            </div>
+<div class="form-group">
+    <label for="delivery-mode">11. Mode of delivery:</label>
+    <select id="delivery-mode" name="delivery-mode" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="home-delivery">Home Delivery</option>
+        <option value="pick-up">Pick Up</option>
+    </select>
+</div>
 
-            <div class="form-group">
-                <label for="special-request">Any Other Request for the Special Order:</label>
-                <textarea id="special-request" name="special-request"></textarea>
-            </div>
-    
-            <button type="button" onclick="handleFormSubmission()">Submit Order via WhatsApp</button>
-        </form>
+<div class="form-group">
+    <label for="special-request">Any Other Request for the Special Order:</label>
+    <textarea id="special-request" name="special-request"></textarea>
+</div>
 
-    </div>
+<button type="button" onclick="handleFormSubmission()">Submit Order via WhatsApp</button>
+</form>
+
+</div>
 </div>
 
 <!-- Modern Footer Section -->
 <footer class="footer-modern">
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>La Ruby Studios</h3>
-      <p><strong>Store:</strong> Passion Bakery N Chocos</p>
-      <p><strong>Phone:</strong> +91 98691 53017</p>
-      <p><strong>Email:</strong> <a href="mailto:contact@larubystudios.com">contact@larubystudios.com</a></p>
-      
-    </div>
+<div class="footer-container">
+<div class="footer-column">
+<h3>La Ruby Studios</h3>
+<p><strong>Store:</strong> Passion Bakery N Chocos</p>
+<p><strong>Phone:</strong> +91 98691 53017</p>
+<p><strong>Email:</strong> <a href="mailto:contact@larubystudios.com">contact@larubystudios.com</a></p>
 
-    <div class="footer-column">
-      <h3>Find Us Here</h3>
-      <div class="footer-map">
+</div>
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30171.758511948356!2d72.89754131946106!3d19.043070507877562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5de0e2b673b%3A0xf7d6a0991954d34d!2sPassionbakery%20n%20chocos!5e0!3m2!1sen!2sin!4v1748762211868!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom-modern">
-    <p>&copy; 2025 <strong>La Ruby Studios</strong>. All Rights Reserved.</p>
-  </div>
+<div class="footer-column">
+<h3>Find Us Here</h3>
+<div class="footer-map">
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30171.758511948356!2d72.89754131946106!3d19.043070507877562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5de0e2b673b%3A0xf7d6a0991954d34d!2sPassionbakery%20n%20chocos!5e0!3m2!1sen!2sin!4v1748762211868!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
+</div>
+</div>
+<div class="footer-bottom-modern">
+<p>&copy; 2025 <strong>La Ruby Studios</strong>. All Rights Reserved.</p>
+</div>
 </footer>
 
 <script>
-<!-- Script for Navigation Toggle -->
+// ==========================================
+// NAVIGATION BAR FUNCTIONALITY
+// ==========================================
+
+/**
+ * Toggle responsive navigation menu for mobile devices
+ */
 function myFunction() {
-var x = document.getElementById("myTopnav");
-if (x.className === "topnav") {
-x.className += " responsive";
-} else {
-x.className = "topnav";
-}
+    const nav = document.getElementById("myTopnav");
+    nav.className = nav.className === "topnav" ? "topnav responsive" : "topnav";
 }
 
-// Function to load cart data from local storage
-const loadCartData = () => {
-    return JSON.parse(localStorage.getItem("cartData")) || {};
-};
+// ==========================================
+// CART DATA MANAGEMENT
+// ==========================================
 
-// Function to update the cart table
-const updateCartTable = () => {
-    const cartData = loadCartData();
-    const cartTableBody = document.getElementById("cart-table-body");
-    cartTableBody.innerHTML = ""; // Clear existing rows
-    let totalAmount = 0;
-    let totalCount = 0; // Initialize total count
-    let srNo = 1;
+/**
+ * Load cart data from localStorage
+ * @returns {Object} Cart data object
+ */
+const loadCartData = () => JSON.parse(localStorage.getItem("cartData")) || {};
 
-    for (const productName in cartData) {
-        const product = cartData[productName];
-        if (product.quantity > 0) { // Only include products with quantity > 0
-            const row = document.createElement("tr");
-            const productTotalPrice = (parseFloat(product.price) * product.quantity).toFixed(2); // Calculate total price for the product
-
-            row.innerHTML = `
-                <td>${srNo++}</td>
-                <td>${productName}</td>
-                <td>${product.weight} kg</td> <!-- Display weight -->
-                <td>₹${productTotalPrice}</td> <!-- Display price in rupees -->
-                <td>
-                    <button onclick="removeFromCart('${productName}')">Remove</button>
-                    <button onclick="increaseQuantity('${productName}')">+</button>
-                    <button onclick="decreaseQuantity('${productName}')">-</button>
-                </td>
-            `;
-            cartTableBody.appendChild(row);
-            totalAmount += parseFloat(productTotalPrice); // Ensure price is parsed as float
-            totalCount += product.quantity; // Update total count
-        }
-    }
-
-    document.getElementById("total-amount").textContent = `₹${totalAmount.toFixed(2)}`; // Display total amount in rupees
-    document.getElementById("cart-count").textContent = `(${totalCount})`; // Update cart count
-};
-
-// Function to remove an item from the cart
-const removeFromCart = (productName) => {
-    const cartData = loadCartData();
-    delete cartData[productName];
+/**
+ * Save cart data to localStorage
+ * @param {Object} cartData - Cart data to save
+ */
+const saveCartData = (cartData) => {
     localStorage.setItem("cartData", JSON.stringify(cartData));
-    updateCartTable();
 };
 
-// Function to increase the quantity of a product in the cart
-const increaseQuantity = (productName) => {
-    const cartData = loadCartData();
-    if (cartData[productName]) {
-        cartData[productName].quantity++;
-    }
-    localStorage.setItem("cartData", JSON.stringify(cartData));
-    updateCartTable();
-};
-
-// Function to decrease the quantity of a product in the cart
-const decreaseQuantity = (productName) => {
-    const cartData = loadCartData();
-    if (cartData[productName] && cartData[productName].quantity > 0) {
-        cartData[productName].quantity--;
-        if (cartData[productName].quantity === 0) {
-            delete cartData[productName];
-        }
-        localStorage.setItem("cartData", JSON.stringify(cartData));
-        updateCartTable();
-    }
-};
-
-// Function to get cart details for payment
+/**
+ * Get cart summary for checkout
+ * @returns {Object} Object containing total amount and product names
+ */
 const getCartDetails = () => {
     const cartData = loadCartData();
     let totalAmount = 0;
-    let productNames = [];
+    const productNames = [];
 
-    for (const productName in cartData) {
-        const product = cartData[productName];
-        const productTotalPrice = parseFloat(product.price) * product.quantity;
-        totalAmount += productTotalPrice;
-        productNames.push(`${productName} (x${product.quantity})`);
-    }
+    Object.entries(cartData).forEach(([productName, product]) => {
+        if (product.quantity > 0) {
+            const productTotalPrice = parseFloat(product.price) * product.quantity;
+            totalAmount += productTotalPrice;
+            productNames.push(`${productName} (x${product.quantity})`);
+        }
+    });
 
     return {
         totalAmount: totalAmount.toFixed(2),
@@ -608,32 +777,160 @@ const getCartDetails = () => {
     };
 };
 
-// Initial call to populate the cart table and update the cart count
-updateCartTable();
+// ==========================================
+// CART TABLE DISPLAY AND UPDATES
+// ==========================================
 
+/**
+ * Update the cart table display with current cart data
+ */
+const updateCartTable = () => {
+    const cartData = loadCartData();
+    const cartTableBody = document.getElementById("cart-table-body");
+    
+    // Clear existing rows
+    cartTableBody.innerHTML = "";
+    
+    let totalAmount = 0;
+    let totalCount = 0;
+    let srNo = 1;
 
-// Function to toggle visibility of delivery inputs based on Yes/No selects
+    // Populate table rows
+    Object.entries(cartData).forEach(([productName, product]) => {
+        if (product.quantity > 0) {
+            const productTotalPrice = (parseFloat(product.price) * product.quantity).toFixed(2);
+            
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${srNo++}</td>
+                <td>${productName}</td>
+                <td>${product.weight} kg</td>
+                <td>₹${productTotalPrice}</td>
+                <td>
+                    <button onclick="removeFromCart('${productName}')">Remove</button>
+                    <button onclick="increaseQuantity('${productName}')">+</button>
+                    <button onclick="decreaseQuantity('${productName}')">-</button>
+                </td>
+            `;
+            
+            cartTableBody.appendChild(row);
+            totalAmount += parseFloat(productTotalPrice);
+            totalCount += product.quantity;
+        }
+    });
+
+    // Update UI elements
+    document.getElementById("total-amount").textContent = `₹${totalAmount.toFixed(2)}`;
+    document.getElementById("cart-count").textContent = `(${totalCount})`;
+};
+
+// ==========================================
+// CART ITEM OPERATIONS
+// ==========================================
+
+/**
+ * Remove an item completely from the cart
+ * @param {string} productName - Name of the product to remove
+ */
+const removeFromCart = (productName) => {
+    const cartData = loadCartData();
+    delete cartData[productName];
+    saveCartData(cartData);
+    updateCartTable();
+};
+
+/**
+ * Increase quantity of a product in the cart
+ * @param {string} productName - Name of the product
+ */
+const increaseQuantity = (productName) => {
+    const cartData = loadCartData();
+    if (cartData[productName]) {
+        cartData[productName].quantity++;
+        saveCartData(cartData);
+        updateCartTable();
+    }
+};
+
+/**
+ * Decrease quantity of a product in the cart
+ * @param {string} productName - Name of the product
+ */
+const decreaseQuantity = (productName) => {
+    const cartData = loadCartData();
+    if (cartData[productName] && cartData[productName].quantity > 0) {
+        cartData[productName].quantity--;
+        
+        // Remove item if quantity becomes 0
+        if (cartData[productName].quantity === 0) {
+            delete cartData[productName];
+        }
+        
+        saveCartData(cartData);
+        updateCartTable();
+    }
+};
+
+/**
+ * Scroll to payment methods section smoothly
+ */
+function scrollToPaymentMethods() {
+    document.querySelector('.payment-methods').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ==========================================
+// PAYMENT METHODS FUNCTIONALITY
+// ==========================================
+
+/**
+ * Toggle UPI ID display
+ */
+function toggleUPI() {
+    const upiElement = document.getElementById('upi-id');
+    upiElement.style.display = upiElement.style.display === 'none' ? 'block' : 'none';
+}
+
+/**
+ * Toggle QR Code image display
+ */
+function toggleQRCode() {
+    const qrElement = document.getElementById('qr-code');
+    qrElement.style.display = qrElement.style.display === 'none' ? 'block' : 'none';
+}
+
+// ==========================================
+// ORDER FORM FUNCTIONALITY
+// ==========================================
+
+/**
+ * Setup toggle fields for conditional form inputs
+ */
 function setupToggleFields() {
     const toggleMappings = [
         { selectId: 'different-phone', inputId: 'delivery-phone' },
         { selectId: 'different-name', inputId: 'delivery-name' },
-        { selectId: 'different-address', inputId: 'delivery-address' },
+        { selectId: 'different-address', inputId: 'delivery-address' }
     ];
 
     toggleMappings.forEach(({ selectId, inputId }) => {
         const selectElem = document.getElementById(selectId);
         const inputElem = document.getElementById(inputId);
 
-        // Initial toggle on page load
+        // Initial setup
         toggleInputVisibility(selectElem, inputElem);
 
-        // Add event listener for changes
+        // Add change listener
         selectElem.addEventListener('change', () => {
             toggleInputVisibility(selectElem, inputElem);
         });
     });
 }
 
+/**
+ * Toggle visibility and requirement of input fields based on select value
+ * @param {HTMLElement} selectElem - Select element
+ * @param {HTMLElement} inputElem - Input element to toggle
+ */
 function toggleInputVisibility(selectElem, inputElem) {
     if (selectElem.value === 'yes') {
         inputElem.style.display = 'block';
@@ -641,131 +938,172 @@ function toggleInputVisibility(selectElem, inputElem) {
     } else {
         inputElem.style.display = 'none';
         inputElem.removeAttribute('required');
-        inputElem.value = ''; // Clear input when hidden
+        inputElem.value = '';
     }
 }
 
-function handleFormSubmission() {
-    try {
-        const form = document.getElementById('order-form');
+/**
+ * Validate Indian mobile number format
+ * @param {string} phone - Phone number to validate
+ * @returns {boolean} True if valid, false otherwise
+ */
+const validatePhoneNumber = (phone) => /^[6-9]\d{9}$/.test(phone);
 
-        // Get and trim basic customer info
-        const name = form.name.value.trim();
-        const address = form.address.value.trim();
-        const phone = form.phone.value.trim();
+/**
+ * Get form data with conditional delivery information
+ * @returns {Object} Form data object
+ */
+const getFormData = () => {
+    const form = document.getElementById('order-form');
+    
+    // Basic customer info
+    const customerData = {
+        name: form.name.value.trim(),
+        address: form.address.value.trim(),
+        phone: form.phone.value.trim()
+    };
 
-        // Get the "different" selections
-        const differentPhone = form['different-phone'].value;
-        const differentName = form['different-name'].value;
-        const differentAddress = form['different-address'].value;
-
-        // Conditionally get delivery info if "yes" selected, else fallback to customer info
-        const deliveryPhone = (differentPhone === 'yes') 
+    // Conditional delivery info
+    const deliveryData = {
+        phone: form['different-phone'].value === 'yes' 
             ? form['delivery-phone'].value.trim() 
-            : phone;
-
-        const deliveryName = (differentName === 'yes') 
+            : customerData.phone,
+        name: form['different-name'].value === 'yes' 
             ? form['delivery-name'].value.trim() 
-            : name;
-
-        const deliveryAddress = (differentAddress === 'yes') 
+            : customerData.name,
+        address: form['different-address'].value === 'yes' 
             ? form['delivery-address'].value.trim() 
-            : address;
+            : customerData.address
+    };
 
-        // Get remaining fields
-        const deliveryDate = form['delivery-date'].value.trim();
-        const deliveryTime = form['delivery-time'].value.trim();
-        const deliveryMode = form['delivery-mode'].value.trim();
-        const cakeName = form['cake-name'].value.trim();
-        const occasion = form['occasion'].value.trim();
-        const specialRequest = form['special-request'].value.trim();
+    // Order details
+    const orderData = {
+        deliveryDate: form['delivery-date'].value.trim(),
+        deliveryTime: form['delivery-time'].value.trim(),
+        deliveryMode: form['delivery-mode'].value.trim(),
+        cakeName: form['cake-name'].value.trim(),
+        occasion: form['occasion'].value.trim(),
+        specialRequest: form['special-request'].value.trim()
+    };
 
-        // Basic validation for required fields
-        if (!name || !address || !phone) {
-            alert('Please fill in all required customer fields (Name, Address, Phone).');
-            return;
+    return { customerData, deliveryData, orderData, form };
+};
+
+/**
+ * Validate form data
+ * @param {Object} formData - Form data to validate
+ * @returns {boolean} True if valid, false otherwise
+ */
+const validateFormData = ({ customerData, deliveryData, orderData, form }) => {
+    // Check required customer fields
+    if (!customerData.name || !customerData.address || !customerData.phone) {
+        alert('Please fill in all required customer fields (Name, Address, Phone).');
+        return false;
+    }
+
+    // Check conditional delivery fields
+    const conditionalChecks = [
+        { condition: form['different-phone'].value === 'yes' && !deliveryData.phone, 
+          message: 'Please fill in the delivery phone number.' },
+        { condition: form['different-name'].value === 'yes' && !deliveryData.name, 
+          message: 'Please fill in the delivery name.' },
+        { condition: form['different-address'].value === 'yes' && !deliveryData.address, 
+          message: 'Please fill in the delivery address.' }
+    ];
+
+    for (const check of conditionalChecks) {
+        if (check.condition) {
+            alert(check.message);
+            return false;
         }
+    }
 
-        if (differentPhone === 'yes' && !deliveryPhone) {
-            alert('Please fill in the delivery phone number.');
-            return;
-        }
+    // Check delivery details
+    if (!orderData.deliveryDate || !orderData.deliveryTime) {
+        alert('Please select delivery date and time.');
+        return false;
+    }
 
-        if (differentName === 'yes' && !deliveryName) {
-            alert('Please fill in the delivery name.');
-            return;
-        }
+    if (!orderData.deliveryMode) {
+        alert('Please select a delivery mode.');
+        return false;
+    }
 
-        if (differentAddress === 'yes' && !deliveryAddress) {
-            alert('Please fill in the delivery address.');
-            return;
-        }
+    // Validate phone numbers
+    if (!validatePhoneNumber(customerData.phone)) {
+        alert('Please enter a valid 10-digit Indian mobile number for Customer Phone.');
+        return false;
+    }
 
-        if (!deliveryDate || !deliveryTime) {
-            alert('Please select delivery date and time.');
-            return;
-        }
+    if (!validatePhoneNumber(deliveryData.phone)) {
+        alert('Please enter a valid 10-digit Indian mobile number for Delivery Phone.');
+        return false;
+    }
 
-        if (!deliveryMode) {
-            alert('Please select a delivery mode.');
-            return;
-        }
+    return true;
+};
 
-        // Phone number format validation (Indian mobile format, 10 digits)
-        const phoneRegex = /^[6-9]\d{9}$/;
-
-        if (!phoneRegex.test(phone)) {
-            alert('Please enter a valid 10-digit Indian mobile number for Customer Phone.');
-            return;
-        }
-
-        if (!phoneRegex.test(deliveryPhone)) {
-            alert('Please enter a valid 10-digit Indian mobile number for Delivery Phone.');
-            return;
-        }
-
-        // Fetch cart details (assuming this function exists)
-        const cartDetails = getCartDetails();
-
-        // Compose WhatsApp message
-        const message = `*🎂 CAKE ORDER DETAILS 🎂*\n
+/**
+ * Generate WhatsApp message from form data
+ * @param {Object} formData - Form data
+ * @param {Object} cartDetails - Cart details
+ * @returns {string} Formatted WhatsApp message
+ */
+const generateWhatsAppMessage = ({ customerData, deliveryData, orderData }, cartDetails) => {
+    return `*🎂 CAKE ORDER DETAILS 🎂*\n
 *📋 Customer Information:*
-👤 Name: ${name}
-📍 Address: ${address}
-📞 Phone: ${phone}
+👤 Name: ${customerData.name}
+📍 Address: ${customerData.address}
+📞 Phone: ${customerData.phone}
 
 *🚚 Delivery Information:*
-👤 Delivery Name: ${deliveryName}
-📍 Delivery Address: ${deliveryAddress}
-📞 Delivery Phone: ${deliveryPhone}
-📅 Delivery Date: ${deliveryDate}
-⏰ Delivery Time: ${deliveryTime}
-🚛 Delivery Mode: ${deliveryMode}
+👤 Delivery Name: ${deliveryData.name}
+📍 Delivery Address: ${deliveryData.address}
+📞 Delivery Phone: ${deliveryData.phone}
+📅 Delivery Date: ${orderData.deliveryDate}
+⏰ Delivery Time: ${orderData.deliveryTime}
+🚛 Delivery Mode: ${orderData.deliveryMode}
 
 *🛒 Order Details:*
 🎂 Products: ${cartDetails.productNames}
 💰 Total Amount: ₹${cartDetails.totalAmount}
-🏷️ Name on Cake: ${cakeName || 'N/A'}
-🎉 Occasion: ${occasion || 'N/A'}
+🏷️ Name on Cake: ${orderData.cakeName || 'N/A'}
+🎉 Occasion: ${orderData.occasion || 'N/A'}
 
 *💬 Special Request:*
-${specialRequest || 'None'}
+${orderData.specialRequest || 'None'}
 
 *Thank you for your order! 😊*`;
+};
 
-        // WhatsApp number in international format without '+'
+/**
+ * Handle form submission and send data via WhatsApp
+ */
+function handleFormSubmission() {
+    try {
+        const formData = getFormData();
+        
+        // Validate form data
+        if (!validateFormData(formData)) {
+            return;
+        }
+
+        // Get cart details
+        const cartDetails = getCartDetails();
+        
+        // Generate and send WhatsApp message
+        const message = generateWhatsAppMessage(formData, cartDetails);
         const whatsappNumber = '919869153017';
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
 
         console.log('WhatsApp URL:', whatsappURL);
 
         const newWindow = window.open(whatsappURL, '_blank');
-
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+        
+        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
             alert('Pop-up blocked! Please allow pop-ups for this website to send your order via WhatsApp.');
         } else {
-            alert('Opening WhatsApp chat... If it does not open automatically, please contact us directly at ' + whatsappNumber);
+            alert(`Opening WhatsApp chat... If it does not open automatically, please contact us directly at ${whatsappNumber}`);
         }
 
     } catch (error) {
@@ -774,27 +1112,20 @@ ${specialRequest || 'None'}
     }
 }
 
-// Initialize toggles on page load
-window.addEventListener('DOMContentLoaded', setupToggleFields);
+// ==========================================
+// INITIALIZATION
+// ==========================================
 
-
-function scrollToPaymentMethods() {
-    const paymentMethodsSection = document.querySelector('.payment-methods');
-    paymentMethodsSection.scrollIntoView({ behavior: 'smooth' });
-}
-
-function toggleUPI() {
-    const upiId = document.getElementById('upi-id');
-    upiId.style.display = upiId.style.display === 'none' ? 'block' : 'none';
-}
-
-function toggleQRCode() {
-    const qrCodeImage = document.getElementById('qr-code');
-    qrCodeImage.style.display = qrCodeImage.style.display === 'none' ? 'block' : 'none';
-}
-
-
-
+/**
+ * Initialize the page when DOM content is loaded
+ */
+window.addEventListener('DOMContentLoaded', () => {
+    // Initialize cart display
+    updateCartTable();
+    
+    // Setup form toggle fields
+    setupToggleFields();
+});
 </script>
 </body>
 
