@@ -20,7 +20,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
 
 <style>
-/* Global Styles */
+/* ENHANCED SPECIAL ORDER PAGE CSS - MATCHING PRODUCTS PAGE STYLE */
+
+/* Global Styles - ENHANCED */
 body {
 background-color: #bad012;
 font-family: cursive;
@@ -28,7 +30,7 @@ margin: 0;
 padding: 0;
 }
 
-h1, h2 {
+h1,h2 {
 color: #bad012;
 font-weight: bold;
 font-size: xxx-large;
@@ -38,13 +40,31 @@ text-align: center;
 margin-bottom: 15px;
 font-family: Great Vibes;
 text-decoration: wavy;
-
+text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+position: relative;
 }
 
-/* Navigation Bar Styles */
+/* Add elegant underline to headings */
+h2::after {
+content: '';
+display: block;
+width: 80px;
+height: 2px;
+background: linear-gradient(90deg, transparent, #bad012, transparent);
+margin: 10px auto;
+animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+0%, 100% { opacity: 0.7; }
+50% { opacity: 1; }
+}
+
+/* Navigation Bar Styles - ENHANCED WITH GLITTERY EFFECTS */
 .topnav {
 overflow: hidden;
 background-color: #bad012;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .topnav a {
@@ -59,16 +79,56 @@ font-size: 20px;
 border: 3px solid #11124a;
 margin-left: 10px;
 margin-top: 10px;
+border-radius: 8px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* Glittery effect for navigation buttons */
+.topnav a::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 20px 10px, rgba(255,255,255,0.8), transparent),
+radial-gradient(2px 2px at 60px 20px, rgba(255,255,255,0.6), transparent),
+radial-gradient(1px 1px at 100px 15px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 40px 35px, rgba(255,255,255,0.7), transparent),
+radial-gradient(2px 2px at 80px 40px, rgba(255,255,255,0.8), transparent);
+background-size: 120px 50px;
+opacity: 0;
+animation: sparkleGlitter 3s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+.topnav a:hover::before {
+animation: sparkleGlitter 1.5s ease-in-out infinite;
+opacity: 1;
 }
 
 .topnav a:hover {
 background-color: #54422b;
 color: floralwhite;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,0,0,0.3),
+            0 0 15px rgba(255,255,255,0.2);
 }
 
 .topnav a.active {
 background-color: #008000;
 color: #ffd700;
+box-shadow: 0 4px 12px rgba(0,128,0,0.3);
+}
+
+/* Active button glittery effect */
+.topnav a.active::before {
+animation: sparkleGlitter 2s ease-in-out infinite;
+opacity: 0.7;
 }
 
 .topnav .icon {
@@ -76,22 +136,63 @@ display: none;
 }
 
 .topnav .cart-icon {
-color: #11124a; /* Match the color theme */
+color: #11124a;
 font-size: 20px;
 padding: 14px 16px;
 text-decoration: none;
 border: 3px solid #11124a;
 margin-left: 10px;
 margin-top: 10px;
+border-radius: 8px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* Cart icon glittery effect */
+.topnav .cart-icon::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 15px 8px, rgba(255,255,255,0.9), transparent),
+radial-gradient(2px 2px at 35px 15px, rgba(255,255,255,0.7), transparent),
+radial-gradient(1px 1px at 25px 30px, rgba(255,255,255,0.8), transparent);
+background-size: 50px 50px;
+opacity: 0;
+animation: sparkleGlitter 3s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+.topnav .cart-icon:hover::before {
+animation: sparkleGlitter 1.5s ease-in-out infinite;
+opacity: 1;
 }
 
 .topnav .cart-icon:hover {
 background-color: #0000ff;
 color: floralwhite;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,0,255,0.3),
+            0 0 15px rgba(255,255,255,0.2);
+}
+
+@keyframes sparkleGlitter {
+0%, 100% { opacity: 0; }
+25% { opacity: 0.8; }
+50% { opacity: 1; }
+75% { opacity: 0.6; }
 }
 
 @media screen and (max-width: 600px) {
-.topnav a:not(:first-child) {display: none;}
+.topnav a:not(:first-child) {
+display: none;
+}
+
 .topnav a.icon {
 float: right;
 display: block;
@@ -99,12 +200,16 @@ display: block;
 }
 
 @media screen and (max-width: 600px) {
-.topnav.responsive {position: relative;}
+.topnav.responsive {
+position: relative;
+}
+
 .topnav.responsive .icon {
 position: absolute;
 right: 0;
 top: 0;
 }
+
 .topnav.responsive a {
 float: none;
 display: block;
@@ -112,119 +217,666 @@ text-align: left;
 }
 }
 
-/* Banner Section Styles */
-#banner {
-background-color: #1ef2fd;
-color: #11124a;
-text-align: center;
-padding-top: 5px;
-padding-bottom: 5px;
-text-shadow: 2px 2px 5px pink;
-
+/* General Reset */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
-#banner h1 {
-margin-bottom: 10px;
+/* Enhanced border images */
+img[src*="border"] {
+filter: drop-shadow(0 8px 15px rgba(0,0,0,0.4)) brightness(1.2) contrast(1.2);
+position: relative;
+z-index: 1;
+max-width: 100%;
+height: auto;
+display: block;
+margin: 20px auto;
 }
 
-#banner p {
-font-size: 18px;
-}
-
+/* Enhanced Form Container - MATCHING PRODUCTS PAGE SECTIONS */
 .container {
-    max-width: 600px;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    margin-left: 55px;
-    margin-right: 20px;
-
-    background: #8c4b29;
-    color: floralwhite;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+max-width: 650px;
+margin: 30px auto;
+background: linear-gradient(135deg, #8c4b29 0%, #a0542e 100%);
+color: #ffdab9;
+padding: 40px;
+border-radius: 20px;
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+border: 2px solid rgba(255,255,255,0.1);
+position: relative;
+overflow: hidden;
 }
 
+/* Sparkle effect for form container */
+.container::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-image: 
+radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.1), transparent),
+radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.1), transparent),
+radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.1), transparent),
+radial-gradient(1px 1px at 130px 20px, rgba(255,255,255,0.1), transparent),
+radial-gradient(2px 2px at 160px 80px, rgba(255,255,255,0.1), transparent);
+background-size: 200px 200px;
+border-radius: inherit;
+opacity: 0.5;
+animation: sparkle 4s ease-in-out infinite;
+pointer-events: none;
+}
 
+@keyframes sparkle {
+0%, 100% { opacity: 0.3; }
+50% { opacity: 0.7; }
+}
+
+/* Enhanced Form Group */
 .form-group {
-    margin-bottom: 15 px;
+margin-bottom: 25px;
+position: relative;
 }
 
+/* Enhanced Labels */
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+display: block;
+margin-bottom: 8px;
+font-weight: bold;
+color: #ffdab9;
+font-size: 1.1rem;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
+/* Enhanced Input Styles - LUXURIOUS BUSINESS STYLING */
 input[type="text"],
 input[type="tel"],
 input[type="number"],
 input[type="date"],
 select,
 textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+width: 100%;
+padding: 15px 20px;
+border: 2px solid rgba(255,255,255,0.3);
+border-radius: 12px;
+font-size: 16px;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 248, 248, 0.95));
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 4px 15px rgba(0,0,0,0.1), inset 0 2px 4px rgba(140,75,41,0.05);
+color: #8c4b29;
+font-weight: 500;
+box-sizing: border-box;
+position: relative;
 }
 
-input[type="file"] {
-    margin-top: 5px;
+/* Luxury focus effects with glitter */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+outline: none;
+border-color: #bad012;
+box-shadow: 0 8px 30px rgba(186,208,18,0.4), 
+            0 0 20px rgba(186,208,18,0.2),
+            inset 0 2px 4px rgba(140,75,41,0.1);
+transform: translateY(-3px) scale(1.01);
+background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(250, 250, 250, 0.98));
 }
 
-.weight-control {
-    display: flex;
-    align-items: center;
+/* Enhanced placeholders */
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+textarea::placeholder {
+color: rgba(140,75,41,0.6);
+font-style: italic;
+font-weight: 400;
 }
 
-.weight-control button {
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin: 0 5px;
+/* Phone number specific styling */
+input[type="tel"] {
+background: linear-gradient(135deg, rgba(230, 255, 230, 0.98), rgba(220, 250, 220, 0.95));
+border-color: rgba(40, 167, 69, 0.3);
 }
 
-.weight-control input {
-    width: 60px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
+input[type="tel"]:focus {
+border-color: #28a745;
+box-shadow: 0 8px 30px rgba(40, 167, 69, 0.4), 
+            0 0 20px rgba(40, 167, 69, 0.2);
 }
 
-button {
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
+/* Number input specific styling */
+input[type="number"] {
+background: linear-gradient(135deg, rgba(255, 240, 230, 0.98), rgba(250, 235, 225, 0.95));
+border-color: rgba(255, 140, 0, 0.3);
 }
 
-button:hover {
-    background-color: #4cae4c;
+input[type="number"]:focus {
+border-color: #ff8c00;
+box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4), 
+            0 0 20px rgba(255, 140, 0, 0.2);
 }
 
+/* Date input specific styling */
+input[type="date"] {
+background: linear-gradient(135deg, rgba(240, 230, 255, 0.98), rgba(235, 225, 250, 0.95));
+border-color: rgba(138, 43, 226, 0.3);
+cursor: pointer;
+position: relative;
+}
+
+input[type="date"]:focus {
+border-color: #8a2be2;
+box-shadow: 0 8px 30px rgba(138, 43, 226, 0.4), 
+            0 0 20px rgba(138, 43, 226, 0.2);
+}
+
+/* Custom date picker styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+background: linear-gradient(135deg, #8a2be2, #9932cc);
+border-radius: 6px;
+padding: 4px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+transform: scale(1.1);
+box-shadow: 0 2px 8px rgba(138, 43, 226, 0.4);
+}
+
+/* Enhanced Select Dropdown - LUXURIOUS BUSINESS STYLING */
+select {
+cursor: pointer;
+appearance: none;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 248, 248, 0.95));
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3e%3cpath stroke='%23bad012' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M8 10l4 4 4-4'/%3e%3c/svg%3e");
+background-position: right 15px center;
+background-repeat: no-repeat;
+background-size: 20px;
+padding-right: 50px;
+position: relative;
+font-weight: 600;
+text-transform: capitalize;
+}
+
+select:hover {
+background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(250, 250, 250, 0.98));
+border-color: rgba(186, 208, 18, 0.6);
+transform: translateY(-1px);
+}
+
+/* Custom select styling for delivery mode */
+#delivery-mode {
+background: linear-gradient(135deg, rgba(230, 255, 255, 0.98), rgba(220, 250, 255, 0.95));
+border-color: rgba(23, 162, 184, 0.3);
+}
+
+#delivery-mode:focus {
+border-color: #17a2b8;
+box-shadow: 0 8px 30px rgba(23, 162, 184, 0.4), 
+            0 0 20px rgba(23, 162, 184, 0.2);
+}
+
+/* Flavour input special styling */
+#flavour {
+background: linear-gradient(135deg, rgba(255, 230, 255, 0.98), rgba(250, 225, 250, 0.95));
+border-color: rgba(255, 20, 147, 0.3);
+}
+
+#flavour:focus {
+border-color: #ff1493;
+box-shadow: 0 8px 30px rgba(255, 20, 147, 0.4), 
+            0 0 20px rgba(255, 20, 147, 0.2);
+}
+
+/* Enhanced Quantity Input with Custom Controls */
+.quantity-container {
+position: relative;
+display: flex;
+align-items: center;
+background: linear-gradient(135deg, rgba(255, 240, 230, 0.98), rgba(250, 235, 225, 0.95));
+border: 2px solid rgba(255, 140, 0, 0.3);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#weight {
+border: none !important;
+background: transparent !important;
+box-shadow: none !important;
+text-align: center;
+font-size: 18px;
+font-weight: bold;
+color: #ff8c00;
+padding: 15px 20px !important;
+flex: 1;
+margin: 0 !important;
+}
+
+.quantity-btn {
+background: linear-gradient(135deg, #ff8c00, #ffa500);
+color: white;
+border: none;
+width: 50px;
+height: 53px;
+cursor: pointer;
+font-size: 20px;
+font-weight: bold;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.quantity-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 12px 12px, rgba(255,255,255,0.9), transparent),
+radial-gradient(2px 2px at 35px 20px, rgba(255,255,255,0.7), transparent),
+radial-gradient(1px 1px at 25px 35px, rgba(255,255,255,0.8), transparent);
+background-size: 50px 50px;
+opacity: 0;
+animation: sparkleGlitter 3s ease-in-out infinite;
+pointer-events: none;
+}
+
+.quantity-btn:hover::before {
+animation: sparkleGlitter 1.5s ease-in-out infinite;
+opacity: 1;
+}
+
+.quantity-btn:hover {
+background: linear-gradient(135deg, #e67e22, #f39c12);
+transform: scale(1.05);
+box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+}
+
+.quantity-btn:active {
+transform: scale(0.95);
+}
+
+.quantity-btn.minus {
+border-right: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+.quantity-btn.plus {
+border-left: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+/* Input validation styling */
+input:invalid {
+border-color: rgba(220, 53, 69, 0.6) !important;
+box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2) !important;
+}
+
+input:valid {
+border-color: rgba(40, 167, 69, 0.4) !important;
+}
+
+/* Enhanced textarea styling */
 textarea {
-    resize: vertical;
+min-height: 100px;
+font-family: inherit;
+resize: vertical;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 248, 248, 0.95));
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 15px;
-    }
-
-    button {
-        padding: 8px 12px;
-    }
+textarea:focus {
+min-height: 120px;
+transition: min-height 0.3s ease;
 }
 
+/* Address textarea specific styling */
+#address {
+background: linear-gradient(135deg, rgba(240, 248, 255, 0.98), rgba(230, 243, 255, 0.95));
+border-color: rgba(0, 123, 255, 0.3);
+}
 
+#address:focus {
+border-color: #007bff;
+box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4), 
+            0 0 20px rgba(0, 123, 255, 0.2);
+}
+
+/* Special request textarea styling */
+#special-request {
+background: linear-gradient(135deg, rgba(255, 248, 240, 0.98), rgba(250, 243, 235, 0.95));
+border-color: rgba(255, 140, 0, 0.3);
+}
+
+#special-request:focus {
+border-color: #ff8c00;
+box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4), 
+            0 0 20px rgba(255, 140, 0, 0.2);
+}
+
+/* Enhanced Submit Button - WITH GLITTERY EFFECTS */
+button[type="submit"] {
+background: linear-gradient(135deg, #28a745, #20c997);
+color: white;
+padding: 18px 30px;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+width: 100%;
+font-size: 1.2rem;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 8px 25px rgba(40,167,69,0.3);
+position: relative;
+overflow: hidden;
+margin-top: 20px;
+}
+
+/* Glittery sparkle effect */
+button[type="submit"]::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
+radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 130px 20px, rgba(255,255,255,0.8), transparent),
+radial-gradient(2px 2px at 160px 80px, rgba(255,255,255,0.7), transparent),
+radial-gradient(1px 1px at 200px 30px, rgba(255,255,255,0.9), transparent),
+radial-gradient(2px 2px at 240px 60px, rgba(255,255,255,0.8), transparent),
+radial-gradient(1px 1px at 280px 40px, rgba(255,255,255,0.7), transparent);
+background-size: 300px 300px;
+opacity: 0;
+animation: sparkleGlitter 2s ease-in-out infinite;
+pointer-events: none;
+}
+
+/* Moving shine effect */
+button[type="submit"]::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%);
+transform: translateX(-100%) rotate(30deg);
+transition: transform 0.8s ease;
+}
+
+button[type="submit"]:hover::before {
+animation: sparkleGlitter 1s ease-in-out infinite;
+opacity: 1;
+}
+
+button[type="submit"]:hover::after {
+transform: translateX(100%) rotate(30deg);
+}
+
+button[type="submit"]:hover {
+background: linear-gradient(135deg, #218838, #17a2b8);
+transform: translateY(-3px) scale(1.02);
+box-shadow: 0 12px 35px rgba(40,167,69,0.5), 
+            0 0 20px rgba(255,255,255,0.3);
+}
+
+button[type="submit"]:active {
+transform: translateY(-1px) scale(0.98);
+}
+
+/* PROFESSIONAL BUSINESS FOOTER - MATCHING PRODUCTS PAGE */
+.footer {
+background: linear-gradient(135deg, #2c1810 0%, #8c4b29 50%, #2c1810 100%);
+color: #ffdab9;
+padding: 60px 20px 20px;
+margin-top: 50px;
+position: relative;
+overflow: hidden;
+}
+
+.footer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 3px;
+background: linear-gradient(90deg, #bad012, #ffd700, #bad012);
+animation: shimmer 3s ease-in-out infinite;
+}
+
+.footer-content {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-section h3 {
+color: #bad012;
+font-family: 'Great Vibes', cursive;
+font-size: 2rem;
+margin-bottom: 20px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.footer-section p,
+.footer-section li {
+line-height: 1.6;
+margin-bottom: 10px;
+font-size: 14px;
+}
+
+.footer-section ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-section ul li {
+padding: 5px 0;
+border-bottom: 1px solid rgba(255,218,185,0.1);
+}
+
+.footer-section ul li:last-child {
+border-bottom: none;
+}
+
+.footer-section a {
+color: #ffdab9;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+color: #bad012;
+text-shadow: 0 0 5px rgba(186,208,18,0.5);
+}
+
+.footer-social {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+flex-wrap: wrap;
+}
+
+.footer-social a {
+display: inline-block;
+width: 35px;
+height: 35px;
+background: rgba(186,208,18,0.2);
+border-radius: 50%;
+text-align: center;
+line-height: 35px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* Glittery effect for footer social buttons */
+.footer-social a::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 8px 8px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 20px 15px, rgba(255,255,255,0.8), transparent),
+radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 25px 8px, rgba(255,255,255,0.7), transparent);
+background-size: 35px 35px;
+opacity: 0;
+animation: sparkleGlitter 4s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+.footer-social a:hover::before {
+animation: sparkleGlitter 2s ease-in-out infinite;
+opacity: 1;
+}
+
+.footer-social a:hover {
+background: #bad012;
+transform: translateY(-3px) scale(1.1);
+box-shadow: 0 5px 15px rgba(186,208,18,0.4),
+            0 0 10px rgba(255,255,255,0.3);
+}
+
+.footer-bottom {
+border-top: 2px solid rgba(255,218,185,0.2);
+padding-top: 20px;
+text-align: center;
+position: relative;
+}
+
+.footer-bottom p {
+margin: 0;
+font-size: 13px;
+color: rgba(255,218,185,0.8);
+}
+
+.footer-bottom .copyright {
+font-weight: bold;
+color: #bad012;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* MOBILE RESPONSIVE DESIGN - ENHANCED */
+@media screen and (max-width: 768px) {
+/* Navigation adjustments */
+.topnav a {
+margin: 5px;
+padding: 12px 14px;
+font-size: 18px;
+}
+
+/* Container mobile adjustments */
+.container {
+margin: 20px 15px;
+padding: 30px 20px;
+max-width: calc(100% - 30px);
+}
+
+/* Form elements mobile adjustments */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+padding: 12px;
+font-size: 16px; /* Prevents zoom on iOS */
+}
+
+button[type="submit"] {
+padding: 16px 20px;
+font-size: 1.1rem;
+}
+
+.quantity-container {
+padding: 12px;
+}
+
+.quantity-btn {
+width: 40px;
+height: 40px;
+font-size: 16px;
+}
+
+/* Footer mobile layout */
+.footer-content {
+grid-template-columns: 1fr;
+gap: 30px;
+text-align: center;
+}
+
+.footer-social {
+justify-content: center;
+}
+
+/* Typography mobile adjustments */
+h1, h2 {
+font-size: xx-large;
+}
+}
+
+@media screen and (max-width: 480px) {
+/* Extra small screens */
+.container {
+margin: 15px 10px;
+padding: 20px 15px;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+/* Typography adjustments */
+h1, h2 {
+font-size: x-large;
+}
+
+.topnav a {
+font-size: 16px;
+padding: 10px 12px;
+}
+
+label {
+font-size: 1rem;
+}
+
+button[type="submit"] {
+padding: 14px 18px;
+font-size: 1rem;
+}
+}
+
+/* Ensure images are responsive */
+@media screen and (max-width: 600px) {
+img[src*="border"] {
+width: 90%;
+padding-left: 5%;
+}
+}
 </style>
 </head>
 <body>
@@ -235,7 +887,7 @@ textarea {
 <a href="Chocolates.html">About Me</a>
 <a href="Chocolates.html">Contact Us</a>
 <a href="special_order_chocolates.html" class="active">Special Order</a>
-<a href="Cart_chocolates.html" class="cart-icon"><i class="fa fa-shopping-cart"></i></a> <!-- Cart Icon -->
+<a href="Cart_chocolates.html" class="cart-icon"><i class="fa fa-shopping-cart"></i></a>
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 <i class="fa fa-bars"></i>
 </a>
@@ -248,45 +900,50 @@ textarea {
     <form id="special-order-form">
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
         </div>
 
         <div class="form-group">
             <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Enter 10-digit phone number" required>
         </div>
 
         <div class="form-group">
             <label for="address">Address:</label>
-            <textarea id="address" name="address" required></textarea>
+            <textarea id="address" name="address" placeholder="Enter your complete address for delivery..." required></textarea>
         </div>
 
         <div class="form-group">
             <label for="quantity">Quantity of Chocolates (minimum 50 chocolates)</label>
-            <input type="number" id="weight" name="weight" value="50" min="50" step="6" required>
+            <div class="quantity-container">
+                <button type="button" class="quantity-btn minus" onclick="decrementQuantity()">−</button>
+                <input type="number" id="weight" name="weight" value="50" min="50" step="6" readonly required>
+                <button type="button" class="quantity-btn plus" onclick="incrementQuantity()">+</button>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="delivery-date">Date for Order Delivery:</label>
-            <input type="date" id="delivery-date" name="delivery-date" required>
+            <input type="date" id="delivery-date" name="delivery-date" min="" required>
         </div>
 
         <div class="form-group">
             <label for="delivery-mode">Mode of Delivery:</label>
             <select id="delivery-mode" name="delivery-mode" required>
-                <option value="homedelivery">Home Delivery </option>
-                <option value="pickup">Pick Up</option>
+                <option value="">Select delivery option...</option>
+                <option value="homedelivery">🚚 Home Delivery</option>
+                <option value="pickup">🏪 Store Pick Up</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="flavour">Flavour For the Chocolates:</label>
-            <input type="text" id="flavour" name="flavour" required>
+            <input type="text" id="flavour" name="flavour" placeholder="e.g., Dark Chocolate, Milk Chocolate, White Chocolate..." required>
         </div>
 
         <div class="form-group">
             <label for="special-request">Any Other Request for the Special Order:</label>
-            <textarea id="special-request" name="special-request" required></textarea>
+            <textarea id="special-request" name="special-request" placeholder="Please describe any special requirements, packaging preferences, or custom messages..." required></textarea>
         </div>
 
         <button type="submit">Submit Order</button>
@@ -296,6 +953,66 @@ textarea {
 <img src="border bottom.png"
 style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
 
+<!-- PROFESSIONAL BUSINESS FOOTER - MATCHING PRODUCTS PAGE -->
+<footer class="footer">
+    <div class="footer-content">
+        <!-- About Section -->
+        <div class="footer-section">
+            <h3>About Passion Bakery</h3>
+            <p>Your one-stop destination for handcrafted chocolates, delicious cakes, and unique gift items. We create sweet memories with every bite, using only the finest ingredients and lots of love.</p>
+            <p><strong>Quality • Freshness • Excellence</strong></p>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="Chocolates.html">Home</a></li>
+                <li><a href="#featured-products">Our Products</a></li>
+                <li><a href="index.html">Cakes Collection</a></li>
+                <li><a href="Products_chocolates.html">Chocolates</a></li>
+                <li><a href="Gift.html">Gift Items</a></li>
+                <li><a href="special_order_chocolates.html">Special Orders</a></li>
+                <li><a href="#about-me">About Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div class="footer-section">
+            <h3>Contact Information</h3>
+            <ul>
+                <li>📧 manjupathak135@gmail.com</li>
+                <li>📱 +91 98691 53017</li>
+                <li>🕒 Mon-Sun: 9:00 AM - 8:00 PM</li>
+                <li>🚚 Home Delivery Available</li>
+                <li>💳 All Payment Methods Accepted</li>
+            </ul>
+        </div>
+
+        <!-- Social & Services Section -->
+        <div class="footer-section">
+            <h3>Connect With Us</h3>
+            <p>Follow us for daily updates, new products, and sweet inspirations!</p>
+            
+            <div class="footer-social">
+                <a href="https://www.facebook.com" target="_blank" title="Facebook">📘</a>
+                <a href="https://www.instagram.com" target="_blank" title="Instagram">📷</a>
+                <a href="https://wa.me/919869153017" target="_blank" title="WhatsApp">💬</a>
+                <a href="https://in.pinterest.com/" target="_blank" title="Pinterest">📌</a>
+                <a href="https://www.google.com" target="_blank" title="Google">🌐</a>
+            </div>
+            
+            <p style="margin-top: 20px;"><strong>🍫 Custom Orders Welcome</strong><br>
+            <small>Wedding Cakes • Birthday Specials • Corporate Gifts</small></p>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 <span class="copyright">La Ruby Studio</span> | Passion Bakery N Chocos | All Rights Reserved</p>
+        <p style="margin-top: 5px; font-size: 12px;">Designed with ❤️ for Sweet Lovers | Made in India 🇮🇳</p>
+    </div>
+</footer>
 
 <script>
 
@@ -309,37 +1026,144 @@ x.className = "topnav";
 }
 }
 
+// Enhanced Form Controls
+
+// Set minimum date to tomorrow
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
+    document.getElementById('delivery-date').setAttribute('min', minDate);
+});
+
+// Quantity control functions
+function incrementQuantity() {
+    const quantityInput = document.getElementById('weight');
+    let currentValue = parseInt(quantityInput.value);
+    quantityInput.value = currentValue + 6;
+    validateQuantity();
+}
+
+function decrementQuantity() {
+    const quantityInput = document.getElementById('weight');
+    let currentValue = parseInt(quantityInput.value);
+    if (currentValue > 50) {
+        quantityInput.value = currentValue - 6;
+        validateQuantity();
+    }
+}
+
+function validateQuantity() {
+    const quantityInput = document.getElementById('weight');
+    const value = parseInt(quantityInput.value);
+    if (value < 50) {
+        quantityInput.value = 50;
+    }
+}
+
+// Phone number validation
+document.getElementById('phone').addEventListener('input', function(e) {
+    // Remove any non-digit characters
+    let value = e.target.value.replace(/\D/g, '');
+    // Limit to 10 digits
+    if (value.length > 10) {
+        value = value.slice(0, 10);
+    }
+    e.target.value = value;
+    
+    // Visual feedback
+    if (value.length === 10) {
+        e.target.style.borderColor = 'rgba(40, 167, 69, 0.6)';
+    } else {
+        e.target.style.borderColor = 'rgba(220, 53, 69, 0.6)';
+    }
+});
+
+// Name validation (only letters and spaces)
+document.getElementById('name').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    e.target.value = value;
+});
+
+// Flavour suggestions
+const flavourInput = document.getElementById('flavour');
+const flavourSuggestions = [
+    'Dark Chocolate', 'Milk Chocolate', 'White Chocolate', 'Hazelnut', 
+    'Caramel', 'Vanilla', 'Strawberry', 'Orange', 'Mint', 'Coffee'
+];
+
+flavourInput.addEventListener('focus', function() {
+    this.placeholder = 'Popular: ' + flavourSuggestions.slice(0, 3).join(', ') + '...';
+});
+
+flavourInput.addEventListener('blur', function() {
+    this.placeholder = 'e.g., Dark Chocolate, Milk Chocolate, White Chocolate...';
+});
+
+// Form submission with enhanced validation
 document.getElementById('special-order-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
+        // Enhanced validation
+        const phone = document.getElementById('phone').value;
+        if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
+            alert('Please enter a valid 10-digit phone number.');
+            document.getElementById('phone').focus();
+            return;
+        }
+
+        const deliveryDate = new Date(document.getElementById('delivery-date').value);
+        const today = new Date();
+        if (deliveryDate <= today) {
+            alert('Please select a delivery date that is at least tomorrow.');
+            document.getElementById('delivery-date').focus();
+            return;
+        }
+
+        const quantity = parseInt(document.getElementById('weight').value);
+        if (quantity < 50) {
+            alert('Minimum quantity is 50 chocolates.');
+            document.getElementById('weight').focus();
+            return;
+        }
+
         // Collect form data
         const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
         const address = document.getElementById('address').value;
-        const quantity = document.getElementById('weight').value;
-        const deliveryDate = document.getElementById('delivery-date').value;
         const deliveryMode = document.getElementById('delivery-mode').value;
         const flavour = document.getElementById('flavour').value;
         const specialRequest = document.getElementById('special-request').value;
 
-        // Create a message
-        const message = `New Special Order:\n
-        Name: ${name}\n
-        Phone: ${phone}\n
-        Address: ${address}\n
-        Quantity: ${quantity}\n
-        Delivery Date: ${deliveryDate}\n
-        Delivery Mode: ${deliveryMode}\n
-        Flavour: ${flavour}\n
-        Special Request: ${specialRequest}`;
+        // Create a message with better formatting
+        const message = `🍫 NEW SPECIAL CHOCOLATE ORDER 🍫
+
+👤 Customer Details:
+Name: ${name}
+📱 Phone: ${phone}
+📍 Address: ${address}
+
+🍫 Order Details:
+Quantity: ${quantity} chocolates
+📅 Delivery Date: ${document.getElementById('delivery-date').value}
+🚚 Delivery Mode: ${deliveryMode === 'homedelivery' ? 'Home Delivery 🚚' : 'Store Pick Up 🏪'}
+🎯 Flavour: ${flavour}
+
+📝 Special Requests:
+${specialRequest}
+
+Thank you for choosing Passion Bakery N Chocos! 🌟`;
 
         // Encode the message for URL
         const encodedMessage = encodeURIComponent(message);
 
-        // Replace 'YOUR_WHATSAPP_NUMBER' with your actual WhatsApp number
-        const whatsappNumber = '919869153017'; // e.g., '1234567890'
+        // WhatsApp URL
+        const whatsappNumber = '919869153017';
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
 
+        // Show success message before redirecting
+        alert('Order details prepared! You will now be redirected to WhatsApp to send your order.');
+        
         // Open WhatsApp with the message
         window.open(whatsappUrl, '_blank');
     });
