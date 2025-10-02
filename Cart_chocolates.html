@@ -23,29 +23,51 @@
 
    
      <style>
-    /* Global Styles */
-    body {
-        background-color: #bad012;
-        font-family: cursive;
-        margin: 0;
-        padding: 0;
-    }
+/* ENHANCED CART PAGE CSS - MATCHING PRODUCTS & SPECIAL ORDER PAGE STYLE */
 
-    h1,
-    h2 {
-        color: #bad012;
-        font-weight: bold;
-        font-size: xxx-large;
-        text-align: center;
-        margin-bottom: 15px;
-        font-family: Great Vibes;
-        text-decoration: wavy;
-    }
+/* Global Styles - ENHANCED */
+body {
+background-color: #bad012;
+font-family: cursive;
+margin: 0;
+padding: 0;
+}
 
- /* Navigation Bar Styles */
+h1,h2 {
+color: #bad012;
+font-weight: bold;
+font-size: xxx-large;
+padding-top: 0%;
+padding-left: 0%;
+text-align: center;
+margin-bottom: 15px;
+font-family: Great Vibes;
+text-decoration: wavy;
+text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+position: relative;
+}
+
+/* Add elegant underline to headings */
+h2::after {
+content: '';
+display: block;
+width: 80px;
+height: 2px;
+background: linear-gradient(90deg, transparent, #bad012, transparent);
+margin: 10px auto;
+animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+0%, 100% { opacity: 0.7; }
+50% { opacity: 1; }
+}
+
+/* Navigation Bar Styles - ENHANCED WITH GLITTERY EFFECTS */
 .topnav {
 overflow: hidden;
 background-color: #bad012;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .topnav a {
@@ -60,16 +82,56 @@ font-size: 20px;
 border: 3px solid #11124a;
 margin-left: 10px;
 margin-top: 10px;
+border-radius: 8px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* Glittery effect for navigation buttons */
+.topnav a::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 20px 10px, rgba(255,255,255,0.8), transparent),
+radial-gradient(2px 2px at 60px 20px, rgba(255,255,255,0.6), transparent),
+radial-gradient(1px 1px at 100px 15px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 40px 35px, rgba(255,255,255,0.7), transparent),
+radial-gradient(2px 2px at 80px 40px, rgba(255,255,255,0.8), transparent);
+background-size: 120px 50px;
+opacity: 0;
+animation: sparkleGlitter 3s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+.topnav a:hover::before {
+animation: sparkleGlitter 1.5s ease-in-out infinite;
+opacity: 1;
 }
 
 .topnav a:hover {
 background-color: #54422b;
 color: floralwhite;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,0,0,0.3),
+            0 0 15px rgba(255,255,255,0.2);
 }
 
 .topnav a.active {
 background-color: #008000;
 color: #ffd700;
+box-shadow: 0 4px 12px rgba(0,128,0,0.3);
+}
+
+/* Active button glittery effect */
+.topnav a.active::before {
+animation: sparkleGlitter 2s ease-in-out infinite;
+opacity: 0.7;
 }
 
 .topnav .icon {
@@ -77,22 +139,63 @@ display: none;
 }
 
 .topnav .cart-icon {
-color: #11124a; /* Match the color theme */
+color: #11124a;
 font-size: 20px;
 padding: 14px 16px;
 text-decoration: none;
 border: 3px solid #11124a;
 margin-left: 10px;
 margin-top: 10px;
+border-radius: 8px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* Cart icon glittery effect */
+.topnav .cart-icon::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 15px 8px, rgba(255,255,255,0.9), transparent),
+radial-gradient(2px 2px at 35px 15px, rgba(255,255,255,0.7), transparent),
+radial-gradient(1px 1px at 25px 30px, rgba(255,255,255,0.8), transparent);
+background-size: 50px 50px;
+opacity: 0;
+animation: sparkleGlitter 3s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+.topnav .cart-icon:hover::before {
+animation: sparkleGlitter 1.5s ease-in-out infinite;
+opacity: 1;
 }
 
 .topnav .cart-icon:hover {
 background-color: #0000ff;
 color: floralwhite;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,0,255,0.3),
+            0 0 15px rgba(255,255,255,0.2);
+}
+
+@keyframes sparkleGlitter {
+0%, 100% { opacity: 0; }
+25% { opacity: 0.8; }
+50% { opacity: 1; }
+75% { opacity: 0.6; }
 }
 
 @media screen and (max-width: 600px) {
-.topnav a:not(:first-child) {display: none;}
+.topnav a:not(:first-child) {
+display: none;
+}
+
 .topnav a.icon {
 float: right;
 display: block;
@@ -100,12 +203,16 @@ display: block;
 }
 
 @media screen and (max-width: 600px) {
-.topnav.responsive {position: relative;}
+.topnav.responsive {
+position: relative;
+}
+
 .topnav.responsive .icon {
 position: absolute;
 right: 0;
 top: 0;
 }
+
 .topnav.responsive a {
 float: none;
 display: block;
@@ -113,131 +220,715 @@ text-align: left;
 }
 }
 
+/* General Reset */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-    /* Cart Section Styles */
-    .cart-section {
-        margin: 20px;
-        padding: 20px;
-        background-color: #8c4b29;
-        border-radius: 8px;
-    }
+/* Enhanced border images */
+img[src*="border"] {
+filter: drop-shadow(0 8px 15px rgba(0,0,0,0.4)) brightness(1.2) contrast(1.2);
+position: relative;
+z-index: 1;
+max-width: 100%;
+height: auto;
+display: block;
+margin: 20px auto;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
+/* Enhanced Cart Section - MATCHING PRODUCTS PAGE SECTIONS */
+.cart-section {
+margin: 30px 20px;
+padding: 40px;
+background: linear-gradient(135deg, #8c4b29 0%, #a0542e 100%);
+border-radius: 20px;
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+border: 2px solid rgba(255,255,255,0.1);
+position: relative;
+overflow: hidden;
+color: #ffdab9;
+}
 
-    th,
-    td {
-        border: 1px solid #ccc;
-        padding: 10px;
-        text-align: center;
-    }
+/* Sparkle effect for cart section */
+.cart-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-image: 
+radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.1), transparent),
+radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.1), transparent),
+radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.1), transparent),
+radial-gradient(1px 1px at 130px 20px, rgba(255,255,255,0.1), transparent),
+radial-gradient(2px 2px at 160px 80px, rgba(255,255,255,0.1), transparent);
+background-size: 200px 200px;
+border-radius: inherit;
+opacity: 0.5;
+animation: sparkle 4s ease-in-out infinite;
+pointer-events: none;
+}
 
-    th {
-        background-color: #1ef2fd;
-    }
+@keyframes sparkle {
+0%, 100% { opacity: 0.3; }
+50% { opacity: 0.7; }
+}
 
-    .total-row {
-        font-weight: bold;
-        background-color: #ffd700;
-    }
+/* Enhanced Table Styling */
+table {
+width: 100%;
+border-collapse: separate;
+border-spacing: 0;
+margin-top: 20px;
+background: rgba(255, 255, 255, 0.95);
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+position: relative;
+z-index: 1;
+}
 
- /* Payment Methods Section Styles */
-.payment-methods {
-    max-width: 800px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-    margin-top: 20px;padding: 20px;
-background-color: #8c4b29;
-border-radius: 8px;
+th,
+td {
+padding: 15px;
 text-align: center;
+border-bottom: 1px solid rgba(140,75,41,0.1);
+color: #8c4b29;
+font-weight: 500;
+}
+
+th {
+background: linear-gradient(135deg, #1ef2fd 0%, #17c3ce 100%);
+color: #11124a;
+font-weight: bold;
+font-size: 1.1rem;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+position: relative;
+}
+
+th::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 2px;
+background: linear-gradient(90deg, transparent, #bad012, transparent);
+}
+
+.total-row {
+font-weight: bold;
+background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+color: #8c4b29;
+font-size: 1.2rem;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.total-row td {
+border-bottom: none;
+}
+
+/* Enhanced Table Buttons */
+table button {
+background: linear-gradient(135deg, #28a745, #20c997);
+color: white;
+border: none;
+padding: 8px 15px;
+margin: 2px;
+border-radius: 20px;
+cursor: pointer;
+font-size: 14px;
+font-weight: bold;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+table button::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 10px 8px, rgba(255,255,255,0.8), transparent),
+radial-gradient(1px 1px at 25px 12px, rgba(255,255,255,0.6), transparent),
+radial-gradient(1px 1px at 40px 8px, rgba(255,255,255,0.9), transparent);
+background-size: 50px 25px;
+opacity: 0;
+animation: sparkleGlitter 3s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+table button:hover::before {
+animation: sparkleGlitter 1.5s ease-in-out infinite;
+opacity: 1;
+}
+
+table button:hover {
+background: linear-gradient(135deg, #218838, #17a2b8);
+transform: translateY(-2px) scale(1.05);
+box-shadow: 0 4px 15px rgba(40,167,69,0.4);
+}
+
+table button:active {
+transform: translateY(0) scale(0.95);
+}
+
+/* Remove button specific styling */
+table button:nth-child(1) {
+background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+table button:nth-child(1):hover {
+background: linear-gradient(135deg, #c82333, #bd2130);
+}
+
+/* Payment Methods Section - ENHANCED */
+.payment-methods {
+max-width: 850px;
+margin: 30px auto;
+padding: 40px;
+background: linear-gradient(135deg, #8c4b29 0%, #a0542e 100%);
+border-radius: 20px;
+text-align: center;
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+border: 2px solid rgba(255,255,255,0.1);
+position: relative;
+overflow: hidden;
+}
+
+/* Sparkle effect for payment methods */
+.payment-methods::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-image: 
+radial-gradient(2px 2px at 30px 40px, rgba(255,255,255,0.1), transparent),
+radial-gradient(1px 1px at 70px 20px, rgba(255,255,255,0.1), transparent),
+radial-gradient(2px 2px at 120px 60px, rgba(255,255,255,0.1), transparent);
+background-size: 150px 100px;
+border-radius: inherit;
+opacity: 0.4;
+animation: sparkle 5s ease-in-out infinite;
+pointer-events: none;
 }
 
 .payment-methods h3 {
 color: #ffd700;
-margin-bottom: 15px;
+margin-bottom: 25px;
+font-family: 'Great Vibes', cursive;
+font-size: 2.5rem;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+position: relative;
+z-index: 1;
 }
 
 .payment-methods img {
 width: 80px;
-margin: 0 10px;
-transition: transform 0.3s ease; /* Add transition for smooth scaling */
+margin: 0 15px;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+border-radius: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+position: relative;
+z-index: 1;
 }
 
 .payment-methods img:hover {
-transform: scale(1.2); /* Scale the image to 120% on hover */
+transform: translateY(-5px) scale(1.15);
+box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+filter: brightness(1.1);
 }
 
+/* Enhanced QR Code styling */
+#qr-code {
+margin-top: 20px;
+width: 300px;
+height: auto;
+border: 3px solid rgba(255,255,255,0.3);
+border-radius: 15px;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+display: none;
+margin-left: auto;
+margin-right: auto;
+transition: all 0.4s ease;
+}
+
+#qr-code:hover {
+transform: scale(1.05);
+border-color: #bad012;
+box-shadow: 0 12px 40px rgba(186,208,18,0.3);
+}
+
+/* Payment Form - ENHANCED */
 .payment-form {
-    max-width: 800px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #8c4b29;
-    border-radius: 10px;
-  }
+max-width: 850px;
+margin: 30px auto;
+padding: 40px;
+background: linear-gradient(135deg, #8c4b29 0%, #a0542e 100%);
+border-radius: 20px;
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+border: 2px solid rgba(255,255,255,0.1);
+position: relative;
+overflow: hidden;
+color: #ffdab9;
+}
 
+/* Sparkle effect for payment form */
+.payment-form::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-image: 
+radial-gradient(2px 2px at 40px 50px, rgba(255,255,255,0.1), transparent),
+radial-gradient(1px 1px at 80px 30px, rgba(255,255,255,0.1), transparent),
+radial-gradient(2px 2px at 140px 70px, rgba(255,255,255,0.1), transparent);
+background-size: 180px 120px;
+border-radius: inherit;
+opacity: 0.5;
+animation: sparkle 6s ease-in-out infinite;
+pointer-events: none;
+}
 
-       /* Container Styles */
-       .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #cf94bd;
-            color: #11124a;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.payment-form h1,
+.payment-form h2 {
+position: relative;
+z-index: 1;
+}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+.payment-form p {
+font-weight: bold;
+color: #ffdab9;
+margin-bottom: 20px;
+position: relative;
+z-index: 1;
+line-height: 1.6;
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+/* Enhanced Container */
+.container {
+max-width: 700px;
+margin: 20px auto;
+background: linear-gradient(135deg, rgba(207, 148, 189, 0.95), rgba(190, 130, 170, 0.9));
+color: #11124a;
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+position: relative;
+z-index: 1;
+border: 2px solid rgba(255,255,255,0.2);
+}
 
-        input[type="text"],
-        input[type="tel"],
-        input[type="number"],
-        input[type="date"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+/* Enhanced Form Elements */
+.form-group {
+margin-bottom: 20px;
+position: relative;
+}
 
-        input[type="file"] {
-            margin-top: 5px;
-        }
+label {
+display: block;
+margin-bottom: 8px;
+font-weight: bold;
+color: #11124a;
+font-size: 1rem;
+text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+}
 
-        
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+width: 100%;
+padding: 12px 15px;
+border: 2px solid rgba(17,18,74,0.3);
+border-radius: 10px;
+box-sizing: border-box;
+font-size: 14px;
+background: rgba(255, 255, 255, 0.95);
+transition: all 0.3s ease;
+color: #11124a;
+font-weight: 500;
+}
 
-        button:hover {
-            background-color: #4cae4c;
-        }
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus {
+outline: none;
+border-color: #bad012;
+box-shadow: 0 4px 15px rgba(186,208,18,0.3);
+transform: translateY(-2px);
+background: rgba(255, 255, 255, 1);
+}
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
+/* Enhanced Select Styling */
+select {
+cursor: pointer;
+appearance: none;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3e%3cpath stroke='%2311124a' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 10l4 4 4-4'/%3e%3c/svg%3e");
+background-position: right 12px center;
+background-repeat: no-repeat;
+background-size: 16px;
+padding-right: 40px;
+}
 
-           
-        }
+/* Enhanced Submit Button */
+button[type="submit"] {
+background: linear-gradient(135deg, #28a745, #20c997);
+color: white;
+padding: 15px 25px;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+width: 100%;
+font-size: 1.1rem;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 6px 20px rgba(40,167,69,0.3);
+position: relative;
+overflow: hidden;
+}
 
-      
+/* Glittery sparkle effect for submit button */
+button[type="submit"]::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(2px 2px at 20px 20px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 60px 30px, rgba(255,255,255,0.8), transparent),
+radial-gradient(2px 2px at 100px 25px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 140px 35px, rgba(255,255,255,0.7), transparent);
+background-size: 160px 60px;
+opacity: 0;
+animation: sparkleGlitter 2s ease-in-out infinite;
+pointer-events: none;
+}
 
-    </style>
+button[type="submit"]:hover::before {
+animation: sparkleGlitter 1s ease-in-out infinite;
+opacity: 1;
+}
+
+button[type="submit"]:hover {
+background: linear-gradient(135deg, #218838, #17a2b8);
+transform: translateY(-3px) scale(1.02);
+box-shadow: 0 10px 30px rgba(40,167,69,0.5);
+}
+
+button[type="submit"]:active {
+transform: translateY(-1px) scale(0.98);
+}
+
+/* PROFESSIONAL BUSINESS FOOTER - MATCHING OTHER PAGES */
+.footer {
+background: linear-gradient(135deg, #2c1810 0%, #8c4b29 50%, #2c1810 100%);
+color: #ffdab9;
+padding: 60px 20px 20px;
+margin-top: 50px;
+position: relative;
+overflow: hidden;
+}
+
+.footer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 3px;
+background: linear-gradient(90deg, #bad012, #ffd700, #bad012);
+animation: shimmer 3s ease-in-out infinite;
+}
+
+.footer-content {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-section h3 {
+color: #bad012;
+font-family: 'Great Vibes', cursive;
+font-size: 2rem;
+margin-bottom: 20px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.footer-section p,
+.footer-section li {
+line-height: 1.6;
+margin-bottom: 10px;
+font-size: 14px;
+}
+
+.footer-section ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-section ul li {
+padding: 5px 0;
+border-bottom: 1px solid rgba(255,218,185,0.1);
+}
+
+.footer-section ul li:last-child {
+border-bottom: none;
+}
+
+.footer-section a {
+color: #ffdab9;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+color: #bad012;
+text-shadow: 0 0 5px rgba(186,208,18,0.5);
+}
+
+.footer-social {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+flex-wrap: wrap;
+}
+
+.footer-social a {
+display: inline-block;
+width: 35px;
+height: 35px;
+background: rgba(186,208,18,0.2);
+border-radius: 50%;
+text-align: center;
+line-height: 35px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+/* Glittery effect for footer social buttons */
+.footer-social a::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(1px 1px at 8px 8px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 20px 15px, rgba(255,255,255,0.8), transparent),
+radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.9), transparent),
+radial-gradient(1px 1px at 25px 8px, rgba(255,255,255,0.7), transparent);
+background-size: 35px 35px;
+opacity: 0;
+animation: sparkleGlitter 4s ease-in-out infinite;
+pointer-events: none;
+border-radius: inherit;
+}
+
+.footer-social a:hover::before {
+animation: sparkleGlitter 2s ease-in-out infinite;
+opacity: 1;
+}
+
+.footer-social a:hover {
+background: #bad012;
+transform: translateY(-3px) scale(1.1);
+box-shadow: 0 5px 15px rgba(186,208,18,0.4),
+            0 0 10px rgba(255,255,255,0.3);
+}
+
+.footer-bottom {
+border-top: 2px solid rgba(255,218,185,0.2);
+padding-top: 20px;
+text-align: center;
+position: relative;
+}
+
+.footer-bottom p {
+margin: 0;
+font-size: 13px;
+color: rgba(255,218,185,0.8);
+}
+
+.footer-bottom .copyright {
+font-weight: bold;
+color: #bad012;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* MOBILE RESPONSIVE DESIGN - ENHANCED */
+@media screen and (max-width: 768px) {
+/* Navigation adjustments */
+.topnav a {
+margin: 5px;
+padding: 12px 14px;
+font-size: 18px;
+}
+
+/* Cart section mobile adjustments */
+.cart-section {
+margin: 20px 10px;
+padding: 25px 15px;
+}
+
+/* Table mobile responsiveness */
+table {
+font-size: 14px;
+}
+
+th, td {
+padding: 10px 8px;
+}
+
+table button {
+padding: 6px 10px;
+font-size: 12px;
+margin: 1px;
+}
+
+/* Payment methods mobile adjustments */
+.payment-methods {
+margin: 20px 10px;
+padding: 25px 15px;
+}
+
+.payment-methods img {
+width: 60px;
+margin: 0 8px;
+}
+
+#qr-code {
+width: 250px;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* Payment form mobile adjustments */
+.payment-form {
+margin: 20px 10px;
+padding: 25px 15px;
+}
+
+.container {
+padding: 20px 15px;
+margin: 15px auto;
+}
+
+/* Form elements mobile adjustments */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+padding: 10px 12px;
+font-size: 16px; /* Prevents zoom on iOS */
+}
+
+button[type="submit"] {
+padding: 12px 20px;
+font-size: 1rem;
+}
+
+/* Footer mobile layout */
+.footer-content {
+grid-template-columns: 1fr;
+gap: 30px;
+text-align: center;
+}
+
+.footer-social {
+justify-content: center;
+}
+
+/* Typography mobile adjustments */
+h1, h2 {
+font-size: xx-large;
+}
+}
+
+@media screen and (max-width: 480px) {
+/* Extra small screens */
+.cart-section {
+margin: 15px 5px;
+padding: 20px 10px;
+}
+
+.payment-methods,
+.payment-form {
+margin: 15px 5px;
+padding: 20px 10px;
+}
+
+.container {
+padding: 15px 10px;
+}
+
+/* Table adjustments for very small screens */
+table {
+font-size: 12px;
+}
+
+th, td {
+padding: 8px 5px;
+}
+
+.payment-methods img {
+width: 50px;
+margin: 0 5px;
+}
+
+#qr-code {
+width: 200px;
+}
+
+/* Typography adjustments */
+h1, h2 {
+font-size: x-large;
+}
+
+.topnav a {
+font-size: 16px;
+padding: 10px 12px;
+}
+}
+
+/* Ensure images are responsive */
+@media screen and (max-width: 600px) {
+img[src*="border"] {
+width: 90%;
+padding-left: 5%;
+}
+}
+</style>
 </head>
 
 <body>
@@ -259,142 +950,201 @@ transform: scale(1.2); /* Scale the image to 120% on hover */
 
     <img src="border top.png" style="height: 70%; width: 70%; margin-top: 20px; padding-left: 15%" />
 
- <!-- Cart Section -->
-<div class="cart-section">
-    <h2>Your Cart</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Sr No</th>
-                <th>Product Name</th>
-                <th>Weight</th> <!-- New Weight Column -->
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="cart-table-body">
-            <!-- Cart items will be populated here -->
-        </tbody>
-        <tfoot>
-            <tr class="total-row">
-                <td colspan="3">Total Amount</td>
-                <td id="total-amount">₹0.00</td> <!-- Changed to ₹ for consistency -->
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-</div>
-    <img src="border bottom.png"
-        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-
-        <img src="border top.png"
-        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
- <!-- Payment Methods Section -->
-<div class="payment-methods">
-    <h3>Payment Methods</h3>
-    <a href="gpay://send?phone=919869153017&amount=0&note=Payment%20for%20Order" id="gpay-link" target="_blank">
-        <img src="gpay.png" alt="GPay" />
-    </a>
-    <a href="paytm://pay?pa=919869153017&pn=YourName&mc=YOUR_MERCHANT_CODE&tn=Payment%20for%20Order&am=0&cu=INR" id="paytm-link" target="_blank">
-        <img src="paytm.png" alt="Paytm" />
-    </a>
-    <img src="upi.png" alt="UPI" id="upi-link" style="cursor: pointer;" />
-    <img src="qr code.jpg" alt="QR Code" id="qr-code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: 150px; transform: none;" /></div>
+    <!-- Cart Section -->
+    <div class="cart-section">
+        <h2>Your Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Product Name</th>
+                    <th>Weight</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-table-body">
+                <!-- Cart items will be populated here -->
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="3">Total Amount</td>
+                    <td id="total-amount">₹0.00</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
     <img src="border bottom.png"
-    style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
+        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
 
     <img src="border top.png"
-    style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
 
-<!-- Payment Form Container -->
-<div class="payment-form">
-    <h2>Payment Confirmation Form:</h2>
-    <p style="font-weight: bold; color: floralwhite;">
-      After Going through the payment kindly fill the form below for payment
-      confirmation, while your order is on the way!!
-    </p>
-    <h1>Order Form</h1>
-    <div class="container">
-        <form action="/submit-order" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="name">1. Name of the person placing this order:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="address">2. Address of the person placing this order:</label>
-                <input type="text" id="address" name="address" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">3. Phone Number of the person ordering:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-
-            <div class="form-group">
-                <label for="different-phone">4. Different Phone Number for delivery (No or Yes):</label>
-                <select id="different-phone" name="different-phone" required onchange="togglePhoneInput(this)">
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <input type="tel" id="delivery-phone" name="delivery-phone" style="display:none;" placeholder="Enter delivery phone number" required>
-            </div>
-
-            <div class="form-group">
-                <label for="different-name">5. Different Name for delivery (No or Yes):</label>
-                <select id="different-name" name="different-name" required onchange="toggleNameInput(this)">
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <input type="text" id="delivery-name" name="delivery-name" style="display:none;" placeholder="Enter delivery name" required </div>
-
-            <div class="form-group">
-                <label for="different-address">6. Different Address for delivery (No or Yes):</label>
-                <select id="different-address" name="different-address" required onchange="toggleAddressInput(this)">
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-                <input type="text" id="delivery-address" name="delivery-address" style="display:none;" placeholder="Enter delivery address" required>
-            </div>
-
-            <div class="form-group">
-                <label for="delivery-date">7. Date to be delivered:</label>
-                <input type="date" id="delivery-date" name="delivery-date" required>
-            </div>
-
-            <div class="form-group">
-                <label for="delivery-time">8. Time of delivery:</label>
-                <input type="time" id="delivery-time" name="delivery-time" required>
-            </div>
-
-            <div class="form-group">
-                <label for="delivery-mode">9. Mode of delivery:</label>
-                <select id="delivery-mode" name="delivery-mode" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="home-delivery">Home Delivery</option>
-                    <option value="pick-up">Pick Up</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="special-request">10. Any Other Request for the Special Order:</label>
-                <textarea id="special-request" name="special-request" ></textarea>
-            </div>
-    
-
-            <button type="submit" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Submit Order</button>
-        </form>
-    </div>
+    <!-- Payment Methods Section -->
+    <div class="payment-methods">
+        <h3>Payment Methods</h3>
+        <a href="gpay://send?phone=919869153017&amount=0&note=Payment%20for%20Order" id="gpay-link" target="_blank">
+            <img src="gpay.png" alt="GPay" />
+        </a>
+        <a href="paytm://pay?pa=919869153017&pn=YourName&mc=YOUR_MERCHANT_CODE&tn=Payment%20for%20Order&am=0&cu=INR" id="paytm-link" target="_blank">
+            <img src="paytm.png" alt="Paytm" />
+        </a>
+        <img src="upi.png" alt="UPI" id="upi-link" style="cursor: pointer;" />
+        <img src="qr code.jpg" alt="QR Code" id="qr-code" />
     </div>
 
+    <img src="border bottom.png"
+        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+    <img src="border top.png"
+        style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
+
+    <!-- Payment Form Container -->
+    <div class="payment-form">
+        <h2>Payment Confirmation Form:</h2>
+        <p>
+          After Going through the payment kindly fill the form below for payment
+          confirmation, while your order is on the way!!
+        </p>
+        <h1>Order Form</h1>
+        <div class="container">
+            <form action="/submit-order" method="POST" enctype="multipart/form-data" onsubmit="sendWhatsAppMessage(event)">
+                <div class="form-group">
+                    <label for="name">1. Name of the person placing this order:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">2. Address of the person placing this order:</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your complete address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">3. Phone Number of the person ordering:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="different-phone">4. Different Phone Number for delivery (No or Yes):</label>
+                    <select id="different-phone" name="different-phone" required onchange="togglePhoneInput(this)">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                    <input type="tel" id="delivery-phone" name="delivery-phone" style="display:none;" placeholder="Enter delivery phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="different-name">5. Different Name for delivery (No or Yes):</label>
+                    <select id="different-name" name="different-name" required onchange="toggleNameInput(this)">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                    <input type="text" id="delivery-name" name="delivery-name" style="display:none;" placeholder="Enter delivery name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="different-address">6. Different Address for delivery (No or Yes):</label>
+                    <select id="different-address" name="different-address" required onchange="toggleAddressInput(this)">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                    <input type="text" id="delivery-address" name="delivery-address" style="display:none;" placeholder="Enter delivery address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-date">7. Date to be delivered:</label>
+                    <input type="date" id="delivery-date" name="delivery-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-time">8. Time of delivery:</label>
+                    <input type="time" id="delivery-time" name="delivery-time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-mode">9. Mode of delivery:</label>
+                    <select id="delivery-mode" name="delivery-mode" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="home-delivery">Home Delivery</option>
+                        <option value="pick-up">Pick Up</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="special-request">10. Any Other Request for the Special Order:</label>
+                    <textarea id="special-request" name="special-request" placeholder="Please describe any special requirements or requests..." ></textarea>
+                </div>
+        
+                <button type="submit">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PROFESSIONAL BUSINESS FOOTER - MATCHING OTHER PAGES -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About Passion Bakery</h3>
+                <p>Your one-stop destination for handcrafted chocolates, delicious cakes, and unique gift items. We create sweet memories with every bite, using only the finest ingredients and lots of love.</p>
+                <p><strong>Quality • Freshness • Excellence</strong></p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Chocolates.html">Home</a></li>
+                    <li><a href="#featured-products">Our Products</a></li>
+                    <li><a href="index.html">Cakes Collection</a></li>
+                    <li><a href="Products_chocolates.html">Chocolates</a></li>
+                    <li><a href="Gift.html">Gift Items</a></li>
+                    <li><a href="special_order_chocolates.html">Special Orders</a></li>
+                    <li><a href="#about-me">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>📧 manjupathak135@gmail.com</li>
+                    <li>📱 +91 98691 53017</li>
+                    <li>🕒 Mon-Sun: 9:00 AM - 8:00 PM</li>
+                    <li>🚚 Home Delivery Available</li>
+                    <li>💳 All Payment Methods Accepted</li>
+                </ul>
+            </div>
+
+            <!-- Social & Services Section -->
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Follow us for daily updates, new products, and sweet inspirations!</p>
+                
+                <div class="footer-social">
+                    <a href="https://www.facebook.com" target="_blank" title="Facebook">📘</a>
+                    <a href="https://www.instagram.com" target="_blank" title="Instagram">📷</a>
+                    <a href="https://wa.me/919869153017" target="_blank" title="WhatsApp">💬</a>
+                    <a href="https://in.pinterest.com/" target="_blank" title="Pinterest">📌</a>
+                    <a href="https://www.google.com" target="_blank" title="Google">🌐</a>
+                </div>
+                
+                <p style="margin-top: 20px;"><strong>🍫 Custom Orders Welcome</strong><br>
+                <small>Wedding Cakes • Birthday Specials • Corporate Gifts</small></p>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 <span class="copyright">La Ruby Studio</span> | Passion Bakery N Chocos | All Rights Reserved</p>
+            <p style="margin-top: 5px; font-size: 12px;">Designed with ❤️ for Sweet Lovers | Made in India 🇮🇳</p>
+        </div>
+    </footer>
 
     <script>
 <!-- Script for Navigation Toggle -->
@@ -525,10 +1275,9 @@ document.getElementById('paytm-link').addEventListener('click', function(event) 
 updateCartTable();
 
 // Add this code inside your existing <script> tag for qr code image
-
-    document.getElementById('upi-link').addEventListener('click', function() {
-    const qrCodeImage = document.getElementById('qr-code');
-    qrCodeImage.style.display = qrCodeImage.style.display === 'none' ? 'block' : 'none'; // Toggle QR code visibility
+document.getElementById('upi-link').addEventListener('click', function() {
+const qrCodeImage = document.getElementById('qr-code');
+qrCodeImage.style.display = qrCodeImage.style.display === 'none' ? 'block' : 'none'; // Toggle QR code visibility
 });
 
 function togglePhoneInput(select) {
