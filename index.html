@@ -1,1482 +1,1738 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PassionBakeryNChocos</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
-
-<style>
-:root {
---primary-gradient: linear-gradient(90deg,rgba(30,242,253,0.95) 0%,rgba(74,144,226,0.95) 100%);
---section-gradient: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
---button-gradient: linear-gradient(45deg, #11124a, #1a1d5a);
---hover-gradient: linear-gradient(45deg, #FEA3AA, #ff7b82);
---gold: #FFD700;
---primary-text: #11124a;
---white: #FFFFFF;
---transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
---border-radius: 20px;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-background: #1ef2fd;
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-line-height: 1.6;
-overflow-x: hidden;
-}
-
-h1, h2 {
-color: var(--gold);
-font-weight: bold;
-font-size: clamp(1.8rem, 5vw, 3.5rem);
-text-align: center;
-margin-bottom: 15px;
-font-family: Great Vibes;
-text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-}
-
-p {
-font-weight: bolder;
-font-size: clamp(1rem, 2.5vw, 1.25rem);
-line-height: 1.6;
-font-family: Delius;
-}
-
-/* Navigation */
-.topnav {
-overflow: hidden;
-background: var(--primary-gradient);
-font-family: Delius;
-box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-backdrop-filter: blur(20px);
-border-bottom: 2px solid rgba(255,215,0,0.3);
-position: sticky;
-top: 0;
-z-index: 1000;
-}
-
-.topnav a, .topnav .cart-icon {
-float: left;
-display: block;
-color: var(--primary-text);
-text-align: center;
-padding: 16px 24px;
-font-weight: bold;
-text-decoration: none;
-font-size: clamp(0.9rem, 2.5vw, 1.25rem);
-border-radius: 12px;
-margin: 8px 6px;
-transition: var(--transition);
-position: relative;
-overflow: hidden;
-}
-
-.topnav a:hover, .topnav .cart-icon:hover {
-background: linear-gradient(45deg, #0000ff, #4169e1);
-color: white;
-transform: translateY(-2px);
-box-shadow: 0 8px 25px rgba(99,102,241,0.3);
-}
-
-.topnav .cart-icon:hover { transform: translateY(-2px) rotate(5deg); }
-
-.topnav a.active {
-background: linear-gradient(45deg, #3e476f, #5a6491);
-color: white;
-box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-transform: scale(1.05);
-}
-
-.topnav .icon { display: none; }
-
-/* Banner */
-#banner {
-background: #1ef2fd;
-color: var(--primary-text);
-text-align: center;
-padding: 20px 10px;
-text-shadow: 2px 2px 5px pink;
-position: relative;
-overflow: hidden;
-}
-
-#banner h1 { margin-bottom: 10px; }
-
-#banner p {
-font-size: clamp(1rem, 3vw, 1.125rem);
-font-family: Delius;
-}
-
-img { max-width: 100%; height: auto; }
-
-.border-image {
-width: min(70%, 600px);
-height: auto;
-margin: 20px auto;
-display: block;
-animation: imageFloat 6s ease-in-out infinite;
-filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1.1) contrast(1.1);
-}
-
-@keyframes imageFloat {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-10px); }
-}
-
-/* Sections */
-section {
-padding: clamp(20px, 5vw, 40px);
-text-align: center;
-margin-top: 30px;
-position: relative;
-}
-
-section#featured-products, section#about-me, section#contact-me, section#customer-reviews {
-background: var(--section-gradient);
-margin: 20px clamp(10px, 3vw, 20px);
-color: var(--white);
-border-radius: var(--border-radius);
-box-shadow: 0 10px 30px rgba(98,102,244,0.3);
-overflow: hidden;
-position: relative;
-}
-
-/* Smooth Scrolling Reviews */
-.reviews-container {
-max-width: 100%;
-margin: 0 auto;
-overflow: hidden;
-position: relative;
-padding: 20px 0;
-}
-
-.reviews-scroll {
-display: flex;
-gap: 30px;
-animation: smoothScroll 60s linear infinite;
-width: max-content;
-}
-
-.reviews-scroll:hover { animation-play-state: paused; }
-
-@keyframes smoothScroll {
-0% { transform: translateX(0); }
-100% { transform: translateX(-50%); }
-}
-
-.review-card {
-flex: 0 0 400px;
-background: rgba(255, 255, 255, 0.95);
-border-radius: 20px;
-padding: 25px;
-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-color: var(--primary-text);
-text-align: left;
-backdrop-filter: blur(10px);
-border: 2px solid rgba(255, 215, 0, 0.3);
-transition: transform 0.3s ease;
-}
-
-.review-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-border-color: var(--gold);
-}
-
-.review-header {
-display: flex;
-align-items: center;
-margin-bottom: 15px;
-}
-
-.reviewer-avatar {
-width: 50px;
-height: 50px;
-border-radius: 50%;
-background: var(--button-gradient);
-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.2rem;
-font-weight: bold;
-margin-right: 15px;
-box-shadow: 0 4px 15px rgba(17, 18, 74, 0.3);
-}
-
-.reviewer-info h4 {
-font-family: 'Great Vibes', cursive;
-color: var(--primary-text);
-font-size: 1.3rem;
-margin-bottom: 2px;
-text-shadow: none;
-}
-
-.reviewer-info .stars {
-color: var(--gold);
-font-size: 1rem;
-}
-
-.review-text {
-font-size: 0.95rem;
-line-height: 1.6;
-color: #333;
-font-family: Delius;
-font-style: italic;
-margin-bottom: 15px;
-}
-
-.review-date {
-font-size: 0.8rem;
-color: #666;
-text-align: right;
-font-family: Delius;
-}
-
-.reviews-cta {
-text-align: center;
-margin-top: 30px;
-padding: 20px;
-background: rgba(255, 255, 255, 0.1);
-border-radius: 15px;
-backdrop-filter: blur(10px);
-}
-
-.reviews-cta p {
-color: var(--white);
-font-size: clamp(1rem, 2.5vw, 1.2rem);
-margin-bottom: 20px;
-font-family: Delius;
-}
-
-.google-reviews-btn {
-display: inline-block;
-padding: 15px 30px;
-background: var(--button-gradient);
-color: white;
-text-decoration: none;
-border-radius: 25px;
-font-family: Delius;
-font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-font-weight: bold;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 8px 25px rgba(17, 18, 74, 0.3);
-border: 2px solid rgba(255, 215, 0, 0.3);
-}
-
-.google-reviews-btn:hover {
-background: var(--hover-gradient);
-color: var(--primary-text);
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 12px 35px rgba(254, 163, 170, 0.4);
-border-color: var(--gold);
-}
-
-/* Slider */
-.slider-container {
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-max-width: 100%;
-margin: 0 auto;
-overflow: hidden;
-padding: 20px 0;
-width: 100%;
-}
-
-.slider {
-display: flex;
-transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-width: 100%;
-}
-
-.slide {
-flex: 0 0 100%;
-text-align: center;
-padding: 0 20px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-}
-
-.slide img {
-max-width: min(70%, 400px);
-max-height: 300px;
-width: auto;
-height: auto;
-margin: 0 auto;
-display: block;
-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-border-radius: 15px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-object-fit: contain;
-}
-
-.slide img:hover {
-transform: scale(1.08) rotate(2deg);
-box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-}
-
-.slide p {
-margin-top: 15px;
-font-size: clamp(1rem, 3vw, 1.25rem);
-font-family: Delius;
-color: var(--white);
-text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-.slider-button {
-background: var(--button-gradient);
-color: #fff;
-border: none;
-padding: 12px 16px;
-cursor: pointer;
-border-radius: 50%;
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-z-index: 10;
-transition: var(--transition);
-box-shadow: 0 4px 15px rgba(15,16,72,0.3);
-width: 50px;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.slider-button.prev { left: 10px; }
-.slider-button.next { right: 10px; }
-
-.slider-button:hover {
-background: var(--hover-gradient);
-color: var(--primary-text);
-font-weight: bold;
-transform: translateY(-50%) scale(1.1);
-box-shadow: 0 8px 25px rgba(254,163,170,0.4);
-}
-
-.slider-dots {
-text-align: center;
-margin-top: 20px;
-}
-
-.slider-dots .dot {
-display: inline-block;
-width: 12px;
-height: 12px;
-margin: 0 6px;
-background-color: rgba(255,255,255,0.5);
-border-radius: 50%;
-cursor: pointer;
-transition: var(--transition);
-border: 2px solid transparent;
-}
-
-.slider-dots .dot.active {
-background-color: var(--white);
-transform: scale(1.3);
-border-color: var(--gold);
-box-shadow: 0 0 10px rgba(255,215,0,0.5);
-}
-
-.slider-dots .dot:hover {
-background-color: rgba(255,255,255,0.8);
-transform: scale(1.1);
-}
-
-/* Shop Buttons */
-.shop-button {
-display: inline-block;
-min-height: 45px;
-min-width: 100px;
-padding: 10px 15px;
-margin: 15px 10px;
-background: var(--button-gradient);
-font-family: Delius;
-color: #f2f2f2;
-font-size: clamp(0.9rem, 2vw, 1rem);
-text-align: center;
-line-height: 1.4;
-border-radius: 25px;
-text-decoration: none;
-border: 2px solid #f2f2f2;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 6px 20px rgba(17,18,74,0.3);
-}
-
-.shop-button:hover {
-background: linear-gradient(45deg, var(--gold), #ffd700);
-color: var(--primary-text);
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 10px 30px rgba(255,215,0,0.4);
-border-color: var(--primary-text);
-}
-
-/* About & Contact */
-#about-me, #contact-me {
-background: linear-gradient(135deg, #75a9d1 0%, #5a8bb8 50%, #4a7ba8 100%);
-padding: clamp(30px, 8vw, 50px) clamp(10px, 3vw, 20px);
-}
-
-.about-container, .contact-container {
-display: flex;
-flex-wrap: wrap;
-max-width: 1200px;
-margin: 0 auto;
-background: rgba(255,255,255,0.95);
-border-radius: var(--border-radius);
-box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-overflow: hidden;
-backdrop-filter: blur(10px);
-}
-
-.contact-container {
-justify-content: center;
-background: rgba(240,245,248,0.95);
-}
-
-.about-left {
-flex: 1;
-min-width: 300px;
-display: flex;
-justify-content: center;
-align-items: center;
-background: linear-gradient(135deg, #f0f5f8, #e8f2f7);
-padding: 20px;
-}
-
-.about-left img {
-max-width: 100%;
-height: auto;
-border-radius: 15px;
-object-fit: cover;
-transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.about-left img:hover { transform: scale(1.05) rotate(2deg); }
-
-.about-right {
-flex: 1;
-min-width: 300px;
-padding: clamp(20px, 5vw, 30px);
-display: flex;
-flex-direction: column;
-justify-content: center;
-text-align: center;
-background: linear-gradient(135deg, #f9f9f9, #f0f4f7);
-}
-
-.about-right h2 {
-margin-bottom: 20px;
-font-size: clamp(1.5rem, 4vw, 2rem);
-color: #0f1048;
-}
-
-.about-right p {
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-color: #333;
-line-height: 1.6;
-}
-
-/* Contact Form */
-.contact-form {
-flex: 1;
-min-width: 300px;
-padding: clamp(20px, 5vw, 30px);
-}
-
-.contact-form h2 {
-margin-bottom: 20px;
-color: #0f1048;
-font-size: clamp(1.5rem, 4vw, 2rem);
-}
-
-.contact-form label {
-display: block;
-margin: 15px 0 8px;
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-color: #333;
-font-weight: 600;
-}
-
-.contact-form input, .contact-form textarea {
-width: 100%;
-padding: 12px 15px;
-margin-bottom: 20px;
-border: 2px solid #ddd;
-border-radius: 12px;
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-transition: var(--transition);
-background: rgba(255,255,255,0.9);
-}
-
-.contact-form input:focus, .contact-form textarea:focus {
-outline: none;
-border-color: #4a90e2;
-background: rgba(255,255,255,1);
-box-shadow: 0 0 15px rgba(74,144,226,0.2);
-transform: translateY(-2px);
-}
-
-.contact-form button {
-background: var(--button-gradient);
-color: #fff;
-border: none;
-padding: 15px 30px;
-border-radius: 25px;
-cursor: pointer;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-font-weight: 600;
-box-shadow: 0 6px 20px rgba(15,16,72,0.3);
-}
-
-.contact-form button:hover {
-background: var(--hover-gradient);
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 10px 30px rgba(254,163,170,0.4);
-}
-
-/* Social Links */
-.social-links {
-flex: 1;
-min-width: 300px;
-padding: clamp(20px, 5vw, 30px);
-text-align: center;
-}
-
-.social-links h3 {
-margin-bottom: 20px;
-color: #0f1048;
-font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-}
-
-.social-links .social-icon {
-display: inline-block;
-margin: 0 12px 15px 12px;
-width: 50px;
-height: 50px;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.social-links .social-icon img {
-width: 100%;
-height: 100%;
-border-radius: 50%;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-object-fit: cover;
-}
-
-.social-links .social-icon:hover {
-transform: translateY(-5px) scale(1.2) rotate(5deg);
-}
-
-.social-links .social-icon:hover img {
-box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-/* Footer */
-.business-footer {
-background: linear-gradient(135deg, #0000ff 0%, #1e3a8a 50%, #1e40af 100%);
-color: floralwhite;
-padding: clamp(40px, 6vw, 60px) clamp(15px, 4vw, 20px) clamp(20px, 3vw, 30px);
-font-family: Delius;
-border-top: 4px solid var(--gold);
-box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
-margin-top: 30px;
-}
-
-.footer-content {
-max-width: 1200px;
-margin: 0 auto;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-gap: clamp(25px, 5vw, 40px);
-}
-
-.footer-section {
-flex: 1 1 280px;
-min-width: 250px;
-}
-
-.footer-section h3 {
-font-family: 'Great Vibes', cursive;
-font-size: clamp(1.6rem, 4vw, 2.2rem);
-color: var(--gold);
-margin-bottom: 20px;
-text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-}
-
-.footer-section p {
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-line-height: 1.6;
-color: floralwhite;
-margin-bottom: 15px;
-font-family: Delius;
-}
-
-.footer-section ul {
-list-style: none;
-padding: 0;
-margin: 0;
-}
-
-.footer-section ul li {
-padding: 10px 0;
-border-bottom: 1px solid rgba(255,255,255,0.2);
-transition: var(--transition);
-font-family: Delius;
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-}
-
-.footer-section ul li:hover {
-padding-left: 15px;
-color: var(--gold);
-text-shadow: 0 0 5px rgba(255,215,0,0.5);
-}
-
-.footer-section a {
-color: floralwhite;
-text-decoration: none;
-transition: var(--transition);
-font-family: Delius;
-}
-
-.footer-section a:hover {
-color: var(--gold);
-text-shadow: 0 0 5px rgba(255,215,0,0.5);
-}
-
-.contact-info-item {
-display: flex;
-align-items: center;
-margin-bottom: 12px;
-font-family: Delius;
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-}
-
-.contact-info-item i {
-width: 25px;
-margin-right: 12px;
-color: var(--gold);
-font-size: 1.1rem;
-}
-
-.social-footer-links {
-display: flex;
-gap: 15px;
-margin-top: 20px;
-flex-wrap: wrap;
-}
-
-.social-footer-links a {
-display: inline-block;
-width: 45px;
-height: 45px;
-background: linear-gradient(45deg, #11124a, #1a1d5a);
-border-radius: 50%;
-text-align: center;
-line-height: 45px;
-transition: var(--transition);
-border: 2px solid rgba(255,215,0,0.3);
-box-shadow: 0 4px 15px rgba(17,18,74,0.3);
-}
-
-.social-footer-links a:hover {
-background: var(--hover-gradient);
-color: var(--primary-text);
-transform: translateY(-3px) scale(1.1);
-box-shadow: 0 8px 25px rgba(254,163,170,0.4);
-border-color: var(--gold);
-}
-
-.footer-logo-img {
-max-width: 100px;
-height: auto;
-margin-bottom: 15px;
-border-radius: 15px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-transition: var(--transition);
-}
-
-.footer-logo-img:hover {
-transform: scale(1.05) rotate(2deg);
-box-shadow: 0 15px 40px rgba(255,215,0,0.3);
-}
-
-.footer-bottom-section {
-margin-top: 40px;
-padding-top: 25px;
-border-top: 2px solid rgba(255,215,0,0.3);
-text-align: center;
-}
-
-.footer-bottom-section p {
-font-size: clamp(0.9rem, 2.5vw, 1rem);
-color: var(--gold);
-font-family: Delius;
-font-weight: bold;
-}
-
-/* Mobile */
-@media screen and (max-width: 768px) {
-.topnav a:not(:first-child) { display: none; }
-.topnav a.icon { float: right; display: block; margin: 8px 10px; }
-.topnav.responsive { position: relative; }
-.topnav.responsive .icon { position: absolute; right: 10px; top: 0px; color: var(--gold); background: linear-gradient(45deg, #3e476f, #5a6491); }
-.topnav.responsive a { float: none; display: block; text-align: left; margin: 5px 10px; }
-.slider-button { width: 40px; height: 40px; padding: 8px; }
-.slider-button.prev { left: 5px; }
-.slider-button.next { right: 5px; }
-.review-card { flex: 0 0 320px; padding: 20px; }
-.footer-content { flex-direction: column; gap: 25px; }
-.footer-section { text-align: center; min-width: auto; }
-.social-footer-links { justify-content: center; }
-}
-
-@media screen and (max-width: 480px) {
-.review-card { flex: 0 0 280px; padding: 15px; }
-}
-</style>
-</head>
-<body>
-<!-- Navigation Bar -->
-<div class="topnav" id="myTopnav">
-<a href="index.html" class="active">Home</a>
-<a href="#featured-products">Products</a>
-<a href="#about-me">About Me</a>
-<a href="#customer-reviews">Reviews</a>
-<a href="#contact-me">Contact Us</a>
-<a href="special_order_cake.html">Special Order</a>
-<a href="Cart_cake.html" class="cart-icon"><i class="fa fa-shopping-cart"></i></a> <!-- Cart Icon -->
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-<i class="fa fa-bars"></i>
-</a>
-</div>
-
-<!-- Replace the border images with these classes -->
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-<!-- Banner Section -->
-<section id="banner">
-<div class="glitter-container"></div>
-<img src="Cake_web_banner.png" style="width: 100%; height: 25%">
-<h1 style="color: #11124a;">Welcome to PassionBakeryNChocos Shop!! </h1>
-<p style="text-shadow: 2px 2px 5px pink; font-family: Delius;">Your one-stop shop for amazing desserts and sweetness.</p>
-</section>
-
-<!-- Replace the border images with these classes -->
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-<!-- Featured Products Section -->
-<section id="featured-products">
-<h2>Featured Products</h2>
-<p>Check out our top products!</p>
-<div class="slider-container">
-<button class="slider-button prev">&lt;</button>
-<div class="slider">
-
-<div class="slide">
-<img src="cake.jpeg" alt="Product 1">
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF">Cakes</p>
-</div>
-
-<div class="slide">
-<img src="chocolate.jpg" alt="Product 2">
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF">Homemade Chocolates</p>
-</div>
-
-<div class="slide">
-<img src="gift.jpg" alt="Product 3">
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF ;">Gift Items</p>
-</div>
-
-</div>
-<button class="slider-button next">&gt;</button>
-</div>
-<div class="slider-dots"></div>
-
-<!-- Add classes to your shop buttons -->
-<a href="Products_cakes.html" class="shop-button">
-Shop Now For Cakes!!
-</a>
-
-<a href="Chocolates.html" class="shop-button">
-Shop Now For Chocolates!!
-</a>
-
-<a href="Gift.html" class="shop-button">
-Shop Now For Gift Items!!
-</a>
-
-</section>
-
-<!-- Replace the border images with these classes -->
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-<!-- About Me Section -->
-<section id="about-me">
-<h2>About Me</h2>
-<div class="about-container">
-<div class="about-left">
-<img src="Logo.jpg" alt="About Me Image">
-</div>
-<div class="about-right">
-<h2 style="font-weight: bolder; font-size: xx-large;">About Me</h2>
-<p>
-I am a passionate home baker and a proud self-made business owner, turning my love for baking into a thriving venture. 
-What started as a simple hobby in my kitchen quickly grew into a business fueled by creativity, dedication, and an unyielding desire to bring joy through sweet treats. 
-Every cake, cookie, and pastry I create is handcrafted with care, using quality ingredients and a sprinkle of love. All the products are made in the most hyginic environment and with pure veg materials. 
-Building my brand from the ground up has taught me resilience, time management, and the importance of connecting with my customers. 
-Each order is more than just a dessert Ã¢â‚¬" itÃ¢â‚¬â„¢s a part of someoneÃ¢â‚¬â„¢s celebration, and IÃ¢â‚¬â„¢m honored to contribute to those special moments. 
-As I continue to grow, my goal remains the same: to deliver beautiful, delicious creations that reflect both my artistry and my clients' dreams. 
-This journey is just the beginning, and IÃ¢â‚¬â„¢m excited for whatÃ¢â‚¬â„¢s next.
-</p>
-</div>
-</div>
-</section>
-
-<!-- Replace the border images with these classes -->
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-<!-- Customer Reviews Section -->
-<section id="customer-reviews">
-<h2>What Our Customers Say</h2>
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF; margin-bottom: 30px;">Real reviews from our happy customers!</p>
-
-<div class="reviews-container">
-<div class="reviews-scroll">
-<!-- First set of reviews -->
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">P</div>
-<div class="reviewer-info">
-<h4>Priya Sharma</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Absolutely amazing cakes! Ordered a custom birthday cake for my daughter and it exceeded all expectations. The taste was incredible and the design was exactly what we wanted. Will definitely order again!"
-</div>
-<div class="review-date">2 weeks ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">R</div>
-<div class="reviewer-info">
-<h4>Rajesh Kumar</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"The homemade chocolates are divine! Perfect for gifting. The packaging is beautiful and the taste is out of this world. PassionBakery has become our go-to for all special occasions."
-</div>
-<div class="review-date">1 month ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">A</div>
-<div class="reviewer-info">
-<h4>Anita Desai</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Ordered a wedding cake and it was the centerpiece of our celebration! Not only did it look stunning, but every guest complimented the taste. Highly professional service!"
-</div>
-<div class="review-date">3 weeks ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">V</div>
-<div class="reviewer-info">
-<h4>Vikram Singh</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Best bakery in Mumbai! The quality is consistent and the creativity in designs is outstanding. The owner is so passionate about her work and it shows in every product."
-</div>
-<div class="review-date">1 week ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">S</div>
-<div class="reviewer-info">
-<h4>Sunita Patel</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"The gift hampers are perfect! Ordered for Diwali and everyone loved them. The combination of cakes and chocolates was perfect. Great value for money and beautiful presentation."
-</div>
-<div class="review-date">2 months ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">M</div>
-<div class="reviewer-info">
-<h4>Mohit Gupta</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Incredible attention to detail! The cake was not only delicious but also a work of art. Communication was excellent throughout the order process. Truly professional!"
-</div>
-<div class="review-date">5 days ago</div>
-</div>
-
-<!-- Duplicate set for seamless loop -->
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">P</div>
-<div class="reviewer-info">
-<h4>Priya Sharma</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Absolutely amazing cakes! Ordered a custom birthday cake for my daughter and it exceeded all expectations. The taste was incredible and the design was exactly what we wanted. Will definitely order again!"
-</div>
-<div class="review-date">2 weeks ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">R</div>
-<div class="reviewer-info">
-<h4>Rajesh Kumar</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"The homemade chocolates are divine! Perfect for gifting. The packaging is beautiful and the taste is out of this world. PassionBakery has become our go-to for all special occasions."
-</div>
-<div class="review-date">1 month ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">A</div>
-<div class="reviewer-info">
-<h4>Anita Desai</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Ordered a wedding cake and it was the centerpiece of our celebration! Not only did it look stunning, but every guest complimented the taste. Highly professional service!"
-</div>
-<div class="review-date">3 weeks ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">V</div>
-<div class="reviewer-info">
-<h4>Vikram Singh</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Best bakery in Mumbai! The quality is consistent and the creativity in designs is outstanding. The owner is so passionate about her work and it shows in every product."
-</div>
-<div class="review-date">1 week ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">S</div>
-<div class="reviewer-info">
-<h4>Sunita Patel</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"The gift hampers are perfect! Ordered for Diwali and everyone loved them. The combination of cakes and chocolates was perfect. Great value for money and beautiful presentation."
-</div>
-<div class="review-date">2 months ago</div>
-</div>
-
-<div class="review-card">
-<div class="review-header">
-<div class="reviewer-avatar">M</div>
-<div class="reviewer-info">
-<h4>Mohit Gupta</h4>
-<div class="stars">★★★★★</div>
-</div>
-</div>
-<div class="review-text">
-"Incredible attention to detail! The cake was not only delicious but also a work of art. Communication was excellent throughout the order process. Truly professional!"
-</div>
-<div class="review-date">5 days ago</div>
-</div>
-</div>
-</div>
-
-<div class="reviews-cta">
-<p>To know more about what people are saying about us, check out our Google Reviews!</p>
-<a href="#" class="google-reviews-btn" id="googleReviewsBtn">
-<i class="fa fa-google"></i> View All Google Reviews
-</a>
-</div>
-</section>
-
-<!-- Replace the border images with these classes -->
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-<!-- Contact Me Section -->
-<section id="contact-me">
-<h2>Contact Me</h2>
-<p style="font-weight: bolder; font-size: x-large;color:#11124a">If you have any questions, feel free to get in touch!</p>
-<div class="contact-container">
-<div class="contact-form">
-<h2>Contact Me</h2>
-<form action="mailto:manjupathak135@gmail.com" method="post" enctype="text/plain">
-<label for="name">Name</label>
-<input type="text" id="name" name="name" placeholder="Your name" required>
-
-<label for="email">Email</label>
-<input type="email" id="email" name="email" placeholder="Your email" required>
-
-<label for="message">Message</label>
-<textarea id="message" name="message" placeholder="Your message" required></textarea>
-
-<button type="submit">Send Message</button>
-</form>
-</div>
-<div class="social-links">
-<h3>Connect with Me</h3>
-<a href="https://www.facebook.com" target="_blank" class="social-icon">
-<img src="Facebook Logo.png" alt="Facebook">
-</a>
-<a href="https://www.instagram.com" target="_blank" class="social-icon">
-<img src="Instagram Logo.png" alt="Instagram">
-</a>
-<a href="https://www.google.com" target="_blank" class="social-icon">
-<img src="Google Logo.png" alt="Google">
-</a>
-<a href="https://in.pinterest.com/" target="_blank" class="social-icon">
-<img src="Pinterest Logo.png" alt="Pinterest">
-</a>
-<a href="https://wa.me/919869153017" target="_blank" class="social-icon">
-<img src="Whatsapp Logo.png" alt="WhatsApp">
-</a>
-<a href="" target="_blank" class="social-icon">
-<img src="google maps.png" alt="WhatsApp">
-</a>
-<a href="" target="_blank" class="social-icon">
-<img src="youtube.png" alt="WhatsApp">
-</a>
-</div>
-</div>
-</section>
-
-<!-- Replace the border images with these classes -->
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-<!-- Professional Business Footer -->
-<footer class="business-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <img src="Logo.jpg" alt="PassionBakeryNChocos Logo" class="footer-logo-img">
-            <h3>PassionBakeryNChocos</h3>
-            <p>Crafting sweet memories with every bite. We specialize in custom cakes, homemade chocolates, and unique gift items made with pure vegetarian ingredients in the most hygienic environment.</p>
-            <div class="social-footer-links">
-                <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
-                <a href="https://wa.me/919869153017" target="_blank" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-                <a href="https://in.pinterest.com/" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-            </div>
-        </div>
-        
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Products_cakes.html">Cakes Collection</a></li>
-                <li><a href="Chocolates.html">Homemade Chocolates</a></li>
-                <li><a href="Gift.html">Gift Items</a></li>
-                <li><a href="special_order_cake.html">Special Orders</a></li>
-                <li><a href="Cart_cake.html">Shopping Cart</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-section">
-            <h3>Our Specialties</h3>
-            <ul>
-                <li>Custom Birthday Cakes</li>
-                <li>Wedding & Anniversary Cakes</li>
-                <li>Festival Special Treats</li>
-                <li>Corporate Gifts & Bulk Orders</li>
-                <li>Homemade Chocolates</li>
-                <li>Personalized Gift Hampers</li>
-            </ul>
-        </div>
-        
-        <div class="footer-section">
-            <h3>Get In Touch</h3>
-            <div class="contact-info-item">
-                <i class="fa fa-envelope"></i>
-                <span>manjupathak135@gmail.com</span>
-            </div>
-            <div class="contact-info-item">
-                <i class="fa fa-phone"></i>
-                <span>+91 9869153017</span>
-            </div>
-            <div class="contact-info-item">
-                <i class="fa fa-clock-o"></i>
-                <span>Available: 9AM - 8PM Daily</span>
-            </div>
-            <div class="contact-info-item">
-                <i class="fa fa-map-marker"></i>
-                <span>Mumbai, Maharashtra, India</span>
-            </div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PassionBakeryNChocos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-gradient: linear-gradient(
+          90deg,
+          rgba(30, 242, 253, 0.95) 0%,
+          rgba(74, 144, 226, 0.95) 100%
+        );
+        --section-gradient: linear-gradient(
+          135deg,
+          #6266f4 0%,
+          #4a54d1 50%,
+          #3d47b8 100%
+        );
+        --button-gradient: linear-gradient(45deg, #11124a, #1a1d5a);
+        --hover-gradient: linear-gradient(45deg, #fea3aa, #ff7b82);
+        --gold: #ffd700;
+        --primary-text: #11124a;
+        --white: #ffffff;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --border-radius: 20px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #1ef2fd;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2 {
+        color: var(--gold);
+        font-weight: bold;
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+        text-align: center;
+        margin-bottom: 15px;
+        font-family: Great Vibes;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+        font-weight: bolder;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        line-height: 1.6;
+        font-family: Delius;
+      }
+
+      /* Navigation */
+      .topnav {
+        overflow: hidden;
+        background: var(--primary-gradient);
+        font-family: Delius;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .topnav a,
+      .topnav .cart-icon {
+        float: left;
+        display: block;
+        color: var(--primary-text);
+        text-align: center;
+        padding: 16px 24px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        border-radius: 12px;
+        margin: 8px 6px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .topnav a:hover,
+      .topnav .cart-icon:hover {
+        background: linear-gradient(45deg, #0000ff, #4169e1);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+      }
+
+      .topnav .cart-icon:hover {
+        transform: translateY(-2px) rotate(5deg);
+      }
+
+      .topnav a.active {
+        background: linear-gradient(45deg, #3e476f, #5a6491);
+        color: white;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        transform: scale(1.05);
+      }
+
+      .topnav .icon {
+        display: none;
+      }
+
+      /* Banner */
+      #banner {
+        background: #1ef2fd;
+        color: var(--primary-text);
+        text-align: center;
+        padding: 20px 10px;
+        text-shadow: 2px 2px 5px pink;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #banner h1 {
+        margin-bottom: 10px;
+      }
+
+      #banner p {
+        font-size: clamp(1rem, 3vw, 1.125rem);
+        font-family: Delius;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .border-image {
+        width: min(70%, 600px);
+        height: auto;
+        margin: 20px auto;
+        display: block;
+        animation: imageFloat 6s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)
+          contrast(1.1);
+      }
+
+      @keyframes imageFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Sections */
+      section {
+        padding: clamp(20px, 5vw, 40px);
+        text-align: center;
+        margin-top: 30px;
+        position: relative;
+      }
+
+      section#featured-products,
+      section#about-me,
+      section#contact-me,
+      section#customer-reviews {
+        background: var(--section-gradient);
+        margin: 20px clamp(10px, 3vw, 20px);
+        color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px rgba(98, 102, 244, 0.3);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Smooth Scrolling Reviews */
+      .reviews-container {
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .reviews-scroll {
+        display: flex;
+        gap: 30px;
+        animation: smoothScroll 60s linear infinite;
+        width: max-content;
+      }
+
+      .reviews-scroll:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes smoothScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .review-card {
+        flex: 0 0 400px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        color: var(--primary-text);
+        text-align: left;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+        border-color: var(--gold);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .reviewer-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--button-gradient);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-right: 15px;
+        box-shadow: 0 4px 15px rgba(17, 18, 74, 0.3);
+      }
+
+      .reviewer-info h4 {
+        font-family: "Great Vibes", cursive;
+        color: var(--primary-text);
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+        text-shadow: none;
+      }
+
+      .reviewer-info .stars {
+        color: var(--gold);
+        font-size: 1rem;
+      }
+
+      .review-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: Delius;
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      .review-date {
+        font-size: 0.8rem;
+        color: #666;
+        text-align: right;
+        font-family: Delius;
+      }
+
+      .reviews-cta {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+
+      .reviews-cta p {
+        color: var(--white);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 20px;
+        font-family: Delius;
+      }
+
+      .google-reviews-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background: var(--button-gradient);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-family: Delius;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-weight: bold;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(17, 18, 74, 0.3);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+      }
+
+      .google-reviews-btn:hover {
+        background: var(--hover-gradient);
+        color: var(--primary-text);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(254, 163, 170, 0.4);
+        border-color: var(--gold);
+      }
+
+      /* Slider */
+      .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 20px 0;
+        width: 100%;
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+      }
+
+      .slide {
+        flex: 0 0 100%;
+        text-align: center;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slide img {
+        max-width: min(70%, 400px);
+        max-height: 300px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        object-fit: contain;
+      }
+
+      .slide img:hover {
+        transform: scale(1.08) rotate(2deg);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .slide p {
+        margin-top: 15px;
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        font-family: Delius;
+        color: var(--white);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .slider-button {
+        background: var(--button-gradient);
+        color: #fff;
+        border: none;
+        padding: 12px 16px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(15, 16, 72, 0.3);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slider-button.prev {
+        left: 10px;
+      }
+      .slider-button.next {
+        right: 10px;
+      }
+
+      .slider-button:hover {
+        background: var(--hover-gradient);
+        color: var(--primary-text);
+        font-weight: bold;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 8px 25px rgba(254, 163, 170, 0.4);
+      }
+
+      .slider-dots {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .slider-dots .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .slider-dots .dot.active {
+        background-color: var(--white);
+        transform: scale(1.3);
+        border-color: var(--gold);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+
+      .slider-dots .dot:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+
+      /* Shop Buttons */
+      .shop-button {
+        display: inline-block;
+        min-height: 45px;
+        min-width: 100px;
+        padding: 10px 15px;
+        margin: 15px 10px;
+        background: var(--button-gradient);
+        font-family: Delius;
+        color: #f2f2f2;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        text-align: center;
+        line-height: 1.4;
+        border-radius: 25px;
+        text-decoration: none;
+        border: 2px solid #f2f2f2;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(17, 18, 74, 0.3);
+      }
+
+      .shop-button:hover {
+        background: linear-gradient(45deg, var(--gold), #ffd700);
+        color: var(--primary-text);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        border-color: var(--primary-text);
+      }
+
+      /* About & Contact */
+      #about-me,
+      #contact-me {
+        background: linear-gradient(
+          135deg,
+          #75a9d1 0%,
+          #5a8bb8 50%,
+          #4a7ba8 100%
+        );
+        padding: clamp(30px, 8vw, 50px) clamp(10px, 3vw, 20px);
+      }
+
+      .about-container,
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: var(--border-radius);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-container {
+        justify-content: center;
+        background: rgba(240, 245, 248, 0.95);
+      }
+
+      .about-left {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f0f5f8, #e8f2f7);
+        padding: 20px;
+      }
+
+      .about-left img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-left img:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+
+      .about-right {
+        flex: 1;
+        min-width: 300px;
+        padding: clamp(20px, 5vw, 30px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, #f9f9f9, #f0f4f7);
+      }
+
+      .about-right h2 {
+        margin-bottom: 20px;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        color: #0f1048;
+      }
+
+      .about-right p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
+        padding: clamp(20px, 5vw, 30px);
+      }
+
+      .contact-form h2 {
+        margin-bottom: 20px;
+        color: #0f1048;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+      }
+
+      .contact-form label {
+        display: block;
+        margin: 15px 0 8px;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: #333;
+        font-weight: 600;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #4a90e2;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 15px rgba(74, 144, 226, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .contact-form button {
+        background: var(--button-gradient);
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        font-weight: 600;
+        box-shadow: 0 6px 20px rgba(15, 16, 72, 0.3);
+      }
+
+      .contact-form button:hover {
+        background: var(--hover-gradient);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(254, 163, 170, 0.4);
+      }
+
+      /* Social Links */
+      .social-links {
+        flex: 1;
+        min-width: 300px;
+        padding: clamp(20px, 5vw, 30px);
+        text-align: center;
+      }
+
+      .social-links h3 {
+        margin-bottom: 20px;
+        color: #0f1048;
+        font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      }
+
+      .social-links .social-icon {
+        display: inline-block;
+        margin: 0 12px 15px 12px;
+        width: 50px;
+        height: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .social-links .social-icon img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+      }
+
+      .social-links .social-icon:hover {
+        transform: translateY(-5px) scale(1.2) rotate(5deg);
+      }
+
+      .social-links .social-icon:hover img {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      .business-footer {
+        background: linear-gradient(
+          135deg,
+          #0000ff 0%,
+          #1e3a8a 50%,
+          #1e40af 100%
+        );
+        color: floralwhite;
+        padding: clamp(40px, 6vw, 60px) clamp(15px, 4vw, 20px)
+          clamp(20px, 3vw, 30px);
+        font-family: Delius;
+        border-top: 4px solid var(--gold);
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.2);
+        margin-top: 30px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: clamp(25px, 5vw, 40px);
+      }
+
+      .footer-section {
+        flex: 1 1 280px;
+        min-width: 250px;
+      }
+
+      .footer-section h3 {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        color: var(--gold);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer-section p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        line-height: 1.6;
+        color: floralwhite;
+        margin-bottom: 15px;
+        font-family: Delius;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-section ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: var(--transition);
+        font-family: Delius;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .footer-section ul li:hover {
+        padding-left: 15px;
+        color: var(--gold);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      }
+
+      .footer-section a {
+        color: floralwhite;
+        text-decoration: none;
+        transition: var(--transition);
+        font-family: Delius;
+      }
+
+      .footer-section a:hover {
+        color: var(--gold);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        font-family: Delius;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .contact-info-item i {
+        width: 25px;
+        margin-right: 12px;
+        color: var(--gold);
+        font-size: 1.1rem;
+      }
+
+      .social-footer-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .social-footer-links a {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(45deg, #11124a, #1a1d5a);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 45px;
+        transition: var(--transition);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        box-shadow: 0 4px 15px rgba(17, 18, 74, 0.3);
+      }
+
+      .social-footer-links a:hover {
+        background: var(--hover-gradient);
+        color: var(--primary-text);
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(254, 163, 170, 0.4);
+        border-color: var(--gold);
+      }
+
+      .footer-logo-img {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        transition: var(--transition);
+      }
+
+      .footer-logo-img:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+      }
+
+      .footer-bottom-section {
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 2px solid rgba(255, 215, 0, 0.3);
+        text-align: center;
+      }
+
+      .footer-bottom-section p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: var(--gold);
+        font-family: Delius;
+        font-weight: bold;
+      }
+
+      /* Mobile */
+      @media screen and (max-width: 768px) {
+        .topnav a:not(:first-child) {
+          display: none;
+        }
+        .topnav a.icon {
+          float: right;
+          display: block;
+          margin: 8px 10px;
+        }
+        .topnav.responsive {
+          position: relative;
+        }
+        .topnav.responsive .icon {
+          position: absolute;
+          right: 10px;
+          top: 0px;
+          color: var(--gold);
+          background: linear-gradient(45deg, #3e476f, #5a6491);
+        }
+        .topnav.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+          margin: 5px 10px;
+        }
+        .slider-button {
+          width: 40px;
+          height: 40px;
+          padding: 8px;
+        }
+        .slider-button.prev {
+          left: 5px;
+        }
+        .slider-button.next {
+          right: 5px;
+        }
+        .review-card {
+          flex: 0 0 320px;
+          padding: 20px;
+        }
+        .footer-content {
+          flex-direction: column;
+          gap: 25px;
+        }
+        .footer-section {
+          text-align: center;
+          min-width: auto;
+        }
+        .social-footer-links {
+          justify-content: center;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .review-card {
+          flex: 0 0 280px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="topnav" id="myTopnav">
+      <a href="index.html" class="active">Home</a>
+      <a href="#featured-products">Products</a>
+      <a href="#about-me">About Me</a>
+      <a href="#customer-reviews">Reviews</a>
+      <a href="#contact-me">Contact Us</a>
+      <a href="special_order_cake.html">Special Order</a>
+
+      <a href="Cart_cake.html" class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">(0)</span>
+      </a>
+
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
-    
-    <div class="footer-bottom-section">
-        <p>&copy; 2024 PassionBakeryNChocos. All rights reserved. Made with love for sweet celebrations! ❤️</p>
-    </div>
-</footer>
 
-<script>
-// =============================================================================
-// PASSIONBAKERY N CHOCOS - OPTIMIZED JAVASCRIPT CODE
-// =============================================================================
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
 
-// =============================================================================
-// 1. MOBILE NAVIGATION TOGGLE FUNCTIONALITY
-// =============================================================================
-/**
- * Toggles the responsive navigation menu on mobile devices
- * Switches between collapsed and expanded navigation states
- */
-function myFunction() {
-    const nav = document.getElementById("myTopnav");
-    nav.className = nav.className === "topnav" ? "topnav responsive" : "topnav";
-}
+    <!-- Banner Section -->
+    <section id="banner">
+      <div class="glitter-container"></div>
+      <img src="Cake_web_banner.png" style="width: 100%; height: 25%" />
+      <h1 style="color: #11124a">Welcome to PassionBakeryNChocos Shop!!</h1>
+      <p style="text-shadow: 2px 2px 5px pink; font-family: Delius">
+        Your one-stop shop for amazing desserts and sweetness.
+      </p>
+    </section>
 
-// =============================================================================
-// 2. DOM CONTENT LOADED - MAIN INITIALIZATION
-// =============================================================================
-document.addEventListener("DOMContentLoaded", () => {
-    // Initialize all components when DOM is fully loaded
-    initializeSlider();
-    initializeScrollAnimations();
-    createGlitterEffect(); // Enhanced glitter effect
-    initializeGoogleReviewsButton();
-});
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
 
-// =============================================================================
-// 3. PRODUCT SLIDER/CAROUSEL FUNCTIONALITY
-// =============================================================================
-/**
- * Initializes the featured products slider with navigation and dot indicators
- * Handles slide transitions, button clicks, and dot navigation
- */
-function initializeSlider() {
-    // Cache DOM elements for better performance
-    const slider = document.querySelector(".slider");
-    const slides = document.querySelectorAll(".slide");
-    const prevButton = document.querySelector(".slider-button.prev");
-    const nextButton = document.querySelector(".slider-button.next");
-    const dotsContainer = document.querySelector(".slider-dots");
-    
-    // Early return if slider elements don't exist
-    if (!slider || !slides.length || !dotsContainer) return;
-    
-    let currentIndex = 0;
-    
-    // Create navigation dots dynamically
-    createSliderDots();
-    
-    // Set up event listeners
-    setupSliderEvents();
-    
-    /**
-     * Creates dot indicators for slider navigation
-     */
-    function createSliderDots() {
-        const fragment = document.createDocumentFragment();
-        
-        slides.forEach((_, index) => {
+    <!-- Featured Products Section -->
+    <section id="featured-products">
+      <h2>Featured Products</h2>
+      <p>Check out our top products!</p>
+      <div class="slider-container">
+        <button class="slider-button prev">&lt;</button>
+        <div class="slider">
+          <div class="slide">
+            <img src="cake.jpeg" alt="Product 1" />
+            <p style="font-weight: bolder; font-size: x-large; color: #ffffff">
+              Cakes
+            </p>
+          </div>
+
+          <div class="slide">
+            <img src="chocolate.jpg" alt="Product 2" />
+            <p style="font-weight: bolder; font-size: x-large; color: #ffffff">
+              Homemade Chocolates
+            </p>
+          </div>
+
+          <div class="slide">
+            <img src="gift.jpg" alt="Product 3" />
+            <p style="font-weight: bolder; font-size: x-large; color: #ffffff">
+              Gift Items
+            </p>
+          </div>
+        </div>
+        <button class="slider-button next">&gt;</button>
+      </div>
+      <div class="slider-dots"></div>
+
+      <!-- Add classes to your shop buttons -->
+      <a href="Products_cakes.html" class="shop-button">
+        Shop Now For Cakes!!
+      </a>
+
+      <a href="Chocolates.html" class="shop-button">
+        Shop Now For Chocolates!!
+      </a>
+
+      <a href="Gift.html" class="shop-button"> Shop Now For Gift Items!! </a>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- About Me Section -->
+    <section id="about-me">
+      <h2>About Me</h2>
+      <div class="about-container">
+        <div class="about-left">
+          <img src="Logo.jpg" alt="About Me Image" />
+        </div>
+        <div class="about-right">
+          <h2 style="font-weight: bolder; font-size: xx-large">About Me</h2>
+          <p>
+            I am a passionate home baker and a proud self-made business owner,
+            turning my love for baking into a thriving venture. What started as
+            a simple hobby in my kitchen quickly grew into a business fueled by
+            creativity, dedication, and an unyielding desire to bring joy
+            through sweet treats. Every cake, cookie, and pastry I create is
+            handcrafted with care, using quality ingredients and a sprinkle of
+            love. All the products are made in the most hyginic environment and
+            with pure veg materials. Building my brand from the ground up has
+            taught me resilience, time management, and the importance of
+            connecting with my customers. Each order is more than just a dessert
+            Ã¢â‚¬" itÃ¢â‚¬â„¢s a part of someoneÃ¢â‚¬â„¢s celebration, and
+            IÃ¢â‚¬â„¢m honored to contribute to those special moments. As I
+            continue to grow, my goal remains the same: to deliver beautiful,
+            delicious creations that reflect both my artistry and my clients'
+            dreams. This journey is just the beginning, and IÃ¢â‚¬â„¢m excited
+            for whatÃ¢â‚¬â„¢s next.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Customer Reviews Section -->
+    <section id="customer-reviews">
+      <h2>What Our Customers Say</h2>
+      <p
+        style="
+          font-weight: bolder;
+          font-size: x-large;
+          color: #ffffff;
+          margin-bottom: 30px;
+        "
+      >
+        Real reviews from our happy customers!
+      </p>
+
+      <div class="reviews-container">
+        <div class="reviews-scroll">
+          <!-- First set of reviews -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">P</div>
+              <div class="reviewer-info">
+                <h4>Priya Sharma</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Absolutely amazing cakes! Ordered a custom birthday cake for my
+              daughter and it exceeded all expectations. The taste was
+              incredible and the design was exactly what we wanted. Will
+              definitely order again!"
+            </div>
+            <div class="review-date">2 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">R</div>
+              <div class="reviewer-info">
+                <h4>Rajesh Kumar</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The homemade chocolates are divine! Perfect for gifting. The
+              packaging is beautiful and the taste is out of this world.
+              PassionBakery has become our go-to for all special occasions."
+            </div>
+            <div class="review-date">1 month ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">A</div>
+              <div class="reviewer-info">
+                <h4>Anita Desai</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Ordered a wedding cake and it was the centerpiece of our
+              celebration! Not only did it look stunning, but every guest
+              complimented the taste. Highly professional service!"
+            </div>
+            <div class="review-date">3 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">V</div>
+              <div class="reviewer-info">
+                <h4>Vikram Singh</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Best bakery in Mumbai! The quality is consistent and the
+              creativity in designs is outstanding. The owner is so passionate
+              about her work and it shows in every product."
+            </div>
+            <div class="review-date">1 week ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">S</div>
+              <div class="reviewer-info">
+                <h4>Sunita Patel</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The gift hampers are perfect! Ordered for Diwali and everyone
+              loved them. The combination of cakes and chocolates was perfect.
+              Great value for money and beautiful presentation."
+            </div>
+            <div class="review-date">2 months ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">M</div>
+              <div class="reviewer-info">
+                <h4>Mohit Gupta</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Incredible attention to detail! The cake was not only delicious
+              but also a work of art. Communication was excellent throughout the
+              order process. Truly professional!"
+            </div>
+            <div class="review-date">5 days ago</div>
+          </div>
+
+          <!-- Duplicate set for seamless loop -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">P</div>
+              <div class="reviewer-info">
+                <h4>Priya Sharma</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Absolutely amazing cakes! Ordered a custom birthday cake for my
+              daughter and it exceeded all expectations. The taste was
+              incredible and the design was exactly what we wanted. Will
+              definitely order again!"
+            </div>
+            <div class="review-date">2 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">R</div>
+              <div class="reviewer-info">
+                <h4>Rajesh Kumar</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The homemade chocolates are divine! Perfect for gifting. The
+              packaging is beautiful and the taste is out of this world.
+              PassionBakery has become our go-to for all special occasions."
+            </div>
+            <div class="review-date">1 month ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">A</div>
+              <div class="reviewer-info">
+                <h4>Anita Desai</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Ordered a wedding cake and it was the centerpiece of our
+              celebration! Not only did it look stunning, but every guest
+              complimented the taste. Highly professional service!"
+            </div>
+            <div class="review-date">3 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">V</div>
+              <div class="reviewer-info">
+                <h4>Vikram Singh</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Best bakery in Mumbai! The quality is consistent and the
+              creativity in designs is outstanding. The owner is so passionate
+              about her work and it shows in every product."
+            </div>
+            <div class="review-date">1 week ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">S</div>
+              <div class="reviewer-info">
+                <h4>Sunita Patel</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The gift hampers are perfect! Ordered for Diwali and everyone
+              loved them. The combination of cakes and chocolates was perfect.
+              Great value for money and beautiful presentation."
+            </div>
+            <div class="review-date">2 months ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">M</div>
+              <div class="reviewer-info">
+                <h4>Mohit Gupta</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Incredible attention to detail! The cake was not only delicious
+              but also a work of art. Communication was excellent throughout the
+              order process. Truly professional!"
+            </div>
+            <div class="review-date">5 days ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-cta">
+        <p>
+          To know more about what people are saying about us, check out our
+          Google Reviews!
+        </p>
+        <a href="#" class="google-reviews-btn" id="googleReviewsBtn">
+          <i class="fa fa-google"></i> View All Google Reviews
+        </a>
+      </div>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Contact Me Section -->
+    <section id="contact-me">
+      <h2>Contact Me</h2>
+      <p style="font-weight: bolder; font-size: x-large; color: #11124a">
+        If you have any questions, feel free to get in touch!
+      </p>
+      <div class="contact-container">
+        <div class="contact-form">
+          <h2>Contact Me</h2>
+          <form
+            action="mailto:manjupathak135@gmail.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+            />
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email"
+              required
+            />
+
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message"
+              required
+            ></textarea>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="social-links">
+          <h3>Connect with Me</h3>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Facebook Logo.png" alt="Facebook" />
+          </a>
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Instagram Logo.png" alt="Instagram" />
+          </a>
+          <a href="https://www.google.com" target="_blank" class="social-icon">
+            <img src="Google Logo.png" alt="Google" />
+          </a>
+          <a
+            href="https://in.pinterest.com/"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Pinterest Logo.png" alt="Pinterest" />
+          </a>
+          <a
+            href="https://wa.me/919869153017"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Whatsapp Logo.png" alt="WhatsApp" />
+          </a>
+          <a href="" target="_blank" class="social-icon">
+            <img src="google maps.png" alt="WhatsApp" />
+          </a>
+          <a href="" target="_blank" class="social-icon">
+            <img src="youtube.png" alt="WhatsApp" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Professional Business Footer -->
+    <footer class="business-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img
+            src="Logo.jpg"
+            alt="PassionBakeryNChocos Logo"
+            class="footer-logo-img"
+          />
+          <h3>PassionBakeryNChocos</h3>
+          <p>
+            Crafting sweet memories with every bite. We specialize in custom
+            cakes, homemade chocolates, and unique gift items made with pure
+            vegetarian ingredients in the most hygienic environment.
+          </p>
+          <div class="social-footer-links">
+            <a href="https://www.facebook.com" target="_blank" title="Facebook"
+              ><i class="fa fa-facebook"></i
+            ></a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              title="Instagram"
+              ><i class="fa fa-instagram"></i
+            ></a>
+            <a
+              href="https://wa.me/919869153017"
+              target="_blank"
+              title="WhatsApp"
+              ><i class="fa fa-whatsapp"></i
+            ></a>
+            <a
+              href="https://in.pinterest.com/"
+              target="_blank"
+              title="Pinterest"
+              ><i class="fa fa-pinterest"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Products_cakes.html">Cakes Collection</a></li>
+            <li><a href="Chocolates.html">Homemade Chocolates</a></li>
+            <li><a href="Gift.html">Gift Items</a></li>
+            <li><a href="special_order_cake.html">Special Orders</a></li>
+            <li><a href="Cart_cake.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Our Specialties</h3>
+          <ul>
+            <li>Custom Birthday Cakes</li>
+            <li>Wedding & Anniversary Cakes</li>
+            <li>Festival Special Treats</li>
+            <li>Corporate Gifts & Bulk Orders</li>
+            <li>Homemade Chocolates</li>
+            <li>Personalized Gift Hampers</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Get In Touch</h3>
+          <div class="contact-info-item">
+            <i class="fa fa-envelope"></i>
+            <span>manjupathak135@gmail.com</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa fa-phone"></i>
+            <span>+91 9869153017</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa fa-clock-o"></i>
+            <span>Available: 9AM - 8PM Daily</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa fa-map-marker"></i>
+            <span>Mumbai, Maharashtra, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-section">
+        <p>
+          &copy; 2024 PassionBakeryNChocos. All rights reserved. Made with love
+          for sweet celebrations! ❤️
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // =============================================================================
+      // PASSIONBAKERY N CHOCOS - OPTIMIZED JAVASCRIPT CODE
+      // =============================================================================
+
+      // =============================================================================
+      // 1. MOBILE NAVIGATION TOGGLE FUNCTIONALITY
+      // =============================================================================
+      /**
+       * Toggles the responsive navigation menu on mobile devices
+       * Switches between collapsed and expanded navigation states
+       */
+      function myFunction() {
+        const nav = document.getElementById("myTopnav");
+        nav.className =
+          nav.className === "topnav" ? "topnav responsive" : "topnav";
+      }
+
+      // =============================================================================
+      // 2. DOM CONTENT LOADED - MAIN INITIALIZATION
+      // =============================================================================
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize all components when DOM is fully loaded
+        initializeSlider();
+        initializeScrollAnimations();
+        createGlitterEffect(); // Enhanced glitter effect
+        initializeGoogleReviewsButton();
+      });
+
+      // =============================================================================
+      // 3. PRODUCT SLIDER/CAROUSEL FUNCTIONALITY
+      // =============================================================================
+      /**
+       * Initializes the featured products slider with navigation and dot indicators
+       * Handles slide transitions, button clicks, and dot navigation
+       */
+      function initializeSlider() {
+        // Cache DOM elements for better performance
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const prevButton = document.querySelector(".slider-button.prev");
+        const nextButton = document.querySelector(".slider-button.next");
+        const dotsContainer = document.querySelector(".slider-dots");
+
+        // Early return if slider elements don't exist
+        if (!slider || !slides.length || !dotsContainer) return;
+
+        let currentIndex = 0;
+
+        // Create navigation dots dynamically
+        createSliderDots();
+
+        // Set up event listeners
+        setupSliderEvents();
+
+        /**
+         * Creates dot indicators for slider navigation
+         */
+        function createSliderDots() {
+          const fragment = document.createDocumentFragment();
+
+          slides.forEach((_, index) => {
             const dot = document.createElement("span");
             dot.classList.add("dot");
             if (index === currentIndex) dot.classList.add("active");
             fragment.appendChild(dot);
-        });
-        
-        dotsContainer.appendChild(fragment);
-    }
-    
-    /**
-     * Sets up all slider event listeners
-     */
-    function setupSliderEvents() {
-        const dots = document.querySelectorAll(".dot");
-        
-        // Previous button navigation
-        prevButton?.addEventListener("click", () => {
+          });
+
+          dotsContainer.appendChild(fragment);
+        }
+
+        /**
+         * Sets up all slider event listeners
+         */
+        function setupSliderEvents() {
+          const dots = document.querySelectorAll(".dot");
+
+          // Previous button navigation
+          prevButton?.addEventListener("click", () => {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             updateSliderPosition();
-        });
-        
-        // Next button navigation
-        nextButton?.addEventListener("click", () => {
+          });
+
+          // Next button navigation
+          nextButton?.addEventListener("click", () => {
             currentIndex = (currentIndex + 1) % slides.length;
             updateSliderPosition();
-        });
-        
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener("click", () => {
-                currentIndex = index;
-                updateSliderPosition();
-            });
-        });
-    }
-    
-    /**
-     * Updates slider position and active dot indicator
-     */
-    function updateSliderPosition() {
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        updateActiveDot();
-    }
-    
-    /**
-     * Updates the active state of dot indicators
-     */
-    function updateActiveDot() {
-        const dots = document.querySelectorAll(".dot");
-        dots.forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentIndex);
-        });
-    }
-}
+          });
 
-// =============================================================================
-// 4. GOOGLE REVIEWS BUTTON FUNCTIONALITY
-// =============================================================================
-/**
- * Initializes the Google Reviews button
- * You can replace the placeholder URL with your actual Google Maps/Reviews link
- */
-function initializeGoogleReviewsButton() {
-    const googleReviewsBtn = document.getElementById('googleReviewsBtn');
-    
-    if (googleReviewsBtn) {
-        googleReviewsBtn.addEventListener('click', (e) => {
+          // Dot navigation
+          dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+              currentIndex = index;
+              updateSliderPosition();
+            });
+          });
+        }
+
+        /**
+         * Updates slider position and active dot indicator
+         */
+        function updateSliderPosition() {
+          slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+          updateActiveDot();
+        }
+
+        /**
+         * Updates the active state of dot indicators
+         */
+        function updateActiveDot() {
+          const dots = document.querySelectorAll(".dot");
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+          });
+        }
+      }
+
+      // =============================================================================
+      // 4. GOOGLE REVIEWS BUTTON FUNCTIONALITY
+      // =============================================================================
+      /**
+       * Initializes the Google Reviews button
+       * You can replace the placeholder URL with your actual Google Maps/Reviews link
+       */
+      function initializeGoogleReviewsButton() {
+        const googleReviewsBtn = document.getElementById("googleReviewsBtn");
+
+        if (googleReviewsBtn) {
+          googleReviewsBtn.addEventListener("click", (e) => {
             e.preventDefault();
             // Replace this URL with your actual Google Maps/Reviews link
-            const googleMapsUrl = 'YOUR_GOOGLE_MAPS_REVIEWS_URL_HERE';
-            window.open(googleMapsUrl, '_blank');
-        });
-    }
-}
+            const googleMapsUrl = "YOUR_GOOGLE_MAPS_REVIEWS_URL_HERE";
+            window.open(googleMapsUrl, "_blank");
+          });
+        }
+      }
 
-// =============================================================================
-// 5. SCROLL ANIMATIONS AND INTERSECTION OBSERVER
-// =============================================================================
-/**
- * Initializes scroll-based animations using Intersection Observer API
- * Animates sections when they come into view
- */
-function initializeScrollAnimations() {
-    // Observer configuration
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    // Create intersection observer
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-    
-    // Observe all animatable elements
-    const animatableElements = document.querySelectorAll('section, .about-container, .contact-container');
-    animatableElements.forEach(el => observer.observe(el));
-    
-    /**
-     * Handles intersection events for scroll animations
-     * @param {IntersectionObserverEntry[]} entries - Array of intersection entries
-     */
-    function handleIntersection(entries) {
-        entries.forEach(entry => {
+      // =============================================================================
+      // 5. SCROLL ANIMATIONS AND INTERSECTION OBSERVER
+      // =============================================================================
+      /**
+       * Initializes scroll-based animations using Intersection Observer API
+       * Animates sections when they come into view
+       */
+      function initializeScrollAnimations() {
+        // Observer configuration
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        // Create intersection observer
+        const observer = new IntersectionObserver(
+          handleIntersection,
+          observerOptions
+        );
+
+        // Observe all animatable elements
+        const animatableElements = document.querySelectorAll(
+          "section, .about-container, .contact-container"
+        );
+        animatableElements.forEach((el) => observer.observe(el));
+
+        /**
+         * Handles intersection events for scroll animations
+         * @param {IntersectionObserverEntry[]} entries - Array of intersection entries
+         */
+        function handleIntersection(entries) {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInOnScroll 1s ease-out forwards';
-                // Optionally unobserve after animation to improve performance
-                // observer.unobserve(entry.target);
+              entry.target.style.animation =
+                "fadeInOnScroll 1s ease-out forwards";
+              // Optionally unobserve after animation to improve performance
+              // observer.unobserve(entry.target);
             }
+          });
+        }
+      }
+
+      // =============================================================================
+      // 6. ENHANCED GLITTER EFFECT FOR HERO SECTION
+      // =============================================================================
+      /**
+       * Creates enhanced visible glittery animation in the hero section
+       * Now with 50 glitter particles for better visual impact
+       */
+      function createGlitterEffect() {
+        const glitterContainer = document.querySelector(".glitter-container");
+        if (!glitterContainer) return;
+
+        // Clear any existing glitter
+        glitterContainer.innerHTML = "";
+
+        // Create 50 glitter particles for enhanced visual effect
+        for (let i = 0; i < 50; i++) {
+          const glitter = document.createElement("div");
+          glitter.classList.add("glitter");
+
+          // Random positioning across the banner
+          glitter.style.left = Math.random() * 100 + "%";
+          glitter.style.top = Math.random() * 100 + "%";
+
+          // Random animation delay for natural effect
+          glitter.style.animationDelay = Math.random() * 3 + "s";
+
+          // Random duration variation
+          const duration = 1.5 + Math.random() * 2; // Between 1.5s and 3.5s
+          glitter.style.animationDuration = duration + "s";
+
+          glitterContainer.appendChild(glitter);
+        }
+
+        // Regenerate glitter every 10 seconds for continuous sparkle
+        setInterval(() => {
+          createGlitterEffect();
+        }, 10000);
+      }
+
+      // =============================================================================
+      // 7. PAGE LOADING OPTIMIZATION
+      // =============================================================================
+      /**
+       * Handles page load completion events
+       * Removes loading states and initializes final animations
+       */
+      window.addEventListener("load", () => {
+        // Remove loading class if it exists
+        document.body.classList.remove("loading");
+
+        // Optional: Add any post-load optimizations here
+        optimizeAfterLoad();
+      });
+
+      /**
+       * Performs optimizations after page has fully loaded
+       */
+      function optimizeAfterLoad() {
+        // Remove unused event listeners
+        // Optimize images that are not in viewport
+        // Initialize any lazy loading if needed
+
+        // Example: Remove preload attributes from images after load
+        const preloadImages = document.querySelectorAll("img[data-preload]");
+        preloadImages.forEach((img) => {
+          img.removeAttribute("data-preload");
         });
-    }
-}
+      }
 
-// =============================================================================
-// 6. ENHANCED GLITTER EFFECT FOR HERO SECTION
-// =============================================================================
-/**
- * Creates enhanced visible glittery animation in the hero section
- * Now with 50 glitter particles for better visual impact
- */
-function createGlitterEffect() {
-    const glitterContainer = document.querySelector('.glitter-container');
-    if (!glitterContainer) return;
-    
-    // Clear any existing glitter
-    glitterContainer.innerHTML = '';
-    
-    // Create 50 glitter particles for enhanced visual effect
-    for (let i = 0; i < 50; i++) {
-        const glitter = document.createElement('div');
-        glitter.classList.add('glitter');
-        
-        // Random positioning across the banner
-        glitter.style.left = Math.random() * 100 + '%';
-        glitter.style.top = Math.random() * 100 + '%';
-        
-        // Random animation delay for natural effect
-        glitter.style.animationDelay = Math.random() * 3 + 's';
-        
-        // Random duration variation
-        const duration = 1.5 + Math.random() * 2; // Between 1.5s and 3.5s
-        glitter.style.animationDuration = duration + 's';
-        
-        glitterContainer.appendChild(glitter);
-    }
-    
-    // Regenerate glitter every 10 seconds for continuous sparkle
-    setInterval(() => {
-        createGlitterEffect();
-    }, 10000);
-}
-
-// =============================================================================
-// 7. PAGE LOADING OPTIMIZATION
-// =============================================================================
-/**
- * Handles page load completion events
- * Removes loading states and initializes final animations
- */
-window.addEventListener('load', () => {
-    // Remove loading class if it exists
-    document.body.classList.remove('loading');
-    
-    // Optional: Add any post-load optimizations here
-    optimizeAfterLoad();
-});
-
-/**
- * Performs optimizations after page has fully loaded
- */
-function optimizeAfterLoad() {
-    // Remove unused event listeners
-    // Optimize images that are not in viewport
-    // Initialize any lazy loading if needed
-    
-    // Example: Remove preload attributes from images after load
-    const preloadImages = document.querySelectorAll('img[data-preload]');
-    preloadImages.forEach(img => {
-        img.removeAttribute('data-preload');
-    });
-}
-
-// =============================================================================
-// 8. UTILITY FUNCTIONS
-// =============================================================================
-/**
- * Debounce function to limit function execution frequency
- * @param {Function} func - Function to debounce
- * @param {number} wait - Wait time in milliseconds
- * @returns {Function} Debounced function
- */
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
+      // =============================================================================
+      // 8. UTILITY FUNCTIONS
+      // =============================================================================
+      /**
+       * Debounce function to limit function execution frequency
+       * @param {Function} func - Function to debounce
+       * @param {number} wait - Wait time in milliseconds
+       * @returns {Function} Debounced function
+       */
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
             clearTimeout(timeout);
             func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
         };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
+      }
 
-/**
- * Throttle function to limit function execution rate
- * @param {Function} func - Function to throttle
- * @param {number} limit - Time limit in milliseconds
- * @returns {Function} Throttled function
- */
-function throttle(func, limit) {
-    let inThrottle;
-    return function(...args) {
-        if (!inThrottle) {
+      /**
+       * Throttle function to limit function execution rate
+       * @param {Function} func - Function to throttle
+       * @param {number} limit - Time limit in milliseconds
+       * @returns {Function} Throttled function
+       */
+      function throttle(func, limit) {
+        let inThrottle;
+        return function (...args) {
+          if (!inThrottle) {
             func.apply(this, args);
             inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
 
-// =============================================================================
-// 9. ERROR HANDLING AND FALLBACKS
-// =============================================================================
-/**
- * Global error handler for graceful error handling
- */
-window.addEventListener('error', (event) => {
-    console.warn('PassionBakery: Non-critical error caught:', event.error);
-    // Implement fallback behavior if needed
-});
+      // =============================================================================
+      // 9. ERROR HANDLING AND FALLBACKS
+      // =============================================================================
+      /**
+       * Global error handler for graceful error handling
+       */
+      window.addEventListener("error", (event) => {
+        console.warn("PassionBakery: Non-critical error caught:", event.error);
+        // Implement fallback behavior if needed
+      });
 
-/**
- * Handle unhandled promise rejections
- */
-window.addEventListener('unhandledrejection', (event) => {
-    console.warn('PassionBakery: Unhandled promise rejection:', event.reason);
-    event.preventDefault(); // Prevent the default behavior
-});
+      /**
+       * Handle unhandled promise rejections
+       */
+      window.addEventListener("unhandledrejection", (event) => {
+        console.warn(
+          "PassionBakery: Unhandled promise rejection:",
+          event.reason
+        );
+        event.preventDefault(); // Prevent the default behavior
+      });
 
-// =============================================================================
-// 10. PERFORMANCE MONITORING (OPTIONAL)
-// =============================================================================
-/**
- * Basic performance monitoring
- */
-if ('performance' in window) {
-    window.addEventListener('load', () => {
-        setTimeout(() => {
+      // =============================================================================
+      // 10. PERFORMANCE MONITORING (OPTIONAL)
+      // =============================================================================
+      /**
+       * Basic performance monitoring
+       */
+      if ("performance" in window) {
+        window.addEventListener("load", () => {
+          setTimeout(() => {
             const perfData = performance.timing;
             const loadTime = perfData.loadEventEnd - perfData.navigationStart;
             console.log(`PassionBakery: Page loaded in ${loadTime}ms`);
-        }, 0);
-    });
-}
-</script>
-</body>
+          }, 0);
+        });
+      }
+
+      // Update cart count from localStorage
+      (function () {
+        const cartData = JSON.parse(localStorage.getItem("cartData")) || {};
+        const cartCount = Object.values(cartData).reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const cartCountElement = document.getElementById("cart-count");
+        if (cartCountElement) {
+          cartCountElement.textContent = `(${cartCount})`;
+        }
+      })();
+    </script>
+  </body>
 </html>
