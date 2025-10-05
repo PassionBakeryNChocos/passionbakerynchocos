@@ -41,12 +41,6 @@ text-align: center;
 margin-bottom: 15px;
 font-family: Great Vibes;
 text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-from { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.3); }
-to { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 30px rgba(255,215,0,0.6); }
 }
 
 p {
@@ -85,21 +79,6 @@ position: relative;
 overflow: hidden;
 }
 
-.topnav a:before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-transition: var(--transition);
-}
-
-.topnav a:hover:before {
-left: 100%;
-}
-
 .topnav a:hover, .topnav .cart-icon:hover {
 background: linear-gradient(45deg, #0000ff, #4169e1);
 color: white;
@@ -129,43 +108,11 @@ position: relative;
 overflow: hidden;
 }
 
-#banner:before {
-content: '';
-position: absolute;
-top: -50%;
-left: -50%;
-width: 200%;
-height: 200%;
-background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-animation: bannerFloat 8s ease-in-out infinite;
-pointer-events: none;
-}
-
-@keyframes bannerFloat {
-0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
-50% { transform: translate(10%, 10%) rotate(180deg); }
-}
-
-#banner h1 { 
-margin-bottom: 10px;
-animation: bounceIn 1s ease-out;
-}
-
-@keyframes bounceIn {
-0% { opacity: 0; transform: scale(0.3) translateY(-50px); }
-50% { opacity: 1; transform: scale(1.1); }
-100% { opacity: 1; transform: scale(1); }
-}
+#banner h1 { margin-bottom: 10px; }
 
 #banner p {
 font-size: clamp(1rem, 3vw, 1.125rem);
 font-family: Delius;
-animation: fadeInUp 1s ease-out 0.5s both;
-}
-
-@keyframes fadeInUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
 }
 
 img { max-width: 100%; height: auto; }
@@ -200,44 +147,6 @@ border-radius: var(--border-radius);
 box-shadow: 0 10px 30px rgba(98,102,244,0.3);
 overflow: hidden;
 position: relative;
-}
-
-section#featured-products {
-animation: sectionSlideIn 1s ease-out;
-}
-
-section#about-me {
-animation: sectionSlideIn 1s ease-out 0.2s both;
-}
-
-section#customer-reviews {
-animation: sectionSlideIn 1s ease-out 0.3s both;
-}
-
-section#contact-me {
-animation: sectionSlideIn 1s ease-out 0.4s both;
-}
-
-section#featured-products:before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
-animation: shimmer 3s infinite;
-pointer-events: none;
-}
-
-@keyframes sectionSlideIn {
-from { opacity: 0; transform: translateY(50px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shimmer {
-0% { transform: translateX(-100%); }
-100% { transform: translateX(100%); }
 }
 
 /* Smooth Scrolling Reviews */
@@ -361,23 +270,6 @@ font-weight: bold;
 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 box-shadow: 0 8px 25px rgba(17, 18, 74, 0.3);
 border: 2px solid rgba(255, 215, 0, 0.3);
-position: relative;
-overflow: hidden;
-}
-
-.google-reviews-btn:before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-transition: left 0.6s;
-}
-
-.google-reviews-btn:hover:before {
-left: 100%;
 }
 
 .google-reviews-btn:hover {
@@ -521,23 +413,6 @@ text-decoration: none;
 border: 2px solid #f2f2f2;
 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 box-shadow: 0 6px 20px rgba(17,18,74,0.3);
-position: relative;
-overflow: hidden;
-}
-
-.shop-button:before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-transition: left 0.6s;
-}
-
-.shop-button:hover:before {
-left: 100%;
 }
 
 .shop-button:hover {
@@ -564,12 +439,6 @@ border-radius: var(--border-radius);
 box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 overflow: hidden;
 backdrop-filter: blur(10px);
-animation: containerFloat 8s ease-in-out infinite;
-}
-
-@keyframes containerFloat {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-5px); }
 }
 
 .contact-container {
@@ -613,24 +482,12 @@ background: linear-gradient(135deg, #f9f9f9, #f0f4f7);
 margin-bottom: 20px;
 font-size: clamp(1.5rem, 4vw, 2rem);
 color: #0f1048;
-animation: titleSlideIn 1s ease-out;
-}
-
-@keyframes titleSlideIn {
-from { opacity: 0; transform: translateX(-30px); }
-to { opacity: 1; transform: translateX(0); }
 }
 
 .about-right p {
 font-size: clamp(0.9rem, 2.5vw, 1rem);
 color: #333;
 line-height: 1.6;
-animation: textFadeIn 1s ease-out 0.3s both;
-}
-
-@keyframes textFadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
 }
 
 /* Contact Form */
@@ -740,20 +597,6 @@ font-family: Delius;
 border-top: 4px solid var(--gold);
 box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
 margin-top: 30px;
-position: relative;
-overflow: hidden;
-}
-
-.business-footer:before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: radial-gradient(circle at 20% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
-radial-gradient(circle at 80% 20%, rgba(30,242,253,0.1) 0%, transparent 50%);
-pointer-events: none;
 }
 
 .footer-content {
@@ -763,8 +606,6 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 gap: clamp(25px, 5vw, 40px);
-position: relative;
-z-index: 1;
 }
 
 .footer-section {
@@ -778,7 +619,6 @@ font-size: clamp(1.6rem, 4vw, 2.2rem);
 color: var(--gold);
 margin-bottom: 20px;
 text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
 .footer-section p {
@@ -883,14 +723,6 @@ margin-top: 40px;
 padding-top: 25px;
 border-top: 2px solid rgba(255,215,0,0.3);
 text-align: center;
-position: relative;
-z-index: 1;
-animation: footerSlideUp 1s ease-out;
-}
-
-@keyframes footerSlideUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
 }
 
 .footer-bottom-section p {
@@ -902,38 +734,11 @@ font-weight: bold;
 
 /* Mobile */
 @media screen and (max-width: 768px) {
-.topnav a:not(:first-child):not(.cart-icon) { display: none; }
-.topnav .cart-icon { 
-float: right; 
-display: block; 
-margin: 8px 5px 8px 10px;
-order: 2;
-}
-.topnav a.icon { 
-float: right; 
-display: block; 
-margin: 8px 10px;
-order: 3;
-}
+.topnav a:not(:first-child) { display: none; }
+.topnav a.icon { float: right; display: block; margin: 8px 10px; }
 .topnav.responsive { position: relative; }
-.topnav.responsive .icon { 
-position: absolute; 
-right: 10px; 
-top: 0px; 
-color: var(--gold); 
-background: linear-gradient(45deg, #3e476f, #5a6491);
-}
-.topnav.responsive .cart-icon { 
-position: absolute; 
-right: 70px; 
-top: 0px; 
-}
-.topnav.responsive a:not(.icon):not(.cart-icon) { 
-float: none; 
-display: block; 
-text-align: left; 
-margin: 5px 10px; 
-}
+.topnav.responsive .icon { position: absolute; right: 10px; top: 0px; color: var(--gold); background: linear-gradient(45deg, #3e476f, #5a6491); }
+.topnav.responsive a { float: none; display: block; text-align: left; margin: 5px 10px; }
 .slider-button { width: 40px; height: 40px; padding: 8px; }
 .slider-button.prev { left: 5px; }
 .slider-button.next { right: 5px; }
@@ -957,21 +762,27 @@ margin: 5px 10px;
 <a href="#customer-reviews">Reviews</a>
 <a href="#contact-me">Contact Us</a>
 <a href="special_order_cake.html">Special Order</a>
-<a href="Cart_cake.html" class="cart-icon"><i class="fa fa-shopping-cart"></i></a>
-<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+<a href="Cart_cake.html" class="cart-icon"><i class="fa fa-shopping-cart"></i></a> <!-- Cart Icon -->
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+<i class="fa fa-bars"></i>
+</a>
 </div>
 
+<!-- Replace the border images with these classes -->
 <img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
 <!-- Banner Section -->
 <section id="banner">
+<div class="glitter-container"></div>
 <img src="Cake_web_banner.png" style="width: 100%; height: 25%">
-<h1 style="color: #11124a;">Welcome to PassionBakeryNChocos Shop!!</h1>
+<h1 style="color: #11124a;">Welcome to PassionBakeryNChocos Shop!! </h1>
 <p style="text-shadow: 2px 2px 5px pink; font-family: Delius;">Your one-stop shop for amazing desserts and sweetness.</p>
 </section>
 
-<img src="border bottom.png" class="border-image">
+<!-- Replace the border images with these classes -->
 <img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
 <!-- Featured Products Section -->
 <section id="featured-products">
@@ -980,30 +791,45 @@ margin: 5px 10px;
 <div class="slider-container">
 <button class="slider-button prev">&lt;</button>
 <div class="slider">
+
 <div class="slide">
 <img src="cake.jpeg" alt="Product 1">
 <p style="font-weight: bolder; font-size: x-large; color:#FFFFFF">Cakes</p>
 </div>
+
 <div class="slide">
 <img src="chocolate.jpg" alt="Product 2">
 <p style="font-weight: bolder; font-size: x-large; color:#FFFFFF">Homemade Chocolates</p>
 </div>
+
 <div class="slide">
 <img src="gift.jpg" alt="Product 3">
 <p style="font-weight: bolder; font-size: x-large; color:#FFFFFF ;">Gift Items</p>
 </div>
+
 </div>
 <button class="slider-button next">&gt;</button>
 </div>
 <div class="slider-dots"></div>
 
-<a href="Products_cakes.html" class="shop-button">Shop Now For Cakes!!</a>
-<a href="Chocolates.html" class="shop-button">Shop Now For Chocolates!!</a>
-<a href="Gift.html" class="shop-button">Shop Now For Gift Items!!</a>
+<!-- Add classes to your shop buttons -->
+<a href="Products_cakes.html" class="shop-button">
+Shop Now For Cakes!!
+</a>
+
+<a href="Chocolates.html" class="shop-button">
+Shop Now For Chocolates!!
+</a>
+
+<a href="Gift.html" class="shop-button">
+Shop Now For Gift Items!!
+</a>
+
 </section>
 
-<img src="border bottom.png" class="border-image">
+<!-- Replace the border images with these classes -->
 <img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
 <!-- About Me Section -->
 <section id="about-me">
@@ -1017,18 +843,19 @@ margin: 5px 10px;
 <p>
 I am a passionate home baker and a proud self-made business owner, turning my love for baking into a thriving venture. 
 What started as a simple hobby in my kitchen quickly grew into a business fueled by creativity, dedication, and an unyielding desire to bring joy through sweet treats. 
-Every cake, cookie, and pastry I create is handcrafted with care, using quality ingredients and a sprinkle of love. All the products are made in the most hygienic environment and with pure veg materials. 
+Every cake, cookie, and pastry I create is handcrafted with care, using quality ingredients and a sprinkle of love. All the products are made in the most hyginic environment and with pure veg materials. 
 Building my brand from the ground up has taught me resilience, time management, and the importance of connecting with my customers. 
-Each order is more than just a dessert — it's a part of someone's celebration, and I'm honored to contribute to those special moments. 
+Each order is more than just a dessert Ã¢â‚¬" itÃ¢â‚¬â„¢s a part of someoneÃ¢â‚¬â„¢s celebration, and IÃ¢â‚¬â„¢m honored to contribute to those special moments. 
 As I continue to grow, my goal remains the same: to deliver beautiful, delicious creations that reflect both my artistry and my clients' dreams. 
-This journey is just the beginning, and I'm excited for what's next.
+This journey is just the beginning, and IÃ¢â‚¬â„¢m excited for whatÃ¢â‚¬â„¢s next.
 </p>
 </div>
 </div>
 </section>
 
-<img src="border bottom.png" class="border-image">
+<!-- Replace the border images with these classes -->
 <img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
 <!-- Customer Reviews Section -->
 <section id="customer-reviews">
@@ -1037,6 +864,7 @@ This journey is just the beginning, and I'm excited for what's next.
 
 <div class="reviews-container">
 <div class="reviews-scroll">
+<!-- First set of reviews -->
 <div class="review-card">
 <div class="review-header">
 <div class="reviewer-avatar">P</div>
@@ -1121,7 +949,7 @@ This journey is just the beginning, and I'm excited for what's next.
 <div class="review-date">5 days ago</div>
 </div>
 
-<!-- Duplicate for seamless loop -->
+<!-- Duplicate set for seamless loop -->
 <div class="review-card">
 <div class="review-header">
 <div class="reviewer-avatar">P</div>
@@ -1216,8 +1044,9 @@ This journey is just the beginning, and I'm excited for what's next.
 </div>
 </section>
 
-<img src="border bottom.png" class="border-image">
+<!-- Replace the border images with these classes -->
 <img src="border top.png" class="border-image">
+<img src="border bottom.png" class="border-image">
 
 <!-- Contact Me Section -->
 <section id="contact-me">
@@ -1257,146 +1086,396 @@ This journey is just the beginning, and I'm excited for what's next.
 <img src="Whatsapp Logo.png" alt="WhatsApp">
 </a>
 <a href="" target="_blank" class="social-icon">
-<img src="google maps.png" alt="Google Maps">
+<img src="google maps.png" alt="WhatsApp">
 </a>
 <a href="" target="_blank" class="social-icon">
-<img src="youtube.png" alt="YouTube">
+<img src="youtube.png" alt="WhatsApp">
 </a>
 </div>
 </div>
 </section>
 
+<!-- Replace the border images with these classes -->
+<img src="border top.png" class="border-image">
 <img src="border bottom.png" class="border-image">
 
-<!-- Footer -->
+<!-- Professional Business Footer -->
 <footer class="business-footer">
-<div class="footer-content">
-<div class="footer-section">
-<img src="Logo.jpg" alt="PassionBakeryNChocos Logo" class="footer-logo-img">
-<h3>PassionBakeryNChocos</h3>
-<p>Crafting sweet memories with every bite. We specialize in custom cakes, homemade chocolates, and unique gift items made with pure vegetarian ingredients in the most hygienic environment.</p>
-<div class="social-footer-links">
-<a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
-<a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
-<a href="https://wa.me/919869153017" target="_blank" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-<a href="https://in.pinterest.com/" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-</div>
-</div>
-
-<div class="footer-section">
-<h3>Quick Links</h3>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="Products_cakes.html">Cakes Collection</a></li>
-<li><a href="Chocolates.html">Homemade Chocolates</a></li>
-<li><a href="Gift.html">Gift Items</a></li>
-<li><a href="special_order_cake.html">Special Orders</a></li>
-<li><a href="Cart_cake.html">Shopping Cart</a></li>
-</ul>
-</div>
-
-<div class="footer-section">
-<h3>Our Specialties</h3>
-<ul>
-<li>Custom Birthday Cakes</li>
-<li>Wedding & Anniversary Cakes</li>
-<li>Festival Special Treats</li>
-<li>Corporate Gifts & Bulk Orders</li>
-<li>Homemade Chocolates</li>
-<li>Personalized Gift Hampers</li>
-</ul>
-</div>
-
-<div class="footer-section">
-<h3>Get In Touch</h3>
-<div class="contact-info-item">
-<i class="fa fa-envelope"></i>
-<span>manjupathak135@gmail.com</span>
-</div>
-<div class="contact-info-item">
-<i class="fa fa-phone"></i>
-<span>+91 9869153017</span>
-</div>
-<div class="contact-info-item">
-<i class="fa fa-clock-o"></i>
-<span>Available: 9AM - 8PM Daily</span>
-</div>
-<div class="contact-info-item">
-<i class="fa fa-map-marker"></i>
-<span>Mumbai, Maharashtra, India</span>
-</div>
-</div>
-</div>
-
-<div class="footer-bottom-section">
-<p>&copy; 2024 PassionBakeryNChocos. All rights reserved. Made with love for sweet celebrations!</p>
-</div>
+    <div class="footer-content">
+        <div class="footer-section">
+            <img src="Logo.jpg" alt="PassionBakeryNChocos Logo" class="footer-logo-img">
+            <h3>PassionBakeryNChocos</h3>
+            <p>Crafting sweet memories with every bite. We specialize in custom cakes, homemade chocolates, and unique gift items made with pure vegetarian ingredients in the most hygienic environment.</p>
+            <div class="social-footer-links">
+                <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://wa.me/919869153017" target="_blank" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+                <a href="https://in.pinterest.com/" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Products_cakes.html">Cakes Collection</a></li>
+                <li><a href="Chocolates.html">Homemade Chocolates</a></li>
+                <li><a href="Gift.html">Gift Items</a></li>
+                <li><a href="special_order_cake.html">Special Orders</a></li>
+                <li><a href="Cart_cake.html">Shopping Cart</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Our Specialties</h3>
+            <ul>
+                <li>Custom Birthday Cakes</li>
+                <li>Wedding & Anniversary Cakes</li>
+                <li>Festival Special Treats</li>
+                <li>Corporate Gifts & Bulk Orders</li>
+                <li>Homemade Chocolates</li>
+                <li>Personalized Gift Hampers</li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <div class="contact-info-item">
+                <i class="fa fa-envelope"></i>
+                <span>manjupathak135@gmail.com</span>
+            </div>
+            <div class="contact-info-item">
+                <i class="fa fa-phone"></i>
+                <span>+91 9869153017</span>
+            </div>
+            <div class="contact-info-item">
+                <i class="fa fa-clock-o"></i>
+                <span>Available: 9AM - 8PM Daily</span>
+            </div>
+            <div class="contact-info-item">
+                <i class="fa fa-map-marker"></i>
+                <span>Mumbai, Maharashtra, India</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom-section">
+        <p>&copy; 2024 PassionBakeryNChocos. All rights reserved. Made with love for sweet celebrations! ❤️</p>
+    </div>
 </footer>
 
 <script>
+// =============================================================================
+// PASSIONBAKERY N CHOCOS - OPTIMIZED JAVASCRIPT CODE
+// =============================================================================
+
+// =============================================================================
+// 1. MOBILE NAVIGATION TOGGLE FUNCTIONALITY
+// =============================================================================
+/**
+ * Toggles the responsive navigation menu on mobile devices
+ * Switches between collapsed and expanded navigation states
+ */
 function myFunction() {
-const nav = document.getElementById("myTopnav");
-nav.className = nav.className === "topnav" ? "topnav responsive" : "topnav";
+    const nav = document.getElementById("myTopnav");
+    nav.className = nav.className === "topnav" ? "topnav responsive" : "topnav";
 }
 
+// =============================================================================
+// 2. DOM CONTENT LOADED - MAIN INITIALIZATION
+// =============================================================================
 document.addEventListener("DOMContentLoaded", () => {
-initializeSlider();
-initializeGoogleReviewsButton();
+    // Initialize all components when DOM is fully loaded
+    initializeSlider();
+    initializeScrollAnimations();
+    createGlitterEffect(); // Enhanced glitter effect
+    initializeGoogleReviewsButton();
 });
 
+// =============================================================================
+// 3. PRODUCT SLIDER/CAROUSEL FUNCTIONALITY
+// =============================================================================
+/**
+ * Initializes the featured products slider with navigation and dot indicators
+ * Handles slide transitions, button clicks, and dot navigation
+ */
 function initializeSlider() {
-const slider = document.querySelector(".slider");
-const slides = document.querySelectorAll(".slide");
-const prevButton = document.querySelector(".slider-button.prev");
-const nextButton = document.querySelector(".slider-button.next");
-const dotsContainer = document.querySelector(".slider-dots");
-
-if (!slider || !slides.length || !dotsContainer) return;
-
-let currentIndex = 0;
-
-slides.forEach((_, index) => {
-const dot = document.createElement("span");
-dot.classList.add("dot");
-if (index === currentIndex) dot.classList.add("active");
-dotsContainer.appendChild(dot);
-});
-
-const dots = document.querySelectorAll(".dot");
-
-function updateSlider() {
-slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-dots.forEach((dot, index) => {
-dot.classList.toggle("active", index === currentIndex);
-});
+    // Cache DOM elements for better performance
+    const slider = document.querySelector(".slider");
+    const slides = document.querySelectorAll(".slide");
+    const prevButton = document.querySelector(".slider-button.prev");
+    const nextButton = document.querySelector(".slider-button.next");
+    const dotsContainer = document.querySelector(".slider-dots");
+    
+    // Early return if slider elements don't exist
+    if (!slider || !slides.length || !dotsContainer) return;
+    
+    let currentIndex = 0;
+    
+    // Create navigation dots dynamically
+    createSliderDots();
+    
+    // Set up event listeners
+    setupSliderEvents();
+    
+    /**
+     * Creates dot indicators for slider navigation
+     */
+    function createSliderDots() {
+        const fragment = document.createDocumentFragment();
+        
+        slides.forEach((_, index) => {
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            if (index === currentIndex) dot.classList.add("active");
+            fragment.appendChild(dot);
+        });
+        
+        dotsContainer.appendChild(fragment);
+    }
+    
+    /**
+     * Sets up all slider event listeners
+     */
+    function setupSliderEvents() {
+        const dots = document.querySelectorAll(".dot");
+        
+        // Previous button navigation
+        prevButton?.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSliderPosition();
+        });
+        
+        // Next button navigation
+        nextButton?.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSliderPosition();
+        });
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                currentIndex = index;
+                updateSliderPosition();
+            });
+        });
+    }
+    
+    /**
+     * Updates slider position and active dot indicator
+     */
+    function updateSliderPosition() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateActiveDot();
+    }
+    
+    /**
+     * Updates the active state of dot indicators
+     */
+    function updateActiveDot() {
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+        });
+    }
 }
 
-prevButton?.addEventListener("click", () => {
-currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-updateSlider();
-});
-
-nextButton?.addEventListener("click", () => {
-currentIndex = (currentIndex + 1) % slides.length;
-updateSlider();
-});
-
-dots.forEach((dot, index) => {
-dot.addEventListener("click", () => {
-currentIndex = index;
-updateSlider();
-});
-});
-}
-
+// =============================================================================
+// 4. GOOGLE REVIEWS BUTTON FUNCTIONALITY
+// =============================================================================
+/**
+ * Initializes the Google Reviews button
+ * You can replace the placeholder URL with your actual Google Maps/Reviews link
+ */
 function initializeGoogleReviewsButton() {
-const googleReviewsBtn = document.getElementById('googleReviewsBtn');
-if (googleReviewsBtn) {
-googleReviewsBtn.addEventListener('click', (e) => {
-e.preventDefault();
-window.open('YOUR_GOOGLE_MAPS_REVIEWS_URL_HERE', '_blank');
-});
+    const googleReviewsBtn = document.getElementById('googleReviewsBtn');
+    
+    if (googleReviewsBtn) {
+        googleReviewsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Replace this URL with your actual Google Maps/Reviews link
+            const googleMapsUrl = 'YOUR_GOOGLE_MAPS_REVIEWS_URL_HERE';
+            window.open(googleMapsUrl, '_blank');
+        });
+    }
 }
+
+// =============================================================================
+// 5. SCROLL ANIMATIONS AND INTERSECTION OBSERVER
+// =============================================================================
+/**
+ * Initializes scroll-based animations using Intersection Observer API
+ * Animates sections when they come into view
+ */
+function initializeScrollAnimations() {
+    // Observer configuration
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    
+    // Observe all animatable elements
+    const animatableElements = document.querySelectorAll('section, .about-container, .contact-container');
+    animatableElements.forEach(el => observer.observe(el));
+    
+    /**
+     * Handles intersection events for scroll animations
+     * @param {IntersectionObserverEntry[]} entries - Array of intersection entries
+     */
+    function handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInOnScroll 1s ease-out forwards';
+                // Optionally unobserve after animation to improve performance
+                // observer.unobserve(entry.target);
+            }
+        });
+    }
+}
+
+// =============================================================================
+// 6. ENHANCED GLITTER EFFECT FOR HERO SECTION
+// =============================================================================
+/**
+ * Creates enhanced visible glittery animation in the hero section
+ * Now with 50 glitter particles for better visual impact
+ */
+function createGlitterEffect() {
+    const glitterContainer = document.querySelector('.glitter-container');
+    if (!glitterContainer) return;
+    
+    // Clear any existing glitter
+    glitterContainer.innerHTML = '';
+    
+    // Create 50 glitter particles for enhanced visual effect
+    for (let i = 0; i < 50; i++) {
+        const glitter = document.createElement('div');
+        glitter.classList.add('glitter');
+        
+        // Random positioning across the banner
+        glitter.style.left = Math.random() * 100 + '%';
+        glitter.style.top = Math.random() * 100 + '%';
+        
+        // Random animation delay for natural effect
+        glitter.style.animationDelay = Math.random() * 3 + 's';
+        
+        // Random duration variation
+        const duration = 1.5 + Math.random() * 2; // Between 1.5s and 3.5s
+        glitter.style.animationDuration = duration + 's';
+        
+        glitterContainer.appendChild(glitter);
+    }
+    
+    // Regenerate glitter every 10 seconds for continuous sparkle
+    setInterval(() => {
+        createGlitterEffect();
+    }, 10000);
+}
+
+// =============================================================================
+// 7. PAGE LOADING OPTIMIZATION
+// =============================================================================
+/**
+ * Handles page load completion events
+ * Removes loading states and initializes final animations
+ */
+window.addEventListener('load', () => {
+    // Remove loading class if it exists
+    document.body.classList.remove('loading');
+    
+    // Optional: Add any post-load optimizations here
+    optimizeAfterLoad();
+});
+
+/**
+ * Performs optimizations after page has fully loaded
+ */
+function optimizeAfterLoad() {
+    // Remove unused event listeners
+    // Optimize images that are not in viewport
+    // Initialize any lazy loading if needed
+    
+    // Example: Remove preload attributes from images after load
+    const preloadImages = document.querySelectorAll('img[data-preload]');
+    preloadImages.forEach(img => {
+        img.removeAttribute('data-preload');
+    });
+}
+
+// =============================================================================
+// 8. UTILITY FUNCTIONS
+// =============================================================================
+/**
+ * Debounce function to limit function execution frequency
+ * @param {Function} func - Function to debounce
+ * @param {number} wait - Wait time in milliseconds
+ * @returns {Function} Debounced function
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+/**
+ * Throttle function to limit function execution rate
+ * @param {Function} func - Function to throttle
+ * @param {number} limit - Time limit in milliseconds
+ * @returns {Function} Throttled function
+ */
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// =============================================================================
+// 9. ERROR HANDLING AND FALLBACKS
+// =============================================================================
+/**
+ * Global error handler for graceful error handling
+ */
+window.addEventListener('error', (event) => {
+    console.warn('PassionBakery: Non-critical error caught:', event.error);
+    // Implement fallback behavior if needed
+});
+
+/**
+ * Handle unhandled promise rejections
+ */
+window.addEventListener('unhandledrejection', (event) => {
+    console.warn('PassionBakery: Unhandled promise rejection:', event.reason);
+    event.preventDefault(); // Prevent the default behavior
+});
+
+// =============================================================================
+// 10. PERFORMANCE MONITORING (OPTIONAL)
+// =============================================================================
+/**
+ * Basic performance monitoring
+ */
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = performance.timing;
+            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`PassionBakery: Page loaded in ${loadTime}ms`);
+        }, 0);
+    });
 }
 </script>
 </body>
