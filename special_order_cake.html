@@ -1335,18 +1335,18 @@
          */
         function formatWhatsAppMessage(data) {
           return (
-            `*Special Cake Order*\n\n` +
-            `Name: ${data.name}\n` +
-            `Phone: ${data.phone}\n` +
-            `Address: ${data.address}\n` +
-            `Weight: ${data.weight} kg\n` +
-            `Delivery Date: ${data.deliveryDate}\n` +
-            `Delivery Mode: ${data.deliveryMode}\n` +
-            `Occasion: ${data.occasion}\n` +
-            `Flavour: ${data.flavour}\n` +
-            `Special Design: ${data.specialDesign}\n` +
-            `Name on Cake: ${data.nameOnCake}\n` +
-            `Special Request: ${data.specialRequest}`
+            `🍰 *Special Cake Order* 🍰\n\n` +
+            `👤 Name: ${data.name}\n` +
+            `📞 Phone: ${data.phone}\n` +
+            `📍 Address: ${data.address}\n` +
+            `⚖️ Weight: ${data.weight} kg\n` +
+            `📅 Delivery Date: ${data.deliveryDate}\n` +
+            `🚚 Delivery Mode: ${data.deliveryMode}\n` +
+            `🎉 Occasion: ${data.occasion}\n` +
+            `🍴 Flavour: ${data.flavour}\n` +
+            `🎨 Special Design: ${data.specialDesign}\n` +
+            `✍️ Name on Cake: ${data.nameOnCake}\n` +
+            `💭 Special Request: ${data.specialRequest}`
           );
         }
 
@@ -1369,11 +1369,13 @@
         }
       });
 
-      // Update cart count - Using in-memory variable instead of localStorage
+      // Update cart count from localStorage
       (function () {
-        // In a real implementation without localStorage, this would need to be
-        // passed from the server or stored in session memory
-        const cartCount = 0; // Default value
+        const cartData = JSON.parse(localStorage.getItem("cartData")) || {};
+        const cartCount = Object.values(cartData).reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
         const cartCountElement = document.getElementById("cart-count");
         if (cartCountElement) {
           cartCountElement.textContent = `(${cartCount})`;
