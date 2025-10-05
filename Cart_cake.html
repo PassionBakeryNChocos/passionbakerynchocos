@@ -1,1132 +1,2035 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PassionBakeryNChocos</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-
-<style>
-/* CSS Variables */
-:root {
-  --primary-color: #6366f1;
-  --secondary-color: #f59e0b;
-  --accent-color: #10b981;
-  --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --border-radius: 16px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #1ef2fd;
-  overflow-x: hidden;
-  line-height: 1.6;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-/* Typography */
-h1, h2 {
-  color: #FFD700;
-  font-weight: bold;
-  font-size: clamp(1.8rem, 5vw, 3.5rem);
-  text-align: center;
-  margin-bottom: 15px;
-  font-family: Great Vibes;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  from { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.3); }
-  to { text-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 30px rgba(255,215,0,0.6); }
-}
-
-/* Navigation Bar */
-.topnav {
-  overflow: hidden;
-  background: linear-gradient(90deg, rgba(30,242,253,0.95) 0%, rgba(74,144,226,0.95) 100%);
-  font-family: Delius;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 2px solid rgba(255,215,0,0.3);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.topnav a, .topnav .cart-icon {
-  float: left;
-  display: block;
-  color: #11124a;
-  text-align: center;
-  padding: 16px 24px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
-  border-radius: 12px;
-  margin: 8px 6px;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.topnav a:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: var(--transition);
-}
-
-.topnav a:hover:before { left: 100%; }
-
-.topnav a:hover, .topnav .cart-icon:hover {
-  background: linear-gradient(45deg, #0000ff, #4169e1);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(99,102,241,0.3);
-}
-
-.topnav .cart-icon:hover { transform: translateY(-2px) rotate(5deg); }
-
-.topnav a.active {
-  background: linear-gradient(45deg, #3e476f, #5a6491);
-  color: white;
-  box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-  transform: scale(1.05);
-}
-
-.topnav .icon { display: none; }
-
-/* Border Images */
-.border-image {
-  width: min(70%, 600px);
-  height: auto;
-  margin: 20px auto;
-  display: block;
-  animation: imageFloat 6s ease-in-out infinite;
-}
-
-@keyframes imageFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Cart Section */
-.cart-section {
-  margin: 20px;
-  padding: 30px;
-  background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
-  border-radius: 16px;
-  font-family: Delius;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.cart-section h2 {
-  color: #FFD700;
-  font-family: Great Vibes;
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 25px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-}
-
-/* Table Styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.95) 100%);
-}
-
-th, td {
-  border: none;
-  padding: 15px 12px;
-  text-align: center;
-  position: relative;
-}
-
-th {
-  background: linear-gradient(135deg, #1ef2fd 0%, #4a90e2 100%);
-  color: #11124a;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
-  border-bottom: 3px solid #FFD700;
-}
-
-td {
-  background: rgba(255, 255, 255, 0.9);
-  color: #11124a;
-  font-weight: 500;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-  transition: all 0.3s ease;
-}
-
-tr:nth-child(even) td { background: rgba(240, 248, 255, 0.9); }
-
-tr:hover td {
-  background: rgba(255, 215, 0, 0.1);
-  transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
-}
-
-.total-row td {
-  background: linear-gradient(135deg, #FFD700 0%, #ffa500 100%) !important;
-  color: #11124a !important;
-  font-weight: bold !important;
-  font-size: 1.2rem !important;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
-  border-top: 3px solid #6266f4 !important;
-}
-
-.total-row:hover td { transform: none !important; }
-
-/* Button Styles */
-button {
-  background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 0.95rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
-  position: relative;
-  overflow: hidden;
-  margin: 0 3px;
-}
-
-button:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: all 0.5s ease;
-}
-
-button:hover:before { left: 100%; }
-
-button:hover {
-  background: linear-gradient(135deg, #4cae4c 0%, #5cb85c 100%);
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(92, 184, 92, 0.4);
-}
-
-button:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 10px rgba(92, 184, 92, 0.3);
-}
-
-/* Specific Button Styles */
-button[onclick*="removeFromCart"] {
-  background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
-  box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
-}
-
-button[onclick*="removeFromCart"]:hover {
-  background: linear-gradient(135deg, #c9302c 0%, #d9534f 100%);
-  box-shadow: 0 8px 25px rgba(217, 83, 79, 0.4);
-}
-
-button[onclick*="increaseQuantity"], button[onclick*="decreaseQuantity"] {
-  background: linear-gradient(135deg, #337ab7 0%, #286090 100%);
-  box-shadow: 0 4px 15px rgba(51, 122, 183, 0.3);
-  padding: 8px 12px;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-button[onclick*="increaseQuantity"]:hover, button[onclick*="decreaseQuantity"]:hover {
-  background: linear-gradient(135deg, #286090 0%, #337ab7 100%);
-  box-shadow: 0 8px 25px rgba(51, 122, 183, 0.4);
-}
-
-button[onclick*="scrollToPaymentMethods"] {
-  background: linear-gradient(135deg, #FFD700 0%, #ffa500 100%);
-  color: #11124a;
-  font-size: 1.2rem;
-  padding: 15px 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-button[onclick*="scrollToPaymentMethods"]:hover {
-  background: linear-gradient(135deg, #ffa500 0%, #FFD700 100%);
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
-}
-
-/* Payment Methods Section */
-.payment-methods {
-  margin-top: 20px;
-  padding: 20px;
-  background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
-  border-radius: 8px;
-  text-align: center;
-  font-family: Delius;
-}
-
-.payment-methods img {
-  width: 80px;
-  margin: 0 10px;
-  transition: transform 0.3s ease;
-}
-
-.payment-methods img:hover { transform: scale(1.2); }
-
-#gpay-button, #paytm-button {
-  background-color: #5cb85c;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
-  margin: 10px auto;
-}
-
-#upi-id {
-  color: floralwhite;
-  display: none;
-}
-
-#qr-code {
-  display: none;
-  margin-top: 20px;
-  width: 400px;
-  height: auto;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Payment Form */
-.payment-form {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #6266f4 0%, #4a54d1 50%, #3d47b8 100%);
-  border-radius: 10px;
-}
-
-.container {
-  max-width: 600px;
-  margin: 20px auto;
-  background: #ff77ff;
-  color: #11124a;
-  padding: 20px;
-  font-family: Delius;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"], input[type="tel"], input[type="number"], input[type="date"], input[type="time"], select, textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type="file"] { margin-top: 5px; }
-
-/* Footer */
-.footer-modern {
-  background: linear-gradient(135deg, #0000ff 0%, #1e3a8a 50%, #1e40af 100%);
-  color: floralwhite;
-  padding: clamp(30px, 6vw, 40px) clamp(15px, 4vw, 20px) clamp(15px, 3vw, 20px);
-  font-family: Delius;
-  border-top: 4px solid #FFD700;
-  box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
-  border-radius: 20px 20px 0 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.footer-modern:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(30,242,253,0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: clamp(20px, 5vw, 30px);
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-column {
-  flex: 1 1 300px;
-  animation: footerSlideUp 1s ease-out;
-}
-
-@keyframes footerSlideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.footer-column h3 {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  color: #FFD700;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-.footer-column p {
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-  line-height: 1.6;
-  margin: 8px 0;
-}
-
-.footer-column a {
-  color: floralwhite;
-  text-decoration: underline;
-  transition: all 0.3s ease;
-}
-
-.footer-column a:hover {
-  color: #FFD700;
-  text-decoration: none;
-  text-shadow: 0 0 5px rgba(255,215,0,0.5);
-}
-
-.footer-map iframe {
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(255,255,255,0.1);
-  width: 100%;
-  height: 200px;
-  transition: transform 0.3s ease;
-}
-
-.footer-map iframe:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-}
-
-.footer-bottom-modern {
-  text-align: center;
-  margin-top: clamp(20px, 5vw, 30px);
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.3);
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-  color: #FFD700;
-  position: relative;
-  z-index: 1;
-}
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .topnav {
-    padding: 0 10px;
-  }
-
-  .topnav a:not(:first-child) { display: none; }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin: 8px 10px;
-  }
-
-  .topnav a {
-    margin: 5px 3px;
-    padding: 12px 14px;
-    font-size: 0.9rem;
-  }
-
-  .topnav.responsive { position: relative; }
-
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 10px;
-    top: 0px;
-    color: #FFD700;
-    background: linear-gradient(45deg, #3e476f, #5a6491);
-  }
-
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-    margin: 5px 10px;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-column {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .footer-map iframe { height: 250px; }
-}
-
-@media (max-width: 600px) {
-  .container { padding: 15px; }
-}
-</style>
-</head>
-
-<body>
-<!-- Navigation Bar -->
-<div class="topnav" id="myTopnav">
-<a href="index.html">Home</a>
-<a href="Products_cakes.html" class="active">Products</a>
-<a href="index.html">About Me</a>
-<a href="index.html">Contact Us</a>
-<a href="special_order_cake.html">Special Order</a>
-<a href="Cart_cake.html" class="cart-icon">
-<i class="fa fa-shopping-cart"></i>
-<span class="cart-count" id="cart-count">(0)</span>
-</a>
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-<i class="fa fa-bars"></i>
-</a>
-</div>
-
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-
-<!-- Cart Section -->
-<!-- Cart Section -->
-<div class="cart-section">
-<h2>Your Cart</h2>
-<table>
-<thead>
-<tr>
-    <th>Sr No</th>
-    <th>Product Name</th>
-    <th>Weight</th>
-    <th>Price</th>
-    <th>Action</th>
-</tr>
-</thead>
-<tbody id="cart-table-body">
-<!-- Cart items will be populated here -->
-</tbody>
-<tfoot>
-<tr class="total-row">
-    <td colspan="3">Total Amount</td>
-    <td id="total-amount">₹0.00</td>
-    <td></td>
-</tr>
-</tfoot>
-</table>
-<div style="text-align: center; margin-top: 20px;">
-<button onclick="scrollToPaymentMethods()">Checkout</button>
-</div>
-</div>
-</div>
-
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-
-<!-- Payment Methods Section -->
-<div class="payment-methods">
-<h2>Payment Methods</h2>
-<p style="color: floralwhite; margin-bottom: 15px;">
-For your safety, we have not embedded the payment method in this website. You can pay by the below given methods.
-</p>
-<p style="color:white; font-weight: bold; font-style: italic;"> Kindly note that paying 50% of the total amount is necessary for the order confirmation.</p>
-<button id="gpay-button" onclick="toggleUPI()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with UPI Id:</button>
-<p id="upi-id" style="color: floralwhite; display: none;">Our UPI ID: manjupathak135@okicici</p>
-
-<button id="paytm-button" onclick="toggleQRCode()" style="background-color: #5cb85c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto;">Pay with Qr Code Image: </button>
-<img id="qr-code" src="qr code.jpg" alt="QR Code" style="display: none; margin-top: 20px; width: 400px; height: auto; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin-left: auto; margin-right: auto;" />
-
-</div>
-
-<img src="border top.png" class="border-image">
-<img src="border bottom.png" class="border-image">
-
-
-<!-- Payment Form Container -->
-<div class="payment-form">
-<h2>Payment Confirmation Form:</h2>
-<p style="font-weight: bold; color: floralwhite; font-family: Delius;">
-After going through the payment using any of the above methods, kindly fill the form below for payment
-confirmation, while your order is on the way!!
-</p>
-<h1>Order Form</h1>
-<div class="container">
-<form id="order-form" onsubmit="return false;">
-<div class="form-group">
-    <label for="name">1. Name of the person placing this order:</label>
-    <input type="text" id="name" name="name" required>
-</div>
-
-<div class="form-group">
-    <label for="address">2. Address of the person placing this order:</label>
-    <input type="text" id="address" name="address" required>
-</div>
-
-<div class="form-group">
-    <label for="phone">3. Phone Number of the person ordering:</label>
-    <input type="tel" id="phone" name="phone" required>
-</div>
-
-<div class="form-group">
-    <label for="different-phone">4. Different Phone Number for delivery (No or Yes):</label>
-    <select id="different-phone" name="different-phone" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-    </select>
-    <input type="tel" id="delivery-phone" name="delivery-phone" style="display:none;" placeholder="Enter delivery phone number">
-</div>
-
-<div class="form-group">
-    <label for="different-name">5. Different Name for delivery (No or Yes):</label>
-    <select id="different-name" name="different-name" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-    </select>
-    <input type="text" id="delivery-name" name="delivery-name" style="display:none;" placeholder="Enter delivery name">
-</div>
-
-<div class="form-group">
-    <label for="different-address">6. Different Address for delivery (No or Yes):</label>
-    <select id="different-address" name="different-address" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-    </select>
-    <input type="text" id="delivery-address" name="delivery-address" style="display:none;" placeholder="Enter delivery address">
-</div>
-
-<div class="form-group">
-    <label for="delivery-date">7. Date to be delivered:</label>
-    <input type="date" id="delivery-date" name="delivery-date" required>
-</div>
-
-<div class="form-group">
-    <label for="delivery-time">8. Time of delivery:</label>
-    <input type="time" id="delivery-time" name="delivery-time" required>
-</div>
-
-<div class="form-group">
-    <label for="cake-name">9. Name on cake:</label>
-    <input type="text" id="cake-name" name="cake-name" required>
-</div>
-
-<div class="form-group">
-    <label for="occasion">10. Occasion:</label>
-    <input type="text" id="occasion" name="occasion" required>
-</div>
-
-<div class="form-group">
-    <label for="delivery-mode">11. Mode of delivery:</label>
-    <select id="delivery-mode" name="delivery-mode" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="home-delivery">Home Delivery</option>
-        <option value="pick-up">Pick Up</option>
-    </select>
-</div>
-
-<div class="form-group">
-    <label for="special-request">Any Other Request for the Special Order:</label>
-    <textarea id="special-request" name="special-request"></textarea>
-</div>
-
-<button type="button" onclick="handleFormSubmission()">Submit Order via WhatsApp</button>
-</form>
-
-</div>
-</div>
-
-<!-- Modern Footer Section -->
-<footer class="footer-modern">
-<div class="footer-container">
-<div class="footer-column">
-<h3>La Ruby Studios</h3>
-<p><strong>Store:</strong> Passion Bakery N Chocos</p>
-<p><strong>Phone:</strong> +91 98691 53017</p>
-<p><strong>Email:</strong> <a href="mailto:contact@larubystudios.com">contact@larubystudios.com</a></p>
-
-</div>
-
-<div class="footer-column">
-<h3>Find Us Here</h3>
-<div class="footer-map">
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30171.758511948356!2d72.89754131946106!3d19.043070507877562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5de0e2b673b%3A0xf7d6a0991954d34d!2sPassionbakery%20n%20chocos!5e0!3m2!1sen!2sin!4v1748762211868!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-</div>
-</div>
-</div>
-<div class="footer-bottom-modern">
-<p>&copy; 2025 <strong>La Ruby Studios</strong>. All Rights Reserved.</p>
-</div>
-</footer>
-
-<script>
-// ==========================================
-// NAVIGATION BAR FUNCTIONALITY
-// ==========================================
-
-/**
- * Toggle responsive navigation menu for mobile devices
- */
-function myFunction() {
-    const nav = document.getElementById("myTopnav");
-    nav.className = nav.className === "topnav" ? "topnav responsive" : "topnav";
-}
-
-// ==========================================
-// CART DATA MANAGEMENT
-// ==========================================
-
-/**
- * Load cart data from localStorage
- * @returns {Object} Cart data object
- */
-const loadCartData = () => JSON.parse(localStorage.getItem("cartData")) || {};
-
-/**
- * Save cart data to localStorage
- * @param {Object} cartData - Cart data to save
- */
-const saveCartData = (cartData) => {
-    localStorage.setItem("cartData", JSON.stringify(cartData));
-};
-
-/**
- * Get cart summary for checkout
- * @returns {Object} Object containing total amount and product names
- */
-const getCartDetails = () => {
-    const cartData = loadCartData();
-    let totalAmount = 0;
-    const productNames = [];
-
-    Object.entries(cartData).forEach(([productName, product]) => {
-        if (product.quantity > 0) {
-            const productTotalPrice = parseFloat(product.price) * product.quantity;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shopping Cart - PassionBakeryNChocos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* CSS Variables */
+      :root {
+        --primary-gradient: linear-gradient(
+          90deg,
+          rgba(30, 242, 253, 0.95) 0%,
+          rgba(74, 144, 226, 0.95) 100%
+        );
+        --section-gradient: linear-gradient(
+          135deg,
+          #6266f4 0%,
+          #4a54d1 50%,
+          #3d47b8 100%
+        );
+        --button-gradient: linear-gradient(45deg, #11124a, #1a1d5a);
+        --hover-gradient: linear-gradient(45deg, #fea3aa, #ff7b82);
+        --gold: #ffd700;
+        --primary-text: #11124a;
+        --white: #ffffff;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --border-radius: 20px;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #1ef2fd;
+        overflow-x: hidden;
+        line-height: 1.6;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        max-width: 100vw;
+      }
+
+      /* Typography */
+      h1,
+      h2 {
+        color: var(--gold);
+        font-weight: bold;
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+        text-align: center;
+        margin-bottom: 15px;
+        font-family: Great Vibes;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        animation: titleGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        from {
+          text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        to {
+          text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(255, 215, 0, 0.6);
+        }
+      }
+
+      /* Navigation Bar */
+      .topnav {
+        overflow: hidden;
+        background: var(--primary-gradient);
+        font-family: Delius;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .topnav a,
+      .topnav .cart-icon {
+        float: left;
+        display: block;
+        color: var(--primary-text);
+        text-align: center;
+        padding: 16px 24px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        border-radius: 12px;
+        margin: 8px 6px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .topnav a:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: var(--transition);
+      }
+
+      .topnav a:hover:before {
+        left: 100%;
+      }
+
+      .topnav a:hover,
+      .topnav .cart-icon:hover {
+        background: linear-gradient(45deg, #0000ff, #4169e1);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+      }
+
+      .topnav .cart-icon:hover {
+        transform: translateY(-2px) rotate(5deg);
+      }
+
+      .topnav a.active {
+        background: linear-gradient(45deg, #3e476f, #5a6491);
+        color: white;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        transform: scale(1.05);
+      }
+
+      .topnav .icon {
+        display: none;
+      }
+
+      /* Border Images */
+      .border-image {
+        width: min(70%, 600px);
+        height: auto;
+        margin: 20px auto;
+        display: block;
+        animation: imageFloat 6s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)
+          contrast(1.1);
+      }
+
+      @keyframes imageFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Empty Cart State */
+      .empty-cart {
+        display: none;
+        text-align: center;
+        padding: 60px 20px;
+        margin: 40px auto;
+        max-width: 600px;
+        background: linear-gradient(
+          135deg,
+          rgba(98, 102, 244, 0.95) 0%,
+          rgba(74, 84, 209, 0.95) 50%,
+          rgba(61, 71, 184, 0.95) 100%
+        );
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(98, 102, 244, 0.4);
+      }
+
+      .empty-cart-icon {
+        font-size: 80px;
+        color: var(--gold);
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .empty-cart h2 {
+        color: var(--gold);
+        margin-bottom: 15px;
+      }
+
+      .empty-cart p {
+        color: floralwhite;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 30px;
+        font-family: Delius;
+      }
+
+      .empty-cart .shop-btn {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, var(--gold), #ffa500);
+        color: var(--primary-text);
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-family: Delius;
+        transition: var(--transition);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+      }
+
+      .empty-cart .shop-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+      }
+
+      /* Cart Section - Enhanced */
+      .cart-section {
+        margin: 20px clamp(10px, 3vw, 20px);
+        padding: clamp(30px, 5vw, 40px);
+        background: var(--section-gradient);
+        border-radius: var(--border-radius);
+        font-family: Delius;
+        box-shadow: 0 10px 30px rgba(98, 102, 244, 0.3);
+        backdrop-filter: blur(10px);
+        display: none;
+      }
+
+      .cart-section.has-items {
+        display: block;
+      }
+
+      .cart-section h2 {
+        color: var(--gold);
+        font-family: Great Vibes;
+        font-size: clamp(2rem, 5vw, 2.5rem);
+        text-align: center;
+        margin-bottom: 25px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Enhanced Table Styles */
+      .table-container {
+        overflow-x: auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(240, 248, 255, 0.98) 100%
+        );
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        border: none;
+        padding: 18px 15px;
+        text-align: center;
+        position: relative;
+      }
+
+      th {
+        background: linear-gradient(135deg, #1ef2fd 0%, #4a90e2 100%);
+        color: var(--primary-text);
+        font-weight: bold;
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        border-bottom: 3px solid var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      td {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--primary-text);
+        font-weight: 500;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      tr:nth-child(even) td {
+        background: rgba(240, 248, 255, 0.9);
+      }
+
+      tr:hover td {
+        background: rgba(255, 215, 0, 0.1);
+        transform: scale(1.01);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+      }
+
+      .total-row td {
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          #ffa500 100%
+        ) !important;
+        color: var(--primary-text) !important;
+        font-weight: bold !important;
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem) !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) !important;
+        border-top: 3px solid #6266f4 !important;
+        padding: 20px 15px !important;
+      }
+
+      .total-row:hover td {
+        transform: none !important;
+      }
+
+      /* Enhanced Button Styles */
+      button {
+        background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+        font-family: Delius;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
+        position: relative;
+        overflow: hidden;
+        margin: 0 3px;
+      }
+
+      button:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: all 0.5s ease;
+      }
+
+      button:hover:before {
+        left: 100%;
+      }
+
+      button:hover {
+        background: linear-gradient(135deg, #4cae4c 0%, #5cb85c 100%);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(92, 184, 92, 0.4);
+      }
+
+      button:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 2px 10px rgba(92, 184, 92, 0.3);
+      }
+
+      button[onclick*="removeFromCart"] {
+        background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+        box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
+      }
+
+      button[onclick*="removeFromCart"]:hover {
+        background: linear-gradient(135deg, #c9302c 0%, #d9534f 100%);
+        box-shadow: 0 8px 25px rgba(217, 83, 79, 0.4);
+      }
+
+      button[onclick*="increaseQuantity"],
+      button[onclick*="decreaseQuantity"] {
+        background: linear-gradient(135deg, #337ab7 0%, #286090 100%);
+        box-shadow: 0 4px 15px rgba(51, 122, 183, 0.3);
+        padding: 8px 12px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        min-width: 35px;
+      }
+
+      button[onclick*="increaseQuantity"]:hover,
+      button[onclick*="decreaseQuantity"]:hover {
+        background: linear-gradient(135deg, #286090 0%, #337ab7 100%);
+        box-shadow: 0 8px 25px rgba(51, 122, 183, 0.4);
+      }
+
+      button[onclick*="scrollToPaymentMethods"] {
+        background: linear-gradient(135deg, var(--gold) 0%, #ffa500 100%);
+        color: var(--primary-text);
+        font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+        padding: 15px 40px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      button[onclick*="scrollToPaymentMethods"]:hover {
+        background: linear-gradient(135deg, #ffa500 0%, var(--gold) 100%);
+        transform: translateY(-3px) scale(1.08);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+      }
+
+      /* Payment Methods Section - Enhanced */
+      .payment-methods {
+        margin: 20px clamp(10px, 3vw, 20px);
+        padding: clamp(30px, 5vw, 40px);
+        background: var(--section-gradient);
+        border-radius: var(--border-radius);
+        text-align: center;
+        font-family: Delius;
+        box-shadow: 0 10px 30px rgba(98, 102, 244, 0.3);
+        display: none;
+      }
+
+      .payment-methods.visible {
+        display: block;
+      }
+
+      .payment-methods h2 {
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+
+      .payment-methods p {
+        color: floralwhite;
+        font-weight: 500;
+        margin-bottom: 15px;
+        font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+        line-height: 1.8;
+      }
+
+      .payment-methods img {
+        width: 80px;
+        margin: 0 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .payment-methods img:hover {
+        transform: scale(1.2);
+      }
+
+      #gpay-button,
+      #paytm-button {
+        background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%);
+        color: white;
+        padding: 14px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        display: block;
+        margin: 15px auto;
+        font-family: Delius;
+        font-weight: bold;
+        font-size: 1rem;
+        box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
+        transition: var(--transition);
+      }
+
+      #gpay-button:hover,
+      #paytm-button:hover {
+        background: linear-gradient(135deg, #4cae4c 0%, #5cb85c 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(92, 184, 92, 0.4);
+      }
+
+      #upi-id {
+        color: var(--gold);
+        display: none;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        font-weight: bold;
+        margin-top: 15px;
+        padding: 15px;
+        background: rgba(255, 215, 0, 0.1);
+        border-radius: 10px;
+        border: 2px dashed var(--gold);
+      }
+
+      #qr-code {
+        display: none;
+        margin-top: 20px;
+        width: min(400px, 90%);
+        height: auto;
+        border: 3px solid var(--gold);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Enhanced Payment Form */
+      .payment-form {
+        max-width: 900px;
+        width: 90%;
+        margin: 40px auto;
+        padding: clamp(30px, 5vw, 50px);
+        background: linear-gradient(
+          135deg,
+          rgba(98, 102, 244, 0.98) 0%,
+          rgba(74, 84, 209, 0.98) 50%,
+          rgba(61, 71, 184, 0.98) 100%
+        );
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(98, 102, 244, 0.4),
+          0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        display: none;
+        transition: all 0.5s ease;
+      }
+
+      .payment-form.visible {
+        display: block;
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .payment-form.hidden {
+        display: none;
+      }
+
+      /* Success Message Section */
+      .success-section {
+        max-width: 900px;
+        width: 90%;
+        margin: 40px auto;
+        padding: clamp(40px, 6vw, 60px);
+        background: linear-gradient(
+          135deg,
+          rgba(92, 184, 92, 0.98) 0%,
+          rgba(76, 174, 76, 0.98) 50%,
+          rgba(67, 160, 71, 0.98) 100%
+        );
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(92, 184, 92, 0.4),
+          0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        backdrop-filter: blur(10px);
+        text-align: center;
+        display: none;
+      }
+
+      .success-section.visible {
+        display: block;
+        animation: fadeInScale 0.6s ease-out;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .success-icon {
+        font-size: 80px;
+        color: white;
+        margin-bottom: 20px;
+        animation: successPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes successPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .success-section h2 {
+        color: white;
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .success-section p {
+        color: floralwhite;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        margin-bottom: 40px;
+        font-family: Delius;
+        font-weight: 600;
+        line-height: 1.8;
+      }
+
+      .success-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .success-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 40px;
+        background: linear-gradient(135deg, var(--gold) 0%, #ffa500 100%);
+        color: var(--primary-text);
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-family: Delius;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        border: 2px solid white;
+      }
+
+      .success-btn:hover {
+        background: linear-gradient(135deg, #ffa500 0%, var(--gold) 100%);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+      }
+
+      .success-btn i {
+        font-size: 1.3em;
+      }
+
+      .payment-form::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--gold), #ffa500, var(--gold));
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      .payment-form h2 {
+        color: var(--gold);
+        margin-bottom: 15px;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .payment-form h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        border-radius: 2px;
+      }
+
+      .payment-form > p {
+        color: floralwhite;
+        font-weight: bold;
+        font-family: Delius;
+        margin-bottom: 30px;
+        font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      .payment-form h1 {
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        margin-bottom: 30px;
+      }
+
+      /* Enhanced Form Container */
+      .container {
+        max-width: 100%;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.98);
+        color: var(--primary-text);
+        padding: clamp(20px, 4vw, 30px);
+        font-family: Delius;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+        animation: fadeInUp 0.6s ease-out backwards;
+      }
+
+      .form-group:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .form-group:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .form-group:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .form-group:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .form-group:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+      .form-group:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+      .form-group:nth-child(7) {
+        animation-delay: 0.35s;
+      }
+      .form-group:nth-child(8) {
+        animation-delay: 0.4s;
+      }
+      .form-group:nth-child(9) {
+        animation-delay: 0.45s;
+      }
+      .form-group:nth-child(10) {
+        animation-delay: 0.5s;
+      }
+      .form-group:nth-child(11) {
+        animation-delay: 0.55s;
+      }
+      .form-group:nth-child(12) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--primary-text);
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      label::before {
+        content: "●";
+        color: #4a90e2;
+        font-size: 0.7em;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"],
+      input[type="time"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid rgba(99, 102, 241, 0.2);
+        border-radius: 10px;
+        box-sizing: border-box;
+        font-family: Delius;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--primary-text);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      input[type="text"]:focus,
+      input[type="tel"]:focus,
+      input[type="number"]:focus,
+      input[type="date"]:focus,
+      input[type="time"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #4a90e2;
+        background: white;
+        box-shadow: 0 4px 20px rgba(74, 144, 226, 0.2),
+          0 0 0 4px rgba(74, 144, 226, 0.1);
+        transform: translateY(-2px);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(17, 18, 74, 0.4);
+        font-style: italic;
+      }
+
+      select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%234a90e2' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        padding-right: 45px;
+      }
+
+      input[type="file"] {
+        margin-top: 5px;
+        padding: 10px;
+        border: 2px dashed rgba(99, 102, 241, 0.3);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+        line-height: 1.6;
+      }
+
+      .container button[type="button"] {
+        background: linear-gradient(135deg, var(--gold) 0%, #ffa500 100%);
+        color: var(--primary-text);
+        padding: 16px 32px;
+        width: 100%;
+        font-size: clamp(1rem, 2.5vw, 1.15rem);
+        border-radius: 12px;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+      }
+
+      .container button[type="button"]:hover {
+        background: linear-gradient(135deg, #ffa500 0%, var(--gold) 100%);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+      }
+
+      /* Footer */
+      .business-footer {
+        background: linear-gradient(
+          135deg,
+          #0000ff 0%,
+          #1e3a8a 50%,
+          #1e40af 100%
+        );
+        color: floralwhite;
+        padding: clamp(40px, 6vw, 60px) clamp(15px, 4vw, 20px)
+          clamp(20px, 3vw, 30px);
+        font-family: Delius;
+        border-top: 4px solid var(--gold);
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.2);
+        margin-top: 50px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: clamp(25px, 5vw, 40px);
+      }
+
+      .footer-section {
+        flex: 1 1 280px;
+        min-width: 250px;
+      }
+
+      .footer-section h3 {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        color: var(--gold);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer-section p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        line-height: 1.6;
+        color: floralwhite;
+        margin-bottom: 15px;
+        font-family: Delius;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-section ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: var(--transition);
+        font-family: Delius;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .footer-section ul li:hover {
+        padding-left: 15px;
+        color: var(--gold);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      }
+
+      .footer-section a {
+        color: floralwhite;
+        text-decoration: none;
+        transition: var(--transition);
+        font-family: Delius;
+      }
+
+      .footer-section a:hover {
+        color: var(--gold);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        font-family: Delius;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .contact-info-item i {
+        width: 25px;
+        margin-right: 12px;
+        color: var(--gold);
+        font-size: 1.1rem;
+      }
+
+      .social-footer-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .social-footer-links a {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(45deg, #11124a, #1a1d5a);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 45px;
+        transition: var(--transition);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        box-shadow: 0 4px 15px rgba(17, 18, 74, 0.3);
+      }
+
+      .social-footer-links a:hover {
+        background: var(--hover-gradient);
+        color: var(--primary-text);
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(254, 163, 170, 0.4);
+        border-color: var(--gold);
+      }
+
+      .footer-logo-img {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        transition: var(--transition);
+      }
+
+      .footer-logo-img:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+      }
+
+      .footer-bottom-section {
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 2px solid rgba(255, 215, 0, 0.3);
+        text-align: center;
+      }
+
+      .footer-bottom-section p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: var(--gold);
+        font-family: Delius;
+        font-weight: bold;
+      }
+
+      /* Mobile Responsive */
+      @media screen and (max-width: 768px) {
+        .topnav {
+          padding: 0 10px;
+        }
+
+        .topnav a:not(:first-child) {
+          display: none;
+        }
+
+        .topnav a.icon {
+          float: right;
+          display: block;
+          margin: 8px 10px;
+        }
+
+        .topnav a {
+          margin: 5px 3px;
+          padding: 12px 14px;
+          font-size: 0.9rem;
+        }
+
+        .topnav.responsive {
+          position: relative;
+        }
+
+        .topnav.responsive .icon {
+          position: absolute;
+          right: 10px;
+          top: 0px;
+          color: var(--gold);
+          background: linear-gradient(45deg, #3e476f, #5a6491);
+        }
+
+        .topnav.responsive a {
+          float: none;
+          display: block;
+          text-align: left;
+          margin: 5px 10px;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 25px;
+        }
+
+        .footer-section {
+          text-align: center;
+          min-width: auto;
+        }
+
+        .social-footer-links {
+          justify-content: center;
+        }
+
+        .border-image {
+          width: 85%;
+        }
+
+        th,
+        td {
+          padding: 12px 8px;
+          font-size: 0.85rem;
+        }
+
+        button {
+          padding: 8px 12px;
+          font-size: 0.8rem;
+        }
+
+        .empty-cart {
+          margin: 20px 15px;
+          padding: 40px 20px;
+        }
+
+        .table-container {
+          margin: 0 -10px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 15px;
+        }
+
+        .cart-section,
+        .payment-methods,
+        .payment-form {
+          margin: 15px 10px;
+          padding: 20px 15px;
+        }
+
+        th,
+        td {
+          padding: 10px 5px;
+          font-size: 0.8rem;
+        }
+
+        button[onclick*="increaseQuantity"],
+        button[onclick*="decreaseQuantity"] {
+          padding: 6px 8px;
+          min-width: 30px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .payment-form,
+        .cart-section {
+          border-radius: 18px;
+        }
+
+        .empty-cart-icon {
+          font-size: 60px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <div class="topnav" id="myTopnav">
+      <a href="index.html">Home</a>
+      <a href="Products_cakes.html" class="active">Products</a>
+      <a href="index.html">About Me</a>
+      <a href="index.html">Contact Us</a>
+      <a href="special_order_cake.html">Special Order</a>
+      <a href="Cart_cake.html" class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">(0)</span>
+      </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Empty Cart State -->
+    <div class="empty-cart" id="empty-cart">
+      <div class="empty-cart-icon">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+      <h2>Your Cart is Empty</h2>
+      <p>
+        Add some delicious products to your cart to see the total and proceed to
+        checkout!
+      </p>
+      <a href="Products_cakes.html" class="shop-btn">
+        <i class="fa fa-shopping-bag"></i> Start Shopping
+      </a>
+    </div>
+
+    <!-- Cart Section -->
+    <div class="cart-section" id="cart-section">
+      <h2>Your Cart</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Product Name</th>
+              <th>Weight</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cart-table-body">
+            <!-- Cart items will be populated here -->
+          </tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td colspan="3">Total Amount</td>
+              <td id="total-amount">₹0.00</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div style="text-align: center; margin-top: 20px">
+        <button onclick="scrollToPaymentMethods()">
+          <i class="fa fa-credit-card"></i> Checkout
+        </button>
+      </div>
+    </div>
+
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Payment Methods Section -->
+    <div class="payment-methods" id="payment-methods">
+      <h2>Payment Methods</h2>
+      <p style="color: floralwhite; margin-bottom: 15px">
+        For your safety, we have not embedded the payment method in this
+        website. You can pay by the below given methods.
+      </p>
+      <p style="color: white; font-weight: bold; font-style: italic">
+        Kindly note that paying 50% of the total amount is necessary for the
+        order confirmation.
+      </p>
+      <button id="gpay-button" onclick="toggleUPI()">
+        <i class="fa fa-mobile"></i> Pay with UPI ID
+      </button>
+      <p id="upi-id">Our UPI ID: manjupathak135@okicici</p>
+
+      <button id="paytm-button" onclick="toggleQRCode()">
+        <i class="fa fa-qrcode"></i> Pay with QR Code Image
+      </button>
+      <img id="qr-code" src="qr code.jpg" alt="QR Code" />
+    </div>
+
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Payment Form Container -->
+    <div class="payment-form" id="payment-form">
+      <h2>Payment Confirmation Form</h2>
+      <p style="font-weight: bold; color: floralwhite; font-family: Delius">
+        After going through the payment using any of the above methods, kindly
+        fill the form below for payment confirmation, while your order is on the
+        way!!
+      </p>
+      <h1>Order Form</h1>
+      <div class="container">
+        <form id="order-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="name">Name of the person placing this order:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address"
+              >Address of the person placing this order:</label
+            >
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Enter your complete address"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number of the person ordering:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter 10-digit mobile number"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="different-phone"
+              >Different Phone Number for delivery (No or Yes):</label
+            >
+            <select id="different-phone" name="different-phone" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+            <input
+              type="tel"
+              id="delivery-phone"
+              name="delivery-phone"
+              style="display: none; margin-top: 10px"
+              placeholder="Enter delivery phone number"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="different-name"
+              >Different Name for delivery (No or Yes):</label
+            >
+            <select id="different-name" name="different-name" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+            <input
+              type="text"
+              id="delivery-name"
+              name="delivery-name"
+              style="display: none; margin-top: 10px"
+              placeholder="Enter delivery name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="different-address"
+              >Different Address for delivery (No or Yes):</label
+            >
+            <select id="different-address" name="different-address" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+            <input
+              type="text"
+              id="delivery-address"
+              name="delivery-address"
+              style="display: none; margin-top: 10px"
+              placeholder="Enter delivery address"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="delivery-date">Date to be delivered:</label>
+            <input
+              type="date"
+              id="delivery-date"
+              name="delivery-date"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="delivery-time">Time of delivery:</label>
+            <input
+              type="time"
+              id="delivery-time"
+              name="delivery-time"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="cake-name">Name on cake:</label>
+            <input
+              type="text"
+              id="cake-name"
+              name="cake-name"
+              placeholder="Name to be written on cake"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="occasion">Occasion:</label>
+            <input
+              type="text"
+              id="occasion"
+              name="occasion"
+              placeholder="e.g., Birthday, Anniversary"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="delivery-mode">Mode of delivery:</label>
+            <select id="delivery-mode" name="delivery-mode" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="home-delivery">Home Delivery</option>
+              <option value="pick-up">Pick Up</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="special-request"
+              >Any Other Request for the Special Order:</label
+            >
+            <textarea
+              id="special-request"
+              name="special-request"
+              placeholder="Tell us any special requirements..."
+            ></textarea>
+          </div>
+
+          <button type="button" onclick="handleFormSubmission()">
+            <i class="fa fa-whatsapp"></i> Submit Order via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Professional Business Footer -->
+    <footer class="business-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img
+            src="Logo.jpg"
+            alt="PassionBakeryNChocos Logo"
+            class="footer-logo-img"
+          />
+          <h3>PassionBakeryNChocos</h3>
+          <p>
+            Crafting sweet memories with every bite. We specialize in custom
+            cakes, homemade chocolates, and unique gift items made with pure
+            vegetarian ingredients in the most hygienic environment.
+          </p>
+          <div class="social-footer-links">
+            <a href="https://www.facebook.com" target="_blank" title="Facebook"
+              ><i class="fa fa-facebook"></i
+            ></a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              title="Instagram"
+              ><i class="fa fa-instagram"></i
+            ></a>
+            <a
+              href="https://wa.me/919869153017"
+              target="_blank"
+              title="WhatsApp"
+              ><i class="fa fa-whatsapp"></i
+            ></a>
+            <a
+              href="https://in.pinterest.com/"
+              target="_blank"
+              title="Pinterest"
+              ><i class="fa fa-pinterest"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Products_cakes.html">Cakes Collection</a></li>
+            <li><a href="Chocolates.html">Homemade Chocolates</a></li>
+            <li><a href="Gift.html">Gift Items</a></li>
+            <li><a href="special_order_cake.html">Special Orders</a></li>
+            <li><a href="Cart_cake.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Our Specialties</h3>
+          <ul>
+            <li>Custom Birthday Cakes</li>
+            <li>Wedding & Anniversary Cakes</li>
+            <li>Festival Special Treats</li>
+            <li>Corporate Gifts & Bulk Orders</li>
+            <li>Homemade Chocolates</li>
+            <li>Personalized Gift Hampers</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Get In Touch</h3>
+          <div class="contact-info-item">
+            <i class="fa fa-envelope"></i>
+            <span>manjupathak135@gmail.com</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa fa-phone"></i>
+            <span>+91 9869153017</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa fa-clock-o"></i>
+            <span>Available: 9AM - 8PM Daily</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fa fa-map-marker"></i>
+            <span>Mumbai, Maharashtra, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-section">
+        <p>
+          &copy; 2024 PassionBakeryNChocos. All rights reserved. Made with love
+          for sweet celebrations!
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // ==========================================
+      // NAVIGATION BAR FUNCTIONALITY
+      // ==========================================
+
+      /**
+       * Toggle responsive navigation menu for mobile devices
+       */
+      function myFunction() {
+        const nav = document.getElementById("myTopnav");
+        nav.className =
+          nav.className === "topnav" ? "topnav responsive" : "topnav";
+      }
+
+      // ==========================================
+      // CART DATA MANAGEMENT
+      // ==========================================
+
+      /**
+       * Load cart data from localStorage
+       * @returns {Object} Cart data object
+       */
+      const loadCartData = () =>
+        JSON.parse(localStorage.getItem("cartData")) || {};
+
+      /**
+       * Save cart data to localStorage
+       * @param {Object} cartData - Cart data to save
+       */
+      const saveCartData = (cartData) => {
+        localStorage.setItem("cartData", JSON.stringify(cartData));
+      };
+
+      /**
+       * Get cart summary for checkout
+       * @returns {Object} Object containing total amount and product names
+       */
+      const getCartDetails = () => {
+        const cartData = loadCartData();
+        let totalAmount = 0;
+        const productNames = [];
+
+        Object.entries(cartData).forEach(([productName, product]) => {
+          if (product.quantity > 0) {
+            const productTotalPrice =
+              parseFloat(product.price) * product.quantity;
             totalAmount += productTotalPrice;
             productNames.push(`${productName} (x${product.quantity})`);
-        }
-    });
+          }
+        });
 
-    return {
-        totalAmount: totalAmount.toFixed(2),
-        productNames: productNames.join(', ')
-    };
-};
+        return {
+          totalAmount: totalAmount.toFixed(2),
+          productNames: productNames.join(", "),
+        };
+      };
 
-// ==========================================
-// CART TABLE DISPLAY AND UPDATES
-// ==========================================
+      // ==========================================
+      // CART TABLE DISPLAY AND UPDATES
+      // ==========================================
 
-/**
- * Update the cart table display with current cart data
- */
-const updateCartTable = () => {
-    const cartData = loadCartData();
-    const cartTableBody = document.getElementById("cart-table-body");
-    
-    // Clear existing rows
-    cartTableBody.innerHTML = "";
-    
-    let totalAmount = 0;
-    let totalCount = 0;
-    let srNo = 1;
+      /**
+       * Update the cart table display with current cart data
+       */
+      const updateCartTable = () => {
+        const cartData = loadCartData();
+        const cartTableBody = document.getElementById("cart-table-body");
+        const emptyCart = document.getElementById("empty-cart");
+        const cartSection = document.getElementById("cart-section");
+        const paymentMethods = document.getElementById("payment-methods");
+        const paymentForm = document.getElementById("payment-form");
 
-    // Populate table rows
-    Object.entries(cartData).forEach(([productName, product]) => {
-        if (product.quantity > 0) {
-            const productTotalPrice = (parseFloat(product.price) * product.quantity).toFixed(2);
-            
-            const row = document.createElement("tr");
-            row.innerHTML = `
+        // Clear existing rows
+        cartTableBody.innerHTML = "";
+
+        let totalAmount = 0;
+        let totalCount = 0;
+        let srNo = 1;
+
+        // Check if cart has items
+        const hasItems = Object.values(cartData).some(
+          (product) => product.quantity > 0
+        );
+
+        if (!hasItems) {
+          // Show empty cart, hide everything else
+          emptyCart.style.display = "block";
+          cartSection.classList.remove("has-items");
+          paymentMethods.classList.remove("visible");
+          paymentForm.classList.remove("visible");
+        } else {
+          // Hide empty cart, show cart and payment sections
+          emptyCart.style.display = "none";
+          cartSection.classList.add("has-items");
+          paymentMethods.classList.add("visible");
+          paymentForm.classList.add("visible");
+
+          // Populate table rows
+          Object.entries(cartData).forEach(([productName, product]) => {
+            if (product.quantity > 0) {
+              const productTotalPrice = (
+                parseFloat(product.price) * product.quantity
+              ).toFixed(2);
+
+              const row = document.createElement("tr");
+              row.innerHTML = `
                 <td>${srNo++}</td>
                 <td>${productName}</td>
                 <td>${product.weight} kg</td>
                 <td>₹${productTotalPrice}</td>
                 <td>
-                    <button onclick="removeFromCart('${productName}')">Remove</button>
+                    <button onclick="removeFromCart('${productName}')"><i class="fa fa-trash"></i></button>
+                    <button onclick="decreaseQuantity('${productName}')">−</button>
                     <button onclick="increaseQuantity('${productName}')">+</button>
-                    <button onclick="decreaseQuantity('${productName}')">-</button>
                 </td>
             `;
-            
-            cartTableBody.appendChild(row);
-            totalAmount += parseFloat(productTotalPrice);
-            totalCount += product.quantity;
+
+              cartTableBody.appendChild(row);
+              totalAmount += parseFloat(productTotalPrice);
+              totalCount += product.quantity;
+            }
+          });
         }
-    });
 
-    // Update UI elements
-    document.getElementById("total-amount").textContent = `₹${totalAmount.toFixed(2)}`;
-    document.getElementById("cart-count").textContent = `(${totalCount})`;
-};
+        // Update UI elements
+        document.getElementById(
+          "total-amount"
+        ).textContent = `₹${totalAmount.toFixed(2)}`;
+        document.getElementById("cart-count").textContent = `(${totalCount})`;
+      };
 
-// ==========================================
-// CART ITEM OPERATIONS
-// ==========================================
+      // ==========================================
+      // CART ITEM OPERATIONS
+      // ==========================================
 
-/**
- * Remove an item completely from the cart
- * @param {string} productName - Name of the product to remove
- */
-const removeFromCart = (productName) => {
-    const cartData = loadCartData();
-    delete cartData[productName];
-    saveCartData(cartData);
-    updateCartTable();
-};
-
-/**
- * Increase quantity of a product in the cart
- * @param {string} productName - Name of the product
- */
-const increaseQuantity = (productName) => {
-    const cartData = loadCartData();
-    if (cartData[productName]) {
-        cartData[productName].quantity++;
+      /**
+       * Remove an item completely from the cart
+       * @param {string} productName - Name of the product to remove
+       */
+      const removeFromCart = (productName) => {
+        const cartData = loadCartData();
+        delete cartData[productName];
         saveCartData(cartData);
         updateCartTable();
-    }
-};
+      };
 
-/**
- * Decrease quantity of a product in the cart
- * @param {string} productName - Name of the product
- */
-const decreaseQuantity = (productName) => {
-    const cartData = loadCartData();
-    if (cartData[productName] && cartData[productName].quantity > 0) {
-        cartData[productName].quantity--;
-        
-        // Remove item if quantity becomes 0
-        if (cartData[productName].quantity === 0) {
+      /**
+       * Increase quantity of a product in the cart
+       * @param {string} productName - Name of the product
+       */
+      const increaseQuantity = (productName) => {
+        const cartData = loadCartData();
+        if (cartData[productName]) {
+          cartData[productName].quantity++;
+          saveCartData(cartData);
+          updateCartTable();
+        }
+      };
+
+      /**
+       * Decrease quantity of a product in the cart
+       * @param {string} productName - Name of the product
+       */
+      const decreaseQuantity = (productName) => {
+        const cartData = loadCartData();
+        if (cartData[productName] && cartData[productName].quantity > 0) {
+          cartData[productName].quantity--;
+
+          // Remove item if quantity becomes 0
+          if (cartData[productName].quantity === 0) {
             delete cartData[productName];
+          }
+
+          saveCartData(cartData);
+          updateCartTable();
         }
-        
-        saveCartData(cartData);
-        updateCartTable();
-    }
-};
+      };
 
-/**
- * Scroll to payment methods section smoothly
- */
-function scrollToPaymentMethods() {
-    document.querySelector('.payment-methods').scrollIntoView({ behavior: 'smooth' });
-}
+      /**
+       * Scroll to payment methods section smoothly
+       */
+      function scrollToPaymentMethods() {
+        document
+          .querySelector(".payment-methods")
+          .scrollIntoView({ behavior: "smooth" });
+      }
 
-// ==========================================
-// PAYMENT METHODS FUNCTIONALITY
-// ==========================================
+      // ==========================================
+      // PAYMENT METHODS FUNCTIONALITY
+      // ==========================================
 
-/**
- * Toggle UPI ID display
- */
-function toggleUPI() {
-    const upiElement = document.getElementById('upi-id');
-    upiElement.style.display = upiElement.style.display === 'none' ? 'block' : 'none';
-}
+      /**
+       * Toggle UPI ID display
+       */
+      function toggleUPI() {
+        const upiElement = document.getElementById("upi-id");
+        upiElement.style.display =
+          upiElement.style.display === "none" || upiElement.style.display === ""
+            ? "block"
+            : "none";
+      }
 
-/**
- * Toggle QR Code image display
- */
-function toggleQRCode() {
-    const qrElement = document.getElementById('qr-code');
-    qrElement.style.display = qrElement.style.display === 'none' ? 'block' : 'none';
-}
+      /**
+       * Toggle QR Code image display
+       */
+      function toggleQRCode() {
+        const qrElement = document.getElementById("qr-code");
+        qrElement.style.display =
+          qrElement.style.display === "none" || qrElement.style.display === ""
+            ? "block"
+            : "none";
+      }
 
-// ==========================================
-// ORDER FORM FUNCTIONALITY
-// ==========================================
+      // ==========================================
+      // ORDER FORM FUNCTIONALITY
+      // ==========================================
 
-/**
- * Setup toggle fields for conditional form inputs
- */
-function setupToggleFields() {
-    const toggleMappings = [
-        { selectId: 'different-phone', inputId: 'delivery-phone' },
-        { selectId: 'different-name', inputId: 'delivery-name' },
-        { selectId: 'different-address', inputId: 'delivery-address' }
-    ];
+      /**
+       * Setup toggle fields for conditional form inputs
+       */
+      function setupToggleFields() {
+        const toggleMappings = [
+          { selectId: "different-phone", inputId: "delivery-phone" },
+          { selectId: "different-name", inputId: "delivery-name" },
+          { selectId: "different-address", inputId: "delivery-address" },
+        ];
 
-    toggleMappings.forEach(({ selectId, inputId }) => {
-        const selectElem = document.getElementById(selectId);
-        const inputElem = document.getElementById(inputId);
+        toggleMappings.forEach(({ selectId, inputId }) => {
+          const selectElem = document.getElementById(selectId);
+          const inputElem = document.getElementById(inputId);
 
-        // Initial setup
-        toggleInputVisibility(selectElem, inputElem);
+          // Initial setup
+          toggleInputVisibility(selectElem, inputElem);
 
-        // Add change listener
-        selectElem.addEventListener('change', () => {
+          // Add change listener
+          selectElem.addEventListener("change", () => {
             toggleInputVisibility(selectElem, inputElem);
+          });
         });
-    });
-}
+      }
 
-/**
- * Toggle visibility and requirement of input fields based on select value
- * @param {HTMLElement} selectElem - Select element
- * @param {HTMLElement} inputElem - Input element to toggle
- */
-function toggleInputVisibility(selectElem, inputElem) {
-    if (selectElem.value === 'yes') {
-        inputElem.style.display = 'block';
-        inputElem.setAttribute('required', 'required');
-    } else {
-        inputElem.style.display = 'none';
-        inputElem.removeAttribute('required');
-        inputElem.value = '';
-    }
-}
+      /**
+       * Toggle visibility and requirement of input fields based on select value
+       * @param {HTMLElement} selectElem - Select element
+       * @param {HTMLElement} inputElem - Input element to toggle
+       */
+      function toggleInputVisibility(selectElem, inputElem) {
+        if (selectElem.value === "yes") {
+          inputElem.style.display = "block";
+          inputElem.setAttribute("required", "required");
+        } else {
+          inputElem.style.display = "none";
+          inputElem.removeAttribute("required");
+          inputElem.value = "";
+        }
+      }
 
-/**
- * Validate Indian mobile number format
- * @param {string} phone - Phone number to validate
- * @returns {boolean} True if valid, false otherwise
- */
-const validatePhoneNumber = (phone) => /^[6-9]\d{9}$/.test(phone);
+      /**
+       * Validate Indian mobile number format
+       * @param {string} phone - Phone number to validate
+       * @returns {boolean} True if valid, false otherwise
+       */
+      const validatePhoneNumber = (phone) => /^[6-9]\d{9}$/.test(phone);
 
-/**
- * Get form data with conditional delivery information
- * @returns {Object} Form data object
- */
-const getFormData = () => {
-    const form = document.getElementById('order-form');
-    
-    // Basic customer info
-    const customerData = {
-        name: form.name.value.trim(),
-        address: form.address.value.trim(),
-        phone: form.phone.value.trim()
-    };
+      /**
+       * Get form data with conditional delivery information
+       * @returns {Object} Form data object
+       */
+      const getFormData = () => {
+        const form = document.getElementById("order-form");
 
-    // Conditional delivery info
-    const deliveryData = {
-        phone: form['different-phone'].value === 'yes' 
-            ? form['delivery-phone'].value.trim() 
-            : customerData.phone,
-        name: form['different-name'].value === 'yes' 
-            ? form['delivery-name'].value.trim() 
-            : customerData.name,
-        address: form['different-address'].value === 'yes' 
-            ? form['delivery-address'].value.trim() 
-            : customerData.address
-    };
+        // Basic customer info
+        const customerData = {
+          name: form.name.value.trim(),
+          address: form.address.value.trim(),
+          phone: form.phone.value.trim(),
+        };
 
-    // Order details
-    const orderData = {
-        deliveryDate: form['delivery-date'].value.trim(),
-        deliveryTime: form['delivery-time'].value.trim(),
-        deliveryMode: form['delivery-mode'].value.trim(),
-        cakeName: form['cake-name'].value.trim(),
-        occasion: form['occasion'].value.trim(),
-        specialRequest: form['special-request'].value.trim()
-    };
+        // Conditional delivery info
+        const deliveryData = {
+          phone:
+            form["different-phone"].value === "yes"
+              ? form["delivery-phone"].value.trim()
+              : customerData.phone,
+          name:
+            form["different-name"].value === "yes"
+              ? form["delivery-name"].value.trim()
+              : customerData.name,
+          address:
+            form["different-address"].value === "yes"
+              ? form["delivery-address"].value.trim()
+              : customerData.address,
+        };
 
-    return { customerData, deliveryData, orderData, form };
-};
+        // Order details
+        const orderData = {
+          deliveryDate: form["delivery-date"].value.trim(),
+          deliveryTime: form["delivery-time"].value.trim(),
+          deliveryMode: form["delivery-mode"].value.trim(),
+          cakeName: form["cake-name"].value.trim(),
+          occasion: form["occasion"].value.trim(),
+          specialRequest: form["special-request"].value.trim(),
+        };
 
-/**
- * Validate form data
- * @param {Object} formData - Form data to validate
- * @returns {boolean} True if valid, false otherwise
- */
-const validateFormData = ({ customerData, deliveryData, orderData, form }) => {
-    // Check required customer fields
-    if (!customerData.name || !customerData.address || !customerData.phone) {
-        alert('Please fill in all required customer fields (Name, Address, Phone).');
-        return false;
-    }
+        return { customerData, deliveryData, orderData, form };
+      };
 
-    // Check conditional delivery fields
-    const conditionalChecks = [
-        { condition: form['different-phone'].value === 'yes' && !deliveryData.phone, 
-          message: 'Please fill in the delivery phone number.' },
-        { condition: form['different-name'].value === 'yes' && !deliveryData.name, 
-          message: 'Please fill in the delivery name.' },
-        { condition: form['different-address'].value === 'yes' && !deliveryData.address, 
-          message: 'Please fill in the delivery address.' }
-    ];
+      /**
+       * Validate form data
+       * @param {Object} formData - Form data to validate
+       * @returns {boolean} True if valid, false otherwise
+       */
+      const validateFormData = ({
+        customerData,
+        deliveryData,
+        orderData,
+        form,
+      }) => {
+        // Check required customer fields
+        if (
+          !customerData.name ||
+          !customerData.address ||
+          !customerData.phone
+        ) {
+          alert(
+            "Please fill in all required customer fields (Name, Address, Phone)."
+          );
+          return false;
+        }
 
-    for (const check of conditionalChecks) {
-        if (check.condition) {
+        // Check conditional delivery fields
+        const conditionalChecks = [
+          {
+            condition:
+              form["different-phone"].value === "yes" && !deliveryData.phone,
+            message: "Please fill in the delivery phone number.",
+          },
+          {
+            condition:
+              form["different-name"].value === "yes" && !deliveryData.name,
+            message: "Please fill in the delivery name.",
+          },
+          {
+            condition:
+              form["different-address"].value === "yes" &&
+              !deliveryData.address,
+            message: "Please fill in the delivery address.",
+          },
+        ];
+
+        for (const check of conditionalChecks) {
+          if (check.condition) {
             alert(check.message);
             return false;
+          }
         }
-    }
 
-    // Check delivery details
-    if (!orderData.deliveryDate || !orderData.deliveryTime) {
-        alert('Please select delivery date and time.');
-        return false;
-    }
+        // Check delivery details
+        if (!orderData.deliveryDate || !orderData.deliveryTime) {
+          alert("Please select delivery date and time.");
+          return false;
+        }
 
-    if (!orderData.deliveryMode) {
-        alert('Please select a delivery mode.');
-        return false;
-    }
+        if (!orderData.deliveryMode) {
+          alert("Please select a delivery mode.");
+          return false;
+        }
 
-    // Validate phone numbers
-    if (!validatePhoneNumber(customerData.phone)) {
-        alert('Please enter a valid 10-digit Indian mobile number for Customer Phone.');
-        return false;
-    }
+        // Validate phone numbers
+        if (!validatePhoneNumber(customerData.phone)) {
+          alert(
+            "Please enter a valid 10-digit Indian mobile number for Customer Phone."
+          );
+          return false;
+        }
 
-    if (!validatePhoneNumber(deliveryData.phone)) {
-        alert('Please enter a valid 10-digit Indian mobile number for Delivery Phone.');
-        return false;
-    }
+        if (!validatePhoneNumber(deliveryData.phone)) {
+          alert(
+            "Please enter a valid 10-digit Indian mobile number for Delivery Phone."
+          );
+          return false;
+        }
 
-    return true;
-};
+        return true;
+      };
 
-/**
- * Generate WhatsApp message from form data
- * @param {Object} formData - Form data
- * @param {Object} cartDetails - Cart details
- * @returns {string} Formatted WhatsApp message
- */
-const generateWhatsAppMessage = ({ customerData, deliveryData, orderData }, cartDetails) => {
-    return `*🎂 CAKE ORDER DETAILS 🎂*\n
-*📋 Customer Information:*
-👤 Name: ${customerData.name}
-📍 Address: ${customerData.address}
-📞 Phone: ${customerData.phone}
+      /**
+       * Generate WhatsApp message from form data
+       * @param {Object} formData - Form data
+       * @param {Object} cartDetails - Cart details
+       * @returns {string} Formatted WhatsApp message
+       */
+      const generateWhatsAppMessage = (
+        { customerData, deliveryData, orderData },
+        cartDetails
+      ) => {
+        return (
+          `*CAKE ORDER DETAILS*\n\n` +
+          `*Customer Information:*\n` +
+          `Name: ${customerData.name}\n` +
+          `Address: ${customerData.address}\n` +
+          `Phone: ${customerData.phone}\n\n` +
+          `*Delivery Information:*\n` +
+          `Delivery Name: ${deliveryData.name}\n` +
+          `Delivery Address: ${deliveryData.address}\n` +
+          `Delivery Phone: ${deliveryData.phone}\n` +
+          `Delivery Date: ${orderData.deliveryDate}\n` +
+          `Delivery Time: ${orderData.deliveryTime}\n` +
+          `Delivery Mode: ${orderData.deliveryMode}\n\n` +
+          `*Order Details:*\n` +
+          `Products: ${cartDetails.productNames}\n` +
+          `Total Amount: ₹${cartDetails.totalAmount}\n` +
+          `Name on Cake: ${orderData.cakeName || "N/A"}\n` +
+          `Occasion: ${orderData.occasion || "N/A"}\n\n` +
+          `*Special Request:*\n` +
+          `${orderData.specialRequest || "None"}\n\n` +
+          `*Thank you for your order!*`
+        );
+      };
 
-*🚚 Delivery Information:*
-👤 Delivery Name: ${deliveryData.name}
-📍 Delivery Address: ${deliveryData.address}
-📞 Delivery Phone: ${deliveryData.phone}
-📅 Delivery Date: ${orderData.deliveryDate}
-⏰ Delivery Time: ${orderData.deliveryTime}
-🚛 Delivery Mode: ${orderData.deliveryMode}
+      /**
+       * Handle form submission and send data via WhatsApp
+       */
+      function handleFormSubmission() {
+        try {
+          const formData = getFormData();
 
-*🛒 Order Details:*
-🎂 Products: ${cartDetails.productNames}
-💰 Total Amount: ₹${cartDetails.totalAmount}
-🏷️ Name on Cake: ${orderData.cakeName || 'N/A'}
-🎉 Occasion: ${orderData.occasion || 'N/A'}
-
-*💬 Special Request:*
-${orderData.specialRequest || 'None'}
-
-*Thank you for your order! 😊*`;
-};
-
-/**
- * Handle form submission and send data via WhatsApp
- */
-function handleFormSubmission() {
-    try {
-        const formData = getFormData();
-        
-        // Validate form data
-        if (!validateFormData(formData)) {
+          // Validate form data
+          if (!validateFormData(formData)) {
             return;
+          }
+
+          // Get cart details
+          const cartDetails = getCartDetails();
+
+          // Generate and send WhatsApp message
+          const message = generateWhatsAppMessage(formData, cartDetails);
+          const whatsappNumber = "919869153017";
+          const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
+            message
+          )}`;
+
+          console.log("WhatsApp URL:", whatsappURL);
+
+          // Open WhatsApp
+          window.open(whatsappURL, "_blank");
+
+          // Hide payment form and show success section
+          const paymentForm = document.getElementById("payment-form");
+          const successSection = document.getElementById("success-section");
+
+          // Remove visible class from form and add hidden
+          paymentForm.classList.remove("visible");
+          paymentForm.style.display = "none";
+
+          // Show success section
+          successSection.classList.add("visible");
+          successSection.style.display = "block";
+
+          // Scroll to success section smoothly after a short delay
+          setTimeout(() => {
+            successSection.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }, 300);
+        } catch (error) {
+          console.error("Error during WhatsApp submission:", error);
+          alert(
+            "An unexpected error occurred. Please try again or contact us directly at 919869153017"
+          );
         }
+      }
 
-        // Get cart details
-        const cartDetails = getCartDetails();
-        
-        // Generate and send WhatsApp message
-        const message = generateWhatsAppMessage(formData, cartDetails);
-        const whatsappNumber = '919869153017';
-        const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+      // ==========================================
+      // PHONE NUMBER VALIDATION
+      // ==========================================
 
-        console.log('WhatsApp URL:', whatsappURL);
+      /**
+       * Setup phone number validation for inputs
+       */
+      function setupPhoneValidation() {
+        const phoneInputs = ["phone", "delivery-phone"];
 
-        const newWindow = window.open(whatsappURL, '_blank');
-        
-        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-            alert('Pop-up blocked! Please allow pop-ups for this website to send your order via WhatsApp.');
-        } else {
-            alert(`Opening WhatsApp chat... If it does not open automatically, please contact us directly at ${whatsappNumber}`);
-        }
+        phoneInputs.forEach((inputId) => {
+          const input = document.getElementById(inputId);
+          if (input) {
+            input.addEventListener("input", function (e) {
+              this.value = this.value.replace(/[^0-9]/g, "");
+            });
 
-    } catch (error) {
-        console.error('Error during WhatsApp submission:', error);
-        alert('An unexpected error occurred. Please try again or contact us directly at 919869153017');
-    }
-}
+            input.addEventListener("keypress", function (e) {
+              const charCode = e.which || e.keyCode;
+              if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                e.preventDefault();
+              }
+            });
+          }
+        });
+      }
 
-// ==========================================
-// INITIALIZATION
-// ==========================================
+      // ==========================================
+      // INITIALIZATION
+      // ==========================================
 
-/**
- * Initialize the page when DOM content is loaded
- */
-window.addEventListener('DOMContentLoaded', () => {
-    // Initialize cart display
-    updateCartTable();
-    
-    // Setup form toggle fields
-    setupToggleFields();
-});
-</script>
-</body>
+      /**
+       * Initialize the page when DOM content is loaded
+       */
+      window.addEventListener("DOMContentLoaded", () => {
+        // Initialize cart display
+        updateCartTable();
 
+        // Setup form toggle fields
+        setupToggleFields();
+
+        // Setup phone validation
+        setupPhoneValidation();
+      });
+    </script>
+  </body>
 </html>
