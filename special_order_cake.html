@@ -888,12 +888,12 @@
   <body>
     <!-- Navigation Bar -->
     <div class="topnav" id="myTopnav">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="Products_cakes.html">Products</a>
       <a href="index.html">About Me</a>
       <a href="index.html">Reviews</a>
       <a href="index.html">Contact Us</a>
-      <a href="special_order_cake.html">Special Order</a>
+      <a href="special_order_cake.html" class="active">Special Order</a>
 
       <a href="Cart_cake.html" class="cart-icon">
         <i class="fa fa-shopping-cart"></i>
@@ -1371,7 +1371,7 @@
 
       // Update cart count from localStorage
       (function () {
-        const cartData = JSON.parse(localStorage.getItem("cartData")) || {};
+        const cartData = JSON.parse(localStorage.getItem("CakecartData")) || {};
         const cartCount = Object.values(cartData).reduce(
           (sum, item) => sum + item.quantity,
           0
