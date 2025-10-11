@@ -20,7 +20,6 @@
     />
 
     <style>
-      /* CSS Variables */
       :root {
         --primary-gradient: linear-gradient(
           90deg,
@@ -44,7 +43,6 @@
         --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
 
-      /* Global Styles */
       * {
         margin: 0;
         padding: 0;
@@ -64,7 +62,6 @@
         max-width: 100vw;
       }
 
-      /* Typography */
       h1,
       h2 {
         color: var(--gold);
@@ -88,7 +85,7 @@
         }
       }
 
-      /* Navigation Bar */
+      /* Navigation */
       .topnav {
         overflow: hidden;
         background: var(--primary-gradient);
@@ -247,7 +244,7 @@
         box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
       }
 
-      /* Cart Section - Enhanced */
+      /* Cart Section */
       .cart-section {
         margin: 20px clamp(10px, 3vw, 20px);
         padding: clamp(30px, 5vw, 40px);
@@ -272,7 +269,7 @@
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
       }
 
-      /* Enhanced Table Styles */
+      /* Table Styles */
       .table-container {
         overflow-x: auto;
         border-radius: 12px;
@@ -347,7 +344,7 @@
         transform: none !important;
       }
 
-      /* Enhanced Button Styles */
+      /* Button Styles */
       button {
         background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%);
         color: white;
@@ -440,7 +437,7 @@
         box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
       }
 
-      /* Payment Methods Section - Enhanced */
+      /* Payment Methods Section */
       .payment-methods {
         margin: 20px clamp(10px, 3vw, 20px);
         padding: clamp(30px, 5vw, 40px);
@@ -527,14 +524,13 @@
         margin-right: auto;
       }
 
-      /* Success Message Section */
+      /* Success Section */
       .success-section {
         max-width: 900px;
         width: 90%;
         margin: 40px auto;
         padding: clamp(40px, 6vw, 60px);
         background: var(--section-gradient);
-
         border-radius: 24px;
         box-shadow: 0 20px 60px rgba(92, 184, 92, 0.4),
           0 0 0 1px rgba(255, 255, 255, 0.1) inset;
@@ -627,7 +623,7 @@
         font-size: 1.3em;
       }
 
-      /* Enhanced Payment Form */
+      /* Payment Form */
       .payment-form {
         max-width: 900px;
         width: 90%;
@@ -718,7 +714,7 @@
         margin-bottom: 30px;
       }
 
-      /* Enhanced Form Container */
+      /* Form Container */
       .container {
         max-width: 100%;
         margin: 20px auto;
@@ -785,14 +781,13 @@
       }
 
       label {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         margin-bottom: 8px;
         font-weight: 600;
         color: var(--primary-text);
         font-size: clamp(0.9rem, 2vw, 1rem);
-        display: flex;
-        align-items: center;
-        gap: 8px;
       }
 
       label::before {
@@ -848,14 +843,6 @@
         background-repeat: no-repeat;
         background-position: right 15px center;
         padding-right: 45px;
-      }
-
-      input[type="file"] {
-        margin-top: 5px;
-        padding: 10px;
-        border: 2px dashed rgba(99, 102, 241, 0.3);
-        border-radius: 10px;
-        cursor: pointer;
       }
 
       textarea {
@@ -1037,27 +1024,22 @@
         .topnav {
           padding: 0 10px;
         }
-
         .topnav a:not(:first-child) {
           display: none;
         }
-
         .topnav a.icon {
           float: right;
           display: block;
           margin: 8px 10px;
         }
-
         .topnav a {
           margin: 5px 3px;
           padding: 12px 14px;
           font-size: 0.9rem;
         }
-
         .topnav.responsive {
           position: relative;
         }
-
         .topnav.responsive .icon {
           position: absolute;
           right: 10px;
@@ -1065,48 +1047,39 @@
           color: var(--gold);
           background: linear-gradient(45deg, #3e476f, #5a6491);
         }
-
         .topnav.responsive a {
           float: none;
           display: block;
           text-align: left;
           margin: 5px 10px;
         }
-
         .footer-content {
           flex-direction: column;
           gap: 25px;
         }
-
         .footer-section {
           text-align: center;
           min-width: auto;
         }
-
         .social-footer-links {
           justify-content: center;
         }
-
         .border-image {
           width: 85%;
         }
-
         th,
         td {
           padding: 12px 8px;
           font-size: 0.85rem;
         }
-
         button {
           padding: 8px 12px;
           font-size: 0.8rem;
         }
-
         .empty-cart {
           margin: 20px 15px;
           padding: 40px 20px;
         }
-
         .table-container {
           margin: 0 -10px;
         }
@@ -1116,20 +1089,17 @@
         .container {
           padding: 15px;
         }
-
         .cart-section,
         .payment-methods,
         .payment-form {
           margin: 15px 10px;
           padding: 20px 15px;
         }
-
         th,
         td {
           padding: 10px 5px;
           font-size: 0.8rem;
         }
-
         button[onclick*="increaseQuantity"],
         button[onclick*="decreaseQuantity"] {
           padding: 6px 8px;
@@ -1142,7 +1112,6 @@
         .cart-section {
           border-radius: 18px;
         }
-
         .empty-cart-icon {
           font-size: 60px;
         }
@@ -1534,42 +1503,29 @@
     </footer>
 
     <script>
-      // ==========================================
-      // NAVIGATION BAR FUNCTIONALITY
-      // ==========================================
+      // =============================================================================
+      // PASSIONBAKERY N CHOCOS - CART PAGE OPTIMIZED JAVASCRIPT
+      // =============================================================================
 
-      /**
-       * Toggle responsive navigation menu for mobile devices
-       */
+      // =============================================================================
+      // NAVIGATION FUNCTIONALITY
+      // =============================================================================
       function myFunction() {
         const nav = document.getElementById("myTopnav");
         nav.className =
           nav.className === "topnav" ? "topnav responsive" : "topnav";
       }
 
-      // ==========================================
+      // =============================================================================
       // CART DATA MANAGEMENT
-      // ==========================================
-
-      /**
-       * Load cart data from localStorage
-       * @returns {Object} Cart data object
-       */
+      // =============================================================================
       const loadCartData = () =>
-        JSON.parse(localStorage.getItem("cartData")) || {};
+        JSON.parse(localStorage.getItem("CakecartData")) || {};
 
-      /**
-       * Save cart data to localStorage
-       * @param {Object} cartData - Cart data to save
-       */
       const saveCartData = (cartData) => {
-        localStorage.setItem("cartData", JSON.stringify(cartData));
+        localStorage.setItem("CakecartData", JSON.stringify(cartData));
       };
 
-      /**
-       * Get cart summary for checkout
-       * @returns {Object} Object containing total amount and product names
-       */
       const getCartDetails = () => {
         const cartData = loadCartData();
         let totalAmount = 0;
@@ -1577,10 +1533,11 @@
 
         Object.entries(cartData).forEach(([productName, product]) => {
           if (product.quantity > 0) {
-            const productTotalPrice =
-              parseFloat(product.price) * product.quantity;
-            totalAmount += productTotalPrice;
-            productNames.push(`${productName} (x${product.quantity})`);
+            totalAmount += parseFloat(product.price) * product.quantity;
+            // Include unit (kg) with quantity and weight in the product name
+            productNames.push(
+              `${productName} - Quantity: ${product.quantity}, Weight: ${product.weight} kg`
+            );
           }
         });
 
@@ -1590,13 +1547,9 @@
         };
       };
 
-      // ==========================================
+      // =============================================================================
       // CART TABLE DISPLAY AND UPDATES
-      // ==========================================
-
-      /**
-       * Update the cart table display with current cart data
-       */
+      // =============================================================================
       const updateCartTable = () => {
         const cartData = loadCartData();
         const cartTableBody = document.getElementById("cart-table-body");
@@ -1605,51 +1558,44 @@
         const paymentMethods = document.getElementById("payment-methods");
         const paymentForm = document.getElementById("payment-form");
 
-        // Clear existing rows
         cartTableBody.innerHTML = "";
 
         let totalAmount = 0;
         let totalCount = 0;
         let srNo = 1;
 
-        // Check if cart has items
         const hasItems = Object.values(cartData).some(
           (product) => product.quantity > 0
         );
 
         if (!hasItems) {
-          // Show empty cart, hide everything else
           emptyCart.style.display = "block";
           cartSection.classList.remove("has-items");
           paymentMethods.classList.remove("visible");
           paymentForm.classList.remove("visible");
         } else {
-          // Hide empty cart, show cart and payment sections
           emptyCart.style.display = "none";
           cartSection.classList.add("has-items");
           paymentMethods.classList.add("visible");
           paymentForm.classList.add("visible");
 
-          // Populate table rows
           Object.entries(cartData).forEach(([productName, product]) => {
             if (product.quantity > 0) {
               const productTotalPrice = (
                 parseFloat(product.price) * product.quantity
               ).toFixed(2);
-
               const row = document.createElement("tr");
               row.innerHTML = `
-                <td>${srNo++}</td>
-                <td>${productName}</td>
-                <td>${product.weight} kg</td>
-                <td>₹${productTotalPrice}</td>
-                <td>
-                    <button onclick="removeFromCart('${productName}')"><i class="fa fa-trash"></i></button>
-                    <button onclick="decreaseQuantity('${productName}')">−</button>
-                    <button onclick="increaseQuantity('${productName}')">+</button>
-                </td>
-            `;
-
+          <td>${srNo++}</td>
+          <td>${productName}</td>
+          <td>${product.weight} kg</td>
+          <td>₹${productTotalPrice}</td>
+          <td>
+            <button onclick="removeFromCart('${productName}')"><i class="fa fa-trash"></i></button>
+            <button onclick="decreaseQuantity('${productName}')">−</button>
+            <button onclick="increaseQuantity('${productName}')">+</button>
+          </td>
+        `;
               cartTableBody.appendChild(row);
               totalAmount += parseFloat(productTotalPrice);
               totalCount += product.quantity;
@@ -1657,21 +1603,15 @@
           });
         }
 
-        // Update UI elements
         document.getElementById(
           "total-amount"
         ).textContent = `₹${totalAmount.toFixed(2)}`;
         document.getElementById("cart-count").textContent = `(${totalCount})`;
       };
 
-      // ==========================================
+      // =============================================================================
       // CART ITEM OPERATIONS
-      // ==========================================
-
-      /**
-       * Remove an item completely from the cart
-       * @param {string} productName - Name of the product to remove
-       */
+      // =============================================================================
       const removeFromCart = (productName) => {
         const cartData = loadCartData();
         delete cartData[productName];
@@ -1679,10 +1619,6 @@
         updateCartTable();
       };
 
-      /**
-       * Increase quantity of a product in the cart
-       * @param {string} productName - Name of the product
-       */
       const increaseQuantity = (productName) => {
         const cartData = loadCartData();
         if (cartData[productName]) {
@@ -1692,41 +1628,27 @@
         }
       };
 
-      /**
-       * Decrease quantity of a product in the cart
-       * @param {string} productName - Name of the product
-       */
       const decreaseQuantity = (productName) => {
         const cartData = loadCartData();
         if (cartData[productName] && cartData[productName].quantity > 0) {
           cartData[productName].quantity--;
-
-          // Remove item if quantity becomes 0
           if (cartData[productName].quantity === 0) {
             delete cartData[productName];
           }
-
           saveCartData(cartData);
           updateCartTable();
         }
       };
 
-      /**
-       * Scroll to payment methods section smoothly
-       */
       function scrollToPaymentMethods() {
         document
           .querySelector(".payment-methods")
           .scrollIntoView({ behavior: "smooth" });
       }
 
-      // ==========================================
+      // =============================================================================
       // PAYMENT METHODS FUNCTIONALITY
-      // ==========================================
-
-      /**
-       * Toggle UPI ID display
-       */
+      // =============================================================================
       function toggleUPI() {
         const upiElement = document.getElementById("upi-id");
         upiElement.style.display =
@@ -1735,9 +1657,6 @@
             : "none";
       }
 
-      /**
-       * Toggle QR Code image display
-       */
       function toggleQRCode() {
         const qrElement = document.getElementById("qr-code");
         qrElement.style.display =
@@ -1746,13 +1665,9 @@
             : "none";
       }
 
-      // ==========================================
+      // =============================================================================
       // ORDER FORM FUNCTIONALITY
-      // ==========================================
-
-      /**
-       * Setup toggle fields for conditional form inputs
-       */
+      // =============================================================================
       function setupToggleFields() {
         const toggleMappings = [
           { selectId: "different-phone", inputId: "delivery-phone" },
@@ -1764,21 +1679,14 @@
           const selectElem = document.getElementById(selectId);
           const inputElem = document.getElementById(inputId);
 
-          // Initial setup
           toggleInputVisibility(selectElem, inputElem);
 
-          // Add change listener
           selectElem.addEventListener("change", () => {
             toggleInputVisibility(selectElem, inputElem);
           });
         });
       }
 
-      /**
-       * Toggle visibility and requirement of input fields based on select value
-       * @param {HTMLElement} selectElem - Select element
-       * @param {HTMLElement} inputElem - Input element to toggle
-       */
       function toggleInputVisibility(selectElem, inputElem) {
         if (selectElem.value === "yes") {
           inputElem.style.display = "block";
@@ -1790,28 +1698,17 @@
         }
       }
 
-      /**
-       * Validate Indian mobile number format
-       * @param {string} phone - Phone number to validate
-       * @returns {boolean} True if valid, false otherwise
-       */
       const validatePhoneNumber = (phone) => /^[6-9]\d{9}$/.test(phone);
 
-      /**
-       * Get form data with conditional delivery information
-       * @returns {Object} Form data object
-       */
       const getFormData = () => {
         const form = document.getElementById("order-form");
 
-        // Basic customer info
         const customerData = {
           name: form.name.value.trim(),
           address: form.address.value.trim(),
           phone: form.phone.value.trim(),
         };
 
-        // Conditional delivery info
         const deliveryData = {
           phone:
             form["different-phone"].value === "yes"
@@ -1827,7 +1724,6 @@
               : customerData.address,
         };
 
-        // Order details
         const orderData = {
           deliveryDate: form["delivery-date"].value.trim(),
           deliveryTime: form["delivery-time"].value.trim(),
@@ -1840,18 +1736,12 @@
         return { customerData, deliveryData, orderData, form };
       };
 
-      /**
-       * Validate form data
-       * @param {Object} formData - Form data to validate
-       * @returns {boolean} True if valid, false otherwise
-       */
       const validateFormData = ({
         customerData,
         deliveryData,
         orderData,
         form,
       }) => {
-        // Check required customer fields
         if (
           !customerData.name ||
           !customerData.address ||
@@ -1863,7 +1753,6 @@
           return false;
         }
 
-        // Check conditional delivery fields
         const conditionalChecks = [
           {
             condition:
@@ -1890,7 +1779,6 @@
           }
         }
 
-        // Check delivery details
         if (!orderData.deliveryDate || !orderData.deliveryTime) {
           alert("Please select delivery date and time.");
           return false;
@@ -1901,7 +1789,6 @@
           return false;
         }
 
-        // Validate phone numbers
         if (!validatePhoneNumber(customerData.phone)) {
           alert(
             "Please enter a valid 10-digit Indian mobile number for Customer Phone."
@@ -1919,80 +1806,91 @@
         return true;
       };
 
-      /**
-       * Generate WhatsApp message from form data
-       * @param {Object} formData - Form data
-       * @param {Object} cartDetails - Cart details
-       * @returns {string} Formatted WhatsApp message
-       */
       const generateWhatsAppMessage = (
         { customerData, deliveryData, orderData },
         cartDetails
       ) => {
         return (
-          `*CAKE ORDER DETAILS*\n\n` +
-          `*Customer Information:*\n` +
-          `Name: ${customerData.name}\n` +
-          `Address: ${customerData.address}\n` +
-          `Phone: ${customerData.phone}\n\n` +
-          `*Delivery Information:*\n` +
-          `Delivery Name: ${deliveryData.name}\n` +
-          `Delivery Address: ${deliveryData.address}\n` +
-          `Delivery Phone: ${deliveryData.phone}\n` +
-          `Delivery Date: ${orderData.deliveryDate}\n` +
-          `Delivery Time: ${orderData.deliveryTime}\n` +
-          `Delivery Mode: ${orderData.deliveryMode}\n\n` +
-          `*Order Details:*\n` +
-          `Products: ${cartDetails.productNames}\n` +
-          `Total Amount: ₹${cartDetails.totalAmount}\n` +
-          `Name on Cake: ${orderData.cakeName || "N/A"}\n` +
-          `Occasion: ${orderData.occasion || "N/A"}\n\n` +
-          `*Special Request:*\n` +
-          `${orderData.specialRequest || "None"}\n\n` +
-          `*Thank you for your order!*`
+          `🎂 *PASSIONBAKERY N CHOCOS* 🍫\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+          `📋 *NEW ORDER RECEIVED*\n\n` +
+          `👤 *CUSTOMER INFORMATION*\n` +
+          `├─ Name: ${customerData.name}\n` +
+          `├─ Address: ${customerData.address}\n` +
+          `└─ Phone: +91 ${customerData.phone}\n\n` +
+          `🚚 *DELIVERY DETAILS*\n` +
+          `├─ Recipient Name: ${deliveryData.name}\n` +
+          `├─ Delivery Address: ${deliveryData.address}\n` +
+          `├─ Contact Number: +91 ${deliveryData.phone}\n` +
+          `├─ Delivery Date: 📅 ${orderData.deliveryDate}\n` +
+          `├─ Delivery Time: 🕐 ${orderData.deliveryTime}\n` +
+          `└─ Delivery Mode: ${
+            orderData.deliveryMode === "home-delivery"
+              ? "🏠 Home Delivery"
+              : "🏪 Pick Up"
+          }\n\n` +
+          `🛒 *ORDER SUMMARY*\n` +
+          `${cartDetails.productNames
+            .split(", ")
+            .map((item) => `├─ ${item}`)
+            .join("\n")}\n` +
+          `└─ *Total Amount: ₹${cartDetails.totalAmount}*\n\n` +
+          `🎉 *CAKE CUSTOMIZATION*\n` +
+          `├─ Name on Cake: ${orderData.cakeName || "Not specified"}\n` +
+          `└─ Occasion: ${orderData.occasion || "Not specified"}\n\n` +
+          `${
+            orderData.specialRequest
+              ? `💬 *SPECIAL REQUESTS*\n${orderData.specialRequest}\n\n`
+              : ""
+          }` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+          `💰 *PAYMENT REMINDER*\n` +
+          `Please pay 50% advance (₹${(
+            parseFloat(cartDetails.totalAmount) * 0.5
+          ).toFixed(2)}) to confirm your order.\n\n` +
+          `✅ Thank you for choosing PassionBakery N Chocos!\n` +
+          `We look forward to making your celebration special! 🎊`
         );
       };
 
-      /**
-       * Handle form submission and send data via WhatsApp
-       */
       function handleFormSubmission() {
         try {
           const formData = getFormData();
 
-          // Validate form data
           if (!validateFormData(formData)) {
             return;
           }
 
-          // Get cart details
           const cartDetails = getCartDetails();
-
-          // Generate and send WhatsApp message
           const message = generateWhatsAppMessage(formData, cartDetails);
           const whatsappNumber = "919869153017";
           const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
             message
           )}`;
 
-          console.log("WhatsApp URL:", whatsappURL);
+          // Clear cart data from localStorage before opening WhatsApp
+          localStorage.removeItem("CakecartData");
 
           // Open WhatsApp
           window.open(whatsappURL, "_blank");
 
-          // Hide payment form and show success section
+          // Hide all sections except success section
+          document.getElementById("cart-section").classList.remove("has-items");
+          document
+            .getElementById("payment-methods")
+            .classList.remove("visible");
+
           const paymentForm = document.getElementById("payment-form");
           const successSection = document.getElementById("success-section");
 
-          // Remove visible class from form and add hidden
           paymentForm.classList.remove("visible");
           paymentForm.style.display = "none";
-
-          // Show success section
           successSection.classList.add("visible");
           successSection.style.display = "block";
 
-          // Scroll to success section smoothly after a short delay
+          // Update cart count to 0
+          document.getElementById("cart-count").textContent = "(0)";
+
           setTimeout(() => {
             successSection.scrollIntoView({
               behavior: "smooth",
@@ -2007,13 +1905,9 @@
         }
       }
 
-      // ==========================================
+      // =============================================================================
       // PHONE NUMBER VALIDATION
-      // ==========================================
-
-      /**
-       * Setup phone number validation for inputs
-       */
+      // =============================================================================
       function setupPhoneValidation() {
         const phoneInputs = ["phone", "delivery-phone"];
 
@@ -2034,21 +1928,33 @@
         });
       }
 
-      // ==========================================
+      // =============================================================================
       // INITIALIZATION
-      // ==========================================
-
-      /**
-       * Initialize the page when DOM content is loaded
-       */
+      // =============================================================================
       window.addEventListener("DOMContentLoaded", () => {
-        // Initialize cart display
-        updateCartTable();
+        // Check if coming back from successful order (page refresh scenario)
+        const cartData = loadCartData();
+        const hasItems = Object.values(cartData).some(
+          (product) => product.quantity > 0
+        );
 
-        // Setup form toggle fields
+        // If no items in cart after page load, ensure only empty cart is shown
+        if (!hasItems) {
+          document.getElementById("empty-cart").style.display = "block";
+          document.getElementById("cart-section").classList.remove("has-items");
+          document
+            .getElementById("payment-methods")
+            .classList.remove("visible");
+          document.getElementById("payment-form").classList.remove("visible");
+          document
+            .getElementById("success-section")
+            .classList.remove("visible");
+          document.getElementById("success-section").style.display = "none";
+        } else {
+          updateCartTable();
+        }
+
         setupToggleFields();
-
-        // Setup phone validation
         setupPhoneValidation();
       });
     </script>
