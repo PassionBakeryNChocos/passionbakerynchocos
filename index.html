@@ -16,6 +16,9 @@
     />
 
     <style>
+      /* ========================================
+   CSS VARIABLES & ROOT CONFIGURATION
+   ======================================== */
       :root {
         --primary-gradient: linear-gradient(
           90deg,
@@ -53,6 +56,7 @@
           Roboto, sans-serif;
         line-height: 1.6;
         overflow-x: hidden;
+        max-width: 100vw;
       }
 
       h1,
@@ -78,13 +82,16 @@
         height: auto;
       }
 
-      /* Navigation */
+      /* ========================================
+   NAVIGATION BAR - ENHANCED WITH STICKY
+   ======================================== */
       .topnav {
         overflow: hidden;
         background: var(--primary-gradient);
         font-family: Delius;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-bottom: 2px solid rgba(255, 215, 0, 0.3);
         position: sticky;
         top: 0;
@@ -106,6 +113,26 @@
         transition: var(--transition);
         position: relative;
         overflow: hidden;
+      }
+
+      .topnav a:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: var(--transition);
+      }
+
+      .topnav a:hover:before {
+        left: 100%;
       }
 
       .topnav a:hover,
@@ -803,58 +830,107 @@
         font-weight: bold;
       }
 
-      /* Mobile Responsive */
+      /* ========================================
+   RESPONSIVE MEDIA QUERIES
+   ======================================== */
       @media screen and (max-width: 768px) {
-        .topnav a:not(:first-child) {
+        .topnav {
+          padding: 0 5px;
+          position: relative;
+          min-height: 50px;
+        }
+
+        .topnav a:not(.active):not(.cart-icon):not(.icon) {
           display: none;
+          clear: both;
+          width: 100%;
         }
+
+        .topnav a.active {
+          float: left;
+          margin: 8px 3px;
+          padding: 12px 14px;
+        }
+
+        /* Fixed position for Cart Icon - always on extreme right */
+        .topnav .cart-icon {
+          position: absolute !important;
+          top: 0;
+          right: 55px;
+          float: none;
+          margin: 8px 3px;
+          padding: 12px 14px;
+          font-size: 0.9rem;
+        }
+
+        /* Fixed position for Hamburger Icon - left of cart */
         .topnav a.icon {
-          float: right;
-          display: block;
-          margin: 8px 10px;
+          position: absolute !important;
+          top: 0;
+          right: 5px;
+          float: none;
+          display: block !important;
+          margin: 8px 3px;
+          padding: 12px 14px;
+          font-size: 1.2rem;
+          color: var(--primary-text);
+          background: rgba(255, 255, 255, 0.2);
         }
+
+        .topnav a {
+          margin: 5px 3px;
+          padding: 12px 14px;
+          font-size: 0.9rem;
+        }
+
         .topnav.responsive {
           position: relative;
         }
-        .topnav.responsive .icon {
-          position: absolute;
-          right: 10px;
-          top: 0px;
+
+        /* Keep active link in place on extreme left */
+        .topnav.responsive a.active {
+          float: left;
+          margin: 8px 3px;
+          padding: 12px 14px;
+        }
+
+        /* Cart Icon stays fixed on extreme right */
+        .topnav.responsive .cart-icon {
+          position: absolute !important;
+          top: 0;
+          right: 55px;
+          float: none;
+          margin: 8px 3px;
+        }
+
+        /* Hamburger Icon stays fixed left of cart */
+        .topnav.responsive a.icon {
+          position: absolute !important;
+          top: 0;
+          right: 5px;
+          float: none;
           color: var(--gold);
           background: linear-gradient(45deg, #3e476f, #5a6491);
+          margin: 8px 3px;
         }
-        .topnav.responsive a {
-          float: none;
+
+        /* Expanded menu items appear below the first row */
+        .topnav.responsive a:not(.active):not(.icon):not(.cart-icon) {
           display: block;
+          float: none;
           text-align: left;
+          width: 100%;
+          clear: both;
           margin: 5px 10px;
         }
-        .slider-button {
-          width: 40px;
-          height: 40px;
-          padding: 8px;
+
+        .topnav.responsive
+          a:not(.active):not(.icon):not(.cart-icon):first-of-type {
+          padding-top: 0;
+          margin-top: 50px;
         }
-        .slider-button.prev {
-          left: 5px;
-        }
-        .slider-button.next {
-          right: 5px;
-        }
-        .review-card {
-          flex: 0 0 320px;
-          padding: 20px;
-        }
-        .footer-content {
-          flex-direction: column;
-          gap: 25px;
-        }
-        .footer-section {
-          text-align: center;
-          min-width: auto;
-        }
-        .social-footer-links {
-          justify-content: center;
-        }
+
+        /* Keep the rest of your existing mobile styles below this */
       }
 
       @media screen and (max-width: 480px) {
@@ -936,15 +1012,11 @@
       <div class="slider-dots"></div>
 
       <!-- Add classes to your shop buttons -->
-      <a href="Products_cakes.html" class="shop-button">
-        Shop Now For Cakes!!
-      </a>
+      <a href="Products_cakes.html" class="shop-button"> Cakes </a>
 
-      <a href="Chocolates.html" class="shop-button">
-        Shop Now For Chocolates!!
-      </a>
+      <a href="Chocolates.html" class="shop-button"> Chocolates </a>
 
-      <a href="Gift.html" class="shop-button"> Shop Now For Gift Items!! </a>
+      <a href="Gift.html" class="shop-button"> Gift Items </a>
     </section>
 
     <!-- Replace the border images with these classes -->
@@ -971,12 +1043,11 @@
             with pure veg materials. Building my brand from the ground up has
             taught me resilience, time management, and the importance of
             connecting with my customers. Each order is more than just a dessert
-            Ã¢â‚¬" itÃ¢â‚¬â„¢s a part of someoneÃ¢â‚¬â„¢s celebration, and
-            IÃ¢â‚¬â„¢m honored to contribute to those special moments. As I
-            continue to grow, my goal remains the same: to deliver beautiful,
-            delicious creations that reflect both my artistry and my clients'
-            dreams. This journey is just the beginning, and IÃ¢â‚¬â„¢m excited
-            for whatÃ¢â‚¬â„¢s next.
+            — it’s a part of someone’s celebration, and I’m honored to
+            contribute to those special moments. As I continue to grow, my goal
+            remains the same: to deliver beautiful, delicious creations that
+            reflect both my artistry and my clients' dreams. This journey is
+            just the beginning, and I’m excited for what’s next.
           </p>
         </div>
       </div>
@@ -1205,7 +1276,13 @@
           To know more about what people are saying about us, check out our
           Google Reviews!
         </p>
-        <a href="#" class="google-reviews-btn" id="googleReviewsBtn">
+
+        <a
+          href="https://maps.app.goo.gl/G5Ro7eh8443WCXCo8"
+          class="google-reviews-btn"
+          id="googleReviewsBtn"
+          target="_blank"
+        >
           <i class="fa fa-google"></i> View All Google Reviews
         </a>
       </div>
@@ -1484,7 +1561,7 @@
         if (googleReviewsBtn) {
           googleReviewsBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            const googleMapsUrl = "YOUR_GOOGLE_MAPS_REVIEWS_URL_HERE";
+            const googleMapsUrl = "https://maps.app.goo.gl/G5Ro7eh8443WCXCo8";
             window.open(googleMapsUrl, "_blank");
           });
         }
