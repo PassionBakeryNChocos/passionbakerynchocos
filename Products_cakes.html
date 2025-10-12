@@ -29,11 +29,39 @@
         --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
 
+      /* CSS Variables */
+      :root {
+        --primary-gradient: linear-gradient(
+          90deg,
+          rgba(30, 242, 253, 0.95) 0%,
+          rgba(74, 144, 226, 0.95) 100%
+        );
+        --section-gradient: linear-gradient(
+          135deg,
+          #6266f4 0%,
+          #4a54d1 50%,
+          #3d47b8 100%
+        );
+        --button-gradient: linear-gradient(45deg, #11124a, #1a1d5a);
+        --hover-gradient: linear-gradient(45deg, #fea3aa, #ff7b82);
+        --gold: #ffd700;
+        --primary-text: #11124a;
+        --white: #ffffff;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --border-radius: 20px;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
       /* Global Styles */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -42,16 +70,134 @@
         line-height: 1.6;
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, sans-serif;
+        max-width: 100vw;
       }
 
-      /* Navigation Bar */
+      /* ========================================
+   NOTIFICATION STYLES - ENHANCED
+   ======================================== */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: -400px;
+        background: linear-gradient(135deg, #6266f4 0%, #4a54d1 100%);
+        color: white;
+        padding: 18px 35px;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(98, 102, 244, 0.4);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: Delius, sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        border: 2px solid rgba(255, 215, 0, 0.4);
+        min-width: fit-content;
+        white-space: nowrap;
+      }
+
+      .notification.show {
+        right: 20px;
+        animation: slideInFromRight 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .notification.hide {
+        right: -400px;
+        opacity: 0;
+      }
+
+      .notification i {
+        font-size: 24px;
+        animation: checkPulse 0.6s ease-in-out;
+      }
+
+      .notification.added {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4);
+      }
+
+      .notification.removed {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        border-color: rgba(245, 158, 11, 0.4);
+        box-shadow: 0 10px 40px rgba(245, 158, 11, 0.4);
+      }
+
+      @keyframes slideInFromRight {
+        0% {
+          right: -400px;
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        60% {
+          right: 10px;
+          transform: scale(1.05);
+        }
+        80% {
+          right: 25px;
+        }
+        100% {
+          right: 20px;
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes checkPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      /* Mobile notification positioning */
+      @media screen and (max-width: 768px) {
+        .notification {
+          top: 70px;
+          right: -400px;
+          transform: none;
+          width: auto;
+          max-width: calc(100% - 40px);
+          padding: 15px 20px;
+          font-size: 14px;
+        }
+
+        .notification.show {
+          right: 20px;
+        }
+
+        @keyframes slideInFromRight {
+          0% {
+            right: -400px;
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          60% {
+            right: 10px;
+            transform: scale(1.05);
+          }
+          80% {
+            right: 25px;
+          }
+          100% {
+            right: 20px;
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+
+      /* ========================================
+   NAVIGATION BAR - ENHANCED WITH STICKY
+   ======================================== */
       .topnav {
         overflow: hidden;
-        background: linear-gradient(
-          90deg,
-          rgba(30, 242, 253, 0.95) 0%,
-          rgba(74, 144, 226, 0.95) 100%
-        );
+        background: var(--primary-gradient);
         font-family: Delius;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(20px);
@@ -66,7 +212,7 @@
       .topnav .cart-icon {
         float: left;
         display: block;
-        color: #11124a;
+        color: var(--primary-text);
         text-align: center;
         padding: 16px 24px;
         font-weight: bold;
@@ -129,6 +275,8 @@
         margin: 20px auto;
         display: block;
         animation: imageFloat 6s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)
+          contrast(1.1);
       }
 
       @keyframes imageFloat {
@@ -143,18 +291,13 @@
 
       /* Product Container */
       .product-container {
-        background: linear-gradient(
-          135deg,
-          #6266f4 0%,
-          #4a54d1 50%,
-          #3d47b8 100%
-        );
+        background: var(--section-gradient);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         padding: 40px;
         border-radius: var(--border-radius);
-        margin: 40px 20px;
-        box-shadow: var(--card-shadow);
+        margin: 20px clamp(10px, 3vw, 20px);
+        box-shadow: 0 10px 30px rgba(98, 102, 244, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
@@ -197,7 +340,7 @@
 
       /* Section Heading */
       h2 {
-        color: #ffd700;
+        color: var(--gold);
         font-weight: bold;
         font-size: clamp(1.8rem, 5vw, 3.5rem);
         text-align: center;
@@ -365,404 +508,6 @@
       }
 
       /* Add to Cart Button */
-      .add-to-cart {
-        background: linear-gradient(135deg, var(--accent-color), #059669);
-        color: white;
-        border: none;
-        padding: 14px 28px;
-        cursor: pointer;
-        margin: 15px auto;
-        border-radius: 12px;
-        transition: var(--transition);
-        font-weight: 600;
-        font-size: 16px;
-        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        max-width: 150px;
-      }
-
-      .add-to-cart::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: var(--transition);
-      }
-
-      .add-to-cart:hover::before {
-        width: 300px;
-        height: 300px;
-      }
-
-      .add-to-cart:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-      }
-
-      /* CSS Variables */
-      :root {
-        --primary-gradient: linear-gradient(
-          90deg,
-          rgba(30, 242, 253, 0.95) 0%,
-          rgba(74, 144, 226, 0.95) 100%
-        );
-        --section-gradient: linear-gradient(
-          135deg,
-          #6266f4 0%,
-          #4a54d1 50%,
-          #3d47b8 100%
-        );
-        --button-gradient: linear-gradient(45deg, #11124a, #1a1d5a);
-        --hover-gradient: linear-gradient(45deg, #fea3aa, #ff7b82);
-        --gold: #ffd700;
-        --primary-text: #11124a;
-        --white: #ffffff;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --border-radius: 20px;
-        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Global Styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background: #1ef2fd;
-        overflow-x: hidden;
-        line-height: 1.6;
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-      }
-
-      /* Navigation Bar - FROM INDEX */
-      .topnav {
-        overflow: hidden;
-        background: var(--primary-gradient);
-        font-family: Delius;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
-      .topnav a,
-      .topnav .cart-icon {
-        float: left;
-        display: block;
-        color: var(--primary-text);
-        text-align: center;
-        padding: 16px 24px;
-        font-weight: bold;
-        text-decoration: none;
-        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
-        border-radius: 12px;
-        margin: 8px 6px;
-        transition: var(--transition);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .topnav a:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: var(--transition);
-      }
-
-      .topnav a:hover:before {
-        left: 100%;
-      }
-
-      .topnav a:hover,
-      .topnav .cart-icon:hover {
-        background: linear-gradient(45deg, #0000ff, #4169e1);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
-      }
-
-      .topnav .cart-icon:hover {
-        transform: translateY(-2px) rotate(5deg);
-      }
-
-      .topnav a.active {
-        background: linear-gradient(45deg, #3e476f, #5a6491);
-        color: white;
-        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        transform: scale(1.05);
-      }
-
-      .topnav .icon {
-        display: none;
-      }
-
-      /* Border Images - FROM INDEX */
-      .border-image {
-        width: min(70%, 600px);
-        height: auto;
-        margin: 20px auto;
-        display: block;
-        animation: imageFloat 6s ease-in-out infinite;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)
-          contrast(1.1);
-      }
-
-      @keyframes imageFloat {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      /* Product Container - ORIGINAL WITH INDEX COLORS */
-      .product-container {
-        background: var(--section-gradient);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        padding: 40px;
-        border-radius: var(--border-radius);
-        margin: 20px clamp(10px, 3vw, 20px);
-        box-shadow: 0 10px 30px rgba(98, 102, 244, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      /* Filter and Search - ORIGINAL */
-      .filter-search {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-      }
-
-      .search-container,
-      .filter-container {
-        flex: 1;
-        min-width: 250px;
-        max-width: 300px;
-      }
-
-      input[type="text"],
-      select {
-        width: 100%;
-        padding: 16px 20px;
-        border: 2px solid rgba(99, 102, 241, 0.1);
-        border-radius: 12px;
-        font-size: 16px;
-        background: rgba(255, 255, 255, 0.9);
-        transition: var(--transition);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
-
-      input[type="text"]:focus,
-      select:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-        transform: translateY(-2px);
-      }
-
-      /* Section Heading - FROM INDEX */
-      h2 {
-        color: var(--gold);
-        font-weight: bold;
-        font-size: clamp(1.8rem, 5vw, 3.5rem);
-        text-align: center;
-        margin-bottom: 15px;
-        font-family: Great Vibes;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-        animation: titleGlow 3s ease-in-out infinite alternate;
-      }
-
-      @keyframes titleGlow {
-        from {
-          text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
-            0 0 20px rgba(255, 215, 0, 0.3);
-        }
-        to {
-          text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
-            0 0 30px rgba(255, 215, 0, 0.6);
-        }
-      }
-
-      /* Product Cards Grid - ORIGINAL */
-      .product-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 30px;
-        justify-content: center;
-        padding: 0 10px;
-      }
-
-      /* Product Card - ORIGINAL */
-      .product-card {
-        border: none;
-        border-radius: var(--border-radius);
-        padding: 24px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        box-shadow: var(--card-shadow);
-        transition: var(--transition);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .product-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-        transform: scaleX(0);
-        transition: var(--transition);
-      }
-
-      .product-card:hover::before {
-        transform: scaleX(1);
-      }
-
-      .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--card-shadow-hover);
-      }
-
-      .product-image {
-        width: 100%;
-        height: auto;
-        border-radius: 12px;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .product-card:hover .product-image {
-        transform: scale(1.05);
-      }
-
-      .product-card h3 {
-        margin-top: 16px;
-        font-size: 18px;
-        font-family: "Delius", cursive;
-        color: var(--text-primary);
-        font-weight: 600;
-        text-align: center;
-      }
-
-      .product-card p {
-        color: var(--text-secondary);
-        font-weight: 500;
-        text-align: center;
-        margin: 8px 0;
-      }
-
-      #base-price {
-        display: none;
-      }
-
-      .price {
-        color: var(--accent-color);
-        font-weight: 700;
-        font-size: 20px;
-      }
-
-      /* Weight Selector - ORIGINAL */
-      .weight-selector {
-        margin: 15px 0;
-        width: 100%;
-        padding: 12px 16px;
-        border: 2px solid rgba(99, 102, 241, 0.1);
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.9);
-        font-size: 14px;
-        transition: var(--transition);
-      }
-
-      .weight-selector:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-      }
-
-      /* Quantity Control - ORIGINAL */
-      .quantity-control {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 15px;
-        text-align: center;
-      }
-
-      .quantity-control button {
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: var(--transition);
-        font-weight: bold;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .quantity-control button:hover {
-        background: #4f46e5;
-        transform: scale(1.1);
-      }
-
-      .quantity {
-        margin: 0 20px;
-        font-weight: 600;
-        font-size: 18px;
-        color: var(--text-primary);
-      }
-
-      /* Add to Cart Button - ORIGINAL */
       .add-to-cart {
         background: linear-gradient(135deg, var(--accent-color), #059669);
         color: white;
@@ -1029,20 +774,49 @@
         }
       }
 
-      /* Media Queries - MERGED FROM BOTH */
+      /* Media Queries */
       @media screen and (max-width: 768px) {
         .topnav {
-          padding: 0 10px;
+          padding: 0 5px;
+          position: relative;
+          min-height: 50px;
         }
 
-        .topnav a:not(:first-child) {
+        .topnav a:not(.active):not(.cart-icon):not(.icon) {
           display: none;
+          clear: both;
+          width: 100%;
         }
 
+        .topnav a.active {
+          float: left;
+          margin: 8px 3px;
+          padding: 12px 14px;
+        }
+
+        /* Fixed position for Cart Icon - always on extreme right */
+        .topnav .cart-icon {
+          position: absolute !important;
+          top: 0;
+          right: 55px;
+          float: none;
+          margin: 8px 3px;
+          padding: 12px 14px;
+          font-size: 0.9rem;
+        }
+
+        /* Fixed position for Hamburger Icon - left of cart */
         .topnav a.icon {
-          float: right;
-          display: block;
-          margin: 8px 10px;
+          position: absolute !important;
+          top: 0;
+          right: 5px;
+          float: none;
+          display: block !important;
+          margin: 8px 3px;
+          padding: 12px 14px;
+          font-size: 1.2rem;
+          color: var(--primary-text);
+          background: rgba(255, 255, 255, 0.2);
         }
 
         .topnav a {
@@ -1055,19 +829,47 @@
           position: relative;
         }
 
-        .topnav.responsive .icon {
-          position: absolute;
-          right: 10px;
-          top: 0px;
-          color: var(--gold);
-          background: linear-gradient(45deg, #3e476f, #5a6491);
+        /* Keep active link in place on extreme left */
+        .topnav.responsive a.active {
+          float: left;
+          margin: 8px 3px;
+          padding: 12px 14px;
         }
 
-        .topnav.responsive a {
+        /* Cart Icon stays fixed on extreme right */
+        .topnav.responsive .cart-icon {
+          position: absolute !important;
+          top: 0;
+          right: 55px;
           float: none;
+          margin: 8px 3px;
+        }
+
+        /* Hamburger Icon stays fixed left of cart */
+        .topnav.responsive a.icon {
+          position: absolute !important;
+          top: 0;
+          right: 5px;
+          float: none;
+          color: var(--gold);
+          background: linear-gradient(45deg, #3e476f, #5a6491);
+          margin: 8px 3px;
+        }
+
+        /* Expanded menu items appear below the first row */
+        .topnav.responsive a:not(.active):not(.icon):not(.cart-icon) {
           display: block;
+          float: none;
           text-align: left;
+          width: 100%;
+          clear: both;
           margin: 5px 10px;
+        }
+
+        .topnav.responsive
+          a:not(.active):not(.icon):not(.cart-icon):first-of-type {
+          padding-top: 0;
+          margin-top: 50px;
         }
 
         .product-cards {
@@ -1086,19 +888,18 @@
           min-width: 100%;
         }
 
-        .footer-container {
+        .footer-content {
           flex-direction: column;
-          align-items: center;
+          gap: 25px;
+        }
+
+        .footer-section {
           text-align: center;
+          min-width: auto;
         }
 
-        .footer-column {
-          max-width: 100%;
-          margin-bottom: 20px;
-        }
-
-        .footer-map iframe {
-          height: 250px;
+        .social-footer-links {
+          justify-content: center;
         }
       }
 
@@ -1156,6 +957,12 @@
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
       </a>
+    </div>
+
+    <!-- Add this right after <body> tag -->
+    <div id="notification" class="notification">
+      <i class="fa fa-check-circle"></i>
+      <span id="notification-text">Product added to cart!</span>
     </div>
 
     <img src="border top.png" class="border-image" />
@@ -2949,592 +2756,6 @@
           </div>
           <button class="add-to-cart">Add to Cart</button>
         </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag16">
-          <img src="Donuts.jpeg" alt="Donuts" class="product-image" />
-          <h3>Donuts</h3>
-          <p id="base-price" style="display: none">185.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">185.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">3 piece</option>
-            <option value="2">6 piece</option>
-            <option value="3">9 piece</option>
-            <option value="4">12 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Mermaid Themes Cupcakes.jpeg"
-            alt="Mermaid Themes Cupcakes"
-            class="product-image"
-          />
-          <h3>Mermaid Themes Cupcakes</h3>
-          <p id="base-price" style="display: none">470.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">470.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Custom Cupcake.jpg"
-            alt="Custom Cupcakes"
-            class="product-image"
-          />
-          <h3>Custom Cupcakes</h3>
-          <p id="base-price" style="display: none">500.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">500.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Fondant Cupcake.jpg"
-            alt="Fondant Cupcakes"
-            class="product-image"
-          />
-          <h3>Fondant Cupcakes</h3>
-          <p id="base-price" style="display: none">530.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">530.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Almond Cupcake.jpeg"
-            alt="Almond Cupcakes"
-            class="product-image"
-          />
-          <h3>Almond Cupcakes</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Blueberry Cupcake.jpg"
-            alt="Bluebery Cupcakes"
-            class="product-image"
-          />
-          <h3>Bluebery Cupcakes</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Caramel Cupcake.jpg"
-            alt="Caramel Cupcakes"
-            class="product-image"
-          />
-          <h3>Caramel Cupcakes</h3>
-          <p id="base-price" style="display: none">380.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">380.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Chili pataka Cupcake.jpg"
-            alt="Chilli Pataka Cupcakes"
-            class="product-image"
-          />
-          <h3>Chilli Pataka Cupcakes</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Chocolate Creame Cheese Cupcake.jpg"
-            alt="Chocolate Creame Cheese Cupcake"
-            class="product-image"
-          />
-          <h3>Chocolate Creame Cheese Cupcake</h3>
-          <p id="base-price" style="display: none">600.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">600.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Chocolate Cupcake.jpeg"
-            alt="Chocolate Cupcakes"
-            class="product-image"
-          />
-          <h3>Chocolate Cupcakes</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Chocolate Strawberry Cupcake.jpg"
-            alt="Chocolate Strawberry Cupcakes"
-            class="product-image"
-          />
-          <h3>Chocolate Strawberry Cupcakes</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Oreo Cupcake.jpg"
-            alt="Oreo Cupcake"
-            class="product-image"
-          />
-          <h3>Oreo Cupcake</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Pineapple Cupcake.jpeg"
-            alt="Pineapple Cupcake"
-            class="product-image"
-          />
-          <h3>Pineapple Cupcake</h3>
-          <p id="base-price" style="display: none">370.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">370.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Red Velvet Creame Cheese Cupcake.jpg"
-            alt="Red Velvet Creame Cheese Cupcake"
-            class="product-image"
-          />
-          <h3>Red Velvet Creame Cheese Cupcake</h3>
-          <p id="base-price" style="display: none">550.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">550.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Red Velvet Cupcake.jpeg"
-            alt="Red Velvet Cupcake"
-            class="product-image"
-          />
-          <h3>Red Velvet Cupcake</h3>
-          <p id="base-price" style="display: none">550.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">550.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Red Velvet Cupcake2.jpg"
-            alt="Red Velvet Cupcake"
-            class="product-image"
-          />
-          <h3>Red Velvet Cupcake</h3>
-          <p id="base-price" style="display: none">550.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">550.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Red Velvet Strawberry Cupcake.jpg"
-            alt="Red Velvet Strawberry Cupcake"
-            class="product-image"
-          />
-          <h3>Red Velvet Strawberry Cupcake</h3>
-          <p id="base-price" style="display: none">550.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">550.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag17">
-          <img
-            src="Strawberry Cupcake.jpeg"
-            alt="Strawberry Cupcake"
-            class="product-image"
-          />
-          <h3>Strawberry Cupcake</h3>
-          <p id="base-price" style="display: none">550.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">550.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">6 piece</option>
-            <option value="2">12 piece</option>
-            <option value="3">18 piece</option>
-            <option value="4">24 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag18">
-          <img src="Macarons.jpeg" alt="Macroons" class="product-image" />
-          <h3>Macroons</h3>
-          <p id="base-price" style="display: none">300.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">300.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">4 piece</option>
-            <option value="2">8 piece</option>
-            <option value="3">12 piece</option>
-            <option value="4">16 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag19">
-          <img
-            src="Chocolate Brownie.jpg"
-            alt="Chocolate Brownie"
-            class="product-image"
-          />
-          <h3>Chocolate Brownie</h3>
-          <p id="base-price" style="display: none">70.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">140.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">1 piece</option>
-            <option value="3">3 piece</option>
-            <option value="5">5 piece</option>
-            <option value="7">7 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag20">
-          <img
-            src="Ghewar Classic.jpg"
-            alt="Classic Ghewar"
-            class="product-image"
-          />
-          <h3>Classic Ghewar</h3>
-          <p id="base-price" style="display: none">375.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">750.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">1 piece</option>
-            <option value="3">3 piece</option>
-            <option value="5">5 piece</option>
-            <option value="7">7 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="product-card" data-product-id="" data-tag="tag20">
-          <img
-            src="Ghewar Premium.jpg"
-            alt="Premium Ghewar"
-            class="product-image"
-          />
-          <h3>Premium Ghewar</h3>
-          <p id="base-price" style="display: none">550.00</p>
-          <!-- Base price per kg -->
-          <p>Price: ₹<span class="price">1100.00</span></p>
-
-          <label for="weight">Choose weight:</label>
-          <select class="weight-selector">
-            <option value="1">1 piece</option>
-            <option value="3">3 piece</option>
-            <option value="5">5 piece</option>
-            <option value="7">7 piece</option>
-          </select>
-
-          <div class="quantity-control" style="display: none">
-            <button class="minus">-</button>
-            <span class="quantity">0</span>
-            <button class="plus">+</button>
-          </div>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
       </div>
     </div>
 
@@ -3636,12 +2857,47 @@
 
     <script>
       // ================================
+      // NOTIFICATION SYSTEM
+      // ================================
+
+      /**
+       * Show notification with custom message and type
+       */
+      const showNotification = (message, type = "added") => {
+        const notification = document.getElementById("notification");
+        const notificationText = document.getElementById("notification-text");
+        const icon = notification.querySelector("i");
+
+        // Set text and icon based on type
+        notificationText.textContent = message;
+
+        if (type === "added") {
+          icon.className = "fa fa-check-circle";
+          notification.classList.remove("removed");
+          notification.classList.add("added");
+        } else if (type === "removed") {
+          icon.className = "fa fa-trash";
+          notification.classList.remove("added");
+          notification.classList.add("removed");
+        }
+
+        // Show notification
+        notification.classList.remove("hide");
+        notification.classList.add("show");
+
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+          notification.classList.remove("show");
+          notification.classList.add("hide");
+        }, 3000);
+      };
+
+      // ================================
       // NAVIGATION FUNCTIONALITY
       // ================================
 
       /**
        * Toggle responsive navigation menu on mobile devices
-       * Shows/hides navigation links when hamburger icon is clicked
        */
       function myFunction() {
         const nav = document.getElementById("myTopnav");
@@ -3655,23 +2911,18 @@
 
       /**
        * Load cart data from localStorage
-       * @returns {Object} Cart data object with product details
        */
-      const loadCartData = () => {
-        return JSON.parse(localStorage.getItem("CakecartData")) || {};
-      };
+      const loadCartData = () =>
+        JSON.parse(localStorage.getItem("CakecartData")) || {};
 
       /**
        * Save cart data to localStorage
-       * @param {Object} cartData - Cart data to save
        */
-      const saveCartData = (cartData) => {
+      const saveCartData = (cartData) =>
         localStorage.setItem("CakecartData", JSON.stringify(cartData));
-      };
 
       /**
        * Update cart count display in navigation
-       * @param {number} count - Total items in cart
        */
       const updateCartCount = (count) => {
         document.getElementById("cart-count").textContent = `(${count})`;
@@ -3683,8 +2934,6 @@
 
       /**
        * Extract numeric price from text string
-       * @param {string} priceText - Text containing price
-       * @returns {number} Parsed price as number
        */
       const parsePrice = (priceText) => {
         const match = priceText.match(/[\d,.]+/);
@@ -3693,13 +2942,9 @@
 
       /**
        * Calculate final price based on weight multiplier
-       * @param {number} basePrice - Base price per unit
-       * @param {number} weight - Weight multiplier
-       * @returns {string} Formatted price string
        */
-      const calculatePrice = (basePrice, weight) => {
-        return (basePrice * weight).toFixed(2);
-      };
+      const calculatePrice = (basePrice, weight) =>
+        (basePrice * weight).toFixed(2);
 
       // ================================
       // PRODUCT FILTERING & SEARCH
@@ -3707,36 +2952,35 @@
 
       /**
        * Filter products based on selected category
-       * Shows/hides product cards based on data-tag attribute
        */
       const initializeProductFilter = () => {
         document
           .getElementById("filter")
           .addEventListener("change", function () {
             const selectedTag = this.value;
-            const productCards = document.querySelectorAll(".product-card");
-
-            productCards.forEach((card) => {
-              const shouldShow =
+            document.querySelectorAll(".product-card").forEach((card) => {
+              card.style.display =
                 selectedTag === "" ||
-                card.getAttribute("data-tag") === selectedTag;
-              card.style.display = shouldShow ? "" : "none";
+                card.getAttribute("data-tag") === selectedTag
+                  ? ""
+                  : "none";
             });
+            currentPage = 1;
+            updateFilteredCards();
+            renderPagination();
+            showPage(1);
           });
       };
 
       /**
        * Search products based on input text
-       * Filters products by matching product names
        */
       const initializeProductSearch = () => {
         document
           .getElementById("search")
           .addEventListener("input", function () {
             const searchTerm = this.value.toLowerCase();
-            const productCards = document.querySelectorAll(".product-card");
-
-            productCards.forEach((card) => {
+            document.querySelectorAll(".product-card").forEach((card) => {
               const productName = card
                 .querySelector("h3")
                 .textContent.toLowerCase();
@@ -3744,6 +2988,10 @@
                 ? ""
                 : "none";
             });
+            currentPage = 1;
+            updateFilteredCards();
+            renderPagination();
+            showPage(1);
           });
       };
 
@@ -3753,10 +3001,8 @@
 
       /**
        * Initialize individual product card functionality
-       * Handles cart operations, quantity controls, and price updates
        */
       const initializeProductCards = () => {
-        // Initialize cart data and counter
         let cartData = loadCartData();
         let cartCount = Object.values(cartData).reduce(
           (sum, item) => sum + item.quantity,
@@ -3765,7 +3011,6 @@
         updateCartCount(cartCount);
 
         document.querySelectorAll(".product-card").forEach((card) => {
-          // Get product elements
           const addToCartBtn = card.querySelector(".add-to-cart");
           const quantityControl = card.querySelector(".quantity-control");
           const quantityDisplay = card.querySelector(".quantity");
@@ -3773,19 +3018,13 @@
           const minusBtn = card.querySelector(".minus");
           const weightSelector = card.querySelector(".weight-selector");
           const priceDisplay = card.querySelector(".price");
-
-          // Get product data
           const productName = card.querySelector("h3").textContent;
           const basePrice = parsePrice(card.querySelector("p").textContent);
 
-          // Initialize quantity from cart data
           let quantity = cartData[productName]
             ? cartData[productName].quantity
             : 0;
 
-          /**
-           * Update cart data and localStorage
-           */
           const updateCartData = () => {
             const selectedWeight = parseFloat(weightSelector.value);
             const finalPrice = calculatePrice(basePrice, selectedWeight);
@@ -3804,143 +3043,123 @@
             updateCartCount(cartCount);
           };
 
-          /**
-           * Update product card UI based on quantity
-           */
           const updateUI = () => {
             quantityDisplay.textContent = quantity;
-
-            if (quantity === 0) {
-              addToCartBtn.style.display = "block";
-              quantityControl.style.display = "none";
-            } else {
-              addToCartBtn.style.display = "none";
-              quantityControl.style.display = "flex";
-            }
+            addToCartBtn.style.display = quantity === 0 ? "block" : "none";
+            quantityControl.style.display = quantity === 0 ? "none" : "flex";
           };
 
-          /**
-           * Update price display based on selected weight
-           */
           const updatePrice = () => {
             const selectedWeight = parseFloat(weightSelector.value);
-            const newPrice = calculatePrice(basePrice, selectedWeight);
-            priceDisplay.textContent = newPrice;
+            priceDisplay.textContent = calculatePrice(
+              basePrice,
+              selectedWeight
+            );
           };
 
-          // Event Listeners
-
-          // Add to cart button
           addToCartBtn.addEventListener("click", () => {
             quantity = 1;
             cartCount++;
             updateCartData();
             updateUI();
+            showNotification(`${productName} added to cart!`, "added");
           });
 
-          // Increase quantity
           plusBtn.addEventListener("click", () => {
             quantity++;
             cartCount++;
             updateCartData();
             updateUI();
+            showNotification(`${productName} quantity increased!`, "added");
           });
 
-          // Decrease quantity
           minusBtn.addEventListener("click", () => {
             if (quantity > 0) {
               quantity--;
               cartCount--;
               updateCartData();
               updateUI();
+
+              if (quantity === 0) {
+                showNotification(
+                  `${productName} removed from cart!`,
+                  "removed"
+                );
+              } else {
+                showNotification(
+                  `${productName} quantity decreased!`,
+                  "removed"
+                );
+              }
             }
           });
 
-          // Weight selection change
           weightSelector.addEventListener("change", updatePrice);
 
-          // Initialize UI and price
           updateUI();
           updatePrice();
         });
       };
 
       // ================================
-      // APPLICATION INITIALIZATION
-      // ================================
-
-      /**
-       * Initialize all application functionality when DOM is loaded
-       */
-      document.addEventListener("DOMContentLoaded", () => {
-        initializeProductCards();
-        initializeProductFilter();
-        initializeProductSearch();
-      });
-
-      // For immediate execution if DOM is already loaded
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-          initializeProductCards();
-          initializeProductFilter();
-          initializeProductSearch();
-        });
-      } else {
-        initializeProductCards();
-        initializeProductFilter();
-        initializeProductSearch();
-      }
-
-      // ================================
       // PAGINATION FUNCTIONALITY
       // ================================
 
-      const PRODUCTS_PER_PAGE = 12; // Adjust this number as needed
+      const PRODUCTS_PER_PAGE = 12;
       let currentPage = 1;
       let filteredCards = [];
+      let allProductCards = [];
 
       /**
-       * Initialize pagination
+       * Initialize pagination - Calculate total products and create page groups dynamically
        */
       function initializePagination() {
+        allProductCards = Array.from(
+          document.querySelectorAll(".product-card")
+        );
         updateFilteredCards();
         renderPagination();
         showPage(currentPage);
       }
 
       /**
-       * Update the list of filtered/visible cards
+       * Update the list of filtered/visible cards dynamically
        */
       function updateFilteredCards() {
-        filteredCards = Array.from(
-          document.querySelectorAll(".product-card")
-        ).filter((card) => card.style.display !== "none");
+        filteredCards = allProductCards.filter(
+          (card) => card.style.display !== "none"
+        );
       }
 
       /**
-       * Show specific page of products
+       * Show specific page of products (groups of 12)
        */
       function showPage(page) {
         currentPage = page;
+        const totalProducts = filteredCards.length;
+        const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE);
+
+        // Validate page number
+        if (page < 1 || page > totalPages) return;
+
         const startIndex = (page - 1) * PRODUCTS_PER_PAGE;
         const endIndex = startIndex + PRODUCTS_PER_PAGE;
 
-        // Hide all cards first
-        document.querySelectorAll(".product-card").forEach((card) => {
+        // Hide all product cards first
+        allProductCards.forEach((card) => {
           card.style.display = "none";
         });
 
-        // Show only cards for current page
+        // Show only products for current page (12 products per page)
         filteredCards.forEach((card, index) => {
           if (index >= startIndex && index < endIndex) {
             card.style.display = "";
           }
         });
 
-        // Update pagination UI
-        updatePaginationUI();
+        renderPagination();
 
-        // Scroll to product section smoothly
+        // Scroll to product section
         document.querySelector(".product-container").scrollIntoView({
           behavior: "smooth",
           block: "start",
@@ -3948,12 +3167,12 @@
       }
 
       /**
-       * Render pagination controls
+       * Render pagination controls dynamically based on total products
        */
       function renderPagination() {
-        const totalPages = Math.ceil(filteredCards.length / PRODUCTS_PER_PAGE);
+        const totalProducts = filteredCards.length;
+        const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE);
 
-        // Create pagination container if it doesn't exist
         let paginationContainer = document.querySelector(
           ".pagination-container"
         );
@@ -3963,6 +3182,7 @@
           document.querySelector(".product-cards").after(paginationContainer);
         }
 
+        // Hide pagination if only 1 page or no products
         if (totalPages <= 1) {
           paginationContainer.innerHTML = "";
           return;
@@ -3973,11 +3193,11 @@
         // Previous button
         paginationHTML += `<button class="pagination-btn" onclick="goToPage(${
           currentPage - 1
-        })" ${currentPage === 1 ? "disabled" : ""}>
-    <i class="fa fa-chevron-left"></i> Previous
-  </button>`;
+        })" ${
+          currentPage === 1 ? "disabled" : ""
+        }><i class="fa fa-chevron-left"></i> Previous</button>`;
 
-        // Page numbers
+        // Dynamic page numbers
         for (let i = 1; i <= totalPages; i++) {
           if (
             i === 1 ||
@@ -3995,19 +3215,12 @@
         // Next button
         paginationHTML += `<button class="pagination-btn" onclick="goToPage(${
           currentPage + 1
-        })" ${currentPage === totalPages ? "disabled" : ""}>
-    Next <i class="fa fa-chevron-right"></i>
-  </button>`;
+        })" ${
+          currentPage === totalPages ? "disabled" : ""
+        }>Next <i class="fa fa-chevron-right"></i></button>`;
 
         paginationHTML += "</div>";
         paginationContainer.innerHTML = paginationHTML;
-      }
-
-      /**
-       * Update pagination UI (highlight current page)
-       */
-      function updatePaginationUI() {
-        renderPagination();
       }
 
       /**
@@ -4020,52 +3233,24 @@
       }
 
       // ================================
-      // UPDATE FILTER AND SEARCH TO WORK WITH PAGINATION
+      // APPLICATION INITIALIZATION
       // ================================
 
-      // Override the existing filter function
-      const originalFilterListener = document.getElementById("filter");
-      originalFilterListener.removeEventListener(
-        "change",
-        initializeProductFilter
-      );
-
-      document.getElementById("filter").addEventListener("change", function () {
-        const selectedTag = this.value;
-        document.querySelectorAll(".product-card").forEach((card) => {
-          card.style.display =
-            selectedTag === "" || card.getAttribute("data-tag") === selectedTag
-              ? ""
-              : "none";
-        });
-        currentPage = 1;
-        updateFilteredCards();
-        renderPagination();
-        showPage(1);
+      /**
+       * Initialize all application functionality
+       */
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeProductCards();
+        initializeProductFilter();
+        initializeProductSearch();
       });
 
-      // Override the existing search function
-      const originalSearchListener = document.getElementById("search");
-      originalSearchListener.removeEventListener(
-        "input",
-        initializeProductSearch
-      );
+      if (document.readyState !== "loading") {
+        initializeProductCards();
+        initializeProductFilter();
+        initializeProductSearch();
+      }
 
-      document.getElementById("search").addEventListener("input", function () {
-        const searchTerm = this.value.toLowerCase();
-        document.querySelectorAll(".product-card").forEach((card) => {
-          const productName = card
-            .querySelector("h3")
-            .textContent.toLowerCase();
-          card.style.display = productName.includes(searchTerm) ? "" : "none";
-        });
-        currentPage = 1;
-        updateFilteredCards();
-        renderPagination();
-        showPage(1);
-      });
-
-      // Initialize pagination after DOM is loaded
       window.addEventListener("load", function () {
         setTimeout(initializePagination, 100);
       });
