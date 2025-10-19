@@ -1757,6 +1757,114 @@
       }
 
       // =============================================================================
+      // DATE AND TIME RESTRICTIONS (36 HOURS MINIMUM)
+      // =============================================================================
+      function setupDateTimeRestrictions() {
+        const deliveryDateInput = document.getElementById("delivery-date");
+        const deliveryTimeInput = document.getElementById("delivery-time");
+
+        // Calculate minimum date/time (36 hours from now)
+        const getMinimumDateTime = () => {
+          const now = new Date();
+          const minimumDateTime = new Date(now.getTime() + 36 * 60 * 60 * 1000);
+          return minimumDateTime;
+        };
+
+        // Format date as YYYY-MM-DD for input min attribute
+        const formatDateForInput = (date) => {
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, "0");
+          const day = String(date.getDate()).padStart(2, "0");
+          return `${year}-${month}-${day}`;
+        };
+
+        // Format time as HH:MM for input min attribute
+        const formatTimeForInput = (date) => {
+          const hours = String(date.getHours()).padStart(2, "0");
+          const minutes = String(date.getMinutes()).padStart(2, "0");
+          return `${hours}:${minutes}`;
+        };
+
+        // Set minimum date
+        const setMinimumDate = () => {
+          const minDateTime = getMinimumDateTime();
+          const minDateStr = formatDateForInput(minDateTime);
+          deliveryDateInput.setAttribute("min", minDateStr);
+
+          // If current value is less than minimum, clear it
+          if (deliveryDateInput.value && deliveryDateInput.value < minDateStr) {
+            deliveryDateInput.value = "";
+            deliveryTimeInput.value = "";
+          }
+        };
+
+        // Validate time based on selected date
+        const validateTimeForDate = () => {
+          const selectedDate = deliveryDateInput.value;
+          if (!selectedDate) {
+            deliveryTimeInput.removeAttribute("min");
+            return;
+          }
+
+          const minDateTime = getMinimumDateTime();
+          const minDateStr = formatDateForInput(minDateTime);
+          const selectedDateObj = new Date(selectedDate + "T00:00:00");
+          const minDateObj = new Date(minDateStr + "T00:00:00");
+
+          // If selected date is the same as minimum date, set minimum time
+          if (selectedDate === minDateStr) {
+            const minTimeStr = formatTimeForInput(minDateTime);
+            deliveryTimeInput.setAttribute("min", minTimeStr);
+
+            // If current time value is less than minimum, clear it
+            if (
+              deliveryTimeInput.value &&
+              deliveryTimeInput.value < minTimeStr
+            ) {
+              deliveryTimeInput.value = "";
+            }
+          } else if (selectedDateObj > minDateObj) {
+            // If selected date is after minimum date, allow any time
+            deliveryTimeInput.removeAttribute("min");
+          } else {
+            // If selected date is before minimum date (shouldn't happen but just in case)
+            deliveryDateInput.value = "";
+            deliveryTimeInput.value = "";
+            alert("Please select a date at least 36 hours from now.");
+          }
+        };
+
+        // Set initial minimum date
+        setMinimumDate();
+
+        // Add event listeners
+        deliveryDateInput.addEventListener("change", validateTimeForDate);
+
+        // Update minimum date every minute to keep it current
+        setInterval(setMinimumDate, 60000);
+
+        // Validate on time input change
+        deliveryTimeInput.addEventListener("change", () => {
+          const selectedDate = deliveryDateInput.value;
+          const selectedTime = deliveryTimeInput.value;
+
+          if (selectedDate && selectedTime) {
+            const selectedDateTime = new Date(
+              `${selectedDate}T${selectedTime}`
+            );
+            const minDateTime = getMinimumDateTime();
+
+            if (selectedDateTime < minDateTime) {
+              alert(
+                "Delivery time must be at least 36 hours from now. Please select a later time."
+              );
+              deliveryTimeInput.value = "";
+            }
+          }
+        });
+      }
+
+      // =============================================================================
       // CONDITIONAL FIELDS SETUP - SIMPLIFIED
       // =============================================================================
       function setupConditionalFields() {
@@ -1884,8 +1992,14 @@
         // Validate phone number format for customer
         if (!validatePhoneNumber(customerData.phone)) {
           alert(
-            "Please enter a valid 10-digit Indian mobile number for Customer Phone."
+            "Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9 for Customer Phone."
           );
+          return false;
+        }
+
+        // Validate phone number length
+        if (customerData.phone.length !== 10) {
+          alert("Customer phone number must be exactly 10 digits.");
           return false;
         }
 
@@ -1904,8 +2018,14 @@
 
           if (!validatePhoneNumber(deliveryData.phone)) {
             alert(
-              "Please enter a valid 10-digit Indian mobile number for Delivery Phone."
+              "Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9 for Delivery Phone."
             );
+            return false;
+          }
+
+          // Validate delivery phone number length
+          if (deliveryData.phone.length !== 10) {
+            alert("Delivery phone number must be exactly 10 digits.");
             return false;
           }
         }
@@ -1913,6 +2033,22 @@
         // Validate delivery date and time
         if (!orderData.deliveryDate || !orderData.deliveryTime) {
           alert("Please select delivery date and time.");
+          return false;
+        }
+
+        // Final validation: Check if selected date/time is at least 36 hours from now
+        const deliveryDateTime = new Date(
+          `${orderData.deliveryDate}T${orderData.deliveryTime}`
+        );
+        const currentDateTime = new Date();
+        const minimumDateTime = new Date(
+          currentDateTime.getTime() + 36 * 60 * 60 * 1000
+        );
+
+        if (deliveryDateTime < minimumDateTime) {
+          alert(
+            "The selected delivery time must be at least 36 hours from now. Please select a later date and time."
+          );
           return false;
         }
 
@@ -1928,6 +2064,14 @@
           return false;
         }
 
+        // Special request is optional, but if left empty, set to "None"
+        if (
+          !orderData.specialRequest ||
+          orderData.specialRequest.toLowerCase() === ""
+        ) {
+          orderData.specialRequest = "None";
+        }
+
         return true;
       };
 
@@ -1939,8 +2083,8 @@
         cartDetails
       ) => {
         let message =
-          `🎂 *PASSIONBAKERY N CHOCOS* 🫖\n` +
-          `"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"\n\n` +
+          `🎂 *PASSIONBAKERY N CHOCOS* 🍫\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
           `📋 *NEW ORDER RECEIVED*\n\n` +
           `👤 *CUSTOMER INFORMATION*\n` +
           `├─ Name: ${customerData.name}\n` +
@@ -1955,7 +2099,7 @@
             `├─ Delivery Address: ${deliveryData.address}\n` +
             `├─ Contact Number: +91 ${deliveryData.phone}\n` +
             `├─ Delivery Date: 📅 ${orderData.deliveryDate}\n` +
-            `├─ Delivery Time: 🕒 ${orderData.deliveryTime}\n` +
+            `├─ Delivery Time: 🕐 ${orderData.deliveryTime}\n` +
             `└─ Delivery Mode: ${
               orderData.deliveryMode === "home-delivery"
                 ? "🏠 Home Delivery"
@@ -1965,7 +2109,7 @@
           message +=
             `🚚 *DELIVERY DETAILS*\n` +
             `├─ Delivery Date: 📅 ${orderData.deliveryDate}\n` +
-            `├─ Delivery Time: 🕒 ${orderData.deliveryTime}\n` +
+            `├─ Delivery Time: 🕐 ${orderData.deliveryTime}\n` +
             `└─ Delivery Mode: ${
               orderData.deliveryMode === "home-delivery"
                 ? "🏠 Home Delivery"
@@ -1984,12 +2128,12 @@
           `├─ Name on Cake: ${orderData.cakeName}\n` +
           `└─ Occasion: ${orderData.occasion}\n\n`;
 
-        if (orderData.specialRequest) {
+        if (orderData.specialRequest && orderData.specialRequest !== "None") {
           message += `💬 *SPECIAL REQUESTS*\n${orderData.specialRequest}\n\n`;
         }
 
         message +=
-          `"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"─"\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
           `💰 *PAYMENT REMINDER*\n` +
           `Please pay 50% advance (₹${(
             parseFloat(cartDetails.totalAmount) * 0.5
@@ -2115,6 +2259,7 @@
         // Initialize form functionality
         setupConditionalFields();
         setupPhoneValidation();
+        setupDateTimeRestrictions(); // New: Set up date/time restrictions
       });
     </script>
   </body>
