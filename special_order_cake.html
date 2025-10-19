@@ -930,6 +930,38 @@
 
     <div class="container">
       <h2>Special Cake Order Form</h2>
+
+      <!-- PRICING NOTE -->
+      <div
+        style="
+          background: rgba(99, 102, 244, 0.2);
+          border-left: 4px solid var(--gold);
+          padding: 15px 20px;
+          border-radius: 8px;
+          margin-bottom: 25px;
+          animation: fadeInUp 0.6s ease-out;
+        "
+      >
+        <p
+          style="
+            margin: 0;
+            color: white;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+            font-family: 'Delius';
+          "
+        >
+          <i
+            class="fa fa-info-circle"
+            style="color: var(--gold); margin-right: 8px"
+          ></i>
+          <strong style="color: var(--gold)">Note:</strong> The final pricing
+          for your custom order will be confirmed after our team carefully
+          reviews your specific requirements and preferences. We'll get back to
+          you shortly with a detailed quote.
+        </p>
+      </div>
+
       <form id="special-order-form">
         <div class="form-group">
           <label for="name">Name</label>
@@ -1026,13 +1058,25 @@
         </div>
 
         <div class="form-group">
-          <label for="special-design">Any Special Design (Upload Image)</label>
-          <input
-            type="file"
+          <label for="special-design">Any Special Design Requirements</label>
+          <textarea
             id="special-design"
             name="special-design"
-            accept="image/*"
-          />
+            placeholder="Describe your special design requirements (e.g., cartoon characters, photo cake, specific theme, colors, decorations)"
+            rows="3"
+          ></textarea>
+          <small
+            style="
+              display: block;
+              margin-top: 8px;
+              color: var(--gold);
+              font-size: 0.85rem;
+              font-style: italic;
+            "
+          >
+            <i class="fa fa-camera"></i> If you have reference images, please
+            send them via WhatsApp after submitting this form
+          </small>
         </div>
 
         <div class="form-group">
@@ -1076,7 +1120,7 @@
       <div class="footer-content">
         <div class="footer-section">
           <img
-            src="Logo.jpg"
+            src="Cake_Logo.jpg"
             alt="PassionBakeryNChocos Logo"
             class="footer-logo-img"
           />
@@ -1087,11 +1131,14 @@
             vegetarian ingredients in the most hygienic environment.
           </p>
           <div class="social-footer-links">
-            <a href="https://www.facebook.com" target="_blank" title="Facebook"
+            <a
+              href="https://www.facebook.com/share/17UMkLQ8Kb/"
+              target="_blank"
+              title="Facebook"
               ><i class="fa fa-facebook"></i
             ></a>
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/passionbakerynchoco15?igsh=NTA4NmNsZDNjd2Rp"
               target="_blank"
               title="Instagram"
               ><i class="fa fa-instagram"></i
@@ -1102,10 +1149,7 @@
               title="WhatsApp"
               ><i class="fa fa-whatsapp"></i
             ></a>
-            <a
-              href="https://in.pinterest.com/"
-              target="_blank"
-              title="Pinterest"
+            <a href="https://pin.it/5SXLo07ns" target="_blank" title="Pinterest"
               ><i class="fa fa-pinterest"></i
             ></a>
           </div>
@@ -1144,10 +1188,11 @@
           <div class="contact-info-item">
             <i class="fa fa-phone"></i>
             <span>+91 9869153017</span>
+            <!-- <span>+91 6376027550</span> -->
           </div>
           <div class="contact-info-item">
             <i class="fa fa-clock-o"></i>
-            <span>Available: 9AM - 8PM Daily</span>
+            <span>Available: 9AM - 6PM Daily</span>
           </div>
           <div class="contact-info-item">
             <i class="fa fa-map-marker"></i>
@@ -1159,7 +1204,7 @@
       <div class="footer-bottom-section">
         <p>
           &copy; 2024 PassionBakeryNChocos. All rights reserved. Made with love
-          for sweet celebrations!
+          for sweet celebrations! ❤️
         </p>
       </div>
     </footer>
@@ -1300,13 +1345,13 @@
         // ========================================
 
         /**
-         * Get special design file name or default text
+         * Get special design text from textarea
          */
         function getSpecialDesignText() {
-          const fileInput = document.getElementById("special-design");
-          return fileInput.files[0]
-            ? fileInput.files[0].name
-            : "No special design";
+          const designTextarea = document.getElementById("special-design");
+          return (
+            designTextarea.value.trim() || "No special design requirements"
+          );
         }
 
         /**
@@ -1360,7 +1405,7 @@
          */
         function formatWhatsAppMessage(data) {
           return (
-            `🰠*Special Cake Order* 🰠\n\n` +
+            `🍰 *Special Cake Order* 🍰 \n\n` +
             `👤 Name: ${data.name}\n` +
             `📞 Phone: ${data.phone}\n` +
             `📍 Address: ${data.address}\n` +
@@ -1371,7 +1416,8 @@
             `🍴 Flavour: ${data.flavour}\n` +
             `🎨 Special Design: ${data.specialDesign}\n` +
             `✏️ Name on Cake: ${data.nameOnCake}\n` +
-            `💭 Special Request: ${data.specialRequest}`
+            `💭 Special Request: ${data.specialRequest}\n\n` +
+            `📸 *Please send any reference images for the design in your next message*`
           );
         }
 
