@@ -1,1231 +1,1637 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PassionBakeryNChocos</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet"/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
-
-<style>
-/* ENHANCED VERSION - KEEPING YOUR ORIGINAL STRUCTURE */
-
-/* Global Styles - ENHANCED */
-body {
-background-color: #bad012;
-font-family: cursive;
-margin: 0;
-padding: 0;
-}
-
-h1, h2 {
-color: #bad012;
-font-weight: bold;
-font-size: xxx-large;
-padding-top: 0%;
-padding-left: 0%;
-text-align: center;
-margin-bottom: 15px;
-font-family: Great Vibes;
-text-decoration: wavy;
-text-shadow: 3px 3px 10px rgba(0,0,0,0.3); /* ENHANCED shadow */
-}
-
-/* Navigation Bar Styles - ENHANCED */
-.topnav {
-overflow: hidden;
-background-color: #bad012;
-box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* ADDED elegant shadow */
-}
-
-.topnav a {
-float: left;
-display: block;
-color: #11124a;
-text-align: center;
-padding: 14px 16px;
-font-weight: bold;
-text-decoration: none;
-font-size: 20px;
-border: 3px solid #11124a;
-margin-left: 10px;
-margin-top: 10px;
-border-radius: 8px; /* ENHANCED rounded corners */
-transition: all 0.3s ease; /* ADDED smooth transition */
-}
-
-.topnav a:hover {
-background-color: #54422b;
-color: floralwhite;
-transform: translateY(-2px); /* ADDED subtle lift effect */
-box-shadow: 0 6px 20px rgba(0,0,0,0.3); /* ADDED hover shadow */
-}
-
-.topnav a.active {
-background-color: #008000;
-color: #ffd700;
-box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* ADDED active shadow */
-}
-
-.topnav .icon {
-display: none;
-}
-
-.topnav .cart-icon {
-color: #11124a;
-font-size: 20px;
-padding: 14px 16px;
-text-decoration: none;
-border: 3px solid #11124a;
-margin-left: 10px;
-margin-top: 10px;
-border-radius: 8px; /* ENHANCED rounded corners */
-transition: all 0.3s ease; /* ADDED smooth transition */
-}
-
-.topnav .cart-icon:hover {
-background-color: #54422b;
-color: floralwhite;
-transform: translateY(-2px); /* ADDED subtle lift effect */
-box-shadow: 0 6px 20px rgba(0,0,0,0.3); /* ADDED hover shadow */
-}
-
-@media screen and (max-width: 600px) {
-.topnav a:not(:first-child) {display: none;}
-.topnav a.icon {
-float: right;
-display: block;
-}
-}
-
-@media screen and (max-width: 600px) {
-.topnav.responsive {position: relative;}
-.topnav.responsive .icon {
-position: absolute;
-right: 0;
-top: 0;
-}
-.topnav.responsive a {
-float: none;
-display: block;
-text-align: left;
-}
-}
-
-/* Enhanced Banner Section with Elegant Effects */
-#banner {
-background: linear-gradient(135deg, #bad012 0%, #c5d614 50%, #bad012 100%);
-color: #11124a;
-text-align: center;
-padding-top: 5px;
-padding-bottom: 5px;
-text-shadow: 2px 2px 8px rgba(255,192,203,0.8);
-box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-position: relative;
-overflow: hidden;
-}
-
-/* Subtle gradient overlay animation */
-#banner::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-animation: heroShine 8s ease-in-out infinite;
-pointer-events: none;
-z-index: 1;
-}
-
-@keyframes heroShine {
-0% { left: -100%; }
-50% { left: 100%; }
-100% { left: -100%; }
-}
-
-/* Elegant text entrance animation */
-#banner h1 {
-margin-bottom: 10px;
-position: relative;
-z-index: 2;
-opacity: 0;
-animation: fadeInUp 1.5s ease-out 0.5s forwards;
-}
-
-@keyframes fadeInUp {
-0% { 
-opacity: 0; 
-transform: translateY(30px); 
-}
-100% { 
-opacity: 1; 
-transform: translateY(0px); 
-}
-}
-
-#banner p {
-font-size: 18px;
-position: relative;
-z-index: 2;
-opacity: 0;
-animation: fadeInUp 1.5s ease-out 1s forwards;
-}
-
-/* Add elegant border glow effect */
-#banner::after {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-border: 2px solid rgba(255,255,255,0.2);
-border-radius: 0;
-box-shadow: 
-inset 0 0 20px rgba(255,255,255,0.1),
-0 0 30px rgba(186,208,18,0.2);
-animation: borderPulse 4s ease-in-out infinite;
-pointer-events: none;
-z-index: 0;
-}
-
-@keyframes borderPulse {
-0%, 100% { 
-box-shadow: 
-inset 0 0 20px rgba(255,255,255,0.1),
-0 0 30px rgba(186,208,18,0.2);
-}
-50% { 
-box-shadow: 
-inset 0 0 30px rgba(255,255,255,0.2),
-0 0 50px rgba(186,208,18,0.4);
-}
-}
-
-/* Section Styles - ENHANCED */
-section {
-padding: 40px 20px;
-text-align: center;
-margin-top: 30px;
-border-radius: 15px; /* ADDED rounded corners */
-box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* ADDED elegant shadow */
-}
-
-section#featured-products {
-background-color: #8c4b29;
-margin-left: 20px;
-margin-right: 20px;
-color: #ffdab9;
-border: 2px solid rgba(255,255,255,0.1); /* ADDED subtle border */
-}
-
-section#about-me {
-background-color: #8c4b29;
-margin-left: 20px;
-margin-right: 20px;
-color: #ffdab9;
-border: 2px solid rgba(255,255,255,0.1); /* ADDED subtle border */
-}
-
-section#contact-me {
-background-color: #8c4b29;
-margin-left: 20px;
-margin-right: 20px;
-color: #ffdab9;
-border: 2px solid rgba(255,255,255,0.1); /* ADDED subtle border */
-}
-
-/* Smooth Scroll */
-html {
-scroll-behavior: smooth;
-}
-
-/* Slider Container */
-.slider-container {
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-max-width: 100%;
-margin: 0 auto;
-overflow: hidden;
-padding: 20px 0;
-}
-
-/* Slider */
-.slider {
-display: flex;
-transition: transform 0.3s ease-in-out;
-width: 100%;
-}
-
-/* Slide - FIXED IMAGE SIZES */
-.slide {
-flex: 0 0 100%;
-text-align: center;
-font-weight: bold;
-}
-
-.slide img {
-max-width: 40%; /* FIXED: Reduced from 50% */
-max-height: 350px; /* ADDED: Maximum height limit */
-width: auto;
-height: auto;
-margin: 0 auto;
-display: block;
-transition: transform 0.4s ease; /* ENHANCED transition */
-border-radius: 12px; /* ADDED rounded corners */
-box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* ADDED elegant shadow */
-}
-
-.slide img:hover {
-transform: scale(1.05) translateY(-5px); /* ENHANCED hover effect */
-box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* ENHANCED hover shadow */
-}
-
-.slide p {
-margin-top: 10px;
-font-size: 16px;
-color: #333;
-}
-
-/* Enhanced Slider Buttons with Advanced Animations */
-.slider-button {
-background: linear-gradient(135deg, #0f1048, #1a1a5e);
-color: #fff;
-border: none;
-padding: 15px 20px;
-cursor: pointer;
-border-radius: 50px;
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-z-index: 10;
-font-size: 20px;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 6px 20px rgba(15,16,72,0.4);
-overflow: hidden;
-}
-
-.slider-button::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
-transform: translateX(-100%);
-transition: transform 0.6s ease;
-}
-
-.slider-button::after {
-content: '⭐';
-position: absolute;
-top: -10px;
-right: -10px;
-font-size: 14px;
-opacity: 0;
-animation: sliderSparkle 3s ease-in-out infinite;
-transition: all 0.3s ease;
-}
-
-@keyframes sliderSparkle {
-0%, 100% { transform: scale(0.5) rotate(0deg); opacity: 0; }
-25% { transform: scale(1.3) rotate(180deg); opacity: 1; }
-50% { transform: scale(0.8) rotate(360deg); opacity: 0.8; }
-75% { transform: scale(1.1) rotate(540deg); opacity: 1; }
-}
-
-.slider-button:hover::before {
-transform: translateX(100%);
-}
-
-.slider-button:hover::after {
-opacity: 1;
-animation-duration: 1.2s;
-}
-
-.slider-button:hover {
-background: linear-gradient(135deg, #FEA3AA, #ff8a95);
-color: #11124a;
-font-weight: bold;
-transform: translateY(-50%) scale(1.15);
-box-shadow: 0 10px 35px rgba(254,163,170,0.5);
-animation: sliderPulse 0.8s ease-in-out infinite alternate;
-}
-
-@keyframes sliderPulse {
-0% { box-shadow: 0 10px 35px rgba(254,163,170,0.5); }
-100% { box-shadow: 0 15px 45px rgba(254,163,170,0.7); }
-}
-
-.slider-button.prev {
-left: 20px;
-}
-
-.slider-button.next {
-right: 20px;
-}
-
-/* Enhanced Shop Now Buttons with Advanced Animations */
-section a[href*=".html"] {
-display: inline-block;
-height: 60px;
-width: 120px;
-margin-top: 20px;
-background: linear-gradient(135deg, #11124a, #1a1a5e);
-font-family: 'Times New Roman', Times, serif;
-color: #f2f2f2;
-font-size: larger;
-text-align: center;
-line-height: 60px;
-border-radius: 30px;
-text-decoration: none;
-border: 2px solid #f2f2f2;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-box-shadow: 0 8px 25px rgba(17, 18, 74, 0.4);
-position: relative;
-overflow: hidden;
-}
-
-section a[href*=".html"]::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
-transform: translateX(-100%) rotate(30deg);
-transition: transform 0.8s ease;
-}
-
-section a[href*=".html"]::after {
-content: '🍫';
-position: absolute;
-top: -12px;
-right: -12px;
-font-size: 16px;
-opacity: 0;
-animation: shopSparkle 4s ease-in-out infinite;
-transition: all 0.3s ease;
-}
-
-@keyframes shopSparkle {
-0%, 100% { transform: scale(0.3) rotate(0deg); opacity: 0; }
-20% { transform: scale(1.2) rotate(72deg); opacity: 1; }
-40% { transform: scale(0.7) rotate(144deg); opacity: 0.8; }
-60% { transform: scale(1.1) rotate(216deg); opacity: 1; }
-80% { transform: scale(0.9) rotate(288deg); opacity: 0.9; }
-}
-
-section a[href*=".html"]:hover::before {
-transform: translateX(100%) rotate(30deg);
-}
-
-section a[href*=".html"]:hover::after {
-opacity: 1;
-animation-duration: 2s;
-}
-
-section a[href*=".html"]:hover {
-background: linear-gradient(135deg, #FEA3AA, #ff8a95);
-color: #11124a;
-transform: translateY(-5px) scale(1.1);
-box-shadow: 0 15px 40px rgba(254, 163, 170, 0.5);
-border-color: #11124a;
-animation: shopButtonPulse 1s ease-in-out infinite alternate;
-}
-
-@keyframes shopButtonPulse {
-0% { 
-box-shadow: 0 15px 40px rgba(254, 163, 170, 0.5);
-transform: translateY(-5px) scale(1.1);
-}
-100% { 
-box-shadow: 0 20px 50px rgba(254, 163, 170, 0.7);
-transform: translateY(-7px) scale(1.12);
-}
-}
-
-/* Enhanced Contact Form Button */
-.contact-form button {
-background: linear-gradient(135deg, #0f1048, #1a1a5e);
-color: #fff;
-border: none;
-padding: 15px 30px;
-border-radius: 25px;
-cursor: pointer;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-text-transform: uppercase;
-letter-spacing: 2px;
-font-weight: bold;
-font-size: 14px;
-position: relative;
-overflow: hidden;
-box-shadow: 0 6px 20px rgba(15,16,72,0.3);
-}
-
-.contact-form button::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.25) 50%, transparent 55%);
-transform: translateX(-100%) skew(-20deg);
-transition: transform 0.7s ease;
-}
-
-.contact-form button::after {
-content: '💌';
-position: absolute;
-top: -8px;
-right: -8px;
-font-size: 12px;
-opacity: 0;
-animation: contactSparkle 3.5s ease-in-out infinite;
-transition: all 0.3s ease;
-}
-
-@keyframes contactSparkle {
-0%, 100% { transform: scale(0.4) rotate(0deg); opacity: 0; }
-25% { transform: scale(1.2) rotate(90deg); opacity: 1; }
-50% { transform: scale(0.8) rotate(180deg); opacity: 0.9; }
-75% { transform: scale(1.1) rotate(270deg); opacity: 1; }
-}
-
-.contact-form button:hover::before {
-transform: translateX(100%) skew(-20deg);
-}
-
-.contact-form button:hover::after {
-opacity: 1;
-animation-duration: 1.5s;
-}
-
-.contact-form button:hover {
-background: linear-gradient(135deg, #FEA3AA, #ff8a95);
-color: #11124a;
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 12px 35px rgba(254,163,170,0.4);
-animation: contactPulse 0.6s ease-in-out infinite alternate;
-}
-
-@keyframes contactPulse {
-0% { box-shadow: 0 12px 35px rgba(254,163,170,0.4); }
-100% { box-shadow: 0 16px 45px rgba(254,163,170,0.6); }
-}
-
-/* Dots Container - ENHANCED */
-.slider-dots {
-text-align: center;
-margin-top: 15px;
-}
-
-.slider-dots .dot {
-display: inline-block;
-width: 12px; /* ENHANCED size */
-height: 12px; /* ENHANCED size */
-margin: 0 6px; /* ENHANCED spacing */
-background-color: rgba(204,204,204,0.7);
-border-radius: 50%;
-cursor: pointer;
-transition: all 0.3s ease; /* ADDED smooth transition */
-box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* ADDED shadow */
-}
-
-.slider-dots .dot.active {
-background-color: #FFFFFF;
-transform: scale(1.3); /* ENHANCED active state */
-box-shadow: 0 0 15px rgba(255,255,255,0.6); /* ENHANCED active shadow */
-}
-
-p {font-weight: bolder; font-size: x-large;}
-
-/* About Me Section - ENHANCED */
-#about-me {
-background-color: #75a9d1;
-padding: 50px 20px;
-}
-
-.about-container {
-display: flex;
-flex-wrap: wrap;
-max-width: 1200px;
-margin: 0 auto;
-background-color: #fff;
-border-radius: 15px; /* ENHANCED rounded corners */
-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* ENHANCED shadow */
-overflow: hidden;
-}
-
-/* Left Half */
-.about-left {
-flex: 1;
-max-width: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #f0f5f8;
-}
-
-.about-left img {
-max-width: 100%;
-height: auto;
-border-radius: 12px; /* ENHANCED rounded corners */
-object-fit: cover;
-transition: transform 0.3s ease; /* ADDED smooth transition */
-box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* ADDED shadow */
-}
-
-.about-left img:hover {
-transform: scale(1.02); /* ADDED subtle hover effect */
-}
-
-/* Right Half */
-.about-right {
-flex: 1;
-max-width: 50%;
-padding: 30px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-text-align: center;
-background-color: #f9f9f9;
-}
-
-.about-right h2 {
-margin-bottom: 15px;
-font-size: 24px;
-color: #0f1048;
-}
-
-.about-right p {
-font-size: 16px;
-color: #333;
-line-height: 1.6; /* ENHANCED line height */
-}
-
-/* Contact Me Section - ENHANCED */
-#contact-me {
-background-color: #75a9d1;
-padding: 50px 20px;
-color: #fff;
-}
-
-.contact-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-max-width: 1200px;
-margin: 0 auto;
-background-color: #f0f5f8;
-border-radius: 15px; /* ENHANCED rounded corners */
-box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* ENHANCED shadow */
-overflow: hidden;
-}
-
-/* Contact Form - ENHANCED */
-.contact-form {
-flex: 1;
-max-width: 50%;
-padding: 30px;
-}
-
-.contact-form h2 {
-margin-bottom: 15px;
-color: #0f1048;
-}
-
-.contact-form label {
-display: block;
-margin: 10px 0 5px;
-font-size: 14px;
-color: #333;
-}
-
-.contact-form input,
-.contact-form textarea {
-width: 100%;
-padding: 12px; /* ENHANCED padding */
-margin-bottom: 20px;
-border: 2px solid #ddd; /* ENHANCED border */
-border-radius: 8px; /* ADDED rounded corners */
-font-size: 14px;
-transition: border-color 0.3s ease; /* ADDED smooth transition */
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-outline: none;
-border-color: #0f1048; /* ENHANCED focus state */
-box-shadow: 0 0 8px rgba(15,16,72,0.2); /* ADDED focus shadow */
-}
-
-.contact-form button {
-background-color: #0f1048;
-color: #fff;
-border: none;
-padding: 12px 24px; /* ENHANCED padding */
-border-radius: 8px; /* ENHANCED rounded corners */
-cursor: pointer;
-transition: all 0.3s ease; /* ENHANCED transition */
-text-transform: uppercase; /* ADDED uppercase */
-letter-spacing: 1px; /* ADDED letter spacing */
-font-weight: bold; /* ADDED bold text */
-}
-
-.contact-form button:hover {
-background-color: #FEA3AA;
-transform: translateY(-2px); /* ADDED hover lift */
-box-shadow: 0 6px 20px rgba(254,163,170,0.3); /* ADDED hover shadow */
-}
-
-/* Social Links - ENHANCED */
-.social-links {
-flex: 1;
-max-width: 50%;
-padding: 30px;
-text-align: center;
-}
-
-.social-links h3 {
-margin-bottom: 15px;
-color: #0f1048;
-}
-
-.social-links .social-icon {
-display: inline-block;
-margin: 0 10px;
-width: 40px;
-height: 40px;
-}
-
-.social-links .social-icon img {
-width: 100%;
-height: auto;
-border-radius: 50%;
-transition: transform 0.3s ease; /* ENHANCED transition */
-box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* ADDED shadow */
-}
-
-.social-links .social-icon:hover img {
-transform: scale(1.2); /* ENHANCED hover effect */
-box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* ENHANCED hover shadow */
-}
-
-/* GLITTERY ANIMATIONS FOR INTERACTIVE ELEMENTS */
-@keyframes sparkle {
-0%, 100% { opacity: 0; }
-50% { opacity: 1; }
-}
-
-@keyframes glitter {
-0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
-25% { transform: scale(1.1) rotate(90deg); opacity: 1; }
-50% { transform: scale(0.9) rotate(180deg); opacity: 0.8; }
-75% { transform: scale(1.05) rotate(270deg); opacity: 1; }
-}
-
-/* Add glitter effect to interactive elements */
-.topnav a::after,
-.slider-button::after,
-.contact-form button::after,
-section a[href*=".html"]::after {
-content: '✨';
-position: absolute;
-top: -5px;
-right: -5px;
-font-size: 12px;
-opacity: 0;
-animation: glitter 2s ease-in-out infinite;
-transition: opacity 0.3s ease;
-}
-
-.topnav a:hover::after,
-.slider-button:hover::after,
-.contact-form button:hover::after,
-section a[href*=".html"]:hover::after {
-opacity: 1;
-}
-
-/* Sparkle effect on hover for images */
-.slide img::before,
-.about-left img::before,
-.social-links .social-icon img::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-image: 
-radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
-radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
-radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.8), transparent),
-radial-gradient(1px 1px at 130px 20px, rgba(255,255,255,0.7), transparent),
-radial-gradient(2px 2px at 160px 80px, rgba(255,255,255,0.6), transparent);
-background-size: 200px 200px;
-border-radius: inherit;
-opacity: 0;
-animation: sparkle 3s ease-in-out infinite;
-transition: opacity 0.3s ease;
-pointer-events: none;
-}
-
-.slide img:hover::before,
-.about-left img:hover::before,
-.social-links .social-icon:hover img::before {
-opacity: 1;
-}
-
-/* Enhanced border images with subtle animation */
-img[src*="border"] {
-filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1.1) contrast(1.1);
-transition: all 0.5s ease;
-animation: borderGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes borderGlow {
-0% { filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1.1) contrast(1.1); }
-100% { filter: drop-shadow(0 6px 12px rgba(186,208,18,0.4)) brightness(1.2) contrast(1.2); }
-}
-
-/* PROFESSIONAL BUSINESS FOOTER */
-.footer {
-background: linear-gradient(135deg, #2c1810 0%, #8c4b29 50%, #2c1810 100%);
-color: #ffdab9;
-padding: 60px 20px 20px;
-margin-top: 50px;
-position: relative;
-overflow: hidden;
-}
-
-.footer::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 3px;
-background: linear-gradient(90deg, #bad012, #ffd700, #bad012);
-animation: shimmer 3s ease-in-out infinite;
-}
-
-.footer-content {
-max-width: 1200px;
-margin: 0 auto;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 40px;
-margin-bottom: 40px;
-}
-
-.footer-section h3 {
-color: #bad012;
-font-family: 'Great Vibes', cursive;
-font-size: 2rem;
-margin-bottom: 20px;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.footer-section p,
-.footer-section li {
-line-height: 1.6;
-margin-bottom: 10px;
-font-size: 14px;
-}
-
-.footer-section ul {
-list-style: none;
-padding: 0;
-}
-
-.footer-section ul li {
-padding: 5px 0;
-border-bottom: 1px solid rgba(255,218,185,0.1);
-}
-
-.footer-section ul li:last-child {
-border-bottom: none;
-}
-
-.footer-section a {
-color: #ffdab9;
-text-decoration: none;
-transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-color: #bad012;
-text-shadow: 0 0 5px rgba(186,208,18,0.5);
-}
-
-.footer-social {
-display: flex;
-gap: 15px;
-margin-top: 20px;
-}
-
-.footer-social a {
-display: inline-block;
-width: 35px;
-height: 35px;
-background: rgba(186,208,18,0.2);
-border-radius: 50%;
-text-align: center;
-line-height: 35px;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
-}
-
-.footer-social a::before {
-content: '✨';
-position: absolute;
-top: -2px;
-right: -2px;
-font-size: 10px;
-opacity: 0;
-animation: glitter 2s ease-in-out infinite;
-}
-
-.footer-social a:hover::before {
-opacity: 1;
-}
-
-.footer-social a:hover {
-background: #bad012;
-transform: translateY(-3px) scale(1.1);
-box-shadow: 0 5px 15px rgba(186,208,18,0.4);
-}
-
-.footer-bottom {
-border-top: 2px solid rgba(255,218,185,0.2);
-padding-top: 20px;
-text-align: center;
-position: relative;
-}
-
-.footer-bottom p {
-margin: 0;
-font-size: 13px;
-color: rgba(255,218,185,0.8);
-}
-
-.footer-bottom .copyright {
-font-weight: bold;
-color: #bad012;
-text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-/* Mobile responsive footer */
-@media screen and (max-width: 768px) {
-.footer-content {
-grid-template-columns: 1fr;
-gap: 30px;
-}
-
-.footer-social {
-justify-content: center;
-}
-}
-
-</style>
-</head>
-<body>
-<!-- Navigation Bar -->
-<div class="topnav" id="myTopnav">
-<a href="Chocolates.html" class="active">Home</a>
-<a href="#featured-products">Products</a>
-<a href="#about-me">About Me</a>
-<a href="#contact-me">Contact Us</a>
-<a href="special_order_chocolates.html">Special Order</a>
-<a href="Cart_chocolates.html" class="cart-icon"><i class="fa fa-shopping-cart"></i></a> <!-- Cart Icon -->
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-<i class="fa fa-bars"></i>
-</a>
-</div>
-
-<img src="border top.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%;">
-
-<!-- Banner Section -->
-<section id="banner">
-<img src="Chocolate_Web_Banner.png" style="width: 100%; height: 25%">
-<h1 style="color: #11124a;">Welcome to Passion Chocolate World Shop!! </h1>
-<p style="text-shadow: 2px 2px 5px pink;">Your one-stop shop for amazing chocolates and sweetness.</p>
-</section>
-
-<img src="border bottom.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-
-<img src="border top.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-<!-- Featured Products Section -->
-<section id="featured-products">
-<h2>Featured Products</h2>
-<p>Check out our top products!</p>
-<div class="slider-container">
-<button class="slider-button prev">&lt;</button>
-<div class="slider">
-
-<div class="slide">
-<img src="cake.jpeg" alt="Product 1">
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF">Cakes</p>
-</div>
-
-<div class="slide">
-<img src="chocolate.jpg" alt="Product 2">
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF">Homemade Chocolates</p>
-</div>
-
-<div class="slide">
-<img src="gift.jpg" alt="Product 3">
-<p style="font-weight: bolder; font-size: x-large; color:#FFFFFF ;">Gift Items</p>
-</div>
-
-
-</div>
-<button class="slider-button next">&gt;</button>
-</div>
-<div class="slider-dots"></div>
-
-<a href="index.html" style="display: inline-block; height: 60px; width: 120px; margin-top: 20px; background-color: #11124a; font-family: 'Times New Roman', Times, serif; color: #f2f2f2; font-size: larger; text-align: center; line-height: 30px; border-radius: 8px; text-decoration: none; border: 2px solid #f2f2f2;">
-Shop Now For Cakes!!
-</a>
-
-<a href="Products_chocolates.html" style="display: inline-block; height: 60px; width: 120px; margin-top: 20px; background-color: #11124a; font-family: 'Times New Roman', Times, serif; color: #f2f2f2; font-size: larger; text-align: center; line-height: 30px; border-radius: 8px; text-decoration: none; border: 2px solid #f2f2f2;">
-    Shop Now For Chocolates!!
-    </a>
-
-<a href="Gift.html" style="display: inline-block; height: 60px; width: 120px; margin-top: 20px; background-color: #11124a; font-family: 'Times New Roman', Times, serif; color: #f2f2f2; font-size: larger; text-align: center; line-height: 30px; border-radius: 8px; text-decoration: none; border: 2px solid #f2f2f2;">
-Shop Now For Gift Items!!
-</a>
-
-</section>
-
-<img src="border bottom.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-
-<img src="border top.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-<!-- About Me Section -->
-<section id="about-me">
-<h2>About Me</h2>
-<div class="about-container">
-<div class="about-left">
-<img src="Logo.jpg" alt="About Me Image">
-</div>
-<div class="about-right">
-<h2 style="font-weight: bolder; font-size: xx-large;">About Me</h2>
-<p>
-I am a passionate home baker and a proud self-made business owner, turning my love for baking into a thriving venture. 
-What started as a simple hobby in my kitchen quickly grew into a business fueled by creativity, dedication, and an unyielding desire to bring joy through sweet treats. 
-Every cake, cookie, and pastry I create is handcrafted with care, using quality ingredients and a sprinkle of love. All the products are made in the most hyginic environment and with pure veg materials. 
-Building my brand from the ground up has taught me resilience, time management, and the importance of connecting with my customers. 
-Each order is more than just a dessert — it’s a part of someone’s celebration, and I’m honored to contribute to those special moments. 
-As I continue to grow, my goal remains the same: to deliver beautiful, delicious creations that reflect both my artistry and my clients' dreams. 
-This journey is just the beginning, and I’m excited for what’s next.
-</p>
-</div>
-</div>
-</section>
-
-</section>
-
-<img src="border bottom.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-
-<img src="border top.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-<!-- Contact Me Section -->
-<section id="contact-me">
-<h2>Contact Me</h2>
-<p style="font-weight: bolder; font-size: x-large;color:#11124a">If you have any questions, feel free to get in touch!</p>
-<div class="contact-container">
-<div class="contact-form">
-<h2>Contact Me</h2>
-<form action="mailto:manjupathak135@gmail.com" method="post" enctype="text/plain">
-<label for="name">Name</label>
-<input type="text" id="name" name="name" placeholder="Your name" required>
-
-<label for="email">Email</label>
-<input type="email" id="email" name="email" placeholder="Your email" required>
-
-<label for="message">Message</label>
-<textarea id="message" name="message" placeholder="Your message" required></textarea>
-
-<button type="submit">Send Message</button>
-</form>
-</div>
-<div class="social-links">
-<h3>Connect with Me</h3>
-<a href="https://www.facebook.com" target="_blank" class="social-icon">
-<img src="Facebook Logo.png" alt="Facebook">
-</a>
-<a href="https://www.instagram.com" target="_blank" class="social-icon">
-<img src="Instagram Logo.png" alt="Instagram">
-</a>
-<a href="https://www.google.com" target="_blank" class="social-icon">
-<img src="Google Logo.png" alt="Google">
-</a>
-<a href="https://in.pinterest.com/" target="_blank" class="social-icon">
-<img src="Pinterest Logo.png" alt="Pinterest">
-</a>
-<a href="https://wa.me/919869153017" target="_blank" class="social-icon">
-<img src="Whatsapp Logo.png" alt="WhatsApp">
-</a>
-<a href="" target="_blank" class="social-icon">
-<img src="google maps.png" alt="WhatsApp">
-</a>
-<a href="" target="_blank" class="social-icon">
-<img src="youtube.png" alt="WhatsApp">
-</a>
-
-</a>
-</div>
-</div>
-</section>
-
-<img src="border bottom.png" style="height:70%; width: 70%; margin-top: 20px; padding-left: 15%; padding-bottom: 50px;">
-
-<!-- PROFESSIONAL BUSINESS FOOTER - ADD THIS BEFORE </body> -->
-<footer class="footer">
-    <div class="footer-content">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PassionBakeryNChocos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Delius&family=Diphylleia&family=Great+Vibes&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========================================
+   CSS VARIABLES & ROOT CONFIGURATION
+   ======================================== */
+      :root {
+        --primary-gradient: linear-gradient(
+          90deg,
+          rgba(186, 208, 18, 0.95) 0%,
+          rgba(197, 214, 20, 0.95) 100%
+        );
+        --section-gradient: linear-gradient(
+          135deg,
+          #8c4b29 0%,
+          #7a3f22 50%,
+          #54422b 100%
+        );
+        --button-gradient: linear-gradient(45deg, #11124a, #1a1a5e);
+        --hover-gradient: linear-gradient(45deg, #fea3aa, #ff8a95);
+        --gold: #ffd700;
+        --primary-text: #11124a;
+        --white: #ffffff;
+        --primary-bg: #bad012;
+        --brown-primary: #8c4b29;
+        --brown-dark: #54422b;
+        --brown-footer: #2c1810;
+        --peach: #ffdab9;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --border-radius: 20px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--primary-bg);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
+
+      h1,
+      h2 {
+        color: var(--primary-bg);
+        font-weight: bold;
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+        text-align: center;
+        margin-bottom: 15px;
+        font-family: "Great Vibes", cursive;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+        font-weight: bolder;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        line-height: 1.6;
+        font-family: "Delius", cursive;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* ========================================
+   NAVIGATION BAR - ENHANCED WITH STICKY
+   ======================================== */
+      .topnav {
+        overflow: hidden;
+        background: var(--primary-gradient);
+        font-family: "Delius", cursive;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .topnav a,
+      .topnav .cart-icon {
+        float: left;
+        display: block;
+        color: var(--primary-text);
+        text-align: center;
+        padding: 16px 24px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        border-radius: 12px;
+        margin: 8px 6px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .topnav a:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: var(--transition);
+      }
+
+      .topnav a:hover:before {
+        left: 100%;
+      }
+
+      .topnav a:hover,
+      .topnav .cart-icon:hover {
+        background: var(--brown-footer);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(44, 24, 16, 0.3);
+      }
+
+      .topnav .cart-icon:hover {
+        transform: translateY(-2px) rotate(5deg);
+      }
+
+      .topnav a.active {
+        background: linear-gradient(45deg, #008000, #006400);
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 128, 0, 0.3);
+        transform: scale(1.05);
+      }
+
+      .topnav .icon {
+        display: none;
+      }
+
+      /* Banner */
+      #banner {
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        text-align: center;
+        padding: 20px 10px;
+        text-shadow: 2px 2px 5px pink;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #banner h1 {
+        margin-bottom: 10px;
+      }
+
+      #banner p {
+        font-size: clamp(1rem, 3vw, 1.125rem);
+        font-family: "Delius", cursive;
+      }
+
+      .border-image {
+        width: min(70%, 600px);
+        height: auto;
+        margin: 20px auto;
+        display: block;
+        animation: imageFloat 6s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)
+          contrast(1.1);
+      }
+
+      @keyframes imageFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Sections */
+      section {
+        padding: clamp(20px, 5vw, 40px);
+        text-align: center;
+        margin-top: 30px;
+        position: relative;
+      }
+
+      section#featured-products,
+      section#about-me,
+      section#contact-me,
+      section#customer-reviews {
+        background: var(--section-gradient);
+        margin: 20px clamp(10px, 3vw, 20px);
+        color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px rgba(140, 75, 41, 0.3);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Reviews Section */
+      .reviews-container {
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .reviews-scroll {
+        display: flex;
+        gap: 30px;
+        animation: smoothScroll 60s linear infinite;
+        width: max-content;
+      }
+
+      .reviews-scroll:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes smoothScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .review-card {
+        flex: 0 0 400px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        color: var(--primary-text);
+        text-align: left;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+        border-color: var(--gold);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .reviewer-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--button-gradient);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-right: 15px;
+        box-shadow: 0 4px 15px rgba(17, 18, 74, 0.3);
+      }
+
+      .reviewer-info h4 {
+        font-family: "Great Vibes", cursive;
+        color: var(--primary-text);
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+        text-shadow: none;
+      }
+
+      .reviewer-info .stars {
+        color: var(--gold);
+        font-size: 1rem;
+      }
+
+      .review-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: "Delius", cursive;
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      .review-date {
+        font-size: 0.8rem;
+        color: #666;
+        text-align: right;
+        font-family: "Delius", cursive;
+      }
+
+      .reviews-cta {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+
+      .reviews-cta p {
+        color: var(--white);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 20px;
+        font-family: "Delius", cursive;
+      }
+
+      .google-reviews-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background: var(--button-gradient);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-family: "Delius", cursive;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-weight: bold;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(17, 18, 74, 0.3);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+      }
+
+      .google-reviews-btn:hover {
+        background: var(--hover-gradient);
+        color: var(--primary-text);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(254, 163, 170, 0.4);
+        border-color: var(--gold);
+      }
+
+      /* Slider */
+      .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 20px 0;
+        width: 100%;
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+      }
+
+      .slide {
+        flex: 0 0 100%;
+        text-align: center;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slide img {
+        max-width: min(70%, 400px);
+        max-height: 300px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        object-fit: contain;
+      }
+
+      .slide img:hover {
+        transform: scale(1.08) rotate(2deg);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .slide p {
+        margin-top: 15px;
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        font-family: "Delius", cursive;
+        color: var(--white);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .slider-button {
+        background: var(--button-gradient);
+        color: #fff;
+        border: none;
+        padding: 12px 16px;
+        cursor: pointer;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(15, 16, 72, 0.3);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slider-button.prev {
+        left: 10px;
+      }
+
+      .slider-button.next {
+        right: 10px;
+      }
+
+      .slider-button:hover {
+        background: var(--hover-gradient);
+        color: var(--primary-text);
+        font-weight: bold;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 8px 25px rgba(254, 163, 170, 0.4);
+      }
+
+      .slider-dots {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .slider-dots .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .slider-dots .dot.active {
+        background-color: var(--white);
+        transform: scale(1.3);
+        border-color: var(--gold);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+
+      .slider-dots .dot:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+
+      /* Shop Buttons */
+      .shop-button,
+      section a[href*=".html"] {
+        display: inline-block;
+        min-height: 45px;
+        min-width: 100px;
+        padding: 10px 15px;
+        margin: 15px 10px;
+        background: var(--button-gradient);
+        font-family: "Delius", cursive;
+        color: #f2f2f2;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        text-align: center;
+        line-height: 1.4;
+        border-radius: 25px;
+        text-decoration: none;
+        border: 2px solid #f2f2f2;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(17, 18, 74, 0.3);
+      }
+
+      .shop-button:hover,
+      section a[href*=".html"]:hover {
+        background: linear-gradient(45deg, var(--gold), #ffd700);
+        color: var(--primary-text);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        border-color: var(--primary-text);
+      }
+
+      /* About & Contact */
+      #about-me,
+      #contact-me {
+        background: linear-gradient(
+          135deg,
+          #75a9d1 0%,
+          #5a8bb8 50%,
+          #4a7ba8 100%
+        );
+        padding: clamp(30px, 8vw, 50px) clamp(10px, 3vw, 20px);
+      }
+
+      .about-container,
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: var(--border-radius);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-container {
+        justify-content: center;
+        background: rgba(240, 245, 248, 0.95);
+      }
+
+      .about-left {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f0f5f8, #e8f2f7);
+        padding: 20px;
+      }
+
+      .about-left img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-left img:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+
+      .about-right {
+        flex: 1;
+        min-width: 300px;
+        padding: clamp(20px, 5vw, 30px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, #f9f9f9, #f0f4f7);
+      }
+
+      .about-right h2 {
+        margin-bottom: 20px;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        color: #0f1048;
+      }
+
+      .about-right p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
+        padding: clamp(20px, 5vw, 30px);
+      }
+
+      .contact-form h2 {
+        margin-bottom: 20px;
+        color: #0f1048;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+      }
+
+      .contact-form label {
+        display: block;
+        margin: 15px 0 8px;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: #333;
+        font-weight: 600;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #75a9d1;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 15px rgba(117, 169, 209, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .contact-form button {
+        background: var(--button-gradient);
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        font-weight: 600;
+        box-shadow: 0 6px 20px rgba(15, 16, 72, 0.3);
+      }
+
+      .contact-form button:hover {
+        background: var(--hover-gradient);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(254, 163, 170, 0.4);
+      }
+
+      /* Social Links */
+      .social-links {
+        flex: 1;
+        min-width: 300px;
+        padding: clamp(20px, 5vw, 30px);
+        text-align: center;
+      }
+
+      .social-links h3 {
+        margin-bottom: 20px;
+        color: #0f1048;
+        font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      }
+
+      .social-links .social-icon {
+        display: inline-block;
+        margin: 0 12px 15px 12px;
+        width: 50px;
+        height: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .social-links .social-icon img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+      }
+
+      .social-links .social-icon:hover {
+        transform: translateY(-5px) scale(1.2) rotate(5deg);
+      }
+
+      .social-links .social-icon:hover img {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .footer {
+        background: linear-gradient(
+          135deg,
+          #2c1810 0%,
+          #8c4b29 50%,
+          #2c1810 100%
+        );
+        color: #ffdab9;
+        padding: 60px 20px 20px;
+        margin-top: 50px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #bad012, #ffd700, #bad012);
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        color: #bad012;
+        font-family: "Great Vibes", cursive;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .footer-section p,
+      .footer-section li {
+        line-height: 1.6;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section ul li {
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 218, 185, 0.1);
+      }
+
+      .footer-section ul li:last-child {
+        border-bottom: none;
+      }
+
+      .footer-section a {
+        color: #ffdab9;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #bad012;
+        text-shadow: 0 0 5px rgba(186, 208, 18, 0.5);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .footer-social a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background: rgba(186, 208, 18, 0.2);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 35px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-social a:hover {
+        background: #bad012;
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(186, 208, 18, 0.4);
+      }
+
+      .footer-bottom {
+        border-top: 2px solid rgba(255, 218, 185, 0.2);
+        padding-top: 20px;
+        text-align: center;
+        position: relative;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(255, 218, 185, 0.8);
+      }
+
+      .footer-bottom .copyright {
+        font-weight: bold;
+        color: #bad012;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* ========================================
+   RESPONSIVE MEDIA QUERIES
+   ======================================== */
+      @media screen and (max-width: 768px) {
+        .topnav {
+          padding: 0 5px;
+          position: relative;
+          min-height: 50px;
+        }
+
+        .topnav a:not(.active):not(.cart-icon):not(.icon) {
+          display: none;
+          clear: both;
+          width: 100%;
+        }
+
+        .topnav a.active {
+          float: left;
+          margin: 8px 3px;
+          padding: 12px 14px;
+        }
+
+        .topnav .cart-icon {
+          position: absolute !important;
+          top: 0;
+          right: 55px;
+          float: none;
+          margin: 8px 3px;
+          padding: 12px 14px;
+          font-size: 0.9rem;
+        }
+
+        .topnav a.icon {
+          position: absolute !important;
+          top: 0;
+          right: 5px;
+          float: none;
+          display: block !important;
+          margin: 8px 3px;
+          padding: 12px 14px;
+          font-size: 1.2rem;
+          color: var(--primary-text);
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        .topnav a {
+          margin: 5px 3px;
+          padding: 12px 14px;
+          font-size: 0.9rem;
+        }
+
+        .topnav.responsive {
+          position: relative;
+        }
+
+        .topnav.responsive a.active {
+          float: left;
+          margin: 8px 3px;
+          padding: 12px 14px;
+        }
+
+        .topnav.responsive .cart-icon {
+          position: absolute !important;
+          top: 0;
+          right: 55px;
+          float: none;
+          margin: 8px 3px;
+        }
+
+        .topnav.responsive a.icon {
+          position: absolute !important;
+          top: 0;
+          right: 5px;
+          float: none;
+          color: var(--gold);
+          background: linear-gradient(45deg, #008000, #006400);
+          margin: 8px 3px;
+        }
+
+        .topnav.responsive a:not(.active):not(.icon):not(.cart-icon) {
+          display: block;
+          float: none;
+          text-align: left;
+          width: 100%;
+          clear: both;
+          margin: 5px 10px;
+        }
+
+        .topnav.responsive
+          a:not(.active):not(.icon):not(.cart-icon):first-of-type {
+          padding-top: 0;
+          margin-top: 50px;
+        }
+
+        /* Footer mobile layout */
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .footer-social {
+          justify-content: center;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .review-card {
+          flex: 0 0 280px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="topnav" id="myTopnav">
+      <a href="Chocolates.html" class="active">Home</a>
+      <a href="#featured-products">Products</a>
+      <a href="#about-me">About Me</a>
+      <a href="#customer-reviews">Reviews</a>
+      <a href="#contact-me">Contact Us</a>
+      <a href="special_order_chocolates.html">Special Order</a>
+
+      <a href="Cart_chocolates.html" class="cart-icon">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count">(0)</span>
+      </a>
+
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Banner Section -->
+    <section id="banner">
+      <img src="Chocolate_Web_Banner.png" style="width: 100%; height: 25%" />
+      <h1 style="color: #11124a">Welcome to Passion Chocolate World Shop!!</h1>
+      <p style="text-shadow: 2px 2px 5px pink">
+        Your one-stop shop for amazing chocolates and sweetness.
+      </p>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Featured Products Section -->
+    <section id="featured-products">
+      <h2>Featured Products</h2>
+      <p>Check out our top products!</p>
+      <div class="slider-container">
+        <button class="slider-button prev">&lt;</button>
+        <div class="slider">
+          <div class="slide">
+            <img src="cake.jpeg" alt="Product 1" />
+            <p style="font-weight: bolder; font-size: x-large; color: #ffffff">
+              Cakes
+            </p>
+          </div>
+
+          <div class="slide">
+            <img src="chocolate.jpg" alt="Product 2" />
+            <p style="font-weight: bolder; font-size: x-large; color: #ffffff">
+              Homemade Chocolates
+            </p>
+          </div>
+
+          <div class="slide">
+            <img src="gift.jpg" alt="Product 3" />
+            <p style="font-weight: bolder; font-size: x-large; color: #ffffff">
+              Gift Items
+            </p>
+          </div>
+        </div>
+        <button class="slider-button next">&gt;</button>
+      </div>
+      <div class="slider-dots"></div>
+
+      <!-- Add classes to your shop buttons -->
+      <a href="index.html" class="shop-button"> Cakes </a>
+
+      <a href="Products_chocolates.html" class="shop-button"> Chocolates </a>
+
+      <a href="Gift.html" class="shop-button"> Gift Items </a>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- About Me Section -->
+    <section id="about-me">
+      <h2>About Me</h2>
+      <div class="about-container">
+        <div class="about-left">
+          <img src="Chocolate_Logo.jpg" alt="About Me Image" />
+        </div>
+        <div class="about-right">
+          <h2 style="font-weight: bolder; font-size: xx-large">About Me</h2>
+          <p>
+            I am a passionate home baker and a proud self-made business owner,
+            turning my love for baking into a thriving venture. What started as
+            a simple hobby in my kitchen quickly grew into a business fueled by
+            creativity, dedication, and an unyielding desire to bring joy
+            through sweet treats. Every cake, cookie, and pastry I create is
+            handcrafted with care, using quality ingredients and a sprinkle of
+            love. All the products are made in the most hyginic environment and
+            with pure veg materials. Building my brand from the ground up has
+            taught me resilience, time management, and the importance of
+            connecting with my customers. Each order is more than just a dessert
+            — it’s a part of someone’s celebration, and I’m honored to
+            contribute to those special moments. As I continue to grow, my goal
+            remains the same: to deliver beautiful, delicious creations that
+            reflect both my artistry and my clients' dreams. This journey is
+            just the beginning, and I’m excited for what’s next.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Customer Reviews Section -->
+    <section id="customer-reviews">
+      <h2>What Our Customers Say</h2>
+      <p
+        style="
+          font-weight: bolder;
+          font-size: x-large;
+          color: #ffffff;
+          margin-bottom: 30px;
+        "
+      >
+        Reviews from our happy customers!
+      </p>
+
+      <div class="reviews-container">
+        <div class="reviews-scroll">
+          <!-- First set of reviews -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">P</div>
+              <div class="reviewer-info">
+                <h4>Priya Sharma</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Absolutely amazing cakes! Ordered a custom birthday cake for my
+              daughter and it exceeded all expectations. The taste was
+              incredible and the design was exactly what we wanted. Will
+              definitely order again!"
+            </div>
+            <div class="review-date">2 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">R</div>
+              <div class="reviewer-info">
+                <h4>Rajesh Kumar</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The homemade chocolates are divine! Perfect for gifting. The
+              packaging is beautiful and the taste is out of this world.
+              PassionBakery has become our go-to for all special occasions."
+            </div>
+            <div class="review-date">1 month ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">A</div>
+              <div class="reviewer-info">
+                <h4>Anita Desai</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Ordered a wedding cake and it was the centerpiece of our
+              celebration! Not only did it look stunning, but every guest
+              complimented the taste. Highly professional service!"
+            </div>
+            <div class="review-date">3 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">V</div>
+              <div class="reviewer-info">
+                <h4>Vikram Singh</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Best bakery in Mumbai! The quality is consistent and the
+              creativity in designs is outstanding. The owner is so passionate
+              about her work and it shows in every product."
+            </div>
+            <div class="review-date">1 week ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">S</div>
+              <div class="reviewer-info">
+                <h4>Sunita Patel</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The gift hampers are perfect! Ordered for Diwali and everyone
+              loved them. The combination of cakes and chocolates was perfect.
+              Great value for money and beautiful presentation."
+            </div>
+            <div class="review-date">2 months ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">M</div>
+              <div class="reviewer-info">
+                <h4>Mohit Gupta</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Incredible attention to detail! The cake was not only delicious
+              but also a work of art. Communication was excellent throughout the
+              order process. Truly professional!"
+            </div>
+            <div class="review-date">5 days ago</div>
+          </div>
+
+          <!-- Duplicate set for seamless loop -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">P</div>
+              <div class="reviewer-info">
+                <h4>Priya Sharma</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Absolutely amazing cakes! Ordered a custom birthday cake for my
+              daughter and it exceeded all expectations. The taste was
+              incredible and the design was exactly what we wanted. Will
+              definitely order again!"
+            </div>
+            <div class="review-date">2 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">R</div>
+              <div class="reviewer-info">
+                <h4>Rajesh Kumar</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The homemade chocolates are divine! Perfect for gifting. The
+              packaging is beautiful and the taste is out of this world.
+              PassionBakery has become our go-to for all special occasions."
+            </div>
+            <div class="review-date">1 month ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">A</div>
+              <div class="reviewer-info">
+                <h4>Anita Desai</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Ordered a wedding cake and it was the centerpiece of our
+              celebration! Not only did it look stunning, but every guest
+              complimented the taste. Highly professional service!"
+            </div>
+            <div class="review-date">3 weeks ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">V</div>
+              <div class="reviewer-info">
+                <h4>Vikram Singh</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Best bakery in Mumbai! The quality is consistent and the
+              creativity in designs is outstanding. The owner is so passionate
+              about her work and it shows in every product."
+            </div>
+            <div class="review-date">1 week ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">S</div>
+              <div class="reviewer-info">
+                <h4>Sunita Patel</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "The gift hampers are perfect! Ordered for Diwali and everyone
+              loved them. The combination of cakes and chocolates was perfect.
+              Great value for money and beautiful presentation."
+            </div>
+            <div class="review-date">2 months ago</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-avatar">M</div>
+              <div class="reviewer-info">
+                <h4>Mohit Gupta</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-text">
+              "Incredible attention to detail! The cake was not only delicious
+              but also a work of art. Communication was excellent throughout the
+              order process. Truly professional!"
+            </div>
+            <div class="review-date">5 days ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-cta">
+        <p>
+          To know more about what people are saying about us, check out our
+          Google Reviews!
+        </p>
+        <a
+          href="https://share.google/pfo83AjPDmMGBeVmf"
+          class="google-reviews-btn"
+          id="googleReviewsBtn"
+        >
+          <i class="fa fa-google"></i> View All Google Reviews
+        </a>
+      </div>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- Contact Me Section -->
+    <section id="contact-me">
+      <h2>Contact Me</h2>
+      <p style="font-weight: bolder; font-size: x-large; color: white">
+        If you have any questions, feel free to get in touch!
+      </p>
+      <div class="contact-container">
+        <div class="contact-form">
+          <h2>Contact Me</h2>
+          <form
+            action="mailto:pbcpassionchocolate21@gmail.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+            />
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email"
+              required
+            />
+
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message"
+              required
+            ></textarea>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="social-links">
+          <h3>Connect with Me</h3>
+          <a
+            href="https://www.facebook.com/share/1CmymuJ4hc/"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Facebook Logo.png" alt="Facebook" />
+          </a>
+          <a
+            href="https://www.instagram.com/passionchocolatesworld?utm_source=qr&igsh=MXFsNGd1YXRqcDlhZg=="
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Instagram Logo.png" alt="Instagram" />
+          </a>
+          <a href="https://www.google.com" target="_blank" class="social-icon">
+            <img src="Google Logo.png" alt="Google" />
+          </a>
+          <!-- <a
+            href="https://in.pinterest.com/"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Pinterest Logo.png" alt="Pinterest" />
+          </a> -->
+          <a
+            href="https://wa.me/917400296336"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="Whatsapp Logo.png" alt="WhatsApp" />
+          </a>
+          <a
+            href="https://share.google/pfo83AjPDmMGBeVmf"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="google maps.png" alt="WhatsApp" />
+          </a>
+          <a
+            href="https://www.youtube.com/@PassionChocolateWorld"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="youtube.png" alt="WhatsApp" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Replace the border images with these classes -->
+    <img src="border top.png" class="border-image" />
+    <img src="border bottom.png" class="border-image" />
+
+    <!-- PROFESSIONAL BUSINESS FOOTER -->
+
+    <footer class="footer">
+      <div class="footer-content">
         <!-- About Section -->
         <div class="footer-section">
-            <h3>About Passion Bakery</h3>
-            <p>Your one-stop destination for handcrafted chocolates, delicious cakes, and unique gift items. We create sweet memories with every bite, using only the finest ingredients and lots of love.</p>
-            <p><strong>Quality • Freshness • Excellence</strong></p>
+          <h3>About Passion Bakery</h3>
+          <p>
+            Your one-stop destination for handcrafted chocolates, delicious
+            cakes, and unique gift items. We create sweet memories with every
+            bite, using only the finest ingredients and lots of love.
+          </p>
+          <p><strong>Quality • Freshness • Excellence</strong></p>
         </div>
 
         <!-- Quick Links Section -->
         <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="Chocolates.html">Home</a></li>
-                <li><a href="#featured-products">Our Products</a></li>
-                <li><a href="index.html">Cakes Collection</a></li>
-                <li><a href="Products_chocolates.html">Chocolates</a></li>
-                <li><a href="Gift.html">Gift Items</a></li>
-                <li><a href="special_order_chocolates.html">Special Orders</a></li>
-                <li><a href="#about-me">About Us</a></li>
-            </ul>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="Chocolates.html">Home</a></li>
+            <li><a href="#featured-products">Our Products</a></li>
+            <li><a href="index.html">Cakes Collection</a></li>
+            <li><a href="Products_chocolates.html">Chocolates</a></li>
+            <li><a href="Gift.html">Gift Items</a></li>
+            <li><a href="special_order_chocolates.html">Special Orders</a></li>
+            <li><a href="#about-me">About Us</a></li>
+          </ul>
         </div>
 
         <!-- Contact Info Section -->
         <div class="footer-section">
-            <h3>Contact Information</h3>
-            <ul>
-                <li>📧 manjupathak135@gmail.com</li>
-                <li>📱 +91 98691 53017</li>
-                <li>🕒 Mon-Sun: 9:00 AM - 8:00 PM</li>
-                <li>🚚 Home Delivery Available</li>
-                <li>💳 All Payment Methods Accepted</li>
-            </ul>
+          <h3>Contact Information</h3>
+          <ul>
+            <li>📧 pbcpassionchocolate21@gmail.com</li>
+            <li>📱 +91 74002 96336</li>
+            <li>🕒 Mon-Fri: 10:00 AM - 7:00 PM</li>
+            <li>🕒 Sat: 9:00 AM - 1:00 PM</li>
+            <li>🚚 Home Delivery Available</li>
+            <li>💳 All Payment Methods Accepted</li>
+          </ul>
         </div>
 
         <!-- Social & Services Section -->
         <div class="footer-section">
-            <h3>Connect With Us</h3>
-            <p>Follow us for daily updates, new products, and sweet inspirations!</p>
-            
-            <div class="footer-social">
-                <a href="https://www.facebook.com" target="_blank" title="Facebook">📘</a>
-                <a href="https://www.instagram.com" target="_blank" title="Instagram">📷</a>
-                <a href="https://wa.me/919869153017" target="_blank" title="WhatsApp">💬</a>
-                <a href="https://in.pinterest.com/" target="_blank" title="Pinterest">📌</a>
-                <a href="https://www.google.com" target="_blank" title="Google">🌐</a>
-            </div>
-            
-            <p style="margin-top: 20px;"><strong>🎂 Custom Orders Welcome</strong><br>
-            <small>Wedding Cakes • Birthday Specials • Corporate Gifts</small></p>
+          <h3>Connect With Us</h3>
+          <p>
+            Follow us for daily updates, new products, and sweet inspirations!
+          </p>
+
+          <div class="footer-social">
+            <a
+              href="https://www.facebook.com/share/1CmymuJ4hc/"
+              target="_blank"
+              title="Facebook"
+              >📘</a
+            >
+            <a
+              href="https://www.instagram.com/passionchocolatesworld?utm_source=qr&igsh=MXFsNGd1YXRqcDlhZg=="
+              target="_blank"
+              title="Instagram"
+              >📷</a
+            >
+            <a
+              href="https://wa.me/917400296336"
+              target="_blank"
+              title="WhatsApp"
+              >💬</a
+            >
+            <!-- <a
+              href="https://in.pinterest.com/"
+              target="_blank"
+              title="Pinterest"
+              >📌</a
+            > -->
+            <a
+              href="https://share.google/pfo83AjPDmMGBeVmf"
+              target="_blank"
+              title="Google"
+              >🌐</a
+            >
+          </div>
+
+          <p style="margin-top: 20px">
+            <strong>🎂 Custom Orders Welcome</strong><br />
+            <small>Bulk Chocolate Orders • Bulk Cupcake Orders • Corporate Gifts</small>
+          </p>
         </div>
-    </div>
+      </div>
 
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-        <p>&copy; 2025 <span class="copyright">La Ruby Studio</span> | Passion Bakery N Chocos | All Rights Reserved</p>
-        <p style="margin-top: 5px; font-size: 12px;">Designed with ❤️ for Sweet Lovers | Made in India 🇮🇳</p>
-    </div>
-</footer>
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 <span class="copyright">La Ruby Studio</span> | Passion Chocolate World (PB&C) | All Rights Reserved
+        </p>
+        <p style="margin-top: 5px; font-size: 12px">
+          Designed with ❤️ for Sweet Lovers | Made in India 🇮🇳
+        </p>
+      </div>
+    </footer>
 
-<script>
-<!-- Script for Navigation Toggle -->
-function myFunction() {
-var x = document.getElementById("myTopnav");
-if (x.className === "topnav") {
-x.className += " responsive";
-} else {
-x.className = "topnav";
-}
-}
+    <script>
+      // =============================================================================
+      // PASSIONBAKERY N CHOCOS - CHOCOLATES PAGE OPTIMIZED JAVASCRIPT
+      // =============================================================================
 
-// Slide Gallery Script
-document.addEventListener("DOMContentLoaded", () => {
-const slider = document.querySelector(".slider");
-const slides = document.querySelectorAll(".slide");
-const prevButton = document.querySelector(".slider-button.prev");
-const nextButton = document.querySelector(".slider-button.next");
-const dotsContainer = document.querySelector(".slider-dots");
+      // =============================================================================
+      // MOBILE NAVIGATION TOGGLE
+      // =============================================================================
+      function myFunction() {
+        const nav = document.getElementById("myTopnav");
+        nav.className =
+          nav.className === "topnav" ? "topnav responsive" : "topnav";
+      }
 
-let currentIndex = 0;
+      // =============================================================================
+      // DOM INITIALIZATION
+      // =============================================================================
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeSlider();
+        initializeScrollAnimations();
+        createGlitterEffect();
+        initializeGoogleReviewsButton();
+        updateCartCount();
+      });
 
-// Create dots dynamically based on the number of slides
-slides.forEach((_, index) => {
-const dot = document.createElement("span");
-dot.classList.add("dot");
-if (index === currentIndex) dot.classList.add("active");
-dotsContainer.appendChild(dot);
-});
+      // =============================================================================
+      // PRODUCT SLIDER FUNCTIONALITY
+      // =============================================================================
+      function initializeSlider() {
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const prevButton = document.querySelector(".slider-button.prev");
+        const nextButton = document.querySelector(".slider-button.next");
+        const dotsContainer = document.querySelector(".slider-dots");
 
-const dots = document.querySelectorAll(".dot");
+        if (!slider || !slides.length || !dotsContainer) return;
 
-function updateSliderPosition() {
-slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-updateDots();
-}
+        let currentIndex = 0;
 
-function updateDots() {
-dots.forEach((dot, index) => {
-dot.classList.toggle("active", index === currentIndex);
-});
-}
+        // Create navigation dots
+        slides.forEach((_, index) => {
+          const dot = document.createElement("span");
+          dot.classList.add("dot");
+          if (index === currentIndex) dot.classList.add("active");
+          dot.addEventListener("click", () => {
+            currentIndex = index;
+            updateSlider();
+          });
+          dotsContainer.appendChild(dot);
+        });
 
-prevButton.addEventListener("click", () => {
-currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-updateSliderPosition();
-});
+        // Navigation button handlers
+        prevButton?.addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateSlider();
+        });
 
-nextButton.addEventListener("click", () => {
-currentIndex = (currentIndex + 1) % slides.length;
-updateSliderPosition();
-});
+        nextButton?.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlider();
+        });
 
-dots.forEach((dot, index) => {
-dot.addEventListener("click", () => {
-currentIndex = index;
-updateSliderPosition();
-});
-});
-});
-</script>
-</body>
+        function updateSlider() {
+          slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+          document.querySelectorAll(".dot").forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+          });
+        }
+      }
+
+      // =============================================================================
+      // GOOGLE REVIEWS BUTTON
+      // =============================================================================
+      function initializeGoogleReviewsButton() {
+        const googleReviewsBtn = document.getElementById("googleReviewsBtn");
+        if (googleReviewsBtn) {
+          googleReviewsBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const googleMapsUrl = "https://share.google/pfo83AjPDmMGBeVmf";
+            window.open(googleMapsUrl, "_blank");
+          });
+        }
+      }
+
+      // =============================================================================
+      // SCROLL ANIMATIONS
+      // =============================================================================
+      function initializeScrollAnimations() {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation =
+                "fadeInOnScroll 1s ease-out forwards";
+            }
+          });
+        }, observerOptions);
+
+        document
+          .querySelectorAll("section, .about-container, .contact-container")
+          .forEach((el) => observer.observe(el));
+      }
+
+      // =============================================================================
+      // GLITTER EFFECT
+      // =============================================================================
+      function createGlitterEffect() {
+        const glitterContainer = document.querySelector(".glitter-container");
+        if (!glitterContainer) return;
+
+        glitterContainer.innerHTML = "";
+
+        for (let i = 0; i < 50; i++) {
+          const glitter = document.createElement("div");
+          glitter.classList.add("glitter");
+          glitter.style.left = Math.random() * 100 + "%";
+          glitter.style.top = Math.random() * 100 + "%";
+          glitter.style.animationDelay = Math.random() * 3 + "s";
+          glitter.style.animationDuration = 1.5 + Math.random() * 2 + "s";
+          glitterContainer.appendChild(glitter);
+        }
+
+        setTimeout(createGlitterEffect, 10000);
+      }
+
+      // =============================================================================
+      // CART COUNT UPDATE - CHOCOLATES SPECIFIC
+      // =============================================================================
+      function updateCartCount() {
+        const cartData =
+          JSON.parse(localStorage.getItem("ChocolatecartData")) || {};
+        const cartCount = Object.values(cartData).reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const cartCountElement = document.getElementById("cart-count");
+        if (cartCountElement) {
+          cartCountElement.textContent = `(${cartCount})`;
+        }
+      }
+
+      // =============================================================================
+      // PAGE LOAD OPTIMIZATION
+      // =============================================================================
+      window.addEventListener("load", () => {
+        document.body.classList.remove("loading");
+      });
+
+      // =============================================================================
+      // ERROR HANDLING
+      // =============================================================================
+      window.addEventListener("error", (event) => {
+        console.warn("PassionBakery: Non-critical error caught:", event.error);
+      });
+
+      window.addEventListener("unhandledrejection", (event) => {
+        console.warn(
+          "PassionBakery: Unhandled promise rejection:",
+          event.reason
+        );
+        event.preventDefault();
+      });
+    </script>
+  </body>
 </html>
