@@ -1143,16 +1143,11 @@
 
 <script>
 // ================================
-// GOOGLE SHEETS CONFIGURATION
+// GOOGLE SHEETS CONFIGURATION - CSV METHOD
 // ================================
-// ================================
-// GOOGLE SHEETS CONFIGURATION - ALTERNATIVE METHOD
-// ================================
-const SHEET_ID = '1IzGvYmpSbcE0YL4yIDj7XTuLTmnhqkUCodn4pWX8FpI';
-const SHEET_GID = '0'; // This is the sheet GID (usually 0 for first sheet)
-
-// Use CSV export instead
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/1lzGvYmpSbcE0YL4yIDj7XTuLTnnhqkUCodn4pWX8FpI/edit?gid=0#gid=0`;
+const SHEET_ID = '1lzGvYmpSbcE0YL4yIDj7XTuLTnnhqkUCodn4pWX8FpI';
+const GID = '0';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
 // Category mapping
 const CATEGORY_TAG_MAP = {
@@ -1179,48 +1174,39 @@ const CATEGORY_TAG_MAP = {
 };
 
 // ================================
-// FETCH AND PARSE GOOGLE SHEETS DATA
+// FETCH AND PARSE CSV DATA
 // ================================
 async function fetchProductsFromSheet() {
   try {
-    console.log('Fetching from:', SHEET_URL);
+    console.log('Fetching CSV from:', SHEET_URL);
     const response = await fetch(SHEET_URL);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    const text = await response.text();
-    console.log('Response received:', text.substring(0, 100));
+    const csvText = await response.text();
+    console.log('CSV received successfully');
     
-    // Remove the Google Sheets API prefix
-    const jsonText = text.match(/google\.visualization\.Query\.setResponse\((.*)\);/)?.[1];
-    if (!jsonText) {
-      throw new Error('Invalid response format from Google Sheets');
-    }
-    
-    const json = JSON.parse(jsonText);
-    
-    if (!json.table || !json.table.rows) {
-      throw new Error('No data found in sheet');
-    }
-    
-    const rows = json.table.rows;
+    // Parse CSV
+    const lines = csvText.split('\n');
     const products = [];
     
-    // Skip header row, start from index 1
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const cells = row.c;
+    // Skip header row (index 0), start from 1
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
       
-      // Skip empty rows
-      if (!cells || !cells[0] || !cells[0].v) continue;
+      // Split by comma (handle quoted values)
+      const columns = line.split(',').map(col => col.trim().replace(/^"|"$/g, ''));
       
-      const productName = cells[0]?.v || '';
-      const baseQuantity = cells[1]?.v || '1kg';
-      const basePrice = parseFloat(cells[2]?.v || 0);
-      const category = cells[3]?.v || '';
-      const availableQuantities = cells[4]?.v || '500g,1kg,1.5kg,2kg';
+      if (columns.length < 5 || !columns[0]) continue;
+      
+      const productName = columns[0];
+      const baseQuantity = columns[1] || '1kg';
+      const basePrice = parseFloat(columns[2]) || 0;
+      const category = columns[3] || '';
+      const availableQuantities = columns[4] || '500g,1kg,1.5kg,2kg';
       
       // Parse quantities
       const quantities = availableQuantities.split(',').map(q => {
@@ -1238,15 +1224,15 @@ async function fetchProductsFromSheet() {
       });
     }
     
-    console.log('Products loaded:', products.length);
+    console.log('✅ Products loaded:', products.length);
     return products;
     
   } catch (error) {
-    console.error('Detailed error:', error);
-    console.error('Error message:', error.message);
+    console.error('❌ Error:', error.message);
     return [];
   }
 }
+
 // ================================
 // GENERATE PRODUCT CARDS HTML
 // ================================
@@ -1255,7 +1241,6 @@ function generateProductCard(product) {
     `<option value="${q.value}">${q.label}</option>`
   ).join('');
   
-  // Image will be searched with product name
   const imageName = product.name;
   
   return `
@@ -1291,27 +1276,22 @@ function generateProductCard(product) {
 function tryNextImageFormat(imgElement, baseName) {
   const formats = ['.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG'];
   
-  // Get current src
   let currentSrc = imgElement.src;
   let currentFormat = '';
   
-  // Extract current extension if any
   formats.forEach(fmt => {
     if (currentSrc.endsWith(fmt)) {
       currentFormat = fmt;
     }
   });
   
-  // Find next format to try
   let currentIndex = formats.indexOf(currentFormat);
   let nextIndex = currentIndex + 1;
   
   if (nextIndex < formats.length) {
-    // Try next format
     const newSrc = baseName + formats[nextIndex];
     imgElement.src = newSrc;
   } else {
-    // All formats failed, use placeholder
     imgElement.src = 'placeholder.jpg';
     imgElement.alt = 'Image not found';
     imgElement.style.opacity = '0.5';
@@ -1324,7 +1304,6 @@ function tryNextImageFormat(imgElement, baseName) {
 async function loadProducts() {
   const container = document.getElementById('product-container');
   
-  // Show loading
   container.innerHTML = `
     <div class="loading-container">
       <div class="spinner"></div>
@@ -1332,22 +1311,19 @@ async function loadProducts() {
     </div>
   `;
   
-  // Fetch products
   const products = await fetchProductsFromSheet();
   
   if (products.length === 0) {
     container.innerHTML = `
       <div class="loading-container">
-        <p class="loading-text">No products found. Please check your Google Sheet settings.</p>
+        <p class="loading-text">No products found. Please check your Google Sheet.</p>
       </div>
     `;
     return;
   }
   
-  // Generate HTML
   container.innerHTML = products.map(product => generateProductCard(product)).join('');
   
-  // Initialize functionality
   initializeProductCards();
   initializeProductFilter();
   initializeProductSearch();
