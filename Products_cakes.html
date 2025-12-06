@@ -1145,9 +1145,14 @@
 // ================================
 // GOOGLE SHEETS CONFIGURATION
 // ================================
+// ================================
+// GOOGLE SHEETS CONFIGURATION - ALTERNATIVE METHOD
+// ================================
 const SHEET_ID = '1IzGvYmpSbcE0YL4yIDj7XTuLTmnhqkUCodn4pWX8FpI';
-const SHEET_NAME = 'Products_Official'; // ⚠️ Change this to match your exact tab name
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/1IzGvYmpSbcE0YL4yIDj7XTuLTmnhqkUCodn4pWX8FpI/gviz/tq?tqx=out:json&sheet=Products_Official`;
+const SHEET_GID = '0'; // This is the sheet GID (usually 0 for first sheet)
+
+// Use CSV export instead
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/1lzGvYmpSbcE0YL4yIDj7XTuLTnnhqkUCodn4pWX8FpI/edit?gid=0#gid=0`;
 
 // Category mapping
 const CATEGORY_TAG_MAP = {
@@ -1178,13 +1183,29 @@ const CATEGORY_TAG_MAP = {
 // ================================
 async function fetchProductsFromSheet() {
   try {
+    console.log('Fetching from:', SHEET_URL);
     const response = await fetch(SHEET_URL);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const text = await response.text();
+    console.log('Response received:', text.substring(0, 100));
     
-    // Parse Google's JSON response
-    const json = JSON.parse(text.substring(47).slice(0, -2));
+    // Remove the Google Sheets API prefix
+    const jsonText = text.match(/google\.visualization\.Query\.setResponse\((.*)\);/)?.[1];
+    if (!jsonText) {
+      throw new Error('Invalid response format from Google Sheets');
+    }
+    
+    const json = JSON.parse(jsonText);
+    
+    if (!json.table || !json.table.rows) {
+      throw new Error('No data found in sheet');
+    }
+    
     const rows = json.table.rows;
-    
     const products = [];
     
     // Skip header row, start from index 1
@@ -1217,13 +1238,15 @@ async function fetchProductsFromSheet() {
       });
     }
     
+    console.log('Products loaded:', products.length);
     return products;
+    
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Detailed error:', error);
+    console.error('Error message:', error.message);
     return [];
   }
 }
-
 // ================================
 // GENERATE PRODUCT CARDS HTML
 // ================================
