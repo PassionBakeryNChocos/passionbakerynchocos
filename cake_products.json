@@ -1,0 +1,722 @@
+[
+  {
+    "name": "Chocolate Biscoff Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 699,
+    "category": "Chocolate",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Vanilla Caramel Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 599,
+    "category": "Vanilla",
+    "availableQuantities": "500g,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Caramel Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Strawberry Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 549,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Blueberry Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 549,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Raspberry Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 549,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Mangoes Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 549,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 549,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Upsidedown Pineapple Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 549,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Golden Pineapple Delight Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Tropical Bliss Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple Paradise Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Cherry Pineapple Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pina Colada Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple Sunshine Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple Drip Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple Gems Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Lemon Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 699,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Butterscotch Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 699,
+    "category": "Vanilla",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Truffle Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 699,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Black Forest Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Vanilla",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Hazelnut Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 699,
+    "category": "Chocolate",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Oreo Cookie Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 749,
+    "category": "Vanilla",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pistachio Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Rasgulla Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Rasmalai Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Gulab Jamun Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Jalebi Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Motichoor Bundi Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Modak Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Rose Faluda Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 749,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Fudge Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 749,
+    "category": "Chocolate",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate & Raspberry Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 749,
+    "category": "Chocolate",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Ferrero Rocher Chocolate Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Peanut Butter Chocolate Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate & Mint Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Custom Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Coconut Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Orange Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Custom Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Choco-Chip Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Gems Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "KitKat Chocolate Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "KitKat Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Vanilla",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Mud Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 749,
+    "category": "Chocolate",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Death By Chocolate Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Nutella Chocolate Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Mocha Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Coffee Chocolate Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Lava Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Rich Chocolate Truffle",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Carrot Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Custom Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Mangoes Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 349,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Pineapple Shine Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 349,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Raspberry Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 349,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Strawberry Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 349,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Peanut Butter Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 449,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Nutella Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 549,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Sugar Free Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Diabetic Cake",
+    "availableQuantities": "500gm,1kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Sugar Less Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Low Sugar Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Gluten Free Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Custom Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Diabetic Cakes",
+    "baseQuantity": "500gm",
+    "basePrice": 949,
+    "category": "Diabetic Cake",
+    "availableQuantities": "500gm,1kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Orange Pistachio Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 949,
+    "category": "Diabetic Cake",
+    "availableQuantities": "500gm,1kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Date & Walnuts Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 949,
+    "category": "Diabetic Cake",
+    "availableQuantities": "500gm,1kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Chocolate Sugar Free Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 949,
+    "category": "Diabetic Cake",
+    "availableQuantities": "500gm,1kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Coconut & Almond Flour Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 949,
+    "category": "Diabetic Cake",
+    "availableQuantities": "500gm,1kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Frozen Elsa Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Barbie Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Spiderman Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Mickey Mouse Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Angry Bird Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Doremon Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Motu Patlu Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Singham Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Hattori Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {He-Man Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Pikachu Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Winnie The Pooh Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Photo Cake {Mine Craft Design}",
+    "baseQuantity": "1kg",
+    "basePrice": 1549,
+    "category": "Photo Cake",
+    "availableQuantities": "1kg,1.5kg,2kg, 2.5kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Red Velvet Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 749,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Kitkat Red Velvet Cake",
+    "baseQuantity": "600gm",
+    "basePrice": 979,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Oreo Red Velvet Cake",
+    "baseQuantity": "600gm",
+    "basePrice": 979,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg,",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Red Velvet Heart Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Velvety Red Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 979,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Kulfi Faluda Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Flavoured Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Kaju Katli Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 799,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Rasgulla Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 649,
+    "category": "Traditional Fusion Cakes",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Kunafa Pistachio Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 949,
+    "category": "Custom Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Cream Castle Red Velvet Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Rich Red Velvet Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 979,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Red Velvet Cheese Cream Cake",
+    "baseQuantity": "500gm",
+    "basePrice": 849,
+    "category": "Red Velvet Cake",
+    "availableQuantities": "500gm,1kg,1.5kg,2kg",
+    "description": "Delicious handcrafted cake made with love."
+  },
+  {
+    "name": "Biscoff Cheese Cake",
+    "baseQuantity": "1",
+    "basePrice": 450,
+    "category": "Cheese Cake",
+    "availableQuantities": "1,3,5,7",
+    "description": "Delicious handcrafted cake made with love."
+  }
+]
